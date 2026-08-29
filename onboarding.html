@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trayectoria — Onboarding de Cliente</title>
+  <meta name="description" content="Completá la información necesaria para que el equipo de Trayectoria diseñe y construya tu sitio web profesional en 72 horas.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/onboarding.css?v=2026.12">
+</head>
+<body class="onboarding-body">
+
+  <!-- ==========================================================================
+       TOP BAR
+       ========================================================================== -->
+  <header class="onboarding-topbar">
+    <div class="topbar-container">
+      <a href="index.html" class="onboarding-brand">
+        <span class="brand-dot"></span>
+        <span class="brand-title">Trayectoria</span>
+        <span class="brand-badge-client" id="topbarClientBadge">TRAY-00001</span>
+      </a>
+
+      <div class="topbar-right">
+        <div class="autosave-badge" id="autosaveBadge">
+          <span class="autosave-dot"></span>
+          <span>Guardado automáticamente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       PROGRESS BAR (Steps 1 to 5 + Review)
+       ========================================================================== -->
+  <div class="onboarding-progress-wrapper" id="progressWrapper" style="display: none;">
+    <div class="progress-container">
+      <div class="progress-header">
+        <span class="progress-step-label" id="progressStepLabel">Paso 1 de 5 — Sobre vos</span>
+        <span class="progress-percentage" id="progressPercentage">20%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width: 20%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="onboarding-main">
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 0: PANTALLA DE BIENVENIDA
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane active" id="stepPane_0">
+      <div class="welcome-hero-card">
+        <span class="welcome-logo-badge">
+          ✦ TRAYECTORIA ONBOARDING
+        </span>
+        <h1 class="welcome-title">Empecemos por conocerte.</h1>
+        <p class="welcome-pitch">
+          Vamos a pedirte algunas cosas sobre tu trabajo y tu trayectoria para poder construir tu sitio. No hace falta que tengas todo preparado: podés completar lo que tengas y nosotros nos ocupamos del resto.
+        </p>
+
+        <div class="welcome-meta-pill">
+          ⏱️ Tiempo estimado: 10–15 minutos
+        </div>
+
+        <div class="welcome-action-group">
+          <button type="button" class="btn-welcome-start" id="btnWelcomeStart">
+            Comenzar →
+          </button>
+          <span class="welcome-resume-hint" id="welcomeResumeHint" style="display: none;"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 1: SOBRE VOS
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_1">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Paso 1 de 5</span>
+        <h2 class="step-main-title">Empecemos por lo básico.</h2>
+        <p class="step-subtitle">Tu identidad profesional para configurar la cabecera y estructura de tu web.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Datos personales</h3>
+        <p class="form-card-hint">Información esencial para identificarte.</p>
+
+        <div class="field-grid-2" style="margin-bottom: 16px;">
+          <div class="form-field">
+            <label class="form-label">Nombre <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="p1_nombre" placeholder="Ej: Juan">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Apellido <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="p1_apellido" placeholder="Ej: Pérez">
+          </div>
+        </div>
+
+        <div class="field-grid-2">
+          <div class="form-field">
+            <label class="form-label">Profesión <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="p1_profesion" placeholder="Ej: Arquitecto, Psicóloga, Abogado">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Especialidad principal <span class="form-label-optional">(opcional)</span></label>
+            <input type="text" class="form-input" id="p1_especialidadPrincipal" placeholder="Ej: Arquitectura Residencial, TCC">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Cómo querés que aparezca tu nombre en tu sitio?</h3>
+        <p class="form-card-hint">Es el título principal que se leerá arriba de todo en tu web.</p>
+
+        <div class="form-field">
+          <input type="text" class="form-input" id="p1_nombreEnSitio" placeholder="Ej: Arq. Juan Pérez / Lic. Valentina Moreno / Estudio Benítez">
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Contacto inicial y ubicación</h3>
+        <p class="form-card-hint">Para coordinar el proyecto y ubicar tu zona de atención.</p>
+
+        <div class="field-grid-3">
+          <div class="form-field">
+            <label class="form-label">Ciudad de residencia / base</label>
+            <input type="text" class="form-input" id="p1_ciudad" placeholder="Ej: Buenos Aires, Rosario, Madrid">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email de contacto <span class="form-label-required">*</span></label>
+            <input type="email" class="form-input" id="p1_email" placeholder="tu.email@ejemplo.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">WhatsApp</label>
+            <input type="tel" class="form-input" id="p1_whatsapp" placeholder="+54 9 11 ...">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Tenés una foto profesional que quieras usar?</h3>
+        <p class="form-card-hint">No te preocupes si todavía no la tenés lista, no bloquea el avance.</p>
+
+        <div class="segmented-card-group" style="margin-bottom: 16px;">
+          <div class="segmented-card" data-group="p1_fotoStatus" data-value="upload">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">Sí, subir foto</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Cargar un retrato ahora</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p1_fotoStatus" data-value="later">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">La tengo, la envío después</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Por WhatsApp o email luego</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p1_fotoStatus" data-value="none">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">No tengo todavía</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Usaremos un avatar o iconografía</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="upload-dropzone" id="p1_dropzoneContainer">
+          <input type="file" id="p1_fotoFile" accept="image/*">
+          <span style="font-size: 1.5rem; display: block; margin-bottom: 6px;">📸</span>
+          <strong style="color: var(--klein-blue); font-size: 0.95rem;">Hacé clic para seleccionar tu foto</strong>
+          <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">PNG, JPG hasta 10MB</span>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <div></div>
+        <button type="button" class="btn-onboarding-next" id="btnStep1_Next">
+          Siguiente: Tu Historia →
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 2: CONTANOS TU HISTORIA
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_2">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Paso 2 de 5</span>
+        <h2 class="step-main-title">Queremos conocer tu recorrido.</h2>
+        <p class="step-subtitle">No hace falta que escribas un libro. Con un par de líneas claras alcanza.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Presentación</h3>
+        <p class="form-card-hint">Si alguien entra a tu web, ¿cómo te gustaría presentarte?</p>
+
+        <div class="form-field">
+          <textarea class="form-textarea" id="p2_presentacion" placeholder="Ej: Soy arquitecto especializado en diseño residencial y reformas contemporáneas con más de 8 años de experiencia proyectando espacios que priorizan la luz natural y la sustentabilidad..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Trayectoria y Experiencia <span class="form-label-optional">(opcional)</span></h3>
+        <p class="form-card-hint">¿Qué experiencias profesionales te gustaría destacar?</p>
+
+        <div class="dynamic-items-container" id="experiencesContainer"></div>
+
+        <button type="button" class="btn-add-item" id="btnAddExperience">
+          + Agregar experiencia
+        </button>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Estudios y Formación <span class="form-label-optional">(opcional)</span></h3>
+        <p class="form-card-hint">¿Qué títulos, posgrados o certificaciones querés mostrar?</p>
+
+        <div class="dynamic-items-container" id="educationContainer"></div>
+
+        <button type="button" class="btn-add-item" id="btnAddEducation">
+          + Agregar formación
+        </button>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnStep2_Back">
+          ← Volver
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnStep2_Next">
+          Siguiente: Qué hacés →
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 3: QUÉ HACÉS
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_3">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Paso 3 de 5</span>
+        <h2 class="step-main-title">Contanos qué ofrecés.</h2>
+        <p class="step-subtitle">Tus servicios y especialidades clave para que tus futuros clientes sepan cómo podés ayudarlos.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Servicios</h3>
+        <p class="form-card-hint">¿Qué servicios ofrecés? No pedimos precios salvo que quieras incluirlos.</p>
+
+        <div class="dynamic-items-container" id="servicesContainer"></div>
+
+        <button type="button" class="btn-add-item" id="btnAddService">
+          + Agregar servicio
+        </button>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Especialidades o áreas de enfoque</h3>
+        <p class="form-card-hint">Escribí una especialidad y presioná Enter o coma para agregarla como etiqueta.</p>
+
+        <div class="form-field">
+          <input type="text" class="form-input" id="p3_specialtyInput" placeholder="Ej: Branding, Terapia de Pareja, Artroscopía, Reformas en PH...">
+        </div>
+
+        <div class="choice-pill-group" id="specialtiesChipsContainer" style="margin-top: 12px;"></div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Trabajos destacados o proyectos anteriores</h3>
+        <p class="form-card-hint">¿Querés mostrar algunos trabajos o proyectos en tu web?</p>
+
+        <div class="segmented-card-group" style="margin-bottom: 18px;">
+          <div class="segmented-card" data-group="p3_hasProjects" data-value="yes">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">Sí, quiero mostrar proyectos</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Casos de éxito o fotos de obras</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p3_hasProjects" data-value="no">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">No por ahora</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Solo servicios y contacto directo</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="projectsDetailContainer" style="display: none;">
+          <div class="dynamic-items-container" id="projectsContainer"></div>
+
+          <button type="button" class="btn-add-item" id="btnAddProject">
+            + Agregar proyecto
+          </button>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnStep3_Back">
+          ← Volver
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnStep3_Next">
+          Siguiente: Dónde encontrarte →
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 4: DÓNDE ENCONTRARTE
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_4">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Paso 4 de 5</span>
+        <h2 class="step-main-title">¿Dónde pueden contactarte?</h2>
+        <p class="step-subtitle">Elegí tu canal principal de conversión y las redes que quieras vincular.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Cuál querés que sea el principal medio de contacto?</h3>
+        <p class="form-card-hint">Será el botón destacado en la cabecera y el cierre de tu web.</p>
+
+        <div class="segmented-card-group">
+          <div class="segmented-card" data-group="p4_canalPrincipal" data-value="whatsapp">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">⚡ WhatsApp directo</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Máxima tasa de respuesta</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p4_canalPrincipal" data-value="email">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">✉️ Correo electrónico</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Mensajes formales</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p4_canalPrincipal" data-value="instagram">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">📸 Mensaje directo Instagram</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Para marcas visuales</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p4_canalPrincipal" data-value="formulario">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">📋 Formulario en el sitio</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Recepción en tu casilla</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Canales y Redes Sociales</h3>
+        <p class="form-card-hint">Completá únicamente las que tengas y quieras mostrar.</p>
+
+        <div class="field-grid-2" style="margin-bottom: 16px;">
+          <div class="form-field">
+            <label class="form-label">WhatsApp</label>
+            <input type="tel" class="form-input" id="p4_whatsapp" placeholder="+54 9 11 ...">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" id="p4_email" placeholder="contacto@tuweb.com">
+          </div>
+        </div>
+
+        <div class="field-grid-2" style="margin-bottom: 16px;">
+          <div class="form-field">
+            <label class="form-label">Instagram</label>
+            <input type="text" class="form-input" id="p4_instagram" placeholder="@tu_usuario">
+          </div>
+          <div class="form-field">
+            <label class="form-label">LinkedIn</label>
+            <input type="text" class="form-input" id="p4_linkedin" placeholder="linkedin.com/in/tu-perfil">
+          </div>
+        </div>
+
+        <div class="field-grid-3">
+          <div class="form-field">
+            <label class="form-label">Sitio web actual <span class="form-label-optional">(si tenés)</span></label>
+            <input type="text" class="form-input" id="p4_webActual" placeholder="https://tuwebactual.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Behance / Dribbble</label>
+            <input type="text" class="form-input" id="p4_behance" placeholder="behance.net/tuusuario">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Otras redes</label>
+            <input type="text" class="form-input" id="p4_otrasRedes" placeholder="TikTok, YouTube, etc.">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Querés mostrar dónde trabajás?</h3>
+        <p class="form-card-hint">Podemos incluir un mapa interactivo de Google Maps o simplemente la zona.</p>
+
+        <div class="segmented-card-group" style="margin-bottom: 18px;">
+          <div class="segmented-card" data-group="p4_mostrarUbicacion" data-value="yes">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">Sí, mostrar consultorio / estudio</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Ubicación física en el mapa</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p4_mostrarUbicacion" data-value="no">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">No, atención 100% online / remota</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Sin dirección específica</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="locationDetailContainer" style="display: none;">
+          <div class="field-grid-3" style="margin-bottom: 16px;">
+            <div class="form-field">
+              <label class="form-label">Ciudad / Barrio</label>
+              <input type="text" class="form-input" id="p4_ubi_ciudad" placeholder="Ej: Palermo Soho, CABA">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Provincia</label>
+              <input type="text" class="form-input" id="p4_ubi_provincia" placeholder="Ej: Buenos Aires">
+            </div>
+            <div class="form-field">
+              <label class="form-label">País</label>
+              <input type="text" class="form-input" id="p4_ubi_pais" placeholder="Argentina" value="Argentina">
+            </div>
+          </div>
+
+          <div class="field-grid-2">
+            <div class="form-field">
+              <label class="form-label">Dirección <span class="form-label-optional">(opcional)</span></label>
+              <input type="text" class="form-input" id="p4_ubi_direccion" placeholder="Ej: Honduras 4800">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Link de Google Maps <span class="form-label-optional">(opcional)</span></label>
+              <input type="text" class="form-input" id="p4_ubi_maps" placeholder="https://maps.google.com/...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnStep4_Back">
+          ← Volver
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnStep4_Next">
+          Siguiente: Cómo querés que se vea →
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 5: CÓMO QUERÉS QUE SE VEA
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_5">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Paso 5 de 5</span>
+        <h2 class="step-main-title">Ahora pensemos en el estilo.</h2>
+        <p class="step-subtitle">Tu estética visual, preferencias y sensaciones para darle identidad única a tu web.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Identidad y Logotipo</h3>
+        <p class="form-card-hint">¿Tenés logo para tu marca profesional?</p>
+
+        <div class="segmented-card-group" style="margin-bottom: 18px;">
+          <div class="segmented-card" data-group="p5_tieneLogo" data-value="yes">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">Sí, tengo logo</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Subir archivo o vector</span>
+            </div>
+          </div>
+
+          <div class="segmented-card" data-group="p5_tieneLogo" data-value="no">
+            <div class="segmented-radio-circle"></div>
+            <div>
+              <strong style="display:block; font-size:0.92rem;">No tengo logo</strong>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Armaremos un logotipo tipográfico sobrio</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="logoUploadContainer" style="display: none;">
+          <div class="upload-dropzone">
+            <input type="file" id="p5_logoFile" accept="image/*,.svg,.ai,.pdf">
+            <span style="font-size: 1.5rem; display: block; margin-bottom: 6px;">📐</span>
+            <strong style="color: var(--klein-blue); font-size: 0.95rem;">Hacé clic para cargar tu logo</strong>
+            <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">PNG transparente, SVG, PDF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Hay colores que quieras usar?</h3>
+        <p class="form-card-hint">Podés seleccionar sugerencias o escribir libremente tus colores preferidos.</p>
+
+        <div class="form-field">
+          <input type="text" class="form-input" id="p5_colores" placeholder="Ej: Azul marino, blanco cálido y gris (#0033FF, #FFFFFF, #F1F5F9)">
+        </div>
+
+        <div class="color-presets-row">
+          <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">Sugerencias rápidas:</span>
+          <div class="color-swatch-chip" data-color="Azul Eléctrico & Blanco">
+            <span class="color-circle" style="background: #0033FF;"></span>
+            <span>Klein Blue</span>
+          </div>
+          <div class="color-swatch-chip" data-color="Negro Obsidiana & Blanco">
+            <span class="color-circle" style="background: #0F172A;"></span>
+            <span>Monocromo / Minimal</span>
+          </div>
+          <div class="color-swatch-chip" data-color="Verde Esmeralda & Tierra">
+            <span class="color-circle" style="background: #16A34A;"></span>
+            <span>Salud & Bienestar</span>
+          </div>
+          <div class="color-swatch-chip" data-color="Gris Concreto & Terracota">
+            <span class="color-circle" style="background: #E2E8F0;"></span>
+            <span>Arquitectura / Estudio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Cómo querés que se sienta tu sitio?</h3>
+        <p class="form-card-hint">Elegí las sensaciones que mejor representen tu propuesta (podés elegir varias):</p>
+
+        <div class="choice-pill-group" id="p5_sensations_container"></div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Sitios de referencia que te gusten</h3>
+        <p class="form-card-hint">¿Hay webs que te inspiren por su tipografía, limpieza o estilo?</p>
+
+        <div class="dynamic-items-container" id="referencesContainer"></div>
+
+        <button type="button" class="btn-add-item" id="btnAddReference">
+          + Agregar sitio de referencia
+        </button>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Hay algo que definitivamente NO quieras? <span class="form-label-optional">(opcional)</span></h3>
+        <p class="form-card-hint">Para evitar cosas que no vayan con tu gusto personal.</p>
+
+        <div class="form-field">
+          <input type="text" class="form-input" id="p5_loQueNoQuiere" placeholder="Ej: No quiero fondos oscuros, no quiero textos largos, no quiero popups invasivos...">
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnStep5_Back">
+          ← Volver
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnStep5_Next">
+          Revisar y Enviar →
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 6: REVISIÓN
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_6">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Paso final</span>
+        <h2 class="step-main-title">Ya tenemos todo.</h2>
+        <p class="step-subtitle">Revisá el resumen de lo que completaste. Podés editar cualquier sección con un clic.</p>
+      </div>
+
+      <!-- Category 1: Sobre vos -->
+      <div class="review-category-card">
+        <div class="review-category-left">
+          <div class="review-check-icon">✓</div>
+          <div>
+            <div class="review-category-title">1. Sobre vos</div>
+            <div class="review-category-summary" id="review_p1_summary">—</div>
+          </div>
+        </div>
+        <button type="button" class="btn-review-edit" id="btnEditP1">Editar</button>
+      </div>
+
+      <!-- Category 2: Tu historia -->
+      <div class="review-category-card">
+        <div class="review-category-left">
+          <div class="review-check-icon">✓</div>
+          <div>
+            <div class="review-category-title">2. Tu historia</div>
+            <div class="review-category-summary" id="review_p2_summary">—</div>
+          </div>
+        </div>
+        <button type="button" class="btn-review-edit" id="btnEditP2">Editar</button>
+      </div>
+
+      <!-- Category 3: Qué hacés -->
+      <div class="review-category-card">
+        <div class="review-category-left">
+          <div class="review-check-icon">✓</div>
+          <div>
+            <div class="review-category-title">3. Qué hacés</div>
+            <div class="review-category-summary" id="review_p3_summary">—</div>
+          </div>
+        </div>
+        <button type="button" class="btn-review-edit" id="btnEditP3">Editar</button>
+      </div>
+
+      <!-- Category 4: Dónde encontrarte -->
+      <div class="review-category-card">
+        <div class="review-category-left">
+          <div class="review-check-icon">✓</div>
+          <div>
+            <div class="review-category-title">4. Dónde encontrarte</div>
+            <div class="review-category-summary" id="review_p4_summary">—</div>
+          </div>
+        </div>
+        <button type="button" class="btn-review-edit" id="btnEditP4">Editar</button>
+      </div>
+
+      <!-- Category 5: Cómo querés que se vea -->
+      <div class="review-category-card">
+        <div class="review-category-left">
+          <div class="review-check-icon">✓</div>
+          <div>
+            <div class="review-category-title">5. Cómo querés que se vea</div>
+            <div class="review-category-summary" id="review_p5_summary">—</div>
+          </div>
+        </div>
+        <button type="button" class="btn-review-edit" id="btnEditP5">Editar</button>
+      </div>
+
+      <!-- Reassurance message -->
+      <div class="submit-reassurance-box">
+        <span style="font-size: 1.4rem;">🤝</span>
+        <div class="submit-reassurance-text">
+          Con esto ya podemos empezar a trabajar en tu sitio. Si después necesitamos algo más puntual, te lo vamos a pedir. <strong>No tenés que hacer todo el trabajo</strong>.
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnStep6_Back">
+          ← Volver
+        </button>
+        <button type="button" class="btn-submit-final" id="btnSubmitFinal">
+          ✓ Enviar información
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         PASO 7: CONFIRMACIÓN Y ÉXITO
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_7">
+      <div class="success-card">
+        <div class="success-badge">
+          Información recibida ✓
+        </div>
+        <h2 class="success-title">Recibimos tu información.</h2>
+        <div class="success-lead">Perfecto. Ahora nos toca a nosotros.</div>
+        <p class="success-desc">
+          Tu información ya quedó guardada y asignada al equipo de diseño y desarrollo de Trayectoria.
+        </p>
+
+        <div class="next-steps-timeline">
+          <div class="timeline-step">
+            <div class="timeline-step-num">1</div>
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--text-primary); display: block;">Análisis y conceptualización</strong>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Revisamos tu propuesta de valor, estructura y estilo seleccionado.</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-step-num">2</div>
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--text-primary); display: block;">Desarrollo de maqueta interactiva (72hs)</strong>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Construimos la primera versión funcional para que la navegues en vivo.</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-step-num">3</div>
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--text-primary); display: block;">Lanzamiento oficial</strong>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Vinculación de dominio, SSL y puesta en marcha de tu WhatsApp directo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="index.html" class="btn-onboarding-back" style="text-decoration: none;">
+            Volver a Trayectoria
+          </a>
+          <a href="panel.html" class="btn-onboarding-next" style="text-decoration: none; background: #0F172A;">
+            Ver en Panel Interno →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/onboarding-store.js?v=2026.12"></script>
+  <script src="js/onboarding.js?v=2026.12"></script>
+</body>
+</html>
