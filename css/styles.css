@@ -5833,3 +5833,5 @@ body {
     gap: 6px !important;
   }
 }
+
+.chat-chips-area { display: none !important; }
