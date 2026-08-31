@@ -17,6 +17,8 @@
     return {
       clientId: clientId,
       status: 'in_progress', // 'not_started' | 'in_progress' | 'submitted'
+      serviceType: 'custom_professional', // 'template' | 'custom_professional' | 'custom_business'
+      selectedTemplate: '',
       currentStep: 1,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
@@ -402,6 +404,16 @@
           },
         };
 
+        let contractedProduct = 'Web Profesional 72hs';
+        let priceStr = '$95 USD';
+        if (data.serviceType === 'template') {
+          contractedProduct = `Plantilla Web (${data.selectedTemplate || 'Express'})`;
+          priceStr = '$45 USD';
+        } else if (data.serviceType === 'custom_business') {
+          contractedProduct = 'Web Comercial Negocio';
+          priceStr = '$120 USD';
+        }
+
         const clientRow = {
           id: clientId,
           full_name: fullName,
@@ -414,10 +426,12 @@
           city: p.ciudad || data.contact?.ubicacion?.ciudad || 'Buenos Aires',
           country: 'Argentina',
           status: data.status === 'submitted' ? 'Activo' : 'Prospecto',
+          price: priceStr,
+          contracted_product: contractedProduct,
           specialties: data.offer?.especialidades || [],
           bio: data.history?.presentacionCorta || '',
           short_description: p.especialidadPrincipal || '',
-          commercial_notes: `Datos cargados vía Onboarding Web (Estado: ${data.status}). Sensaciones: ${(data.style?.sensaciones || []).join(', ')}.`,
+          commercial_notes: `Servicio: ${contractedProduct}. Sensaciones: ${(data.style?.sensaciones || []).join(', ')}.`,
           content: mappedContent,
           last_contact: today,
         };
@@ -432,13 +446,13 @@
             id: projectId,
             client_id: clientId,
             client_name: fullName,
-            name: `${commercialName} — Web Principal`,
-            project_type: 'Sitio Web Completo',
+            name: `${commercialName} — ${contractedProduct}`,
+            project_type: contractedProduct,
             status: 'En diseño',
             start_date: today,
-            price: '$95 USD',
+            price: priceStr,
             responsible: 'Operaciones Trayectoria',
-            notes: 'Proyecto generado automáticamente desde el formulario web del cliente.',
+            notes: `Proyecto generado automáticamente vía Onboarding (${contractedProduct}).`,
           };
           await sb.from('projects').upsert(projectRow, { onConflict: 'id' });
 

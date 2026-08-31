@@ -59,28 +59,216 @@
   <main class="onboarding-main">
 
     <!-- ────────────────────────────────────────────────────────────────────────
-         PASO 0: PANTALLA DE BIENVENIDA
+         PASO 0: PANTALLA DE BIENVENIDA & SELECCIÓN DE SERVICIO
          ──────────────────────────────────────────────────────────────────────── -->
     <section class="onboarding-step-pane active" id="stepPane_0">
-      <div class="welcome-hero-card">
+      <div class="welcome-hero-card" style="max-width: 860px;">
         <span class="welcome-logo-badge">
           ✦ TRAYECTORIA · TU NUEVO SITIO WEB
         </span>
-        <h1 class="welcome-title">Empecemos por conocerte.</h1>
+        <h1 class="welcome-title">¿Qué tipo de sitio web querés construir?</h1>
         <p class="welcome-pitch">
-          Vamos a pedirte algunas cosas sobre tu trabajo y tu trayectoria para poder construir tu sitio. No hace falta que tengas todo preparado: podés completar lo que tengas y nosotros nos ocupamos del resto.
+          Elegí el servicio que mejor se adapte a tu objetivo y presupuesto. Nosotros nos encargamos de todo el diseño, la redacción y la puesta online.
         </p>
 
-        <div class="welcome-meta-pill">
-          ⏱️ Tiempo estimado: 10–15 minutos
+        <!-- 3 Service Options Grid -->
+        <div class="service-selection-grid">
+          
+          <!-- Opción 1: Plantillas (Económica) -->
+          <div class="service-card" data-service="template" id="cardService_template">
+            <div>
+              <div class="service-card-tag tag-budget">
+                ⚡ Opción Económica
+              </div>
+              <div class="service-card-icon">📐</div>
+              <h3 class="service-card-title">Elegir Plantilla Web</h3>
+              <p class="service-card-desc">
+                Diseños pre-armados optimizados para editar con tus textos y fotos. La alternativa más accesible y veloz.
+              </p>
+            </div>
+            <div>
+              <div class="service-card-pricing">
+                <span class="pricing-label">Inversión Express</span>
+                <span class="pricing-amount">Desde $45 USD</span>
+                <span class="pricing-delivery">⚡ Entrega en 24-48 hs</span>
+              </div>
+              <button type="button" class="btn-select-service btn-budget" id="btnStartTemplate">
+                Ver Catálogo de Plantillas →
+              </button>
+            </div>
+          </div>
+
+          <!-- Opción 2: Web Profesional Personalizada (Recomendada / Más Elegida) -->
+          <div class="service-card service-featured" data-service="custom_professional" id="cardService_professional">
+            <div>
+              <div class="service-card-tag tag-featured">
+                ⭐ Más Elegido · 100% a Medida
+              </div>
+              <div class="service-card-icon">✦</div>
+              <h3 class="service-card-title">Web para Profesionales</h3>
+              <p class="service-card-desc">
+                Diseño exclusivo y redacción editorial para psicólogos, abogados, arquitectos, médicos y consultores.
+              </p>
+            </div>
+            <div>
+              <div class="service-card-pricing">
+                <span class="pricing-label">Plan Profesional Completo</span>
+                <span class="pricing-amount">$95 USD</span>
+                <span class="pricing-delivery">⚡ Entrega en 72 hs</span>
+              </div>
+              <button type="button" class="btn-select-service btn-featured" id="btnStartProfessional">
+                Comenzar Ficha Profesional →
+              </button>
+            </div>
+          </div>
+
+          <!-- Opción 3: Web para Negocios & Locales -->
+          <div class="service-card" data-service="custom_business" id="cardService_business">
+            <div>
+              <div class="service-card-tag tag-business">
+                📍 Comercios & Locales
+              </div>
+              <div class="service-card-icon">🏢</div>
+              <h3 class="service-card-title">Web para mi Negocio</h3>
+              <p class="service-card-desc">
+                Para gimnasios, locales gastronómicos, clínicas, tiendas y negocios con atención al público o catálogo.
+              </p>
+            </div>
+            <div>
+              <div class="service-card-pricing">
+                <span class="pricing-label">Plan Negocio & Comercio</span>
+                <span class="pricing-amount">$120 USD</span>
+                <span class="pricing-delivery">⚡ Entrega en 72 hs</span>
+              </div>
+              <button type="button" class="btn-select-service btn-business" id="btnStartBusiness">
+                Comenzar Ficha de Negocio →
+              </button>
+            </div>
+          </div>
+
         </div>
 
-        <div class="welcome-action-group">
-          <button type="button" class="btn-welcome-start" id="btnWelcomeStart">
-            Comenzar →
-          </button>
-          <span class="welcome-resume-hint" id="welcomeResumeHint" style="display: none;"></span>
+        <div class="welcome-meta-pill" style="margin-top: 14px; margin-bottom: 0;">
+          ⏱️ Tiempo de llenado: 10–15 min · Guardado automático
         </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         SECCIÓN DE PLANTILLAS PRE-DISEÑADAS (Opción 1)
+         ──────────────────────────────────────────────────────────────────────── -->
+    <section class="onboarding-step-pane" id="stepPane_templates">
+      <div class="step-heading-group">
+        <span class="step-eyebrow">Catálogo de Plantillas · Opción Económica</span>
+        <h2 class="step-main-title">Elegí el diseño base para tu web.</h2>
+        <p class="step-subtitle">Seleccioná la estructura que más te guste y nosotros la adaptamos con tu marca, textos e imágenes.</p>
+      </div>
+
+      <div class="template-gallery-grid">
+        <!-- Template 1: Lexis -->
+        <div class="template-card" data-template-id="lexis" data-template-name="Lexis — Legal & Consultoría">
+          <div class="template-preview-frame" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);">
+            <span class="template-preview-badge">Abogados & Finanzas</span>
+            <div style="font-size: 1.8rem; margin-bottom: 4px;">⚖️</div>
+            <strong style="font-size: 1.1rem; letter-spacing: -0.02em;">Lexis</strong>
+            <span style="font-size: 0.75rem; color: #94A3B8;">Sobrio · Institucional · Prestigio</span>
+          </div>
+          <div class="template-card-body">
+            <h4 class="template-card-title">Lexis Legal & Consultoría</h4>
+            <span class="template-card-category">Ideal Abogados, Contadores, Asesores</span>
+            <p class="template-card-desc">Hero con badges de confianza, áreas de práctica, casos de éxito y botón directo a consulta por WhatsApp.</p>
+            <button type="button" class="btn-select-template">Seleccionar este Diseño</button>
+          </div>
+        </div>
+
+        <!-- Template 2: Serena -->
+        <div class="template-card" data-template-id="serena" data-template-name="Serena — Salud & Psicología">
+          <div class="template-preview-frame" style="background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);">
+            <span class="template-preview-badge">Salud & Terapias</span>
+            <div style="font-size: 1.8rem; margin-bottom: 4px;">🌿</div>
+            <strong style="font-size: 1.1rem; letter-spacing: -0.02em;">Serena</strong>
+            <span style="font-size: 0.75rem; color: #A7F3D0;">Cálido · Empático · Profesional</span>
+          </div>
+          <div class="template-card-body">
+            <h4 class="template-card-title">Serena Salud & Bienestar</h4>
+            <span class="template-card-category">Ideal Psicólogos, Nutricionistas, Médicos</span>
+            <p class="template-card-desc">Enfoque cálido y humano, preguntas frecuentes, modalidades de atención online/presencial y reserva de turnos.</p>
+            <button type="button" class="btn-select-template">Seleccionar este Diseño</button>
+          </div>
+        </div>
+
+        <!-- Template 3: Structura -->
+        <div class="template-card" data-template-id="structura" data-template-name="Structura — Arquitectura & Diseño">
+          <div class="template-preview-frame" style="background: linear-gradient(135deg, #18181B 0%, #27272A 100%);">
+            <span class="template-preview-badge">Arquitectura & Estudio</span>
+            <div style="font-size: 1.8rem; margin-bottom: 4px;">📐</div>
+            <strong style="font-size: 1.1rem; letter-spacing: -0.02em;">Structura</strong>
+            <span style="font-size: 0.75rem; color: #D4D4D8;">Minimalista · Editorial · Grilla</span>
+          </div>
+          <div class="template-card-body">
+            <h4 class="template-card-title">Structura Arquitectura</h4>
+            <span class="template-card-category">Ideal Arquitectos, Diseñadores, Reformas</span>
+            <p class="template-card-desc">Grilla fotográfica de alto impacto visual para portfolio de obras, servicios de proyecto y dirección.</p>
+            <button type="button" class="btn-select-template">Seleccionar este Diseño</button>
+          </div>
+        </div>
+
+        <!-- Template 4: Pulse -->
+        <div class="template-card" data-template-id="pulse" data-template-name="Pulse — Fitness & Gimnasios">
+          <div class="template-preview-frame" style="background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);">
+            <span class="template-preview-badge">Gimnasios & Deporte</span>
+            <div style="font-size: 1.8rem; margin-bottom: 4px;">🏋️</div>
+            <strong style="font-size: 1.1rem; letter-spacing: -0.02em;">Pulse Fitness</strong>
+            <span style="font-size: 0.75rem; color: #FECACA;">Energético · Moderno · Conversión</span>
+          </div>
+          <div class="template-card-body">
+            <h4 class="template-card-title">Pulse Gimnasios & Fitness</h4>
+            <span class="template-card-category">Ideal Gimnasios, Boxes, Personal Trainers</span>
+            <p class="template-card-desc">Tabla de planes y membresías, grilla de horarios de clases, fotos del salón y pase de prueba gratuito.</p>
+            <button type="button" class="btn-select-template">Seleccionar este Diseño</button>
+          </div>
+        </div>
+
+        <!-- Template 5: Bistro -->
+        <div class="template-card" data-template-id="bistro" data-template-name="Bistro — Gastronomía & Cafeterías">
+          <div class="template-preview-frame" style="background: linear-gradient(135deg, #78350F 0%, #92400E 100%);">
+            <span class="template-preview-badge">Gastronomía & Locales</span>
+            <div style="font-size: 1.8rem; margin-bottom: 4px;">☕</div>
+            <strong style="font-size: 1.1rem; letter-spacing: -0.02em;">Bistro & Café</strong>
+            <span style="font-size: 0.75rem; color: #FDE68A;">Acogedor · Menú Digital · Ubicación</span>
+          </div>
+          <div class="template-card-body">
+            <h4 class="template-card-title">Bistro Gastronomía</h4>
+            <span class="template-card-category">Ideal Cafés, Bares, Restaurantes, Locales</span>
+            <p class="template-card-desc">Carta / Menú digital destacado, botón de reservas por WhatsApp, ubicación en mapa y links de delivery.</p>
+            <button type="button" class="btn-select-template">Seleccionar este Diseño</button>
+          </div>
+        </div>
+
+        <!-- Template 6: Apex -->
+        <div class="template-card" data-template-id="apex" data-template-name="Apex — Negocios & Servicios">
+          <div class="template-preview-frame" style="background: linear-gradient(135deg, #0033FF 0%, #1E40AF 100%);">
+            <span class="template-preview-badge">Servicios Generales</span>
+            <div style="font-size: 1.8rem; margin-bottom: 4px;">⚡</div>
+            <strong style="font-size: 1.1rem; letter-spacing: -0.02em;">Apex Pro</strong>
+            <span style="font-size: 0.75rem; color: #BFDBFE;">Tech · Alta Velocidad · Conversión</span>
+          </div>
+          <div class="template-card-body">
+            <h4 class="template-card-title">Apex Negocios & Servicios</h4>
+            <span class="template-card-category">Ideal Clínicas, Talleres, Inmobiliarias, Tiendas</span>
+            <p class="template-card-desc">Estructura moderna de alta velocidad con catálogo de servicios, opiniones de clientes y contacto rápido.</p>
+            <button type="button" class="btn-select-template">Seleccionar este Diseño</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar" style="margin-top: 32px;">
+        <button type="button" class="btn-onboarding-back" id="btnTemplates_Back">
+          ← Volver a opciones
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnTemplates_Next">
+          Continuar con la plantilla seleccionada →
+        </button>
       </div>
     </section>
 

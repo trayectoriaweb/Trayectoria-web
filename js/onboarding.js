@@ -158,7 +158,8 @@
     });
 
     // 2. Show active step pane
-    const activePane = document.getElementById(`stepPane_${currentStep}`);
+    const paneId = (currentStep === 'templates') ? 'stepPane_templates' : `stepPane_${currentStep}`;
+    const activePane = document.getElementById(paneId);
     if (activePane) {
       activePane.classList.add('active');
     }
@@ -172,22 +173,31 @@
     const percentageLabel = document.getElementById('progressPercentage');
     const fill = document.getElementById('progressFill');
 
-    if (currentStep === 0 || currentStep === 7) {
-      // Welcome & Success: hide top progress bar
+    if (currentStep === 0 || currentStep === 'templates' || currentStep === 7) {
+      // Welcome, Templates & Success: hide top progress bar
       if (progressWrapper) progressWrapper.style.display = 'none';
     } else {
       if (progressWrapper) progressWrapper.style.display = 'block';
 
+      const isBusiness = clientData.serviceType === 'custom_business';
+      const isTemplate = clientData.serviceType === 'template';
+
       const stepNames = {
-        1: 'Paso 1 de 5 — Sobre vos',
-        2: 'Paso 2 de 5 — Tu historia',
-        3: 'Paso 3 de 5 — Qué hacés',
-        4: 'Paso 4 de 5 — Dónde encontrarte',
-        5: 'Paso 5 de 5 — Cómo querés que se vea',
+        1: isBusiness ? 'Paso 1 de 5 — Datos del Negocio' : 'Paso 1 de 5 — Sobre vos',
+        2: isBusiness ? 'Paso 2 de 5 — Historia del Negocio' : 'Paso 2 de 5 — Tu historia',
+        3: isBusiness ? 'Paso 3 de 5 — Qué ofrece tu Negocio' : 'Paso 3 de 5 — Qué hacés',
+        4: isBusiness ? 'Paso 4 de 5 — Local & Horarios' : 'Paso 4 de 5 — Dónde encontrarte',
+        5: isBusiness ? 'Paso 5 de 5 — Estilo & Promociones' : 'Paso 5 de 5 — Cómo querés que se vea',
         6: 'Revisión final'
       };
 
-      if (stepLabel) stepLabel.textContent = stepNames[currentStep] || '';
+      if (stepLabel) {
+        let label = stepNames[currentStep] || '';
+        if (isTemplate && clientData.selectedTemplate) {
+          label += ` (${clientData.selectedTemplate.split('—')[0].trim()})`;
+        }
+        stepLabel.textContent = label;
+      }
 
       const percent = currentStep === 6 ? 100 : Math.round((currentStep / 5) * 100);
       if (percentageLabel) percentageLabel.textContent = `${percent}%`;
@@ -222,7 +232,10 @@
     const whatsapp = document.getElementById('p1_whatsapp')?.value.trim();
 
     if (!nombre || !apellido || !profesion) {
-      alert('Por favor completá tu nombre, apellido y profesión para continuar.');
+      const isBiz = clientData.serviceType === 'custom_business';
+      alert(isBiz 
+        ? 'Por favor completá tu nombre, apellido y el rubro/nombre de tu negocio para continuar.'
+        : 'Por favor completá tu nombre, apellido y profesión para continuar.');
       return false;
     }
 
@@ -235,16 +248,57 @@
   }
 
   function setupGlobalNavigation() {
-    // Welcome start button
-    document.getElementById('btnWelcomeStart')?.addEventListener('click', () => {
+    // 3 Service Selector Buttons (Step 0)
+    document.getElementById('btnStartTemplate')?.addEventListener('click', () => {
+      clientData.serviceType = 'template';
+      currentStep = 'templates';
+      renderCurrentStep();
+      debouncedAutoSave();
+    });
+
+    document.getElementById('btnStartProfessional')?.addEventListener('click', () => {
+      clientData.serviceType = 'custom_professional';
       goToStep(1);
+    });
+
+    document.getElementById('btnStartBusiness')?.addEventListener('click', () => {
+      clientData.serviceType = 'custom_business';
+      goToStep(1);
+    });
+
+    // Template Gallery Buttons & Selection
+    document.getElementById('btnTemplates_Back')?.addEventListener('click', () => {
+      goToStep(0);
+    });
+
+    document.getElementById('btnTemplates_Next')?.addEventListener('click', () => {
+      if (!clientData.selectedTemplate) {
+        clientData.selectedTemplate = 'Lexis — Legal & Consultoría';
+      }
+      goToStep(1);
+    });
+
+    document.querySelectorAll('.template-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        clientData.selectedTemplate = card.dataset.templateName || card.dataset.templateId;
+        debouncedAutoSave();
+      });
     });
 
     // Step 1 buttons
     document.getElementById('btnStep1_Next')?.addEventListener('click', () => goToStep(2));
 
     // Step 2 buttons
-    document.getElementById('btnStep2_Back')?.addEventListener('click', () => goToStep(1));
+    document.getElementById('btnStep2_Back')?.addEventListener('click', () => {
+      if (clientData.serviceType === 'template') {
+        currentStep = 'templates';
+        renderCurrentStep();
+      } else {
+        goToStep(0);
+      }
+    });
     document.getElementById('btnStep2_Next')?.addEventListener('click', () => goToStep(3));
 
     // Step 3 buttons
