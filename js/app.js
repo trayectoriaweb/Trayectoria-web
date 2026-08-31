@@ -76,8 +76,8 @@
           const item = document.createElement('div');
           item.className = 'manifesto-result-item';
           item.innerHTML = `
-            <span>\${ch.name}</span>
-            <span class="m-check">\${ch.status}</span>
+            <span>${ch.name}</span>
+            <span class="m-check">${ch.status}</span>
           `;
           resultsList.appendChild(item);
         }, delay);
