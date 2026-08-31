@@ -114,6 +114,7 @@
       setInputValue('p4_webActual', clientData.contact.sitioWebActual);
       setInputValue('p4_behance', clientData.contact.behance);
       setInputValue('p4_otrasRedes', clientData.contact.otrasRedes);
+      setInputValue('p4_dominioDeseado', clientData.contact.dominioDeseado);
       selectSegmentedOption('p4_canalPrincipal', clientData.contact.canalPrincipal || 'whatsapp');
       selectSegmentedOption('p4_mostrarUbicacion', clientData.contact.mostrarUbicacion ? 'yes' : 'no');
       toggleLocationVisibility(clientData.contact.mostrarUbicacion);
@@ -185,6 +186,7 @@
     setInputValue('biz_mensajeWhatsapp', b.mensajeWhatsapp);
     setInputValue('biz_instagram', b.instagram);
     setInputValue('biz_otrasRedes', b.otrasRedes);
+    setInputValue('biz_dominioDeseado', b.dominioDeseado);
     setInputValue('biz_gancho', b.ganchoComercial);
     setInputValue('biz_loQueNoQuiere', b.loQueNoQuiere);
 
@@ -483,6 +485,7 @@
       b.mensajeWhatsapp = getVal('biz_mensajeWhatsapp');
       b.instagram = getVal('biz_instagram');
       b.otrasRedes = getVal('biz_otrasRedes');
+      b.dominioDeseado = getVal('biz_dominioDeseado');
       b.ganchoComercial = getVal('biz_gancho');
       b.loQueNoQuiere = getVal('biz_loQueNoQuiere');
     } else {
@@ -508,6 +511,7 @@
       clientData.contact.sitioWebActual = getVal('p4_webActual');
       clientData.contact.behance = getVal('p4_behance');
       clientData.contact.otrasRedes = getVal('p4_otrasRedes');
+      clientData.contact.dominioDeseado = getVal('p4_dominioDeseado');
 
       if (clientData.contact.mostrarUbicacion) {
         if (!clientData.contact.ubicacion) clientData.contact.ubicacion = {};
