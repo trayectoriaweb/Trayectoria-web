@@ -5835,3 +5835,46 @@ body {
 }
 
 .chat-chips-area { display: none !important; }
+
+
+/* ==========================================================================
+   CATÁLOGO ESTÉTICO — BOTONES EN AZUL PURO SIN SOMBRA/DEGRADADO
+   ========================================================================== */
+.template-nav-card {
+  box-shadow: none !important;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.template-nav-card.active {
+  background: var(--klein-blue) !important;
+  border-color: var(--klein-blue) !important;
+  box-shadow: none !important;
+}
+
+.template-nav-card.active .nav-card-num {
+  color: #FFFFFF !important;
+}
+
+.template-nav-card.active .nav-card-head strong {
+  color: #FFFFFF !important;
+}
+
+.template-nav-card.active .nav-card-desc {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.template-nav-card.active .nav-card-arrow {
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 860px) {
+  .template-nav-card {
+    box-shadow: none !important;
+  }
+
+  .template-nav-card.active {
+    background: var(--klein-blue) !important;
+    border-color: var(--klein-blue) !important;
+    box-shadow: none !important;
+  }
+}
