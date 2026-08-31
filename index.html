@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.2600">
+  <link rel="stylesheet" href="css/styles.css?v=2026.2700">
 </head>
 <body>
 
@@ -154,296 +154,117 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 2 — CASOS REALES EN VIVO (FULL-WIDTH AUTO-SLIDER DE PROYECTOS)
+         SECCIÓN 2 — CASOS REALES: ROSTER TIPOGRÁFICO INTERACTIVO CON PREVIEWS FLOTANTES
          ========================================================================== -->
-    <section id="proyectos" class="showcase-slider-section section-wrapper">
+    <section id="proyectos" class="showcase-roster-section section-wrapper">
       <div class="container">
-        
+
         <div class="section-head text-center">
           <span class="section-badge">✦ Trabajos Reales Entregados</span>
           <h2 class="section-title">Webs reales funcionando en vivo.</h2>
           <p class="section-subtitle">
-            Cada cliente tiene un lugar propio en Internet: serio, estético y directo a su WhatsApp. Hacé clic en cualquiera para abrir la web en vivo.
+            Cada cliente tiene un lugar propio en Internet: serio, estético y directo a su WhatsApp. Pasá el cursor para previsualizar.
           </p>
         </div>
 
-      </div><!-- /container -->
-
-      <!-- Full-Width Marquee Slider Container -->
-      <div class="slider-marquee-container" id="sliderMarqueeContainer">
-        <div class="slider-marquee-track" id="sliderMarqueeTrack">
+        <!-- Interactive Project Roster Container -->
+        <div class="roster-workbench" id="rosterWorkbench">
           
-          <!-- PROJECT 1: THE WELLNESS CLUB (LIVE LINK) -->
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="wellness">
-            <div class="slide-card-topbar">
+          <div class="roster-list" id="rosterList">
+            
+            <!-- ITEM 1: THE WELLNESS CLUB -->
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="roster-item" data-project-key="wellness">
+              <span class="roster-num">01</span>
+              <div class="roster-name-col">
+                <h3 class="roster-name">The Wellness Club</h3>
+                <span class="roster-spec">Espacio Wellness & Salud Integral</span>
+              </div>
+              <span class="roster-domain">thewellnessclub.com.ar</span>
+              <span class="roster-arrow">↗</span>
+            </a>
+
+            <!-- ITEM 2: JULIETA VITALE -->
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="roster-item" data-project-key="vitale">
+              <span class="roster-num">02</span>
+              <div class="roster-name-col">
+                <h3 class="roster-name">Julieta Vitale</h3>
+                <span class="roster-spec">Psicoterapia Clínica & Mindfulness</span>
+              </div>
+              <span class="roster-domain">julietavitale.com.ar</span>
+              <span class="roster-arrow">↗</span>
+            </a>
+
+            <!-- ITEM 3: MAURIZIO DI RUSSO -->
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="roster-item" data-project-key="dirusso">
+              <span class="roster-num">03</span>
+              <div class="roster-name-col">
+                <h3 class="roster-name">Maurizio Di Russo</h3>
+                <span class="roster-spec">Estudio Jurídico & Derecho Corporativo</span>
+              </div>
+              <span class="roster-domain">dirusso.com.ar</span>
+              <span class="roster-arrow">↗</span>
+            </a>
+
+            <!-- ITEM 4: STUDIO ZALDÍVAR -->
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="roster-item" data-project-key="zaldivar">
+              <span class="roster-num">04</span>
+              <div class="roster-name-col">
+                <h3 class="roster-name">Studio Zaldívar</h3>
+                <span class="roster-spec">Arquitectura Contemporánea & Obras</span>
+              </div>
+              <span class="roster-domain">camilazaldivar.com</span>
+              <span class="roster-arrow">↗</span>
+            </a>
+
+            <!-- ITEM 5: DR. MARCELO VARELA -->
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="roster-item" data-project-key="varela">
+              <span class="roster-num">05</span>
+              <div class="roster-name-col">
+                <h3 class="roster-name">Dr. Marcelo Varela</h3>
+                <span class="roster-spec">Traumatología & Cirugía Articular</span>
+              </div>
+              <span class="roster-domain">drvarela.com.ar</span>
+              <span class="roster-arrow">↗</span>
+            </a>
+
+            <!-- ITEM 6: VALERIA PONIEMAN -->
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="roster-item" data-project-key="ponieman">
+              <span class="roster-num">06</span>
+              <div class="roster-name-col">
+                <h3 class="roster-name">Valeria Ponieman</h3>
+                <span class="roster-spec">Dirección de Arte & Brand Identity</span>
+              </div>
+              <span class="roster-domain">valeriaponieman.com</span>
+              <span class="roster-arrow">↗</span>
+            </a>
+
+          </div>
+
+          <!-- Dynamic Floating Preview Window -->
+          <div class="floating-project-card" id="floatingProjectCard">
+            <div class="floating-window-topbar">
               <div class="window-dots">
                 <span class="w-dot w-dot-red"></span>
                 <span class="w-dot w-dot-yellow"></span>
                 <span class="w-dot w-dot-green"></span>
               </div>
-              <span class="slide-card-url">thewellnessclub.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
+              <span class="floating-url-text" id="floatingUrlText">thewellnessclub.com.ar</span>
+              <span class="floating-live-badge">🟢 En vivo</span>
             </div>
+            
+            <div class="floating-window-body" id="floatingWindowBody">
+              <!-- Rendered dynamically by JS based on hovered item -->
+            </div>
+          </div>
 
-            <div class="slide-card-preview preview-wellness">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ FITNESS & BIENESTAR INTEGRAL</span>
-                <h4>The Wellness Club</h4>
-                <p>Entrenamiento físico, nutrición personalizada y hábitos saludables.</p>
-                <div class="p-tags-row">
-                  <span>Membresías</span>
-                  <span>Clases</span>
-                  <span>WhatsApp Directo</span>
-                </div>
-              </div>
-            </div>
+        </div><!-- /roster-workbench -->
 
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>The Wellness Club</strong>
-                <span>Salud & Entrenamiento · Rosario</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
+        <div class="text-center" style="margin-top: 36px;">
+          <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20consultar%20para%20crear%20mi%20web" target="_blank" rel="noopener noreferrer" class="btn-slider-cta">
+            <span>Quiero una web así para mi profesión →</span>
           </a>
+        </div>
 
-          <!-- PROJECT 2: LIC. SOFÍA ALBARRACÍN -->
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="sofia">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">sofiaalbarracin.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-
-            <div class="slide-card-preview preview-sofia">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ PSICOLOGÍA CLÍNICA & TCC</span>
-                <h4>Lic. Sofía Albarracín</h4>
-                <p>Psicoterapia individual y online basada en evidencia para adultos.</p>
-                <div class="p-tags-row">
-                  <span>Ansiedad & Pánico</span>
-                  <span>Parejas</span>
-                  <span>Palermo Soho</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>Lic. Sofía Albarracín</strong>
-                <span>Psicóloga Clínica · CABA & Online</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-          <!-- PROJECT 3: ESTUDIO BENÍTEZ & ASOC. -->
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="benitez">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">estudiobenitez.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-
-            <div class="slide-card-preview preview-benitez">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ DERECHO CORPORATIVO & LABORAL</span>
-                <h4>Estudio Benítez & Asoc.</h4>
-                <p>Soluciones jurídicas estratégicas para empresas y profesionales.</p>
-                <div class="p-tags-row">
-                  <span>Auditoría Legal</span>
-                  <span>Litigios</span>
-                  <span>Tribunales</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>Estudio Benítez & Asoc.</strong>
-                <span>Abogados Corporativos · Tribunales</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-          <!-- PROJECT 4: DR. MARCELO E. VARELA -->
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="varela">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">drvarela.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-
-            <div class="slide-card-preview preview-varela">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ TRAUMATOLOGÍA & CIRUGÍA ARTICULAR</span>
-                <h4>Dr. Marcelo E. Varela</h4>
-                <p>Cirugía mini-invasiva y lesiones de alto rendimiento deportivo.</p>
-                <div class="p-tags-row">
-                  <span>Artroscopía</span>
-                  <span>Prepagas</span>
-                  <span>Alto Palermo</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>Dr. Marcelo E. Varela</strong>
-                <span>Traumatólogo · Alto Palermo</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-          <!-- PROJECT 5: ARQ. CAMILA ZALDÍVAR -->
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="zaldivar">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">camilazaldivar.com</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-
-            <div class="slide-card-preview preview-zaldivar">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ ARQUITECTURA & INTERIORISMO</span>
-                <h4>Arq. Camila Zaldívar</h4>
-                <p>Proyectos residenciales, interiorismo y reformas contemporáneas.</p>
-                <div class="p-tags-row">
-                  <span>Obras</span>
-                  <span>Renders 3D</span>
-                  <span>Colegiales</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>Arq. Camila Zaldívar</strong>
-                <span>Arquitecta · Colegiales, CABA</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-          <!-- CLONED SET FOR SEAMLESS INFINITE LOOP -->
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="wellness" aria-hidden="true" tabindex="-1">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">thewellnessclub.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-            <div class="slide-card-preview preview-wellness">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ FITNESS & BIENESTAR INTEGRAL</span>
-                <h4>The Wellness Club</h4>
-                <p>Entrenamiento físico, nutrición personalizada y hábitos saludables.</p>
-                <div class="p-tags-row">
-                  <span>Membresías</span>
-                  <span>Clases</span>
-                  <span>WhatsApp Directo</span>
-                </div>
-              </div>
-            </div>
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>The Wellness Club</strong>
-                <span>Salud & Entrenamiento · Rosario</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="sofia" aria-hidden="true" tabindex="-1">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">sofiaalbarracin.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-            <div class="slide-card-preview preview-sofia">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ PSICOLOGÍA CLÍNICA & TCC</span>
-                <h4>Lic. Sofía Albarracín</h4>
-                <p>Psicoterapia individual y online basada en evidencia para adultos.</p>
-                <div class="p-tags-row">
-                  <span>Ansiedad & Pánico</span>
-                  <span>Parejas</span>
-                  <span>Palermo Soho</span>
-                </div>
-              </div>
-            </div>
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>Lic. Sofía Albarracín</strong>
-                <span>Psicóloga Clínica · CABA & Online</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="slide-project-card" data-project="benitez" aria-hidden="true" tabindex="-1">
-            <div class="slide-card-topbar">
-              <div class="window-dots">
-                <span class="w-dot w-dot-red"></span>
-                <span class="w-dot w-dot-yellow"></span>
-                <span class="w-dot w-dot-green"></span>
-              </div>
-              <span class="slide-card-url">estudiobenitez.com.ar</span>
-              <span class="slide-card-live-tag">🟢 En vivo</span>
-            </div>
-            <div class="slide-card-preview preview-benitez">
-              <div class="preview-hero-mock">
-                <span class="p-badge">✦ DERECHO CORPORATIVO & LABORAL</span>
-                <h4>Estudio Benítez & Asoc.</h4>
-                <p>Soluciones jurídicas estratégicas para empresas y profesionales.</p>
-                <div class="p-tags-row">
-                  <span>Auditoría Legal</span>
-                  <span>Litigios</span>
-                  <span>Tribunales</span>
-                </div>
-              </div>
-            </div>
-            <div class="slide-card-footer">
-              <div class="slide-card-info">
-                <strong>Estudio Benítez & Asoc.</strong>
-                <span>Abogados Corporativos · Tribunales</span>
-              </div>
-              <span class="btn-slide-open">Abrir Web ↗</span>
-            </div>
-          </a>
-
-        </div><!-- /slider-marquee-track -->
-      </div><!-- /slider-marquee-container -->
-
-      <div class="container text-center" style="margin-top: 36px;">
-        <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20consultar%20para%20crear%20mi%20web" target="_blank" rel="noopener noreferrer" class="btn-slider-cta">
-          <span>Quiero una web así para mi profesión →</span>
-        </a>
       </div>
     </section>
 
@@ -1065,6 +886,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.2600"></script>
+  <script src="js/app.v2.js?v=2026.2700"></script>
 </body>
 </html>

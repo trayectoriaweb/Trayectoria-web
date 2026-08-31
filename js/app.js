@@ -9,6 +9,7 @@
     initTemplatesFilters();
     initDraggableAndWindowActions();
     initDossierPricing();
+    initInteractiveRoster();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -1199,4 +1200,140 @@
 
     // Initial render Pro
     renderDossier('pro');
+  }
+
+
+  /* =========================================================================
+     CASOS REALES — ROSTER TIPOGRÁFICO & FLOATING HOVER PREVIEWS
+     ========================================================================= */
+  function initInteractiveRoster() {
+    const workbench = document.getElementById('rosterWorkbench');
+    const rosterItems = document.querySelectorAll('.roster-item');
+    const floatingCard = document.getElementById('floatingProjectCard');
+    const floatingUrl = document.getElementById('floatingUrlText');
+    const floatingBody = document.getElementById('floatingWindowBody');
+
+    if (!workbench || !floatingCard || !rosterItems.length) return;
+
+    const projectData = {
+      'wellness': {
+        url: 'thewellnessclub.com.ar',
+        badge: 'FITNESS & BIENESTAR',
+        title: 'The Wellness Club',
+        desc: 'Salud integral, nutrición deportiva y clases personalizadas en Rosario.',
+        tags: ['Membresías', 'Reformer', 'Nutrición'],
+        loc: 'Rosario, Santa Fe',
+        themeClass: 'f-card-wellness'
+      },
+      'vitale': {
+        url: 'julietavitale.com.ar',
+        badge: 'PSICOTERAPIA CLÍNICA',
+        title: 'Lic. Julieta Vitale',
+        desc: 'Atención psicológica individual y mindfulness basada en evidencia.',
+        tags: ['Ansiedad', 'Adultos', '100% Online'],
+        loc: 'Palermo Soho, CABA',
+        themeClass: 'f-card-vitale'
+      },
+      'dirusso': {
+        url: 'dirusso.com.ar',
+        badge: 'DERECHO CORPORATIVO',
+        title: 'Maurizio Di Russo & Asoc.',
+        desc: 'Asesoramiento legal preventivo y litigios comerciales para empresas.',
+        tags: ['Contratos', 'Tribunales', 'Auditoría'],
+        loc: 'Tribunales, CABA',
+        themeClass: 'f-card-dirusso'
+      },
+      'zaldivar': {
+        url: 'camilazaldivar.com',
+        badge: 'ARQUITECTURA & OBRAS',
+        title: 'Studio Zaldívar',
+        desc: 'Proyectos residenciales, interiorismo y reformas contemporáneas.',
+        tags: ['Obras', 'Renders 3D', 'Colegiales'],
+        loc: 'Colegiales, CABA',
+        themeClass: 'f-card-zaldivar'
+      },
+      'varela': {
+        url: 'drvarela.com.ar',
+        badge: 'TRAUMATOLOGÍA ARTICULAR',
+        title: 'Dr. Marcelo Varela',
+        desc: 'Cirugía mini-invasiva y medicina deportiva de alto rendimiento.',
+        tags: ['Artroscopía', 'Prepagas', 'Alto Palermo'],
+        loc: 'Alto Palermo, CABA',
+        themeClass: 'f-card-varela'
+      },
+      'ponieman': {
+        url: 'valeriaponieman.com',
+        badge: 'DIRECCIÓN DE ARTE',
+        title: 'Valeria Ponieman',
+        desc: 'Identidad visual, sistemas de diseño y consultoría de marca.',
+        tags: ['Branding', 'Packaging', 'UX / UI'],
+        loc: 'Palermo, CABA',
+        themeClass: 'f-card-ponieman'
+      }
+    };
+
+    let isMouseOverList = false;
+
+    rosterItems.forEach(item => {
+      item.addEventListener('mouseenter', (e) => {
+        const key = item.dataset.projectKey;
+        const data = projectData[key];
+        if (!data) return;
+
+        isMouseOverList = true;
+        floatingUrl.textContent = data.url;
+        floatingBody.innerHTML = `
+          <div class="f-mock-card ${data.themeClass}">
+            <span class="f-mock-badge">✦ ${data.badge}</span>
+            <h4 class="f-mock-title">${data.title}</h4>
+            <p class="f-mock-desc">${data.desc}</p>
+            <div class="f-mock-tags">
+              ${data.tags.map(t => `<span>${t}</span>`).join('')}
+            </div>
+            <div class="f-mock-cta-row">
+              <span>📍 ${data.loc}</span>
+              <span class="f-wa-badge">💬 Directo a WhatsApp</span>
+            </div>
+          </div>
+        `;
+
+        floatingCard.classList.add('is-visible');
+        positionCard(e, item);
+      });
+
+      item.addEventListener('mousemove', (e) => {
+        if (isMouseOverList) {
+          positionCard(e, item);
+        }
+      });
+
+      item.addEventListener('mouseleave', () => {
+        isMouseOverList = false;
+        floatingCard.classList.remove('is-visible');
+      });
+    });
+
+    function positionCard(e, itemEl) {
+      const workbenchRect = workbench.getBoundingClientRect();
+      const itemRect = itemEl.getBoundingClientRect();
+
+      // Determine top offset relative to workbench
+      const relativeTop = itemRect.top - workbenchRect.top;
+      
+      // Check horizontal positioning (if cursor is on left half, show on right, and vice versa)
+      const mouseX = e.clientX - workbenchRect.left;
+      const workbenchWidth = workbenchRect.width;
+
+      if (mouseX < workbenchWidth / 2) {
+        // Place on right side
+        floatingCard.style.left = 'auto';
+        floatingCard.style.right = '20px';
+      } else {
+        // Place on left side
+        floatingCard.style.left = '20px';
+        floatingCard.style.right = 'auto';
+      }
+
+      floatingCard.style.top = `${relativeTop - 40}px`;
+    }
   }
