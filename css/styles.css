@@ -3139,31 +3139,31 @@ body {
 }
 
 .msg-bot-bubble {
-  background: #03071E !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  background: #001A75 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
   border-top-left-radius: 4px;
   max-width: 760px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 15, 70, 0.35);
 }
 
 .msg-user-bubble {
-  background: #0A1647 !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  background: #00155C !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
   border-top-right-radius: 4px;
   color: #FFFFFF !important;
   font-weight: 700;
   font-size: 0.9rem;
   max-width: 620px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 15, 70, 0.3);
 }
 
-/* INTERNAL DARK NAVY READING CARD */
+/* INTERNAL DEEP COBALT BLUE READING CARD */
 .msg-report-bubble {
-  background: #03071E !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  background: #00186B !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
   border-radius: 16px !important;
   padding: 24px 26px !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 16px 48px rgba(0, 15, 70, 0.45) !important;
 }
 
 .report-meta-header {
