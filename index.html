@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.2000">
+  <link rel="stylesheet" href="css/styles.css?v=2026.2100">
 </head>
 <body>
 
@@ -886,7 +886,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 5 — PRECIOS (MATRIZ EDITORIAL COMPACTA · CERO EMOJIS)
+         SECCIÓN 5 — PRECIOS (TABLERO DE FRANJAS HORIZONTALES ULTRA COMPACTO)
          ========================================================================== -->
     <section id="precios" class="pricing-section section-wrapper">
       <div class="container">
@@ -899,124 +899,127 @@
           </p>
         </div>
 
-        <!-- Compact Editorial 3-Tier Matrix -->
-        <div class="compact-pricing-grid">
+        <!-- Ultra-Compact Horizontal Pricing Board -->
+        <div class="pricing-strip-board">
           
-          <!-- TIER 01: EXPRESS -->
-          <div class="compact-price-card" id="pricingCardExpress">
-            <div class="c-price-head">
-              <div class="c-tier-meta">
-                <span class="c-tier-num">01</span>
-                <span class="c-tier-tag">PRESENCIA BÁSICA</span>
+          <!-- ROW 01: EXPRESS -->
+          <div class="pricing-strip-row" data-plan="express">
+            <div class="strip-col-ident">
+              <span class="strip-num">01</span>
+              <div>
+                <h3 class="strip-name">Perfil Express</h3>
+                <span class="strip-timing">Entrega en 72hs · Pago único</span>
               </div>
-              <h3 class="c-tier-title">Perfil Express</h3>
-              <p class="c-tier-desc">Para existir oficialmente en Google y recibir consultas directas a tu WhatsApp ya.</p>
             </div>
 
-            <div class="c-price-amount-box">
-              <div class="c-amount-line">
-                <span class="c-currency">$</span>
-                <span class="c-amount">65</span>
-                <span class="c-unit">USD</span>
+            <div class="strip-col-content">
+              <p class="strip-pitch">Presencia oficial en Google y contacto directo a WhatsApp.</p>
+              <div class="strip-tags">
+                <span class="s-tag">One-Page</span>
+                <span class="s-tag">Google Maps</span>
+                <span class="s-tag">Dominio .com.ar</span>
+                <span class="s-tag">100% Mobile</span>
               </div>
-              <span class="c-timing-tag">Pago único · Entrega en 72hs</span>
             </div>
 
-            <div class="c-features-list">
-              <div class="c-feature-item"><span>—</span> One-Page de alto impacto visual</div>
-              <div class="c-feature-item"><span>—</span> Botón directo a WhatsApp</div>
-              <div class="c-feature-item"><span>—</span> Ubicación en Google Maps</div>
-              <div class="c-feature-item"><span>—</span> Dominio oficial .com.ar</div>
+            <div class="strip-col-pricing">
+              <div class="strip-price-wrap">
+                <span class="s-curr">$</span>
+                <span class="s-amt">65</span>
+                <span class="s-unit">USD</span>
+              </div>
             </div>
 
-            <div class="c-card-footer">
-              <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Perfil%20Express" target="_blank" rel="noopener noreferrer" class="btn-c-price btn-c-outline">
+            <div class="strip-col-action">
+              <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Perfil%20Express" target="_blank" rel="noopener noreferrer" class="btn-strip-cta btn-strip-outline">
                 <span>Elegir Express →</span>
               </a>
             </div>
           </div>
 
-          <!-- TIER 02: PRO (MÁS ELEGIDO) -->
-          <div class="compact-price-card c-card-highlight" id="pricingCardPro">
-            <div class="c-popular-pill">MÁS ELEGIDO</div>
+          <!-- ROW 02: PRO (MÁS ELEGIDO · DESTACADO) -->
+          <div class="pricing-strip-row strip-highlight" data-plan="pro">
+            <div class="strip-popular-badge">MÁS ELEGIDO</div>
             
-            <div class="c-price-head">
-              <div class="c-tier-meta">
-                <span class="c-tier-num">02</span>
-                <span class="c-tier-tag tag-blue">CONVERSIÓN</span>
+            <div class="strip-col-ident">
+              <span class="strip-num num-blue">02</span>
+              <div>
+                <h3 class="strip-name">Consultorio Pro</h3>
+                <span class="strip-timing timing-emerald">Entrega en 72 a 96hs · Pago único</span>
               </div>
-              <h3 class="c-tier-title">Consultorio Pro</h3>
-              <p class="c-tier-desc">Para profesionales que quieren educar al paciente, mostrar especialidades y filtrar consultas.</p>
             </div>
 
-            <div class="c-price-amount-box">
-              <div class="c-amount-line">
-                <span class="c-currency">$</span>
-                <span class="c-amount">95</span>
-                <span class="c-unit">USD</span>
+            <div class="strip-col-content">
+              <p class="strip-pitch">Filtrado de consultas, especialidades clínicas y educación al paciente.</p>
+              <div class="strip-tags">
+                <span class="s-tag tag-blue">Todo Express</span>
+                <span class="s-tag">Especialidades</span>
+                <span class="s-tag">Preguntas FAQ</span>
+                <span class="s-tag">SEO Local</span>
+                <span class="s-tag">Paleta a Medida</span>
               </div>
-              <span class="c-timing-tag tag-emerald">Pago único · Entrega en 72 a 96hs</span>
             </div>
 
-            <div class="c-features-list">
-              <div class="c-feature-item"><span>✦</span> <strong>Todo lo de Express más:</strong></div>
-              <div class="c-feature-item"><span>—</span> Especialidades clínicas / profesionales</div>
-              <div class="c-feature-item"><span>—</span> Preguntas Frecuentes (FAQ) interactivas</div>
-              <div class="c-feature-item"><span>—</span> Optimización SEO Local en Google</div>
-              <div class="c-feature-item"><span>—</span> Mensajes de WhatsApp con contexto</div>
+            <div class="strip-col-pricing">
+              <div class="strip-price-wrap">
+                <span class="s-curr">$</span>
+                <span class="s-amt">95</span>
+                <span class="s-unit">USD</span>
+              </div>
             </div>
 
-            <div class="c-card-footer">
-              <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Consultorio%20Pro" target="_blank" rel="noopener noreferrer" class="btn-c-price btn-c-klein">
+            <div class="strip-col-action">
+              <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Consultorio%20Pro" target="_blank" rel="noopener noreferrer" class="btn-strip-cta btn-strip-klein">
                 <span>Elegir Consultorio Pro →</span>
               </a>
             </div>
           </div>
 
-          <!-- TIER 03: AUTORIDAD -->
-          <div class="compact-price-card" id="pricingCardAutoridad">
-            <div class="c-price-head">
-              <div class="c-tier-meta">
-                <span class="c-tier-num">03</span>
-                <span class="c-tier-tag">PRESENCIA COMPLETA</span>
+          <!-- ROW 03: AUTORIDAD -->
+          <div class="pricing-strip-row" data-plan="autoridad">
+            <div class="strip-col-ident">
+              <span class="strip-num">03</span>
+              <div>
+                <h3 class="strip-name">Autoridad Total</h3>
+                <span class="strip-timing">Entrega en 5 días · Pago único</span>
               </div>
-              <h3 class="c-tier-title">Autoridad Total</h3>
-              <p class="c-tier-desc">Para clínicas, estudios de arquitectura, abogados corporativos o perfiles de referencia.</p>
             </div>
 
-            <div class="c-price-amount-box">
-              <div class="c-amount-line">
-                <span class="c-currency">$</span>
-                <span class="c-amount">140</span>
-                <span class="c-unit">USD</span>
+            <div class="strip-col-content">
+              <p class="strip-pitch">Para clínicas, estudios de arquitectura o profesionales con portfolio.</p>
+              <div class="strip-tags">
+                <span class="s-tag tag-blue">Todo Pro</span>
+                <span class="s-tag">Galería de Obras / Portfolio</span>
+                <span class="s-tag">Multi-sección</span>
+                <span class="s-tag">Redacción Persuasiva</span>
+                <span class="s-tag">Soporte VIP</span>
               </div>
-              <span class="c-timing-tag">Pago único · Entrega en 5 días</span>
             </div>
 
-            <div class="c-features-list">
-              <div class="c-feature-item"><span>✦</span> <strong>Todo lo de Pro más:</strong></div>
-              <div class="c-feature-item"><span>—</span> Galería de casos de éxito / portfolio</div>
-              <div class="c-feature-item"><span>—</span> Estructura multi-sección dedicada</div>
-              <div class="c-feature-item"><span>—</span> Redacción persuasiva de textos</div>
-              <div class="c-feature-item"><span>—</span> Soporte VIP prioritario</div>
+            <div class="strip-col-pricing">
+              <div class="strip-price-wrap">
+                <span class="s-curr">$</span>
+                <span class="s-amt">140</span>
+                <span class="s-unit">USD</span>
+              </div>
             </div>
 
-            <div class="c-card-footer">
-              <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Autoridad%20Total" target="_blank" rel="noopener noreferrer" class="btn-c-price btn-c-outline">
+            <div class="strip-col-action">
+              <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Autoridad%20Total" target="_blank" rel="noopener noreferrer" class="btn-strip-cta btn-strip-outline">
                 <span>Elegir Autoridad →</span>
               </a>
             </div>
           </div>
 
-        </div><!-- /compact-pricing-grid -->
+        </div><!-- /pricing-strip-board -->
 
-        <!-- Bottom Clean Trust Statement (No Emojis) -->
-        <div class="compact-pricing-trust-bar">
+        <!-- Bottom Clean Guarantee Strip -->
+        <div class="strip-guarantee-line">
           <span>✦ Sin mensualidades ocultas</span>
-          <span class="trust-sep">·</span>
+          <span class="g-sep">·</span>
           <span>✦ Tu web te pertenece 100%</span>
-          <span class="trust-sep">·</span>
-          <span>✦ Configuración oficial en NIC.ar</span>
+          <span class="g-sep">·</span>
+          <span>✦ Configuración oficial de dominio NIC.ar</span>
         </div>
 
       </div>
@@ -1111,6 +1114,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.2000"></script>
+  <script src="js/app.v2.js?v=2026.2100"></script>
 </body>
 </html>
