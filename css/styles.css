@@ -5182,3 +5182,164 @@ body {
     height: 14px !important;
   }
 }
+
+
+/* ==========================================================================
+   FULL-WIDTH APP CHAT WINDOW & SECURE SEND BUTTON (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .ai-investigator-section {
+    padding: 50px 0 60px 0 !important;
+  }
+
+  .ai-investigator-section .container {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Full-width App Window (Maximized Space) */
+  .real-chat-window {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 560px !important;
+    height: 580px !important;
+    border-radius: 16px !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35) !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #FFFFFF !important;
+    overflow: hidden !important;
+  }
+
+  .real-chat-header {
+    padding: 10px 14px !important;
+    background: #F8FAFC !important;
+    border-bottom: 1.5px solid #E2E8F0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .real-chat-messages-area {
+    flex: 1 !important;
+    padding: 16px 12px !important;
+    gap: 12px !important;
+    overflow-y: auto !important;
+    background: #FFFFFF !important;
+  }
+
+  /* Preset Chips Bar */
+  .chat-chips-area {
+    padding: 8px 10px !important;
+    background: #F8FAFC !important;
+    border-top: 1px solid #E2E8F0 !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+    overflow-x: auto !important;
+  }
+
+  .chat-chip-btn {
+    font-size: 0.72rem !important;
+    padding: 5px 12px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Secure, Never-Clipped Bottom Input Bar */
+  .real-chat-bottom-bar {
+    padding: 8px 10px !important;
+    background: #F8FAFC !important;
+    border-top: 1.5px solid #E2E8F0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .conversational-prompt-box {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #CBD5E1 !important;
+    border-radius: 28px !important;
+    padding: 4px 6px 4px 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    height: 46px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .conversational-prompt-box:focus-within {
+    border-color: var(--klein-blue) !important;
+    box-shadow: 0 0 0 2px rgba(0, 51, 255, 0.18) !important;
+  }
+
+  .prompt-static-text {
+    display: none !important;
+  }
+
+  /* Text inputs with min-width: 0 so they shrink properly and never push the button */
+  .chat-inline-input {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 4px 2px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: #0F172A !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    outline: none !important;
+  }
+
+  .chat-inline-input:focus {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .input-name {
+    flex: 1.1 !important;
+    border-right: 1px solid #E2E8F0 !important;
+    padding-right: 4px !important;
+  }
+
+  .input-role {
+    flex: 1.1 !important;
+    border-right: 1px solid #E2E8F0 !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+  }
+
+  .input-location {
+    flex: 0.9 !important;
+    padding-left: 4px !important;
+  }
+
+  /* Send button: ALWAYS fully visible and fixed size */
+  .btn-chat-send {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    border-radius: 50% !important;
+    background: var(--klein-blue) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    box-shadow: 0 3px 8px rgba(0, 51, 255, 0.35) !important;
+    cursor: pointer !important;
+  }
+
+  .btn-chat-send svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
