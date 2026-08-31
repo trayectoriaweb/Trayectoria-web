@@ -269,15 +269,8 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px 22px;
-  background: #00186B;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.window-toolbar:hover {
-  background: #00104A;
-  border-bottom-color: rgba(255, 255, 255, 0.4);
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .window-dots {
@@ -298,30 +291,21 @@ body {
 .window-title-tab {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: #FFFFFF;
-  font-weight: 700;
+  color: #334155;
+  font-weight: 500;
 }
 
 .window-title-tab svg {
-  stroke: #FFFFFF;
+  stroke: #64748B;
 }
 
 .window-actions-icons .window-url-text {
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-family: var(--font-mono);
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-}
-
-.manifesto-window.is-dragging .window-toolbar {
-  background: #000B33 !important;
-  border-bottom-color: rgba(255, 255, 255, 0.5) !important;
+  color: #64748B;
 }
 .manifesto-body {
   background: var(--klein-blue);
