@@ -129,6 +129,7 @@
     setInputValue('p5_loQueNoQuiere', clientData.style.loQueNoQuiere);
     renderReferencesList();
     renderSensationsPills();
+    renderColorPickerGrid();
   }
 
   function setInputValue(id, val) {
@@ -383,24 +384,128 @@
       });
     });
 
-    // Color Swatches quick select
-    document.querySelectorAll('.color-swatch-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        const colorName = chip.dataset.color;
-        const input = document.getElementById('p5_colores');
-        if (input) {
-          if (!input.value) {
-            input.value = colorName;
-          } else if (!input.value.includes(colorName)) {
-            input.value += `, ${colorName}`;
-          }
-          debouncedAutoSave();
-        }
-      });
-    });
+    // Color Swatches & Custom Picker
+    renderColorPickerGrid();
 
     // Sensations Multi-Select Pills (Paso 5)
     renderSensationsPills();
+  }
+
+  const PRESET_COLORS = [
+    { name: 'Azul Klein', hex: '#0033FF' },
+    { name: 'Azul Marino', hex: '#0F172A' },
+    { name: 'Verde Esmeralda', hex: '#059669' },
+    { name: 'Verde Salvia / Oliva', hex: '#4D7C0F' },
+    { name: 'Negro Grafito', hex: '#18181B' },
+    { name: 'Gris Ceniza', hex: '#64748B' },
+    { name: 'Terracota / Ladrillo', hex: '#C2410C' },
+    { name: 'Borgoña / Vino', hex: '#881337' },
+    { name: 'Dorado / Ocre', hex: '#D97706' },
+    { name: 'Azul Petróleo / Teal', hex: '#0D9488' },
+    { name: 'Azul Cielo / Cyan', hex: '#0284C7' },
+    { name: 'Lavanda / Violeta', hex: '#7C3AED' },
+    { name: 'Arena / Beige Cálido', hex: '#D7C4B7' },
+    { name: 'Blanco & Monocromo', hex: '#F1F5F9' },
+  ];
+
+  function renderColorPickerGrid() {
+    const grid = document.getElementById('colorPickerGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+    if (!clientData.style.selectedColors) {
+      clientData.style.selectedColors = [];
+      // Populate from existing string if available
+      if (clientData.style.coloresPreferidos) {
+        PRESET_COLORS.forEach(pc => {
+          if (clientData.style.coloresPreferidos.includes(pc.name) || clientData.style.coloresPreferidos.includes(pc.hex)) {
+            if (!clientData.style.selectedColors.some(c => c.hex.toLowerCase() === pc.hex.toLowerCase())) {
+              clientData.style.selectedColors.push(pc);
+            }
+          }
+        });
+      }
+    }
+
+    PRESET_COLORS.forEach(color => {
+      const isSelected = clientData.style.selectedColors.some(
+        c => c.hex.toLowerCase() === color.hex.toLowerCase()
+      );
+
+      const card = document.createElement('div');
+      card.className = `color-option-card ${isSelected ? 'selected' : ''}`;
+      card.innerHTML = `
+        <span class="color-option-box" style="background-color: ${color.hex};">
+          <span class="color-option-check">✓</span>
+        </span>
+        <div class="color-option-info">
+          <span class="color-option-name">${color.name}</span>
+          <span class="color-option-hex">${color.hex}</span>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        const idx = clientData.style.selectedColors.findIndex(
+          c => c.hex.toLowerCase() === color.hex.toLowerCase()
+        );
+        if (idx >= 0) {
+          clientData.style.selectedColors.splice(idx, 1);
+          card.classList.remove('selected');
+        } else {
+          clientData.style.selectedColors.push(color);
+          card.classList.add('selected');
+        }
+        updateSelectedColorsSummary();
+        debouncedAutoSave();
+      });
+
+      grid.appendChild(card);
+    });
+
+    updateSelectedColorsSummary();
+    setupCustomColorPicker();
+  }
+
+  function setupCustomColorPicker() {
+    const input = document.getElementById('p5_customColorInput');
+    const preview = document.getElementById('customColorPreviewBox');
+    const hexLabel = document.getElementById('customColorHexLabel');
+    if (!input || !preview || !hexLabel) return;
+
+    input.addEventListener('change', (e) => {
+      const hex = (e.target.value || '#0033FF').toUpperCase();
+      preview.style.backgroundColor = hex;
+      hexLabel.textContent = hex;
+
+      if (!clientData.style.selectedColors) clientData.style.selectedColors = [];
+      const customItem = { name: 'Personalizado', hex: hex };
+
+      if (!clientData.style.selectedColors.some(c => c.hex.toUpperCase() === hex)) {
+        clientData.style.selectedColors.push(customItem);
+      }
+      updateSelectedColorsSummary();
+      debouncedAutoSave();
+    });
+
+    input.addEventListener('input', (e) => {
+      const hex = (e.target.value || '#0033FF').toUpperCase();
+      preview.style.backgroundColor = hex;
+      hexLabel.textContent = hex;
+    });
+  }
+
+  function updateSelectedColorsSummary() {
+    const badge = document.getElementById('selectedColorsCountBadge');
+    const colors = clientData.style.selectedColors || [];
+    if (badge) {
+      badge.textContent = `${colors.length} color${colors.length === 1 ? '' : 'es'} seleccionado${colors.length === 1 ? '' : 's'}`;
+      badge.style.color = colors.length > 0 ? 'var(--klein-blue)' : 'var(--text-muted)';
+      badge.style.borderColor = colors.length > 0 ? 'var(--klein-blue)' : 'var(--border-light)';
+    }
+
+    if (colors.length > 0) {
+      clientData.style.coloresPreferidos = colors.map(c => `${c.name} (${c.hex})`).join(', ');
+    }
   }
 
   function renderSensationsPills() {

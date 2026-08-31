@@ -516,30 +516,32 @@
 
       <div class="form-card">
         <h3 class="form-card-title">¿Hay colores que quieras usar?</h3>
-        <p class="form-card-hint">Podés seleccionar sugerencias o escribir libremente tus colores preferidos.</p>
+        <p class="form-card-hint">Elegí uno o más colores para tu identidad visual, o abrí la paleta libre para seleccionar tu tono exacto.</p>
 
-        <div class="form-field">
-          <input type="text" class="form-input" id="p5_colores" placeholder="Ej: Azul marino, blanco cálido y gris (#0033FF, #FFFFFF, #F1F5F9)">
+        <!-- Dynamic 14 Color Grid -->
+        <div class="color-picker-grid" id="colorPickerGrid"></div>
+
+        <!-- Custom Color Palette Row -->
+        <div style="margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+          <label class="custom-color-card" id="btnCustomColor">
+            <input type="color" id="p5_customColorInput" value="#0033FF">
+            <span class="color-option-box" id="customColorPreviewBox" style="background: #0033FF;">
+              <span class="color-option-check" style="display: block; font-size: 10px;">🎨</span>
+            </span>
+            <div class="color-option-info">
+              <span class="color-option-name" style="color: var(--klein-blue);">Elegir color personalizado</span>
+              <span class="color-option-hex" id="customColorHexLabel">Abrir paleta cromática</span>
+            </div>
+          </label>
+
+          <span id="selectedColorsCountBadge" style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); background: var(--bg-surface); padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border-light);">
+            0 colores seleccionados
+          </span>
         </div>
 
-        <div class="color-presets-row">
-          <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">Sugerencias rápidas:</span>
-          <div class="color-swatch-chip" data-color="Azul Eléctrico & Blanco">
-            <span class="color-circle" style="background: #0033FF;"></span>
-            <span>Klein Blue</span>
-          </div>
-          <div class="color-swatch-chip" data-color="Negro Obsidiana & Blanco">
-            <span class="color-circle" style="background: #0F172A;"></span>
-            <span>Monocromo / Minimal</span>
-          </div>
-          <div class="color-swatch-chip" data-color="Verde Esmeralda & Tierra">
-            <span class="color-circle" style="background: #16A34A;"></span>
-            <span>Salud & Bienestar</span>
-          </div>
-          <div class="color-swatch-chip" data-color="Gris Concreto & Terracota">
-            <span class="color-circle" style="background: #E2E8F0;"></span>
-            <span>Arquitectura / Estudio</span>
-          </div>
+        <div class="form-field" style="margin-top: 18px;">
+          <label class="form-label">Aclaraciones sobre tus colores <span class="form-label-optional">(opcional)</span></label>
+          <input type="text" class="form-input" id="p5_colores" placeholder="Ej: Me gustaría que el color principal sea el azul marino y detalles en dorado o blanco...">
         </div>
       </div>
 
