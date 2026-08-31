@@ -1,6 +1,5 @@
 /**
- * TRAYECTORIA v2026.25 — Master Digital Product & Funnel Experience Controller
- * CRO Specialist & Senior UX/UI Polish
+ * TRAYECTORIA v2026.40 — Master Controller
  */
 
 (function () {
@@ -8,7 +7,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
-    initHeroScanner();
+    initManifestoHero();
     init5sTest();
     initComparisonSwitcher();
     initLiveBuilder();
@@ -34,10 +33,10 @@
     }, { passive: true });
   }
 
-      /* =========================================================================
-     2. SECCIÓN 1 — HERO: MANIFESTO WINDOW INTERACTION
+  /* =========================================================================
+     2. SECCIÓN 1 — HERO: MANIFESTO WINDOW
      ========================================================================= */
-  function initHeroScanner() {
+  function initManifestoHero() {
     const nameInput = document.getElementById('manifestoNameInput');
     const btnSearch = document.getElementById('btnManifestoSearch');
     const stage1 = document.getElementById('manifestoStage1');
@@ -61,14 +60,12 @@
 
       if (targetNameDisplay) targetNameDisplay.textContent = `"${enteredName}"`;
 
-      // 1. Transition to Stage 2
       stage1.style.display = 'none';
       stage2.style.display = 'flex';
       stage3.style.display = 'none';
       if (resultsList) resultsList.innerHTML = '';
 
-      // 2. Cascade lines
-      let delay = 300;
+      let delay = 250;
       channels.forEach((ch, idx) => {
         setTimeout(() => {
           if (!resultsList) return;
@@ -84,11 +81,10 @@
         delay += 250;
       });
 
-      // 3. Transition to Stage 3 (Closing question & CTA)
       setTimeout(() => {
         stage2.style.display = 'none';
         stage3.style.display = 'flex';
-      }, delay + 450);
+      }, delay + 400);
     }
 
     btnSearch?.addEventListener('click', executeManifestoSearch);
@@ -110,7 +106,7 @@
   }
 
   /* =========================================================================
-     3. SECCIÓN 2 — TEST DE 5 SEGUNDOS (WITH PROGRESSIVE ELEMENT ILLUMINATION)
+     3. SECCIÓN 2 — TEST DE 5 SEGUNDOS
      ========================================================================= */
   function init5sTest() {
     const startBtn = document.getElementById('btnStart5sTest');
@@ -123,7 +119,6 @@
     const feedbackResponse = document.getElementById('feedbackResponseText');
     const feedbackNext = document.getElementById('feedbackNextStep');
 
-    // Items to highlight in sync with countdown
     const itemHeader = document.getElementById('testItemHeader');
     const itemServices = document.getElementById('testItemServices');
     const itemLocation = document.getElementById('testItemLocation');
@@ -158,7 +153,6 @@
         if (countdownDigit) countdownDigit.textContent = String(sec);
         if (progressBar) progressBar.style.width = `${(remaining / totalDuration) * 100}%`;
 
-        // Progressive reveal pulse
         if (sec === 5) itemHeader?.classList.add('pulse-step');
         if (sec === 3) itemServices?.classList.add('pulse-step');
         if (sec === 2) itemLocation?.classList.add('pulse-step');
@@ -265,7 +259,6 @@
     const toggleWA = document.getElementById('builderToggleWA');
     const btnReset = document.getElementById('btnResetBuilder');
 
-    // Canvas DOM Elements
     const canvasBrand = document.getElementById('canvasBrandName');
     const canvasPill = document.getElementById('canvasPillRole');
     const canvasTitle = document.getElementById('canvasTitleName');
@@ -369,7 +362,7 @@
   }
 
   /* =========================================================================
-     6. SECCIÓN 5 — SHOWROOM MODAL INTERACTIVO
+     6. SECCIÓN 5 — SHOWROOM MODAL
      ========================================================================= */
   function initShowroomModal() {
     const modal = document.getElementById('macosBrowserModal');
@@ -496,7 +489,7 @@
   }
 
   /* =========================================================================
-     7. SECCIÓN 6 — ANTES / DESPUÉS COMPARISON SLIDER
+     7. SECCIÓN 6 — ANTES / DESPUÉS SLIDER
      ========================================================================= */
   function initBeforeAfterSlider() {
     const container = document.getElementById('sliderComparisonContainer');
@@ -549,7 +542,7 @@
   }
 
   /* =========================================================================
-     8. SECCIÓN 7 — DETECTOR DE TRAYECTORIA (CHECKLIST & DYNAMIC SCORE)
+     8. SECCIÓN 7 — DETECTOR DE TRAYECTORIA
      ========================================================================= */
   function initTrajectoryDetector() {
     const checkboxes = document.querySelectorAll('.detector-cb');
@@ -629,7 +622,7 @@
   }
 
   /* =========================================================================
-     9. SECCIÓN 8 & 9 — PERSONALIZACIÓN & DECISIÓN CRO UNIFICADA
+     9. SECCIÓN 8 & 9 — PERSONALIZACIÓN & PRECIOS
      ========================================================================= */
   function initPersonalizationDecision() {
     const decisionCards = document.querySelectorAll('.decision-card');
@@ -648,7 +641,6 @@
 
         const planKey = card.dataset.plan;
 
-        // Highlight matching pricing card below
         Object.values(pricingCards).forEach(pCard => pCard?.classList.remove('highlight-tier'));
         if (pricingCards[planKey]) {
           pricingCards[planKey].classList.add('highlight-tier');

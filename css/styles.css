@@ -1,15 +1,14 @@
 /* ==========================================================================
-   TRAYECTORIA — DESIGN SYSTEM & INTERACTIVE PRODUCT EXPERIENCE v2026.25
-   Senior UX/UI & CRO Polish · Editorial · High Performance · 0 Fricción
+   TRAYECTORIA — DESIGN SYSTEM v2026.40
+   Editorial · Minimalista · Apple-inspired UI · High Performance
    ========================================================================== */
 
 :root {
-  /* Colors */
   --klein-blue: #0033FF;
   --klein-blue-hover: #0026CC;
   --klein-blue-light: #EFF6FF;
   --klein-blue-border: #BFDBFE;
-  --klein-blue-glow: rgba(0, 51, 255, 0.16);
+  --klein-blue-glow: rgba(0, 51, 255, 0.18);
 
   --bg-page: #FFFFFF;
   --bg-surface: #F8FAFC;
@@ -37,11 +36,9 @@
 
   --grid-line: rgba(15, 23, 42, 0.05);
 
-  /* Typography */
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace, Consolas;
 
-  /* Geometry & Motion */
   --radius-window: 24px;
   --radius-card: 16px;
   --radius-pill: 9999px;
@@ -52,7 +49,6 @@
 
   --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
   --shadow-card: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
-  --shadow-floating: 0 24px 48px -12px rgba(0, 51, 255, 0.18);
 }
 
 *, *::before, *::after {
@@ -75,11 +71,6 @@ body {
   color: var(--text-primary);
   line-height: 1.55;
   overflow-x: hidden;
-}
-
-::selection {
-  background: var(--klein-blue-light);
-  color: var(--klein-blue);
 }
 
 .container {
@@ -110,7 +101,6 @@ body {
   text-align: center;
 }
 
-/* Section Header Typography */
 .section-head {
   max-width: 760px;
   margin: 0 auto 56px auto;
@@ -252,10 +242,10 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 1 — HERO: LA VENTANA MANIFIESTO AZUL (SCREENSHOT ACCURATE)
+   SECCIÓN 1 — HERO: LA VENTANA AZUL MANIFIESTO
    ========================================================================== */
 .hero-manifesto-section {
-  padding-top: 120px;
+  padding-top: 130px;
   padding-bottom: 80px;
   min-height: 85vh;
   display: flex;
@@ -267,7 +257,7 @@ body {
   background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
   border-radius: var(--radius-window);
-  box-shadow: 0 24px 64px -12px rgba(0, 51, 255, 0.22), 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 28px 72px -16px rgba(0, 51, 255, 0.25), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   max-width: 960px;
   margin: 0 auto;
@@ -278,7 +268,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 12px 22px;
   background: #FFFFFF;
   border-bottom: 1px solid #E2E8F0;
 }
@@ -287,6 +277,16 @@ body {
   display: flex;
   gap: 7px;
 }
+
+.w-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.w-dot-red { background: #FF5F56; }
+.w-dot-yellow { background: #FFBD2E; }
+.w-dot-green { background: #27C93F; }
 
 .window-title-tab {
   display: flex;
@@ -307,7 +307,7 @@ body {
 .manifesto-body {
   background: var(--klein-blue);
   color: #FFFFFF;
-  padding: 52px 48px 36px 48px;
+  padding: 56px 48px 36px 48px;
   min-height: 380px;
   display: flex;
   flex-direction: column;
@@ -345,7 +345,7 @@ body {
 
 .interactive-blank-input {
   display: inline-block;
-  border: 2px dashed rgba(255, 255, 255, 0.65);
+  border: 2px dashed rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   color: #FFFFFF;
@@ -354,7 +354,7 @@ body {
   font-weight: 800;
   padding: 0 16px;
   outline: none;
-  min-width: 220px;
+  min-width: 200px;
   max-width: 380px;
   transition: all 0.2s;
   vertical-align: baseline;
@@ -372,7 +372,7 @@ body {
   font-weight: 600;
 }
 
-/* Stage 2 Output List */
+/* Stage 2 Output */
 .manifesto-running-header {
   font-family: var(--font-mono);
   font-size: 1.15rem;
@@ -387,6 +387,11 @@ body {
 
 .m-blink {
   animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .manifesto-results-list {
@@ -409,6 +414,13 @@ body {
   opacity: 0;
   transform: translateY(6px);
   animation: lineAppear 0.25s ease forwards;
+}
+
+@keyframes lineAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .m-check {
@@ -496,6 +508,11 @@ body {
 .btn-manifesto-restart:hover {
   color: #FFFFFF;
   text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
@@ -589,7 +606,6 @@ body {
   transition: width 0.05s linear;
 }
 
-/* The Revealable Card */
 .test-reveal-card {
   position: relative;
   background: var(--bg-surface);
@@ -760,7 +776,6 @@ body {
   border-radius: var(--radius-pill);
 }
 
-/* Post-Test Quiz */
 .test-feedback-box {
   display: none;
   margin-top: 24px;
@@ -976,7 +991,6 @@ body {
   display: inline-block;
 }
 
-/* Interactive Quest inside Instagram */
 .insta-interactive-quest {
   background: #FFFFFF;
   border: 1.5px dashed var(--border-medium);
@@ -1280,7 +1294,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 4 — LIVE INTERACTIVE BUILDER DEMO
+   SECCIÓN 4 — LIVE BUILDER DEMO
    ========================================================================== */
 .live-builder-section {
   background: #FFFFFF;
@@ -1299,7 +1313,6 @@ body {
   }
 }
 
-/* Left Palette */
 .builder-palette-col {
   background: var(--bg-surface);
   border: 1.5px solid var(--border-medium);
@@ -1345,7 +1358,6 @@ body {
   color: var(--rose);
 }
 
-/* Direct Module Cards */
 .builder-module-accordion {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
@@ -1484,7 +1496,6 @@ body {
   cursor: pointer;
 }
 
-/* Right Live Canvas */
 .live-canvas-window {
   background: #FFFFFF;
   border: 1.5px solid var(--border-medium);
@@ -1765,7 +1776,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 5 — WEBS REALES EXPLORABLES (SHOWROOM)
+   SECCIÓN 5 — WEBS REALES SHOWROOM
    ========================================================================== */
 .showroom-grid-interactive {
   display: grid;
@@ -1919,7 +1930,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 6 — ANTES / DESPUÉS (SLIDER INTERACTIVO)
+   SECCIÓN 6 — ANTES / DESPUÉS SLIDER
    ========================================================================== */
 .slider-comparison-container {
   position: relative;
@@ -1951,7 +1962,6 @@ body {
   justify-content: space-between;
 }
 
-/* Layer Before (Desorden) */
 .layer-before {
   background: #FFF5F5;
 }
@@ -1983,7 +1993,6 @@ body {
   padding: 6px 12px;
   border-radius: 8px;
   box-shadow: var(--shadow-subtle);
-  transform: rotate(-2deg);
 }
 
 .sb-1 { top: 10px; left: 30px; transform: rotate(-3deg); }
@@ -2006,7 +2015,6 @@ body {
   color: #7F1D1D;
 }
 
-/* Layer After (Orden) */
 .layer-after {
   background: #FFFFFF;
   width: 50%;
@@ -2082,7 +2090,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Slider Line & Handle */
 .slider-divider-line {
   position: absolute;
   top: 0;
@@ -2114,7 +2121,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 7 — DETECTOR DE TRAYECTORIA (DIAGNÓSTICO)
+   SECCIÓN 7 — DETECTOR DE TRAYECTORIA
    ========================================================================== */
 .detector-card-panel {
   max-width: 860px;
@@ -2215,7 +2222,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Score Board */
 .detector-score-board {
   background: var(--bg-dark);
   color: #FFFFFF;
@@ -2293,7 +2299,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 8 — PERSONALIZACIÓN (DECISIÓN INTERACTIVA)
+   SECCIÓN 8 — PERSONALIZACIÓN
    ========================================================================== */
 .decision-cards-grid {
   display: grid;
@@ -2386,7 +2392,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 9 — PRECIOS (EVOLUCIÓN)
+   SECCIÓN 9 — PRECIOS
    ========================================================================== */
 .pricing-evolution-grid {
   display: grid;
@@ -2565,7 +2571,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Guarantee Box */
 .pricing-guarantee-box {
   display: grid;
   grid-template-columns: 1fr;
@@ -2606,7 +2611,7 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN 10 — CTA FINAL EMOCIONAL
+   SECCIÓN 10 — CTA FINAL
    ========================================================================== */
 .final-cta-section {
   padding: 110px 0;
@@ -2762,7 +2767,7 @@ body {
 }
 
 /* ==========================================================================
-   MACOS BROWSER MODAL (EXPLORADOR EN VIVO)
+   MACOS BROWSER MODAL
    ========================================================================== */
 .macos-browser-modal {
   position: fixed;
@@ -2803,22 +2808,6 @@ body {
   background: var(--bg-subtle);
   border-bottom: 1px solid var(--border-light);
 }
-
-.window-dots {
-  display: flex;
-  gap: 7px;
-}
-
-.w-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.w-dot-red { background: #FF5F56; }
-.w-dot-yellow { background: #FFBD2E; }
-.w-dot-green { background: #27C93F; }
 
 .macos-modal-address-bar {
   display: flex;
