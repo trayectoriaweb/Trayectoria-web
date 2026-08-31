@@ -2947,80 +2947,56 @@ body {
   max-width: 800px;
 }
 
-.msg-user-bubble {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-top-right-radius: 4px;
-  color: #BFDBFE;
-  font-weight: 600;
-  max-width: 680px;
-}
-
-.msg-report-bubble {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 22px 24px;
-}
-
-.report-meta-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.report-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #34D399;
-  letter-spacing: 0.08em;
-}
-
-.report-sources {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.report-prose-body {
-  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
-  line-height: 1.68;
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.report-prose-body p {
-  margin-bottom: 14px;
-}
-
-.report-prose-body strong {
-  color: #FFFFFF;
 /* ==========================================================================
    SECCIÓN — EL INVESTIGADOR IA: VENTANA DE CHAT REAL (ALTO CONTRASTE & TIPOGRAFÍA EDITORIAL)
    ========================================================================== */
 .ai-investigator-section {
-  background-color: var(--klein-blue);
+  background-color: var(--klein-blue) !important;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 36px 36px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
   padding: 80px 0;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   position: relative;
 }
 
+/* Force pure white section title and light cyan subtitle on blue background */
+.ai-investigator-section .section-title,
+.head-white .section-title,
+.section-full-blue .section-title {
+  color: #FFFFFF !important;
+  font-size: clamp(1.75rem, 3.4vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+}
+
+.ai-investigator-section .section-subtitle,
+.head-white .section-subtitle,
+.section-full-blue .section-subtitle {
+  color: #BFDBFE !important;
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.ai-investigator-section .section-badge.badge-white,
+.head-white .section-badge.badge-white {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Solid Deep Midnight Navy Chat Window */
 .real-chat-window {
-  max-width: 860px;
+  max-width: 880px;
   margin: 0 auto;
-  background: rgba(4, 9, 32, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: #020617;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-window);
   overflow: hidden;
-  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
   display: flex;
   flex-direction: column;
   min-height: 480px;
@@ -3032,7 +3008,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  background: rgba(2, 6, 23, 0.6);
+  background: #090F26;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -3051,7 +3027,7 @@ body {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .chat-bot-status {
@@ -3092,11 +3068,11 @@ body {
   gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
   background: rgba(255, 255, 255, 0.06);
   padding: 3px 9px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .c-live-dot {
@@ -3114,6 +3090,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  background: #020617;
   overflow-y: auto;
 }
 
@@ -3141,8 +3118,8 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -3162,27 +3139,28 @@ body {
 }
 
 .msg-bot-bubble {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0D1636;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-top-left-radius: 4px;
   max-width: 760px;
 }
 
 .msg-user-bubble {
-  background: rgba(0, 51, 255, 0.45);
+  background: var(--klein-blue);
   border: 1px solid rgba(191, 219, 254, 0.35);
   border-top-right-radius: 4px;
-  color: #DBEAFE;
-  font-weight: 600;
-  font-size: 0.88rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
   max-width: 620px;
+  box-shadow: 0 4px 14px rgba(0, 51, 255, 0.3);
 }
 
 .msg-report-bubble {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 20px 22px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: #080E24;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 22px 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 .report-meta-header {
@@ -3191,7 +3169,7 @@ body {
   justify-content: space-between;
   padding-bottom: 10px;
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .report-tag {
@@ -3210,8 +3188,8 @@ body {
 
 .report-prose-body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Segoe UI", Roboto, sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.72;
+  font-size: 0.96rem;
+  line-height: 1.74;
   color: #F8FAFC;
   letter-spacing: -0.012em;
 }
@@ -3226,7 +3204,7 @@ body {
 }
 
 .report-prose-body em {
-  color: #E2E8F0;
+  color: #CBD5E1;
   font-style: italic;
 }
 
@@ -3297,7 +3275,7 @@ body {
 /* BOTTOM CONVERSATIONAL WRITING BAR */
 .real-chat-bottom-bar {
   padding: 14px 18px;
-  background: rgba(2, 6, 23, 0.7);
+  background: #090F26;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
@@ -3306,8 +3284,8 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 8px 6px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background: #030718;
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
   border-radius: 14px;
   padding: 8px 14px;
   transition: all 0.2s;
@@ -3315,8 +3293,8 @@ body {
 
 .conversational-prompt-box:focus-within {
   border-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
-  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  background: #020617;
 }
 
 .prompt-static-text {
@@ -3329,7 +3307,7 @@ body {
 }
 
 .chat-inline-input {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border: 1px dashed rgba(255, 255, 255, 0.35);
   border-radius: 6px;
   padding: 5px 10px;
@@ -3349,7 +3327,7 @@ body {
 .chat-inline-input:focus {
   border-style: solid;
   border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .input-name {
@@ -3388,4 +3366,5 @@ body {
   background: #F1F5F9;
   transform: scale(1.06);
 }
+
 
