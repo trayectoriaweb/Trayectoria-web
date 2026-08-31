@@ -9,7 +9,7 @@
     initTemplatesFilters();
     initDraggableAndWindowActions();
     initDossierPricing();
-    initInteractiveRoster();
+    initTypographicCloud();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -1203,137 +1203,143 @@
   }
 
 
+
   /* =========================================================================
-     CASOS REALES — ROSTER TIPOGRÁFICO & FLOATING HOVER PREVIEWS
+     CASOS REALES — NUBE TIPOGRÁFICA INTERACTIVA & PREVIEW FOTOGRÁFICA
      ========================================================================= */
-  function initInteractiveRoster() {
-    const workbench = document.getElementById('rosterWorkbench');
-    const rosterItems = document.querySelectorAll('.roster-item');
-    const floatingCard = document.getElementById('floatingProjectCard');
-    const floatingUrl = document.getElementById('floatingUrlText');
-    const floatingBody = document.getElementById('floatingWindowBody');
+  function initTypographicCloud() {
+    const workbench = document.getElementById('namesCloudWorkbench');
+    const nameItems = document.querySelectorAll('.cloud-name-item');
+    const photoCard = document.getElementById('photoPreviewCard');
+    const photoScreen = document.getElementById('photoPreviewScreen');
+    const photoUrlTag = document.getElementById('photoUrlTag');
 
-    if (!workbench || !floatingCard || !rosterItems.length) return;
+    if (!workbench || !photoCard || !nameItems.length) return;
 
-    const projectData = {
-      'wellness': {
-        url: 'thewellnessclub.com.ar',
-        badge: 'FITNESS & BIENESTAR',
-        title: 'The Wellness Club',
-        desc: 'Salud integral, nutrición deportiva y clases personalizadas en Rosario.',
-        tags: ['Membresías', 'Reformer', 'Nutrición'],
-        loc: 'Rosario, Santa Fe',
-        themeClass: 'f-card-wellness'
+    const websites = {
+      'dirusso': {
+        url: 'dirusso.com.ar',
+        mockClass: 'mock-dirusso',
+        kicker: 'DERECHO CORPORATIVO & LITIGIOS',
+        brand: 'Maurizio Di Russo & Asoc.',
+        headline: 'Soluciones jurídicas estratégicas para empresas en CABA.',
+        cta: '💬 Consulta WhatsApp'
       },
       'vitale': {
         url: 'julietavitale.com.ar',
-        badge: 'PSICOTERAPIA CLÍNICA',
-        title: 'Lic. Julieta Vitale',
-        desc: 'Atención psicológica individual y mindfulness basada en evidencia.',
-        tags: ['Ansiedad', 'Adultos', '100% Online'],
-        loc: 'Palermo Soho, CABA',
-        themeClass: 'f-card-vitale'
+        mockClass: 'mock-vitale',
+        kicker: 'PSICOTERAPIA CLÍNICA & MINDFULNESS',
+        brand: 'Lic. Julieta Vitale',
+        headline: 'Atención psicológica individual basada en evidencia.',
+        cta: '💬 Solicitar Turno'
       },
-      'dirusso': {
-        url: 'dirusso.com.ar',
-        badge: 'DERECHO CORPORATIVO',
-        title: 'Maurizio Di Russo & Asoc.',
-        desc: 'Asesoramiento legal preventivo y litigios comerciales para empresas.',
-        tags: ['Contratos', 'Tribunales', 'Auditoría'],
-        loc: 'Tribunales, CABA',
-        themeClass: 'f-card-dirusso'
+      'adrian': {
+        url: 'adrianperez.com.ar',
+        mockClass: 'mock-adrian',
+        kicker: 'ENTRENAMIENTO DE ALTO RENDIMIENTO',
+        brand: 'Adrian Perez · Coach',
+        headline: 'Planes de fuerza y transformación física integral.',
+        cta: '💬 Agendar Evaluación'
+      },
+      'gympro': {
+        url: 'gympro.com.ar',
+        mockClass: 'mock-gympro',
+        kicker: 'CENTRO FITNESS & WELLNESS',
+        brand: 'Gympro Rosario',
+        headline: 'Espacio de musculación, clases grupales y nutrición.',
+        cta: '💬 Ver Membresías'
+      },
+      'wellness': {
+        url: 'thewellnessclub.com.ar',
+        mockClass: 'mock-wellness',
+        kicker: 'ESPACIO WELLNESS INTEGRAL',
+        brand: 'The Wellness Club',
+        headline: 'Entrenamiento consciente, pilates reformer y salud.',
+        cta: '💬 Hablar por WhatsApp'
       },
       'zaldivar': {
         url: 'camilazaldivar.com',
-        badge: 'ARQUITECTURA & OBRAS',
-        title: 'Studio Zaldívar',
-        desc: 'Proyectos residenciales, interiorismo y reformas contemporáneas.',
-        tags: ['Obras', 'Renders 3D', 'Colegiales'],
-        loc: 'Colegiales, CABA',
-        themeClass: 'f-card-zaldivar'
+        mockClass: 'mock-zaldivar',
+        kicker: 'ARQUITECTURA & REFORMAS',
+        brand: 'Studio Zaldívar',
+        headline: 'Espacios residenciales contemporáneos y minimalistas.',
+        cta: '💬 Consultar Obra'
       },
       'varela': {
         url: 'drvarela.com.ar',
-        badge: 'TRAUMATOLOGÍA ARTICULAR',
-        title: 'Dr. Marcelo Varela',
-        desc: 'Cirugía mini-invasiva y medicina deportiva de alto rendimiento.',
-        tags: ['Artroscopía', 'Prepagas', 'Alto Palermo'],
-        loc: 'Alto Palermo, CABA',
-        themeClass: 'f-card-varela'
+        mockClass: 'mock-varela',
+        kicker: 'TRAUMATOLOGÍA ARTICULAR',
+        brand: 'Dr. Marcelo Varela',
+        headline: 'Cirugía mini-invasiva y medicina deportiva de avanzada.',
+        cta: '💬 Consultorio Privado'
       },
       'ponieman': {
         url: 'valeriaponieman.com',
-        badge: 'DIRECCIÓN DE ARTE',
-        title: 'Valeria Ponieman',
-        desc: 'Identidad visual, sistemas de diseño y consultoría de marca.',
-        tags: ['Branding', 'Packaging', 'UX / UI'],
-        loc: 'Palermo, CABA',
-        themeClass: 'f-card-ponieman'
+        mockClass: 'mock-ponieman',
+        kicker: 'DIRECCIÓN DE ARTE & BRANDING',
+        brand: 'Valeria Ponieman',
+        headline: 'Construyo identidades visuales con propósito y carácter.',
+        cta: '💬 Iniciar Proyecto'
       }
     };
 
-    let isMouseOverList = false;
+    let isHovering = false;
 
-    rosterItems.forEach(item => {
+    nameItems.forEach(item => {
       item.addEventListener('mouseenter', (e) => {
         const key = item.dataset.projectKey;
-        const data = projectData[key];
+        const data = websites[key];
         if (!data) return;
 
-        isMouseOverList = true;
-        floatingUrl.textContent = data.url;
-        floatingBody.innerHTML = `
-          <div class="f-mock-card ${data.themeClass}">
-            <span class="f-mock-badge">✦ ${data.badge}</span>
-            <h4 class="f-mock-title">${data.title}</h4>
-            <p class="f-mock-desc">${data.desc}</p>
-            <div class="f-mock-tags">
-              ${data.tags.map(t => `<span>${t}</span>`).join('')}
+        isHovering = true;
+        photoUrlTag.textContent = data.url;
+        photoScreen.innerHTML = `
+          <div class="photo-mock-stage ${data.mockClass}">
+            <div class="photo-mock-header">
+              <span class="photo-mock-brand">${data.brand}</span>
+              <span>Online ✓</span>
             </div>
-            <div class="f-mock-cta-row">
-              <span>📍 ${data.loc}</span>
-              <span class="f-wa-badge">💬 Directo a WhatsApp</span>
+            <div class="photo-mock-body">
+              <span class="photo-mock-kicker">${data.kicker}</span>
+              <h4 class="photo-mock-headline">${data.headline}</h4>
+              <span class="photo-mock-cta-pill">${data.cta}</span>
             </div>
           </div>
         `;
 
-        floatingCard.classList.add('is-visible');
-        positionCard(e, item);
+        photoCard.classList.add('is-visible');
+        updateCardPosition(e, item);
       });
 
       item.addEventListener('mousemove', (e) => {
-        if (isMouseOverList) {
-          positionCard(e, item);
+        if (isHovering) {
+          updateCardPosition(e, item);
         }
       });
 
       item.addEventListener('mouseleave', () => {
-        isMouseOverList = false;
-        floatingCard.classList.remove('is-visible');
+        isHovering = false;
+        photoCard.classList.remove('is-visible');
       });
     });
 
-    function positionCard(e, itemEl) {
-      const workbenchRect = workbench.getBoundingClientRect();
+    function updateCardPosition(e, itemEl) {
+      const benchRect = workbench.getBoundingClientRect();
       const itemRect = itemEl.getBoundingClientRect();
 
-      // Determine top offset relative to workbench
-      const relativeTop = itemRect.top - workbenchRect.top;
-      
-      // Check horizontal positioning (if cursor is on left half, show on right, and vice versa)
-      const mouseX = e.clientX - workbenchRect.left;
-      const workbenchWidth = workbenchRect.width;
+      const relativeTop = itemRect.top - benchRect.top;
+      const mouseX = e.clientX - benchRect.left;
+      const benchWidth = benchRect.width;
 
-      if (mouseX < workbenchWidth / 2) {
-        // Place on right side
-        floatingCard.style.left = 'auto';
-        floatingCard.style.right = '20px';
+      // If mouse is on left half of workbench, place preview on right; otherwise place on left
+      if (mouseX < benchWidth / 2) {
+        photoCard.style.left = 'auto';
+        photoCard.style.right = '20px';
       } else {
-        // Place on left side
-        floatingCard.style.left = '20px';
-        floatingCard.style.right = 'auto';
+        photoCard.style.left = '20px';
+        photoCard.style.right = 'auto';
       }
 
-      floatingCard.style.top = `${relativeTop - 40}px`;
+      photoCard.style.top = `${Math.max(0, relativeTop - 60)}px`;
     }
   }
