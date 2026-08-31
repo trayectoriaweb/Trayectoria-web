@@ -269,8 +269,29 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px 22px;
-  background: #FFFFFF;
-  border-bottom: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  border-bottom: 1.5px solid #E2E8F0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.window-toolbar:hover {
+  background: #DCE8FF;
+  border-bottom-color: rgba(0, 51, 255, 0.35);
+}
+
+.window-toolbar:hover .window-title-tab {
+  color: var(--klein-blue);
+}
+
+.window-toolbar:hover .window-url-text {
+  color: var(--klein-blue);
+  font-weight: 700;
+}
+
+.manifesto-window.is-dragging .window-toolbar {
+  background: #C7DCFF !important;
+  border-bottom-color: var(--klein-blue) !important;
 }
 
 .window-dots {
