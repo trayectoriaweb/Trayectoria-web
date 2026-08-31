@@ -55,98 +55,96 @@
   <main>
 
     <!-- ==========================================================================
-         SECCIÓN 1 — HERO: VENTANA AZUL DE SOFTWARE INTERACTIVA
+         SECCIÓN 1 — HERO: LA VENTANA MANIFIESTO INTERACTIVA
          ========================================================================== -->
-    <section id="inicio" class="hero-software-section workbench-grid-section">
-      <div class="container hero-software-container">
+    <section id="inicio" class="hero-manifesto-section workbench-grid-section">
+      <div class="container">
         
-        <!-- Blue Software / Terminal Window -->
-        <div class="software-window" id="softwareWindow">
+        <div class="manifesto-window" id="manifestoWindow">
           
-          <!-- Window Topbar -->
-          <div class="software-window-topbar">
+          <!-- Top Window Toolbar (White bar like screenshot) -->
+          <div class="window-toolbar">
             <div class="window-dots">
-              <span class="w-dot w-dot-red"></span>
-              <span class="w-dot w-dot-yellow"></span>
-              <span class="w-dot w-dot-green"></span>
+              <div class="w-dot w-dot-red"></div>
+              <div class="w-dot w-dot-yellow"></div>
+              <div class="w-dot w-dot-green"></div>
             </div>
-            <div class="software-window-tab">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
-              <span>trayectoria_search.app</span>
+            <div class="window-title-tab">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+              <span>Trayectoria_Manifiesto_2026.app</span>
             </div>
-            <div class="software-window-status">
-              <span class="status-dot"></span>
-              <span>online</span>
+            <div class="window-actions-icons">
+              <span class="window-url-text">https://trayectoria.com.ar</span>
             </div>
           </div>
 
-          <!-- Window Body Stage -->
-          <div class="software-window-body" id="softwareWindowBody">
+          <!-- Blue Window Content Body -->
+          <div class="manifesto-body" id="manifestoBody">
             
-            <!-- STAGE 1: INITIAL QUESTION & INPUT -->
-            <div class="sw-stage sw-stage-input" id="swStageInput">
-              <h1 class="sw-question-title">
-                ¿Qué encuentra alguien cuando busca tu nombre?
-              </h1>
-              
-              <form class="sw-input-form" id="swSearchForm" autocomplete="off" onsubmit="return false;">
-                <div class="sw-input-row">
-                  <span class="sw-prompt-symbol">&gt;</span>
-                  <input 
-                    type="text" 
-                    class="sw-name-input" 
-                    id="swNameInput" 
-                    placeholder="Tu nombre" 
-                    autocomplete="off" 
-                    spellcheck="false"
-                    autofocus
-                  >
-                  <button type="submit" class="sw-submit-btn" id="swSubmitBtn" aria-label="Ejecutar búsqueda">
-                    <span class="sw-enter-hint">Enter ↵</span>
-                  </button>
+            <!-- STAGE 1: THE BIG QUESTION + INLINE INPUT -->
+            <div class="manifesto-stage" id="manifestoStage1">
+              <div class="manifesto-text">
+                ¿Qué encuentra alguien cuando busca a <input type="text" class="interactive-blank-input" id="manifestoNameInput" placeholder="tu nombre" autocomplete="off" spellcheck="false" autofocus> en Internet?
+              </div>
+
+              <div class="manifesto-footer-bar">
+                <div class="manifesto-pitch" id="manifestoPitch1">
+                  Tu trayectoria existe. Tu presencia digital suele estar atrapada entre publicaciones de Instagram, un chat de WhatsApp y un pin en Google Maps.
                 </div>
-              </form>
-            </div>
-
-            <!-- STAGE 2: RUNNING & OUTPUT -->
-            <div class="sw-stage sw-stage-running" id="swStageRunning" style="display: none;">
-              <div class="sw-executing-row">
-                <span class="sw-prompt-symbol">&gt;</span>
-                <span class="sw-running-text">ejecutando búsqueda<span class="sw-cursor-blink">_</span></span>
-              </div>
-
-              <div class="sw-output-results" id="swOutputResults">
-                <!-- Dynamically populated line by line -->
-              </div>
-            </div>
-
-            <!-- STAGE 3: CONCLUSION & CTA -->
-            <div class="sw-stage sw-stage-closing" id="swStageClosing" style="display: none;">
-              <div class="sw-summary-pill" id="swSummaryPill">
-                <span id="swSearchedName">Tu nombre</span> · 4 canales detectados
-              </div>
-
-              <h2 class="sw-closing-question">
-                ¿Y si todo esto estuviera en una sola web?
-              </h2>
-
-              <div class="sw-closing-actions">
-                <a href="onboarding.html" class="sw-btn-cta-white">
-                  <span>Crear mi Trayectoria →</span>
-                </a>
-                <button type="button" class="sw-btn-restart" id="swBtnRestart">
-                  <span>↻ Probar con otro nombre</span>
+                <button type="button" class="btn-manifesto-action" id="btnManifestoSearch">
+                  <span>→ Buscar mi presencia</span>
                 </button>
               </div>
             </div>
 
-          </div><!-- /software-window-body -->
+            <!-- STAGE 2: EXECUTING & RESULTS OUTPUT -->
+            <div class="manifesto-stage" id="manifestoStage2" style="display: none;">
+              <div class="manifesto-running-header">
+                <span class="m-prompt">&gt;</span> ejecutando búsqueda para <strong id="manifestoTargetName">tu nombre</strong><span class="m-blink">_</span>
+              </div>
 
-        </div><!-- /software-window -->
+              <div class="manifesto-results-list" id="manifestoResultsList">
+                <!-- Dynamically populated output lines -->
+              </div>
+
+              <div class="manifesto-footer-bar">
+                <div class="manifesto-pitch">
+                  Escaneando canales profesionales públicos...
+                </div>
+                <div class="manifesto-running-pill">
+                  <span>Analizando 4 fuentes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- STAGE 3: CONCLUSION & CTA -->
+            <div class="manifesto-stage" id="manifestoStage3" style="display: none;">
+              <div class="manifesto-text manifesto-closing-text">
+                ¿Y si todo esto estuviera en una sola web profesional propia?
+              </div>
+
+              <div class="manifesto-footer-bar">
+                <div class="manifesto-pitch">
+                  En <strong>Trayectoria</strong> reunimos toda tu presencia en un solo lugar estético, ordenado y directo a tu WhatsApp en 72 horas.
+                </div>
+                <div class="manifesto-actions-cluster">
+                  <a href="onboarding.html" class="btn-manifesto-action">
+                    <span>→ Crear mi Trayectoria</span>
+                  </a>
+                  <button type="button" class="btn-manifesto-restart" id="btnManifestoRestart">
+                    <span>↻ Probar con otro nombre</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /manifesto-body -->
+
+        </div><!-- /manifesto-window -->
 
       </div>
     </section>
-
+    
     <!-- ==========================================================================
          SECCIÓN 2 — TEST DE 5 SEGUNDOS (EXPERIENCIA & VELOCIDAD)
          ========================================================================== -->

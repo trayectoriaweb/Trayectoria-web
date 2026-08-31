@@ -34,20 +34,20 @@
     }, { passive: true });
   }
 
-    /* =========================================================================
-     2. SECCIÓN 1 — HERO: SOFTWARE WINDOW INTERACTION (CLAUDE CODE STYLE)
+      /* =========================================================================
+     2. SECCIÓN 1 — HERO: MANIFESTO WINDOW INTERACTION
      ========================================================================= */
   function initHeroScanner() {
-    const searchForm = document.getElementById('swSearchForm');
-    const nameInput = document.getElementById('swNameInput');
-    const stageInput = document.getElementById('swStageInput');
-    const stageRunning = document.getElementById('swStageRunning');
-    const stageClosing = document.getElementById('swStageClosing');
-    const outputResults = document.getElementById('swOutputResults');
-    const searchedNameDisplay = document.getElementById('swSearchedName');
-    const btnRestart = document.getElementById('swBtnRestart');
+    const nameInput = document.getElementById('manifestoNameInput');
+    const btnSearch = document.getElementById('btnManifestoSearch');
+    const stage1 = document.getElementById('manifestoStage1');
+    const stage2 = document.getElementById('manifestoStage2');
+    const stage3 = document.getElementById('manifestoStage3');
+    const targetNameDisplay = document.getElementById('manifestoTargetName');
+    const resultsList = document.getElementById('manifestoResultsList');
+    const btnRestart = document.getElementById('btnManifestoRestart');
 
-    if (!searchForm || !nameInput || !stageInput || !stageRunning || !stageClosing) return;
+    if (!nameInput || !stage1 || !stage2 || !stage3) return;
 
     const channels = [
       { name: 'Instagram', status: '✓' },
@@ -56,58 +56,54 @@
       { name: 'LinkedIn', status: '✓' }
     ];
 
-    function runSoftwareSearch() {
-      const rawName = nameInput.value.trim();
-      const enteredName = rawName || 'Tu nombre';
+    function executeManifestoSearch() {
+      const enteredName = nameInput.value.trim() || 'tu nombre';
 
-      // 1. Switch to Running Stage
-      stageInput.style.display = 'none';
-      stageRunning.style.display = 'block';
-      stageClosing.style.display = 'none';
-      if (outputResults) outputResults.innerHTML = '';
+      if (targetNameDisplay) targetNameDisplay.textContent = `"${enteredName}"`;
 
-      // 2. Output items step by step
-      let delay = 350;
+      // 1. Transition to Stage 2
+      stage1.style.display = 'none';
+      stage2.style.display = 'flex';
+      stage3.style.display = 'none';
+      if (resultsList) resultsList.innerHTML = '';
 
+      // 2. Cascade lines
+      let delay = 300;
       channels.forEach((ch, idx) => {
         setTimeout(() => {
-          if (!outputResults) return;
-          const line = document.createElement('div');
-          line.className = 'sw-output-line';
-          line.style.animationDelay = `${idx * 0.05}s`;
-          line.innerHTML = `
+          if (!resultsList) return;
+          const item = document.createElement('div');
+          item.className = 'manifesto-result-item';
+          item.style.animationDelay = `${idx * 0.05}s`;
+          item.innerHTML = `
             <span>${ch.name}</span>
-            <span class="sw-output-check">${ch.status}</span>
+            <span class="m-check">${ch.status}</span>
           `;
-          outputResults.appendChild(line);
+          resultsList.appendChild(item);
         }, delay);
         delay += 250;
       });
 
-      // 3. After last item, transition smoothly to Closing Question & CTA
+      // 3. Transition to Stage 3 (Closing question & CTA)
       setTimeout(() => {
-        stageRunning.style.display = 'none';
-        stageClosing.style.display = 'block';
-        if (searchedNameDisplay) searchedNameDisplay.textContent = enteredName;
+        stage2.style.display = 'none';
+        stage3.style.display = 'flex';
       }, delay + 450);
     }
 
-    searchForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      runSoftwareSearch();
-    });
+    btnSearch?.addEventListener('click', executeManifestoSearch);
 
     nameInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        runSoftwareSearch();
+        executeManifestoSearch();
       }
     });
 
     btnRestart?.addEventListener('click', () => {
-      stageClosing.style.display = 'none';
-      stageRunning.style.display = 'none';
-      stageInput.style.display = 'block';
+      stage3.style.display = 'none';
+      stage2.style.display = 'none';
+      stage1.style.display = 'flex';
       nameInput.value = '';
       nameInput.focus();
     });
