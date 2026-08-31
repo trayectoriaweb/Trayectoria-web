@@ -8,6 +8,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     initTemplatesFilters();
     initDraggableAndWindowActions();
+    initDossierPricing();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -1100,4 +1101,102 @@
     }, { threshold: 0.12 });
 
     revealTargets.forEach(el => observer.observe(el));
+  }
+
+
+  /* =========================================================================
+     INVERSIÓN TRANSPARENTE — DOSSIER EDITORIAL INTERACTIVO
+     ========================================================================= */
+  function initDossierPricing() {
+    const tabButtons = document.querySelectorAll('.dossier-tab-btn');
+    const tierTag = document.getElementById('dossierTierTag');
+    const planName = document.getElementById('dossierPlanName');
+    const amount = document.getElementById('dossierAmount');
+    const timingText = document.getElementById('dossierTimingText');
+    const pitch = document.getElementById('dossierPitch');
+    const specsGrid = document.getElementById('dossierSpecsGrid');
+    const ctaBtn = document.getElementById('dossierCtaBtn');
+
+    if (!tabButtons.length || !planName || !specsGrid) return;
+
+    const dossierData = {
+      'express': {
+        tierTag: 'NIVEL 01 · PRESENCIA BÁSICA',
+        name: 'Perfil Express',
+        amount: '65',
+        timing: 'Entrega garantizada en 72hs',
+        pitch: 'Para existir oficialmente en Google con tu nombre propio y canalizar todas las búsquedas directamente hacia tu WhatsApp.',
+        ctaUrl: 'https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Perfil%20Express',
+        specs: [
+          { num: '01', title: 'Estructura One-Page', desc: 'Diseño limpio, rápido y de alto impacto visual adaptado a tu rubro.' },
+          { num: '02', title: 'WhatsApp Directo', desc: 'Botón flotante directo con mensaje precargado para agilizar turnos y consultas.' },
+          { num: '03', title: 'Ubicación GPS', desc: 'Integración oficial con Google Maps de tu consultorio, estudio o atención remota.' },
+          { num: '04', title: 'Dominio Oficial', desc: 'Configuración oficial de tu dominio .com.ar y certificado de seguridad SSL.' }
+        ]
+      },
+      'pro': {
+        tierTag: 'NIVEL 02 · CONVERSIÓN & ESPECIALIDADES',
+        name: 'Consultorio Pro',
+        amount: '95',
+        timing: 'Entrega garantizada en 72 a 96hs',
+        pitch: 'Diseñado para profesionales independientes que necesitan educar al paciente, mostrar especialidades clínicas y recibir consultas filtradas con contexto previo en WhatsApp.',
+        ctaUrl: 'https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Consultorio%20Pro',
+        specs: [
+          { num: '01', title: 'Especialidades Claras', desc: 'Bloque detallado de servicios, tratamientos o áreas de práctica profesional.' },
+          { num: '02', title: 'Preguntas Frecuentes FAQ', desc: 'Módulo interactivo que responde dudas previas sobre honorarios y turnos.' },
+          { num: '03', title: 'SEO Local en Google', desc: 'Optimización de palabras clave para aparecer cuando buscan tu profesión en tu ciudad.' },
+          { num: '04', title: 'Paleta & Identidad a Medida', desc: 'Tipografía curada y diseño visual adaptado al tono exacto de tu trayectoria.' }
+        ]
+      },
+      'autoridad': {
+        tierTag: 'NIVEL 03 · PRESENCIA COMPLETA',
+        name: 'Autoridad Total',
+        amount: '140',
+        timing: 'Entrega garantizada en 5 días',
+        pitch: 'Para clínicas, estudios de arquitectura, abogados corporativos o profesionales de referencia que necesitan exhibir casos de éxito y credenciales.',
+        ctaUrl: 'https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20el%20plan%20Autoridad%20Total',
+        specs: [
+          { num: '01', title: 'Galería de Casos / Obras', desc: 'Showcase visual de proyectos, antes/después o casos clínicos de éxito.' },
+          { num: '02', title: 'Estructura Multi-sección', desc: 'Páginas dedicadas para equipo profesional, trayectoria y publicaciones.' },
+          { num: '03', title: 'Redacción Persuasiva', desc: 'Curaduría y redacción completa de textos para transmitir máxima autoridad.' },
+          { num: '04', title: 'Soporte VIP Post-lanzamiento', desc: 'Atención prioritaria y ajustes personalizados tras la publicación oficial.' }
+        ]
+      }
+    };
+
+    function renderDossier(planKey) {
+      const data = dossierData[planKey];
+      if (!data) return;
+
+      tabButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.plan === planKey);
+      });
+
+      tierTag.textContent = data.tierTag;
+      planName.textContent = data.name;
+      amount.textContent = data.amount;
+      timingText.textContent = data.timing;
+      pitch.textContent = data.pitch;
+      ctaBtn.href = data.ctaUrl;
+
+      specsGrid.innerHTML = data.specs.map(s => `
+        <div class="spec-block">
+          <div class="spec-block-title">
+            <span class="spec-block-num">${s.num}</span>
+            <strong>${s.title}</strong>
+          </div>
+          <p class="spec-block-desc">${s.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const plan = btn.dataset.plan;
+        if (plan) renderDossier(plan);
+      });
+    });
+
+    // Initial render Pro
+    renderDossier('pro');
   }
