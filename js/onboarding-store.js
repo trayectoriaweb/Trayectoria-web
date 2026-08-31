@@ -24,6 +24,38 @@
       updatedAt: new Date().toISOString(),
       submittedAt: null,
 
+      
+      // Datos exclusivos para Web de Negocios & Locales (custom_business)
+      businessInfo: {
+        nombreNegocio: '',
+        rubro: '',             // Gimnasio, Kiosco, Gastronomía, Estética, etc.
+        slogan: '',
+        nombreResponsable: '',
+        email: '',
+        whatsapp: '',
+        ciudad: '',
+        tieneLogo: 'no',
+        descripcionNegocio: '',
+        serviciosProductos: [], // [ { id: '1', nombre: 'Pase Libre', precio: '$25.000', descripcion: '...' } ]
+        promociones: '',
+        catalogoUrl: '',
+        tieneLocalFisico: 'yes',
+        direccion: '',
+        googleMapsUrl: '',
+        horarios: {
+          lunesViernes: '',
+          sabados: '',
+          domingosFeriados: ''
+        },
+        canalPrincipal: 'whatsapp',
+        mensajeWhatsapp: '',
+        instagram: '',
+        otrasRedes: '',
+        colorPrincipal: { name: 'Azul Klein', hex: '#0033FF' },
+        ganchoComercial: '',
+        loQueNoQuiere: ''
+      },
+
       // Paso 1: Sobre vos
       personalInfo: {
         nombre: '',
@@ -100,166 +132,7 @@
   /**
    * Demo Seed Clients (Juan Pérez - Arquitecto partially completed)
    */
-  const SEED_CLIENTS = {
-    'TRAY-00001': {
-      clientId: 'TRAY-00001',
-      status: 'in_progress',
-      currentStep: 3,
-      createdAt: '2026-08-28T14:30:00.000Z',
-      updatedAt: new Date().toISOString(),
-      submittedAt: null,
-      personalInfo: {
-        nombre: 'Juan',
-        apellido: 'Pérez',
-        nombreProfesional: 'Arq. Juan Pérez',
-        profesion: 'Arquitecto',
-        especialidadPrincipal: 'Arquitectura Residencial & Reformas',
-        ciudad: 'Buenos Aires',
-        email: 'juan.perez.arq@gmail.com',
-        whatsapp: '+54 9 11 5544-3322',
-        nombreEnSitio: 'Arq. Juan Pérez',
-        fotoStatus: 'later',
-        fotoPreviewUrl: ''
-      },
-      history: {
-        presentacionCorta: 'Soy arquitecto especializado en proyectos residenciales contemporáneos y reformas integrales en CABA y Zona Norte. Diseño espacios funcionales con foco en iluminación natural.',
-        experiencias: [
-          {
-            id: 'exp-1',
-            lugar: 'Estudio Pérez & Asociados',
-            rol: 'Director de Proyectos',
-            anio: '2020 - Actualidad',
-            descripcion: 'Dirección de obra y proyecto para más de 15 viviendas unifamiliares.'
-          }
-        ],
-        formacion: [
-          {
-            id: 'for-1',
-            institucion: 'FADU — Universidad de Buenos Aires',
-            carrera: 'Arquitectura',
-            anio: '2018'
-          }
-        ]
-      },
-      offer: {
-        servicios: [
-          {
-            id: 'srv-1',
-            nombre: 'Proyecto y Dirección de Obra',
-            descripcion: 'Acompañamiento desde la primera idea hasta la entrega de llave en mano.'
-          },
-          {
-            id: 'srv-2',
-            nombre: 'Reformas Integrales de Departamentos',
-            descripcion: 'Optimización de plantas, interiorismo y modernización de cocinas y baños.'
-          }
-        ],
-        especialidades: ['Viviendas Unifamiliares', 'Reformas en PH', 'Interiorismo'],
-        hasProjects: true,
-        proyectos: [
-          {
-            id: 'pro-1',
-            nombre: 'Casa Bosque — Cariló',
-            descripcion: 'Vivienda unifamiliar sustentable de 220 m² en hormigón y madera.',
-            anio: '2024',
-            url: '',
-            imagenes: []
-          }
-        ]
-      },
-      contact: {
-        email: 'juan.perez.arq@gmail.com',
-        whatsapp: '+54 9 11 5544-3322',
-        instagram: '@juanperez.arquitectura',
-        linkedin: 'linkedin.com/in/juanperez-arq',
-        sitioWebActual: '',
-        behance: '',
-        otrasRedes: '',
-        canalPrincipal: 'whatsapp',
-        mostrarUbicacion: true,
-        ubicacion: {
-          ciudad: 'Palermo Soho, CABA',
-          provincia: 'Buenos Aires',
-          pais: 'Argentina',
-          direccion: 'Nicaragua 4900',
-          googleMapsUrl: 'https://maps.google.com'
-        }
-      },
-      style: {
-        tieneLogo: 'no',
-        logoPreviewUrl: '',
-        coloresPreferidos: 'Blanco puro, gris concreto (#F1F5F9) y azul eléctrico de acento',
-        sitiosReferencia: [
-          {
-            url: 'https://thewellnessclub.com.ar/',
-            queTeGusta: 'Me gusta mucho la tipografía grande y el estilo limpio sin saturación'
-          }
-        ],
-        sensaciones: ['Profesional', 'Minimalista', 'Moderno', 'Elegante'],
-        loQueNoQuiere: 'No quiero colores oscuros de fondo ni carruseles que giren solos demasiado rápido.',
-        fotosAdicionales: []
-      }
-    },
-    'TRAY-00002': {
-      clientId: 'TRAY-00002',
-      status: 'not_started',
-      currentStep: 1,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      submittedAt: null,
-      personalInfo: {
-        nombre: 'Valentina',
-        apellido: 'Moreno',
-        nombreProfesional: 'Dra. Valentina Moreno',
-        profesion: 'Psicóloga Clínica',
-        especialidadPrincipal: 'Terapia Cognitivo Conductual (TCC)',
-        ciudad: 'CABA',
-        email: 'dra.valentinamoreno@gmail.com',
-        whatsapp: '+54 9 11 3322-1100',
-        nombreEnSitio: 'Dra. Valentina Moreno',
-        fotoStatus: 'none',
-        fotoPreviewUrl: ''
-      },
-      history: {
-        presentacionCorta: '',
-        experiencias: [],
-        formacion: []
-      },
-      offer: {
-        servicios: [],
-        especialidades: [],
-        hasProjects: false,
-        proyectos: []
-      },
-      contact: {
-        email: 'dra.valentinamoreno@gmail.com',
-        whatsapp: '+54 9 11 3322-1100',
-        instagram: '',
-        linkedin: '',
-        sitioWebActual: '',
-        behance: '',
-        otrasRedes: '',
-        canalPrincipal: 'whatsapp',
-        mostrarUbicacion: false,
-        ubicacion: {
-          ciudad: '',
-          provincia: '',
-          pais: 'Argentina',
-          direccion: '',
-          googleMapsUrl: ''
-        }
-      },
-      style: {
-        tieneLogo: 'no',
-        logoPreviewUrl: '',
-        coloresPreferidos: '',
-        sitiosReferencia: [],
-        sensaciones: [],
-        loQueNoQuiere: '',
-        fotosAdicionales: []
-      }
-    }
-  };
+  const SEED_CLIENTS = {};
 
   /**
    * ONBOARDING STORE INTERFACE (Local/Mock -> Supabase Ready)

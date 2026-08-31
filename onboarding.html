@@ -88,9 +88,9 @@
             </div>
             <div>
               <div class="service-card-pricing">
-                <span class="pricing-label">Inversión Express</span>
-                <span class="pricing-amount">Desde $45 USD</span>
-                <span class="pricing-delivery">⚡ Entrega en 24-48 hs</span>
+                <span class="pricing-label">Modalidad</span>
+                <span class="pricing-amount">Plantilla Pre-diseñada</span>
+                <span class="pricing-delivery">⚡ Entrega Express 24-48 hs</span>
               </div>
               <button type="button" class="btn-select-service btn-budget" id="btnStartTemplate">
                 Ver Catálogo de Plantillas →
@@ -112,8 +112,8 @@
             </div>
             <div>
               <div class="service-card-pricing">
-                <span class="pricing-label">Plan Profesional Completo</span>
-                <span class="pricing-amount">$95 USD</span>
+                <span class="pricing-label">Modalidad</span>
+                <span class="pricing-amount">Diseño Personalizado</span>
                 <span class="pricing-delivery">⚡ Entrega en 72 hs</span>
               </div>
               <button type="button" class="btn-select-service btn-featured" id="btnStartProfessional">
@@ -136,8 +136,8 @@
             </div>
             <div>
               <div class="service-card-pricing">
-                <span class="pricing-label">Plan Negocio & Comercio</span>
-                <span class="pricing-amount">$120 USD</span>
+                <span class="pricing-label">Modalidad</span>
+                <span class="pricing-amount">Comercio & Local Físico</span>
                 <span class="pricing-delivery">⚡ Entrega en 72 hs</span>
               </div>
               <button type="button" class="btn-select-service btn-business" id="btnStartBusiness">
@@ -276,8 +276,13 @@
          PASO 1: SOBRE VOS
          ──────────────────────────────────────────────────────────────────────── -->
     <section class="onboarding-step-pane" id="stepPane_1">
+      <div style="margin-bottom: 16px;">
+        <button type="button" class="btn-onboarding-back" id="btnChangeService_Prof" style="font-size: 0.82rem; padding: 6px 14px;">
+          ← Elegir otro tipo de servicio
+        </button>
+      </div>
       <div class="step-heading-group">
-        <span class="step-eyebrow">Paso 1 de 5</span>
+        <span class="step-eyebrow">Paso 1 de 5 · Web Profesional</span>
         <h2 class="step-main-title">Empecemos por lo básico.</h2>
         <p class="step-subtitle">Tu identidad profesional para configurar la cabecera y estructura de tu web.</p>
       </div>
@@ -723,7 +728,7 @@
           </label>
 
           <span id="selectedColorsCountBadge" style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); background: var(--bg-surface); padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border-light);">
-            0 colores seleccionados
+            1 color seleccionado
           </span>
         </div>
 
@@ -765,6 +770,323 @@
           ← Volver
         </button>
         <button type="button" class="btn-onboarding-next" id="btnStep5_Next">
+          Revisar y Enviar →
+        </button>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────────────────
+         FLUJO EXCLUSIVO PARA NEGOCIOS & COMERCIOS (custom_business)
+         ──────────────────────────────────────────────────────────────────────── -->
+
+    <!-- PASO 1 BIZ: IDENTIDAD DEL NEGOCIO -->
+    <section class="onboarding-step-pane" id="stepBiz_1">
+      <div style="margin-bottom: 16px;">
+        <button type="button" class="btn-onboarding-back" id="btnChangeService_Biz" style="font-size: 0.82rem; padding: 6px 14px;">
+          ← Elegir otro tipo de servicio
+        </button>
+      </div>
+      <div class="step-heading-group">
+        <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 1 de 5 · Web Negocio</span>
+        <h2 class="step-main-title">Identidad de tu Negocio</h2>
+        <p class="step-subtitle">Contanos el nombre de tu comercio o local, a qué se dedica y quién es la persona de contacto.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Datos del Comercio</h3>
+        <p class="form-card-hint">Información visible para tus clientes y Google Maps.</p>
+
+        <div class="field-grid-2" style="margin-bottom: 16px;">
+          <div class="form-field">
+            <label class="form-label">Nombre del Negocio o Marca <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="biz_nombre" placeholder="Ej: Gimnasio Iron Fit / Café Verona / Kiosco Central">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Rubro o Actividad Principal <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="biz_rubro" placeholder="Ej: Fitness & Salud, Bar & Café, Peluquería">
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label class="form-label">Slogan o propuesta de valor <span class="form-label-optional">(opcional)</span></label>
+          <input type="text" class="form-input" id="biz_slogan" placeholder="Ej: Tu mejor versión empieza hoy / El mejor café de especialidad">
+        </div>
+
+        <div class="field-grid-3" style="margin-bottom: 16px;">
+          <div class="form-field">
+            <label class="form-label">Titular o Responsable <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="biz_responsable" placeholder="Ej: Carlos Rossi">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Ciudad / Zona <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="biz_ciudad" placeholder="Ej: Rosario, Santa Fe">
+          </div>
+          <div class="form-field">
+            <label class="form-label">WhatsApp Comercial <span class="form-label-required">*</span></label>
+            <input type="text" class="form-input" id="biz_whatsapp" placeholder="Ej: +54 9 341 555-1234">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Email de Consultas <span class="form-label-optional">(opcional)</span></label>
+          <input type="email" class="form-input" id="biz_email" placeholder="Ej: contacto@ironfit.com.ar">
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Tenés logo para tu negocio?</h3>
+        <p class="form-card-hint">Seleccioná tu situación actual:</p>
+
+        <div class="segmented-card-group">
+          <div class="segmented-card selected" data-group="biz_tieneLogo" data-value="no">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">No tengo / Necesito uno simple</span>
+              <span class="segmented-card-desc">Diseñamos un isotipo tipográfico moderno incluido en el servicio.</span>
+            </div>
+          </div>
+          <div class="segmented-card" data-group="biz_tieneLogo" data-value="yes">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">Sí, ya tengo logo</span>
+              <span class="segmented-card-desc">Lo adaptamos y colocamos en alta resolución en tu web.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnBiz1_Back">
+          ← Cambiar Tipo de Web
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnBiz1_Next">
+          Continuar al Paso 2 →
+        </button>
+      </div>
+    </section>
+
+    <!-- PASO 2 BIZ: OFERTA & SERVICIOS -->
+    <section class="onboarding-step-pane" id="stepBiz_2">
+      <div class="step-heading-group">
+        <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 2 de 5 · Web Negocio</span>
+        <h2 class="step-main-title">Tus Productos & Servicios</h2>
+        <p class="step-subtitle">Mostrale a tus clientes qué ofrecés, planes, cuotas o productos destacados.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Presentación de tu negocio</h3>
+        <p class="form-card-hint">Breve descripción de lo que hace especial a tu comercio:</p>
+
+        <div class="form-field">
+          <textarea class="form-textarea" id="biz_presentacion" placeholder="Ej: Somos un gimnasio enfocado en entrenamiento funcional con equipamiento de primer nivel y profesores personalizados..." style="min-height: 90px;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Productos, Servicios o Planes Destacados</h3>
+        <p class="form-card-hint">Agregá los que quieras mostrar en la web (con o sin precio):</p>
+
+        <div class="dynamic-items-container" id="bizServicesContainer"></div>
+
+        <button type="button" class="btn-add-item" id="btnBizAddService">
+          + Agregar Producto o Servicio
+        </button>
+
+        <div class="field-grid-2" style="margin-top: 18px;">
+          <div class="form-field">
+            <label class="form-label">Promociones o Descuentos Vigentes <span class="form-label-optional">(opcional)</span></label>
+            <input type="text" class="form-input" id="biz_promociones" placeholder="Ej: 10% OFF en efectivo / 2x1 primer mes">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Link a Catálogo / Menú en PDF <span class="form-label-optional">(opcional)</span></label>
+            <input type="text" class="form-input" id="biz_catalogoUrl" placeholder="Ej: Drive, Instagram o PDF online">
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnBiz2_Back">
+          ← Volver al Paso 1
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnBiz2_Next">
+          Continuar al Paso 3 →
+        </button>
+      </div>
+    </section>
+
+    <!-- PASO 3 BIZ: LOCAL & HORARIOS -->
+    <section class="onboarding-step-pane" id="stepBiz_3">
+      <div class="step-heading-group">
+        <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 3 de 5 · Web Negocio</span>
+        <h2 class="step-main-title">Local Físico & Horarios</h2>
+        <p class="step-subtitle">Facilitá que tus clientes te ubiquen en el mapa y sepan cuándo visitarte.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">¿Tenés local comercial a la calle?</h3>
+        <p class="form-card-hint">Seleccioná cómo atendés al público:</p>
+
+        <div class="segmented-card-group">
+          <div class="segmented-card selected" data-group="biz_mostrarLocal" data-value="yes">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">Sí, tengo local físico</span>
+              <span class="segmented-card-desc">Mostraremos dirección, mapa interactivo y horarios de atención.</span>
+            </div>
+          </div>
+          <div class="segmented-card" data-group="biz_mostrarLocal" data-value="no">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">No, es 100% online / a domicilio</span>
+              <span class="segmented-card-desc">Nos enfocamos en envíos y consultas por WhatsApp o web.</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="bizLocationDetailContainer" style="margin-top: 18px;">
+          <div class="field-grid-2" style="margin-bottom: 16px;">
+            <div class="form-field">
+              <label class="form-label">Dirección exacta del local</label>
+              <input type="text" class="form-input" id="biz_direccion" placeholder="Ej: Av. Corrientes 1540, CABA">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Link de Google Maps <span class="form-label-optional">(opcional)</span></label>
+              <input type="text" class="form-input" id="biz_maps" placeholder="Ej: https://maps.app.goo.gl/...">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Horarios semanales de atención</label>
+            <div class="field-grid-3">
+              <input type="text" class="form-input" id="biz_horarios_lv" placeholder="Lunes a Viernes: 08 a 20 hs">
+              <input type="text" class="form-input" id="biz_horarios_sab" placeholder="Sábados: 09 a 14 hs">
+              <input type="text" class="form-input" id="biz_horarios_dom" placeholder="Domingos: Cerrado">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnBiz3_Back">
+          ← Volver al Paso 2
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnBiz3_Next">
+          Continuar al Paso 4 →
+        </button>
+      </div>
+    </section>
+
+    <!-- PASO 4 BIZ: CANALES & PEDIDOS -->
+    <section class="onboarding-step-pane" id="stepBiz_4">
+      <div class="step-heading-group">
+        <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 4 de 5 · Web Negocio</span>
+        <h2 class="step-main-title">Canales de Venta & Contacto</h2>
+        <p class="step-subtitle">Configurá a dónde deben escribirte tus clientes para pedir o reservar.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Canal Principal de Pedidos</h3>
+        <p class="form-card-hint">El botón más destacado de tu página web:</p>
+
+        <div class="segmented-card-group">
+          <div class="segmented-card selected" data-group="biz_canalPrincipal" data-value="whatsapp">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">WhatsApp Directo</span>
+              <span class="segmented-card-desc">Botón flotante directo al chat con mensaje listo.</span>
+            </div>
+          </div>
+          <div class="segmented-card" data-group="biz_canalPrincipal" data-value="llamada">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">Llamada Telefónica</span>
+              <span class="segmented-card-desc">Ideal para delivery o reservas telefónicas.</span>
+            </div>
+          </div>
+          <div class="segmented-card" data-group="biz_canalPrincipal" data-value="instagram">
+            <div class="segmented-card-radio"></div>
+            <div class="segmented-card-content">
+              <span class="segmented-card-title">Instagram DM</span>
+              <span class="segmented-card-desc">Consultas y venta directa por redes sociales.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-top: 18px; margin-bottom: 16px;">
+          <label class="form-label">Mensaje predeterminado para WhatsApp <span class="form-label-optional">(opcional)</span></label>
+          <input type="text" class="form-input" id="biz_mensajeWhatsapp" placeholder="Ej: Hola! Vi la web y quiero consultar por disponibilidad y planes...">
+        </div>
+
+        <div class="field-grid-2">
+          <div class="form-field">
+            <label class="form-label">Instagram del Negocio <span class="form-label-optional">(opcional)</span></label>
+            <input type="text" class="form-input" id="biz_instagram" placeholder="Ej: @ironfit.gym">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Otras Redes o Plataformas <span class="form-label-optional">(opcional)</span></label>
+            <input type="text" class="form-input" id="biz_otrasRedes" placeholder="Ej: Facebook, TikTok, PedidosYa...">
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnBiz4_Back">
+          ← Volver al Paso 3
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnBiz4_Next">
+          Continuar al Paso 5 →
+        </button>
+      </div>
+    </section>
+
+    <!-- PASO 5 BIZ: COLOR & GANCHO -->
+    <section class="onboarding-step-pane" id="stepBiz_5">
+      <div class="step-heading-group">
+        <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 5 de 5 · Web Negocio</span>
+        <h2 class="step-main-title">Color de Marca & Gancho</h2>
+        <p class="step-subtitle">Elegí el color que represente a tu negocio y el mensaje de cierre para atraer clientes.</p>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Color principal de tu sitio web</h3>
+        <p class="form-card-hint">Elegí 1 color de la paleta o tu código personalizado:</p>
+
+        <div class="color-picker-grid" id="bizColorPickerGrid"></div>
+
+        <div style="margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+          <label class="custom-color-card" id="btnBizCustomColor">
+            <input type="color" id="biz_customColorInput" value="#0033FF">
+            <span class="color-option-box" id="bizCustomColorPreviewBox" style="background: #0033FF;">
+              <span class="color-option-check" style="display: block; font-size: 10px;">🎨</span>
+            </span>
+            <div class="color-option-info">
+              <span class="color-option-name" style="color: var(--klein-blue);">Elegir color personalizado</span>
+              <span class="color-option-hex" id="bizCustomColorHexLabel">Abrir paleta cromática</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3 class="form-card-title">Gancho Comercial & Preferencias</h3>
+        <p class="form-card-hint">Mensaje final para motivar a tus clientes:</p>
+
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label class="form-label">Gancho o llamado a la acción <span class="form-label-optional">(opcional)</span></label>
+          <input type="text" class="form-input" id="biz_gancho" placeholder="Ej: ¡Vení hoy mismo y disfrutá de tu primera clase de prueba gratis!">
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">¿Hay algo que NO quieras en tu web? <span class="form-label-optional">(opcional)</span></label>
+          <input type="text" class="form-input" id="biz_loQueNoQuiere" placeholder="Ej: No me gustan los diseños oscuros, prefiero fondos blancos y fotos reales...">
+        </div>
+      </div>
+
+      <div class="onboarding-nav-bar">
+        <button type="button" class="btn-onboarding-back" id="btnBiz5_Back">
+          ← Volver al Paso 4
+        </button>
+        <button type="button" class="btn-onboarding-next" id="btnBiz5_Next">
           Revisar y Enviar →
         </button>
       </div>
