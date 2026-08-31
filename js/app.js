@@ -34,76 +34,82 @@
     }, { passive: true });
   }
 
-  /* =========================================================================
-     2. SECCIÓN 1 — HERO INTERACTIVE SCANNER (WITH SMOOTH SCAN PULSE)
+    /* =========================================================================
+     2. SECCIÓN 1 — HERO: SOFTWARE WINDOW INTERACTION (CLAUDE CODE STYLE)
      ========================================================================= */
   function initHeroScanner() {
-    const searchInput = document.getElementById('heroSearchInput');
-    const submitBtn = document.getElementById('heroSearchSubmitBtn');
-    const resultPanel = document.getElementById('scannerResultPanel');
-    const scanLine = document.getElementById('scannerScanLine');
-    const resName = document.getElementById('resTargetName');
-    const resRole = document.getElementById('resTargetRole');
-    const chips = document.querySelectorAll('.scanner-chip');
+    const searchForm = document.getElementById('swSearchForm');
+    const nameInput = document.getElementById('swNameInput');
+    const stageInput = document.getElementById('swStageInput');
+    const stageRunning = document.getElementById('swStageRunning');
+    const stageClosing = document.getElementById('swStageClosing');
+    const outputResults = document.getElementById('swOutputResults');
+    const searchedNameDisplay = document.getElementById('swSearchedName');
+    const btnRestart = document.getElementById('swBtnRestart');
 
-    if (!searchInput || !resultPanel) return;
+    if (!searchForm || !nameInput || !stageInput || !stageRunning || !stageClosing) return;
 
-    // Typewriter placeholder animation
-    const placeholders = [
-      'Dra. Valentina Moreno (Psicóloga)...',
-      'Dr. Marcelo Varela (Médico Traumatólogo)...',
-      'Estudio Benítez & Asoc. (Abogados)...',
-      'Arq. Camila Zaldívar (Arquitecta)...',
-      'Escribí tu nombre o profesión...'
+    const channels = [
+      { name: 'Instagram', status: '✓' },
+      { name: 'WhatsApp', status: '✓' },
+      { name: 'Google Maps', status: '✓' },
+      { name: 'LinkedIn', status: '✓' }
     ];
-    let phIndex = 0;
-    let phTimer = setInterval(() => {
-      if (document.activeElement !== searchInput && !searchInput.value) {
-        phIndex = (phIndex + 1) % placeholders.length;
-        searchInput.setAttribute('placeholder', placeholders[phIndex]);
-      }
-    }, 3200);
 
-    function runDiagnosis(queryName, queryRole) {
-      const name = (queryName || searchInput.value.trim()) || 'Tu Nombre Profesional';
-      const role = queryRole || 'Especialista Independiente';
+    function runSoftwareSearch() {
+      const rawName = nameInput.value.trim();
+      const enteredName = rawName || 'Tu nombre';
 
-      if (resName) resName.textContent = name;
-      if (resRole) resRole.textContent = role;
+      // 1. Switch to Running Stage
+      stageInput.style.display = 'none';
+      stageRunning.style.display = 'block';
+      stageClosing.style.display = 'none';
+      if (outputResults) outputResults.innerHTML = '';
 
-      resultPanel.classList.add('visible');
+      // 2. Output items step by step
+      let delay = 350;
 
-      // Scanner laser pulse animation
-      if (scanLine) {
-        scanLine.classList.remove('scanning');
-        void scanLine.offsetWidth; // force reflow
-        scanLine.classList.add('scanning');
-      }
+      channels.forEach((ch, idx) => {
+        setTimeout(() => {
+          if (!outputResults) return;
+          const line = document.createElement('div');
+          line.className = 'sw-output-line';
+          line.style.animationDelay = `${idx * 0.05}s`;
+          line.innerHTML = `
+            <span>${ch.name}</span>
+            <span class="sw-output-check">${ch.status}</span>
+          `;
+          outputResults.appendChild(line);
+        }, delay);
+        delay += 250;
+      });
 
-      // Smooth scroll if mobile
-      if (window.innerWidth < 768) {
-        resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      // 3. After last item, transition smoothly to Closing Question & CTA
+      setTimeout(() => {
+        stageRunning.style.display = 'none';
+        stageClosing.style.display = 'block';
+        if (searchedNameDisplay) searchedNameDisplay.textContent = enteredName;
+      }, delay + 450);
     }
 
-    submitBtn?.addEventListener('click', () => runDiagnosis());
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      runSoftwareSearch();
+    });
 
-    searchInput.addEventListener('keydown', (e) => {
+    nameInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        runDiagnosis();
+        runSoftwareSearch();
       }
     });
 
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const name = chip.dataset.name;
-        const role = chip.dataset.role;
-        searchInput.value = name;
-        runDiagnosis(name, role);
-      });
+    btnRestart?.addEventListener('click', () => {
+      stageClosing.style.display = 'none';
+      stageRunning.style.display = 'none';
+      stageInput.style.display = 'block';
+      nameInput.value = '';
+      nameInput.focus();
     });
   }
 
