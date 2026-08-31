@@ -397,20 +397,20 @@ body {
 .manifesto-results-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  margin-bottom: 32px;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  margin-bottom: 20px;
 }
 
 .manifesto-result-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 18px;
-  background: rgba(0, 0, 0, 0.15);
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
+  border-radius: 8px;
   opacity: 0;
   transform: translateY(6px);
   animation: lineAppear 0.25s ease forwards;
@@ -431,13 +431,38 @@ body {
   border-radius: 4px;
 }
 
-.manifesto-running-pill {
+/* Conclusion Block directly in the same view */
+.manifesto-conclusion-block {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  padding-top: 16px;
+  border-top: 1.5px dashed rgba(255, 255, 255, 0.22);
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.manifesto-conclusion-block.visible {
+  display: block;
+}
+
+.manifesto-log-line {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   color: #BFDBFE;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+}
+
+.m-log-highlight {
+  color: #FDE047;
+  font-weight: 700;
+}
+
+.manifesto-punchline-question {
+  font-size: clamp(1.45rem, 3.4vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #FFFFFF;
 }
 
 /* Footer Bar in Blue Body */

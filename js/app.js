@@ -41,12 +41,13 @@
     const btnSearch = document.getElementById('btnManifestoSearch');
     const stage1 = document.getElementById('manifestoStage1');
     const stage2 = document.getElementById('manifestoStage2');
-    const stage3 = document.getElementById('manifestoStage3');
     const targetNameDisplay = document.getElementById('manifestoTargetName');
     const resultsList = document.getElementById('manifestoResultsList');
+    const conclusionBlock = document.getElementById('manifestoConclusionBlock');
+    const actionsCluster = document.getElementById('manifestoActionsCluster');
     const btnRestart = document.getElementById('btnManifestoRestart');
 
-    if (!nameInput || !stage1 || !stage2 || !stage3) return;
+    if (!nameInput || !stage1 || !stage2) return;
 
     const channels = [
       { name: 'Instagram', status: '✓' },
@@ -60,13 +61,16 @@
 
       if (targetNameDisplay) targetNameDisplay.textContent = `"${enteredName}"`;
 
+      // 1. Show Stage 2 (Results + Punchline in one view)
       stage1.style.display = 'none';
       stage2.style.display = 'flex';
-      stage3.style.display = 'none';
       if (resultsList) resultsList.innerHTML = '';
+      if (conclusionBlock) conclusionBlock.classList.remove('visible');
+      if (actionsCluster) actionsCluster.style.opacity = '0';
 
-      let delay = 750;
-      channels.forEach((ch, idx) => {
+      // 2. Output items line by line
+      let delay = 600;
+      channels.forEach((ch) => {
         setTimeout(() => {
           if (!resultsList) return;
           const item = document.createElement('div');
@@ -77,14 +81,14 @@
           `;
           resultsList.appendChild(item);
         }, delay);
-        delay += 650;
+        delay += 550;
       });
 
-      // Pause to let the user digest all 4 channels before the closing revelation
+      // 3. Show punchline and conclusion directly below in the same view
       setTimeout(() => {
-        stage2.style.display = 'none';
-        stage3.style.display = 'flex';
-      }, delay + 1400);
+        if (conclusionBlock) conclusionBlock.classList.add('visible');
+        if (actionsCluster) actionsCluster.style.opacity = '1';
+      }, delay + 600);
     }
 
     btnSearch?.addEventListener('click', executeManifestoSearch);
@@ -97,7 +101,6 @@
     });
 
     btnRestart?.addEventListener('click', () => {
-      stage3.style.display = 'none';
       stage2.style.display = 'none';
       stage1.style.display = 'flex';
       nameInput.value = '';
