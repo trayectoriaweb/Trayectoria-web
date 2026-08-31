@@ -3,396 +3,1265 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trayectoria — Webs Profesionales de Alta Conversión</title>
-  <meta name="description" content="Estudio de desarrollo web para profesionales independientes. Tu sitio web listo en 72 horas con enlace directo a WhatsApp y Google Maps.">
+  <title>Trayectoria — Un lugar propio para tu profesión en Internet</title>
+  <meta name="description" content="No somos una agencia web tradicional. Trayectoria reúne tu presencia dispersa (Instagram, WhatsApp, Google Maps, LinkedIn) en una página profesional propia, ordenada y de alta conversión. Lista en 72hs.">
+  
+  <!-- OpenGraph / Social -->
+  <meta property="og:title" content="Trayectoria — Un lugar propio en Internet">
+  <meta property="og:description" content="Tu trayectoria ya existe. Tu presencia digital está dispersa. Creá tu página profesional en 72hs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trayectoriaweb.github.io/Trayectoria-web/">
+
+  <!-- Fonts: Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=2026.11">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css?v=2026.20">
 </head>
 <body>
 
-  <header class="site-header">
+  <!-- ==========================================================================
+       SMART STICKY HEADER
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="#inicio" class="logo-trayectoria">
+      <a href="#inicio" class="logo-trayectoria" aria-label="Trayectoria Inicio">
         <span class="logo-dot"></span>
-        Trayectoria
+        <span class="logo-text">TRAYECTORIA</span>
       </a>
-      <nav>
+
+      <nav class="header-nav" aria-label="Navegación principal">
         <ul class="nav-links">
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#armar-web">Mesa de Trabajo</a></li>
-          <li><a href="#servicios">Planes</a></li>
+          <li><a href="#test-5s">Experiencia</a></li>
+          <li><a href="#comparativa">Instagram vs Web</a></li>
+          <li><a href="#constructor">Probar</a></li>
+          <li><a href="#proyectos">Casos Reales</a></li>
+          <li><a href="#precios">Precios</a></li>
         </ul>
       </nav>
-      <a href="#armar-web" class="btn-header-cta">Armar mi Web</a>
+
+      <div class="header-actions">
+        <a href="onboarding.html" class="btn-header-cta">
+          <span>Crear mi Trayectoria</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </header>
 
   <main>
 
     <!-- ==========================================================================
-         HERO: LA VENTANA MANIFIESTO
+         SECCIÓN 1 — HERO: EL BUSCADOR DE IDENTIDAD (INTERRUPCIÓN & DESCUBRIMIENTO)
          ========================================================================== -->
-    <section id="inicio" class="hero-manifesto-section workbench-grid-section">
-      <div class="container">
-        <div class="manifesto-window">
-          <div class="window-toolbar">
-            <div class="window-dots">
-              <div class="w-dot w-dot-red"></div>
-              <div class="w-dot w-dot-yellow"></div>
-              <div class="w-dot w-dot-green"></div>
+    <section id="inicio" class="hero-section workbench-grid-section">
+      <div class="container hero-container">
+        
+        <div class="hero-header-badge">
+          <span class="pulse-indicator"></span>
+          <span>Presencia Digital Profesional · 2026</span>
+        </div>
+
+        <h1 class="hero-question">
+          ¿Qué encuentra alguien cuando busca tu nombre?
+        </h1>
+
+        <p class="hero-subtitle">
+          Tu reputación y experiencia existen en el mundo real. Pero en Internet, tu identidad suele estar fragmentada entre publicaciones viejas de Instagram, un chat de WhatsApp y un pin en Google Maps.
+        </p>
+
+        <!-- Interactive Search Scanner Box -->
+        <div class="hero-scanner-card" id="heroScannerCard">
+          <div class="scanner-search-row">
+            <div class="scanner-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
-            <div class="window-title-tab">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
-              <span>Trayectoria_Manifiesto_2026.app</span>
-            </div>
-            <div class="window-actions-icons">
-              <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">https://trayectoria.com.ar</span>
-            </div>
+            <input 
+              type="text" 
+              class="scanner-input" 
+              id="heroSearchInput" 
+              placeholder="Escribí tu nombre o profesión (ej: Dra. Valentina Moreno)..." 
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <button type="button" class="scanner-btn-submit" id="heroSearchSubmitBtn">
+              <span>Analizar presencia</span>
+              <kbd class="scanner-kbd">Enter ↵</kbd>
+            </button>
           </div>
-          <div class="manifesto-body">
-            <div class="manifesto-text">
-              ¡Basta! Sos un psicólogo <span class="slash">/</span> médico <span class="slash">/</span> abogado <span class="slash">/</span> arquitecto <span class="slash">/</span> consultor <span class="slash">/</span> cirujano <span class="slash">/</span> especialista <span class="slash">/</span> terapeuta <span class="slash">/</span> profesional de primer nivel <span class="slash">/</span> <input type="text" class="interactive-blank-input" id="customRoleInput" placeholder="tu rubro aquí" value="profesional"> atrapado dentro de una bio de Instagram con un Linktree genérico.
-            </div>
-            <div class="manifesto-footer-bar">
-              <div class="manifesto-pitch">
-                En <strong>Trayectoria</strong> construimos tu sitio web serio, estético y directo a tu WhatsApp en 72 horas para que dejes de perder pacientes frente a tu competencia.
+
+          <!-- Quick Suggestion Chips -->
+          <div class="scanner-chips-row">
+            <span class="scanner-chips-label">Probar con un ejemplo:</span>
+            <button type="button" class="scanner-chip" data-name="Dra. Valentina Moreno" data-role="Psicoterapia Clínica · Rosario">Dra. Valentina Moreno (Psicóloga)</button>
+            <button type="button" class="scanner-chip" data-name="Estudio Benítez & Asoc." data-role="Derecho Corporativo · Córdoba">Estudio Benítez (Abogados)</button>
+            <button type="button" class="scanner-chip" data-name="Arq. Santiago Rossi" data-role="Arquitectura & Reformas · CABA">Arq. Santiago Rossi (Arquitecto)</button>
+            <button type="button" class="scanner-chip" data-name="Dr. Marcelo Varela" data-role="Traumatología · Buenos Aires">Dr. Marcelo Varela (Médico)</button>
+          </div>
+
+          <!-- Simulated Live Diagnosis Result (Appears when typed or clicked) -->
+          <div class="scanner-result-panel" id="scannerResultPanel">
+            <div class="scanner-result-header">
+              <div class="scanner-target-info">
+                <strong class="scanner-target-name" id="resTargetName">Dra. Valentina Moreno</strong>
+                <span class="scanner-target-role" id="resTargetRole">Psicoterapia Clínica · Rosario, Santa Fe</span>
               </div>
-              <a href="#armar-web" class="btn-manifesto-action">
-                <span>→ Armar mi Web en 72hs</span>
+              <span class="scanner-status-tag">Diagnóstico de Presencia</span>
+            </div>
+
+            <div class="scanner-audit-grid">
+              <div class="audit-item audit-found">
+                <div class="audit-item-icon">✓</div>
+                <div class="audit-item-content">
+                  <strong>Instagram</strong>
+                  <span>126 posts mezclados con fotos personales y stories sin destacar</span>
+                </div>
+              </div>
+
+              <div class="audit-item audit-found">
+                <div class="audit-item-icon">✓</div>
+                <div class="audit-item-content">
+                  <strong>WhatsApp</strong>
+                  <span>Mensajes directos sin información previa de honorarios ni servicios</span>
+                </div>
+              </div>
+
+              <div class="audit-item audit-found">
+                <div class="audit-item-icon">✓</div>
+                <div class="audit-item-content">
+                  <strong>Google Maps</strong>
+                  <span>Un pin de consultorio sin sitio oficial ni presentación profesional</span>
+                </div>
+              </div>
+
+              <div class="audit-item audit-found">
+                <div class="audit-item-icon">✓</div>
+                <div class="audit-item-content">
+                  <strong>LinkedIn</strong>
+                  <span>Currículum estático poco atractivo para pacientes o clientes finales</span>
+                </div>
+              </div>
+
+              <div class="audit-item audit-missing">
+                <div class="audit-item-icon">✕</div>
+                <div class="audit-item-content">
+                  <strong>Web Profesional Propia</strong>
+                  <span>No existe. No hay un lugar centralizado que reúna todo con autoridad.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="scanner-revelation-box">
+              <div class="revelation-text">
+                <h3>Tu trayectoria existe. Tu presencia digital está dispersa.</h3>
+                <p>Quien busca tu servicio encuentra pedazos sueltos, no la dimensión real de tu trabajo.</p>
+              </div>
+              <a href="#test-5s" class="btn-revelation-action" id="btnHeroToTest">
+                <span>Quiero mi Trayectoria →</span>
               </a>
             </div>
           </div>
         </div>
+
+        <!-- Metric micro-strip -->
+        <div class="hero-trust-strip">
+          <div class="trust-pill"><span>⚡</span> Lista en 72 horas</div>
+          <div class="trust-pill"><span>📍</span> Conexión directa a Google Maps</div>
+          <div class="trust-pill"><span>💬</span> WhatsApp de alta conversión</div>
+          <div class="trust-pill"><span>✦</span> Dominio propio .com.ar</div>
+        </div>
+
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 2: PROYECTOS (CARRUSEL DE PROYECTOS INMEDIATAMENTE TRAS HERO)
+         SECCIÓN 2 — TEST DE 5 SEGUNDOS (EXPERIENCIA & VELOCIDAD)
          ========================================================================== -->
-    <section id="proyectos" class="projects-slider-section">
+    <section id="test-5s" class="interactive-test-section section-wrapper">
       <div class="container">
-        <div class="section-head" style="margin-bottom: 24px;">
-          <span class="section-badge">✦ Showroom de Proyectos</span>
-          <h2 class="section-title">Webs reales funcionando en vivo.</h2>
-          <p style="color: #475569; font-size: 1.02rem; margin-top: 8px;">
-            Hacé clic en cualquier proyecto para abrirlo en pantalla completa.
+        
+        <div class="section-head text-center">
+          <span class="section-badge">✦ El Test de Retención</span>
+          <h2 class="section-title">Tenemos 5 segundos para convencerte.</h2>
+          <p class="section-subtitle">
+            Cuando un potencial cliente entra a buscarte, tenés exactamente 5 segundos antes de que cierre la pestaña si no entiende quién sos, qué hacés y cómo contactarte.
           </p>
         </div>
-      </div>
 
-      <div class="projects-marquee-track" id="projectsSliderTrack">
+        <div class="test-5s-stage" id="test5sStage">
+          
+          <!-- Control bar with Start button and Timer -->
+          <div class="test-5s-control-bar">
+            <div class="test-countdown-display" id="testCountdownDisplay">
+              <span class="countdown-number" id="countdownDigit">5</span>
+              <span class="countdown-label">segundos</span>
+            </div>
+            <button type="button" class="btn-start-test" id="btnStart5sTest">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Iniciar Test de 5 Segundos</span>
+            </button>
+            <div class="test-progress-track">
+              <div class="test-progress-bar" id="testProgressBar"></div>
+            </div>
+          </div>
 
-        <div class="project-square-card" data-project-url="https://thewellnessclub.com.ar/" data-project-title="The Wellness Club" data-project-cat="Salud &amp; Bienestar">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ CASO DESTACADO</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">thewellnessclub.com.ar</span>
-          </div>
-          <div class="square-body">
-            <h3>The Wellness Club</h3>
-            <p>Plataforma y espacio integral de entrenamiento, nutrición y hábitos saludables.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
-        </div>
+          <!-- The Revealable Professional Card -->
+          <div class="test-reveal-card" id="testRevealCard">
+            <div class="test-card-overlay" id="testCardOverlay">
+              <div class="overlay-lock-icon">⏱</div>
+              <strong>Hacé clic en "Iniciar Test" para comenzar los 5 segundos</strong>
+              <span>Observá con qué claridad se presenta la información</span>
+            </div>
 
-        <div class="project-square-card" data-project-url="https://sofiaalbarracin.com.ar" data-project-title="Lic. Sofía Albarracín" data-project-cat="Psicología Clínica">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ PSICOLOGÍA</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">sofiaalbarracin.com.ar</span>
-          </div>
-          <div class="square-body">
-            <h3>Lic. Sofía Albarracín</h3>
-            <p>Psicoterapia individual y online basada en TCC. Consultorio Palermo Soho.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
-        </div>
+            <div class="test-card-header">
+              <div class="test-card-avatar-wrap">
+                <div class="test-card-avatar" id="testCardAvatar">👩‍⚕️</div>
+                <div class="test-card-status-dot"></div>
+              </div>
+              <div class="test-card-intro">
+                <span class="test-card-badge">✦ PSICOLOGÍA CLÍNICA · MAT. 48.291</span>
+                <h3 class="test-card-name">Lic. Sofía Albarracín</h3>
+                <p class="test-card-headline">Psicoterapia individual y online orientada a resultados basada en Terapia Cognitivo-Conductual (TCC).</p>
+              </div>
+            </div>
 
-        <div class="project-square-card" data-project-url="https://estudiobenitez.com.ar" data-project-title="Estudio Benítez &amp; Asoc." data-project-cat="Derecho Corporativo">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ LEGAL &amp; DERECHO</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">estudiobenitez.com.ar</span>
-          </div>
-          <div class="square-body">
-            <h3>Estudio Benítez &amp; Asoc.</h3>
-            <p>Soluciones jurídicas estratégicas corporativas y laborales en Tribunales.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
-        </div>
+            <div class="test-card-grid">
+              <div class="test-grid-item" id="testItemServices">
+                <span class="test-grid-label">Servicios Principales</span>
+                <div class="test-tag-cloud">
+                  <span class="tag-chip">Ansiedad & Pánico</span>
+                  <span class="tag-chip">Terapia de Parejas</span>
+                  <span class="tag-chip">Estrés Laboral</span>
+                </div>
+              </div>
 
-        <div class="project-square-card" data-project-url="https://drvarela.com.ar" data-project-title="Dr. Marcelo E. Varela" data-project-cat="Traumatología">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ MEDICINA &amp; SALUD</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">drvarela.com.ar</span>
-          </div>
-          <div class="square-body">
-            <h3>Dr. Marcelo E. Varela</h3>
-            <p>Cirugía articular, lesiones deportivas y artroscopía en Alto Palermo.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
-        </div>
+              <div class="test-grid-item" id="testItemLocation">
+                <span class="test-grid-label">Ubicación & Modalidad</span>
+                <p class="test-grid-text">📍 Consultorio en <strong>Palermo Soho, CABA</strong> + Sesiones Online para todo el país.</p>
+              </div>
 
-        <div class="project-square-card" data-project-url="https://camilazaldivar.com" data-project-title="Arq. Camila Zaldívar" data-project-cat="Arquitectura">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ ARQUITECTURA</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">camilazaldivar.com</span>
+              <div class="test-grid-item" id="testItemContact">
+                <span class="test-grid-label">Canal de Contacto Directo</span>
+                <div class="test-card-cta-preview">
+                  <span class="cta-preview-icon">💬</span>
+                  <span>Consultar turnos por WhatsApp en 1 clic</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="square-body">
-            <h3>Arq. Camila Zaldívar</h3>
-            <p>Proyectos residenciales, interiorismo y reformas integrales contemporáneas.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
-        </div>
 
-        <!-- Duplicado para loop infinito -->
-        <div class="project-square-card" data-project-url="https://thewellnessclub.com.ar/" data-project-title="The Wellness Club" data-project-cat="Salud &amp; Bienestar">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ CASO DESTACADO</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">thewellnessclub.com.ar</span>
-          </div>
-          <div class="square-body">
-            <h3>The Wellness Club</h3>
-            <p>Plataforma y espacio integral de entrenamiento, nutrición y hábitos saludables.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
-        </div>
+          <!-- Post-Test Quiz Modal / Trigger -->
+          <div class="test-feedback-box" id="testFeedbackBox">
+            <h4 class="feedback-question">¿Ya sabés quién es, qué hace y cómo contactarla?</h4>
+            <div class="feedback-buttons-row">
+              <button type="button" class="btn-feedback-option" id="btnFeedbackYes">
+                <span class="fb-icon">✓</span>
+                <span>Sí, lo entendí al instante</span>
+              </button>
+              <button type="button" class="btn-feedback-option" id="btnFeedbackNo">
+                <span class="fb-icon">✕</span>
+                <span>No, me faltó tiempo</span>
+              </button>
+            </div>
 
-        <div class="project-square-card" data-project-url="https://sofiaalbarracin.com.ar" data-project-title="Lic. Sofía Albarracín" data-project-cat="Psicología Clínica">
-          <div class="square-top-meta">
-            <span class="square-badge">✦ PSICOLOGÍA</span>
-            <span style="font-size: 0.76rem; font-family: monospace; color: #64748B;">sofiaalbarracin.com.ar</span>
+            <div class="feedback-response-text" id="feedbackResponseText"></div>
           </div>
-          <div class="square-body">
-            <h3>Lic. Sofía Albarracín</h3>
-            <p>Psicoterapia individual y online basada en TCC. Consultorio Palermo Soho.</p>
-          </div>
-          <div class="square-footer-action">
-            <span>Navegar en MacOS →</span>
-            <span>↗</span>
-          </div>
+
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 3: MESA DE TRABAJO INTERACTIVA (ARMÁ TU WEB)
+         SECCIÓN 3 — INSTAGRAM VS TRAYECTORIA (EL PROBLEMA REAL)
          ========================================================================== -->
-    <section id="armar-web" class="pure-canvas-section workbench-grid-section">
+    <section id="comparativa" class="insta-vs-trayectoria-section section-wrapper workbench-grid-section">
       <div class="container">
 
-        <!-- Encabezado grande y claro -->
-        <div class="canvas-intro">
-          <span class="canvas-intro-badge">✦ Interactivo</span>
-          <h2 class="canvas-intro-title">Armá tu web acá mismo.</h2>
-          <p class="canvas-intro-desc">Escribí tu nombre y especialidad. Después arrastrá los bloques de colores hacia las zonas marcadas y mirá cómo va a quedar tu sitio.</p>
+        <div class="section-head text-center">
+          <span class="section-badge">✦ El Gran Desorden</span>
+          <h2 class="section-title">Instagram no es tu web.</h2>
+          <p class="section-subtitle">
+            Un feed de Instagram está diseñado para retener la atención en su app, no para que un cliente encuentre tus servicios de forma clara y rápida.
+          </p>
         </div>
 
-        <div class="pure-canvas-desk" id="pureCanvasDesk">
+        <!-- Comparative Interactive Workbench -->
+        <div class="comparison-workbench">
+          
+          <!-- Mode Switcher Tabs -->
+          <div class="comparison-switch-bar">
+            <button type="button" class="comparison-tab active" id="tabShowInstagram" data-mode="instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              <span>1. Cómo te ven hoy en Instagram</span>
+            </button>
 
-          <!-- Navbar del boceto -->
-          <div class="canvas-navbar-row">
-            <input
-              type="text"
-              class="canvas-editable-name"
-              id="pureCanvasNameInput"
-              value="Dra. Valentina Moreno"
-              placeholder="Tu Nombre Profesional">
-            <ul class="canvas-nav-items">
-              <li>Inicio</li>
-              <li>Servicios</li>
-              <li>Contacto</li>
-            </ul>
-          </div>
-
-          <!-- Cuerpo principal: 2 columnas -->
-          <div class="canvas-main-stage">
-
-            <!-- Columna izquierda -->
-            <div class="canvas-left-column">
-              <div
-                class="canvas-editable-title"
-                contenteditable="true"
-                id="pureCanvasTitleInput"
-                spellcheck="false">PSICOTERAPIA CLÍNICA &amp; TCC</div>
-
-              <div
-                class="canvas-editable-phrase"
-                contenteditable="true"
-                id="pureCanvasPhraseInput"
-                spellcheck="false">Atención personalizada para adultos y parejas. Consultorio Palermo y sesiones online disponibles.</div>
-
-              <!-- Dropzone verde WhatsApp -->
-              <div class="dropzone-pill-green" id="dropzoneGreenPill" data-accepts="wa">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                <span>Soltá el botón acá</span>
-              </div>
-            </div>
-
-            <!-- Columna derecha: dropzones -->
-            <div class="canvas-right-column">
-              <div class="dropzone-square-red" id="dropzoneRedPhoto" data-accepts="photo">
-                <div class="dropzone-inner-hint">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                  <span>Tu foto profesional</span>
-                </div>
-              </div>
-              <div class="dropzone-rect-blue" id="dropzoneBlueMaps" data-accepts="maps">
-                <div class="dropzone-inner-hint">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
-                  <span>Ubicación del consultorio</span>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /canvas-main-stage -->
-
-          <!-- ==================================================================
-               ZONA DE TOKENS — Elementos sueltos sobre el lienzo
-               ================================================================== -->
-          <div class="token-scatter-zone" id="tokenScatterZone">
-            <div class="floating-token-wa" id="tokenWaGreen" draggable="true" data-token="wa">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              <span>WhatsApp Turnos</span>
-            </div>
-
-            <div class="floating-token-photo" id="tokenPhotoRed" draggable="true" data-token="photo">
-              <div class="token-photo-inner">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                <div>
-                  <span class="token-label">Foto Profesional</span>
-                  <span class="token-sublabel">Retrato de estudio</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="floating-token-maps" id="tokenMapsBlue" draggable="true" data-token="maps">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
-              <span>Google Maps GPS</span>
-            </div>
-          </div>
-
-          <!-- Barra de lanzamiento -->
-          <div class="canvas-bottom-cta-bar">
-            <div class="canvas-price-block">
-              <span class="canvas-price-label">Inversión Estimada</span>
-              <div class="canvas-price-value" id="pureCanvasPrice">$65 USD</div>
-              <span class="canvas-price-sub">Entrega en 72 horas · Pago único</span>
-            </div>
-            <button class="btn-launch-wa" id="btnLaunchPureCanvasWA">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              Pedir esta Web por WhatsApp →
+            <button type="button" class="comparison-tab" id="tabShowTrayectoria" data-mode="trayectoria">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              <span>2. Cómo te ven con tu Trayectoria</span>
             </button>
           </div>
 
-        </div><!-- /pure-canvas-desk -->
+          <!-- Interactive Stage Container -->
+          <div class="comparison-stage-container" id="comparisonStage">
+            
+            <!-- VIEW A: SIMULATED INSTAGRAM CHAOS -->
+            <div class="comparison-view view-instagram active" id="viewInstagram">
+              
+              <div class="insta-mock-frame">
+                <!-- Topbar -->
+                <div class="insta-mock-topbar">
+                  <span class="insta-handle">@dra.valentinamoreno</span>
+                  <span class="insta-more">•••</span>
+                </div>
+
+                <!-- Bio Header -->
+                <div class="insta-mock-profile">
+                  <div class="insta-avatar">👩‍⚕️</div>
+                  <div class="insta-stats">
+                    <div class="stat-col"><strong>126</strong><span>posts</span></div>
+                    <div class="stat-col"><strong>12.4k</strong><span>seguidores</span></div>
+                    <div class="stat-col"><strong>480</strong><span>seguidos</span></div>
+                  </div>
+                </div>
+
+                <!-- Bio Content -->
+                <div class="insta-mock-bio">
+                  <p class="bio-name">Dra. Valentina Moreno | Psicoterapia</p>
+                  <p class="bio-text">🧠 Salud mental & bienestar emocional<br>📍 Rosario / Online<br>📩 Turnos por MD o al link👇</p>
+                  <div class="bio-link-box">
+                    <span>🔗 linktr.ee/valentinamoreno_psi (4 links)</span>
+                  </div>
+                </div>
+
+                <!-- Interactive "Find the Info" challenge -->
+                <div class="insta-interactive-quest">
+                  <span class="quest-title">🔍 Intentá encontrar información básica de Valentina:</span>
+                  <div class="quest-buttons-grid">
+                    <button type="button" class="quest-btn" data-target="info-address">¿Dónde atiende presencial?</button>
+                    <button type="button" class="quest-btn" data-target="info-services">¿Qué honorarios o prepagas atiende?</button>
+                    <button type="button" class="quest-btn" data-target="info-turnos">¿Cómo saco un turno?</button>
+                  </div>
+                  <div class="quest-clue-bubble" id="questClueBubble">
+                    Hacé clic en cualquier pregunta arriba para ver qué pasa en Instagram.
+                  </div>
+                </div>
+
+                <!-- Highlights row -->
+                <div class="insta-highlights-row">
+                  <div class="highlight-item"><div class="h-circle">📍</div><span>Consultorio</span></div>
+                  <div class="highlight-item"><div class="h-circle">💬</div><span>Preguntas</span></div>
+                  <div class="highlight-item"><div class="h-circle">🎓</div><span>Cursos</span></div>
+                  <div class="highlight-item"><div class="h-circle">☕</div><span>Personal</span></div>
+                </div>
+
+                <!-- Posts Grid (Mixed content) -->
+                <div class="insta-posts-grid">
+                  <div class="insta-post-square"><div class="post-overlay">Post 2024: Frase motivacional</div></div>
+                  <div class="insta-post-square"><div class="post-overlay">Post 2025: Foto café consultorio</div></div>
+                  <div class="insta-post-square"><div class="post-overlay">Post 2025: Infografía ansiedad</div></div>
+                  <div class="insta-post-square"><div class="post-overlay">Post 2026: Vacaciones</div></div>
+                  <div class="insta-post-square"><div class="post-overlay">Post 2026: Aviso de feriado</div></div>
+                  <div class="insta-post-square"><div class="post-overlay">Post 2026: Recordatorio turnos</div></div>
+                </div>
+
+                <!-- Instagram punchline -->
+                <div class="insta-punchline-card">
+                  <h4>Encontraste Instagram. No encontraste a Valentina.</h4>
+                  <p>La información está sepultada entre 126 posts, historias caducadas y enlaces de terceros.</p>
+                  <button type="button" class="btn-switch-to-trayectoria" id="btnTriggerTrayectoriaView">
+                    <span>Ver cómo se resuelve en Trayectoria →</span>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- VIEW B: CLEAN TRAYECTORIA PRODUCT -->
+            <div class="comparison-view view-trayectoria" id="viewTrayectoria">
+              
+              <div class="trayectoria-mock-frame">
+                <!-- Browser top bar -->
+                <div class="trayectoria-browser-bar">
+                  <div class="browser-dots">
+                    <span class="b-dot b-red"></span>
+                    <span class="b-dot b-yellow"></span>
+                    <span class="b-dot b-green"></span>
+                  </div>
+                  <div class="browser-url-pill">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path></svg>
+                    <span>https://valentinamoreno.com.ar</span>
+                  </div>
+                  <span class="browser-secure-badge">SSL Seguro ✓</span>
+                </div>
+
+                <!-- Clean Editorial Content -->
+                <div class="trayectoria-editorial-body">
+                  <header class="tray-hero-head">
+                    <span class="tray-badge">✦ PSICOTERAPIA CLÍNICA & TCC · ROSARIO</span>
+                    <h3 class="tray-hero-title">Dra. Valentina Moreno</h3>
+                    <p class="tray-hero-sub">Atención psicoterapéutica para adultos y parejas. Enfoque riguroso, empático y basado en evidencia.</p>
+                  </header>
+
+                  <div class="tray-cards-trio">
+                    <div class="tray-trio-card">
+                      <span class="trio-icon">💼</span>
+                      <strong>Servicios Claros</strong>
+                      <p>Psicoterapia individual, terapia de parejas y orientación profesional con honorarios transparentes.</p>
+                    </div>
+
+                    <div class="tray-trio-card">
+                      <span class="trio-icon">📍</span>
+                      <strong>Ubicación Exacta</strong>
+                      <p>Bv. Oroño 1100, Rosario (Google Maps GPS con 1 toque) y modalidad 100% online.</p>
+                    </div>
+
+                    <div class="tray-trio-card tray-card-highlight">
+                      <span class="trio-icon">💬</span>
+                      <strong>Consulta Directa</strong>
+                      <p>Botón directo al WhatsApp oficial con mensaje de consulta prearmado.</p>
+                    </div>
+                  </div>
+
+                  <div class="tray-footer-quote">
+                    <blockquote>"Una Trayectoria no reemplaza tus redes sociales. Las ordena."</blockquote>
+                    <a href="#constructor" class="btn-tray-action">
+                      <span>Probar el constructor de Trayectoria →</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 4: PRECIOS
+         SECCIÓN 4 — CONSTRUÍ UNA TRAYECTORIA (INTERACTIVE LIVE BUILDER DEMO)
          ========================================================================== -->
-    <section id="servicios" class="section-wrapper">
+    <section id="constructor" class="live-builder-section section-wrapper">
       <div class="container">
-        <div class="section-head">
-          <span class="section-badge">✦ Presupuesto Transparente</span>
-          <h2 class="section-title">Inversión clara, sin costos ocultos.</h2>
+
+        <div class="section-head text-center">
+          <span class="section-badge">✦ Demostración en Tiempo Real</span>
+          <h2 class="section-title">Probemos cuánto tardamos en construir la tuya.</h2>
+          <p class="section-subtitle">
+            Hacé clic en los módulos de la izquierda para ver cómo se ensambla tu página profesional paso a paso en tiempo real.
+          </p>
         </div>
-        <div class="pricing-invoice-grid">
-          <div class="invoice-card">
-            <div>
-              <div class="invoice-stamp stamp-standard">ORDEN 01 • PERFIL EXPRESS</div>
-              <h3 style="font-size: 1.5rem; font-weight: 800; color: #000000;">Perfil Express</h3>
-              <p style="font-size: 0.88rem; color: #475569; margin-top: 4px;">Para existir en Google y recibir mensajes directos ya.</p>
-              <div class="invoice-price">$65 <span style="font-size: 1.1rem; font-weight: 600;">USD</span></div>
-              <span style="font-size: 0.76rem; font-weight: 800; color: var(--klein-blue);">Pago único • Entrega en 72hs</span>
-              <ul class="invoice-deliverables">
-                <li>✓ Página One-Page de alto impacto</li>
-                <li>✓ Botón flotante directo a WhatsApp</li>
-                <li>✓ Ubicación de consultorio en Maps</li>
-                <li>✓ Adaptación 100% móvil</li>
-                <li>✓ Hosting y SSL bonificado (1 año)</li>
-              </ul>
+
+        <div class="builder-workbench-layout">
+          
+          <!-- LEFT CONTROLS: MODULES PALETTE -->
+          <div class="builder-palette-col">
+            
+            <div class="palette-header">
+              <div class="palette-title">
+                <span class="palette-step-number">PASO A PASO</span>
+                <h4>Módulos de tu Ficha</h4>
+              </div>
+              <button type="button" class="btn-palette-reset" id="btnResetBuilder" title="Reiniciar demostración">
+                ↻ Reiniciar
+              </button>
             </div>
-            <a href="#armar-web" class="btn-manifesto-action" style="background: var(--bg-surface); color: #000000; justify-content: center; width: 100%; font-size: 0.9rem;">Elegir Express →</a>
+
+            <!-- Module 1: Identidad -->
+            <div class="builder-module-accordion open" data-module="identity">
+              <button type="button" class="module-header-btn">
+                <span class="module-check-circle" id="checkModuleIdentity">✓</span>
+                <span class="module-title-text">1. Nombre & Título</span>
+              </button>
+              <div class="module-body-content">
+                <input 
+                  type="text" 
+                  class="builder-text-input" 
+                  id="builderInputName" 
+                  value="Dra. Valentina Moreno" 
+                  placeholder="Tu Nombre Profesional"
+                >
+                <input 
+                  type="text" 
+                  class="builder-text-input" 
+                  id="builderInputRole" 
+                  value="Psicoterapia Clínica & TCC" 
+                  placeholder="Tu Especialidad / Profesión"
+                  style="margin-top: 8px;"
+                >
+              </div>
+            </div>
+
+            <!-- Module 2: Especialidades -->
+            <div class="builder-module-accordion" data-module="specialties">
+              <button type="button" class="module-header-btn">
+                <span class="module-check-circle" id="checkModuleSpecialties">+</span>
+                <span class="module-title-text">2. Especialidades</span>
+              </button>
+              <div class="module-body-content">
+                <p class="module-hint">Seleccioná las que quieras activar:</p>
+                <div class="builder-chips-toggle-grid" id="builderSpecialtiesGrid">
+                  <button type="button" class="b-chip active" data-spec="Ansiedad & Estrés">Ansiedad & Estrés</button>
+                  <button type="button" class="b-chip active" data-spec="Terapia de Parejas">Terapia de Parejas</button>
+                  <button type="button" class="b-chip" data-spec="Ataques de Pánico">Ataques de Pánico</button>
+                  <button type="button" class="b-chip" data-spec="Adolescentes & Adultos">Adolescentes & Adultos</button>
+                  <button type="button" class="b-chip" data-spec="Autoestima">Autoestima</button>
+                  <button type="button" class="b-chip" data-spec="Duelo & Pérdidas">Duelo & Pérdidas</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 3: Servicios -->
+            <div class="builder-module-accordion" data-module="services">
+              <button type="button" class="module-header-btn">
+                <span class="module-check-circle" id="checkModuleServices">+</span>
+                <span class="module-title-text">3. Servicios & Honorarios</span>
+              </button>
+              <div class="module-body-content">
+                <div class="builder-services-toggle-list" id="builderServicesList">
+                  <label class="b-service-item">
+                    <input type="checkbox" checked data-service-id="s1" data-sname="Sesión Individual (50 min)" data-sdesc="Atención personalizada presencial u online.">
+                    <span>Sesión Individual (50 min)</span>
+                  </label>
+                  <label class="b-service-item">
+                    <input type="checkbox" checked data-service-id="s2" data-sname="Terapia de Pareja" data-sdesc="Resolución de conflictos y dinámicas vinculares.">
+                    <span>Terapia de Pareja (75 min)</span>
+                  </label>
+                  <label class="b-service-item">
+                    <input type="checkbox" data-service-id="s3" data-sname="Evaluación Diagnóstica" data-sdesc="Informe clínico completo y plan de tratamiento.">
+                    <span>Evaluación Diagnóstica</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 4: Ubicación & Maps -->
+            <div class="builder-module-accordion" data-module="location">
+              <button type="button" class="module-header-btn">
+                <span class="module-check-circle" id="checkModuleLocation">+</span>
+                <span class="module-title-text">4. Ubicación & GPS</span>
+              </button>
+              <div class="module-body-content">
+                <div class="builder-toggle-segmented">
+                  <button type="button" class="seg-btn active" id="btnLocPresencial">📍 Consultorio Físico</button>
+                  <button type="button" class="seg-btn" id="btnLocOnline">💻 100% Online</button>
+                </div>
+                <input 
+                  type="text" 
+                  class="builder-text-input" 
+                  id="builderInputAddress" 
+                  value="Bv. Oroño 1100, Rosario" 
+                  placeholder="Dirección del consultorio"
+                  style="margin-top: 8px;"
+                >
+              </div>
+            </div>
+
+            <!-- Module 5: Contacto WhatsApp -->
+            <div class="builder-module-accordion" data-module="contact">
+              <button type="button" class="module-header-btn">
+                <span class="module-check-circle" id="checkModuleContact">+</span>
+                <span class="module-title-text">5. Botón de Conversión WhatsApp</span>
+              </button>
+              <div class="module-body-content">
+                <label class="b-toggle-label">
+                  <input type="checkbox" id="builderToggleWA" checked>
+                  <strong>Botón flotante directo al chat</strong>
+                </label>
+                <p class="module-hint" style="margin-top:6px;">Envía a los pacientes con un mensaje preconfigurado sin fricción.</p>
+              </div>
+            </div>
+
           </div>
 
-          <div class="invoice-card highlight">
-            <div>
-              <div class="invoice-stamp stamp-popular">⭐ ORDEN 02 • MÁS ELEGIDO</div>
-              <h3 style="font-size: 1.5rem; font-weight: 800; color: #000000;">Consultorio Pro</h3>
-              <p style="font-size: 0.88rem; color: #475569; margin-top: 4px;">Para mostrar especialidades, prepagas y FAQs.</p>
-              <div class="invoice-price" style="color: var(--klein-blue);">$95 <span style="font-size: 1.1rem; font-weight: 600;">USD</span></div>
-              <span style="font-size: 0.76rem; font-weight: 800; color: #10B981;">Pago único • Entrega en 72-96hs</span>
-              <ul class="invoice-deliverables">
-                <li>✓ <strong>Todo lo del Plan Express</strong> +</li>
-                <li>✓ Sección de Especialidades clínicas/legales</li>
-                <li>✓ Preguntas Frecuentes interactivas</li>
-                <li>✓ Optimización SEO Local Google</li>
-                <li>✓ Mensajes WhatsApp personalizados</li>
-              </ul>
-            </div>
-            <a href="#armar-web" class="btn-manifesto-action" style="background: var(--klein-blue); color: #FFFFFF; justify-content: center; width: 100%; font-size: 0.9rem;">Elegir Consultorio Pro →</a>
+          <!-- RIGHT CANVAS: LIVE ASSEMBLED WEB -->
+          <div class="builder-canvas-col">
+            
+            <div class="live-canvas-window">
+              <!-- Window topbar -->
+              <div class="canvas-window-topbar">
+                <div class="window-dots">
+                  <span class="w-dot w-dot-red"></span>
+                  <span class="w-dot w-dot-yellow"></span>
+                  <span class="w-dot w-dot-green"></span>
+                </div>
+                <div class="canvas-live-url">
+                  <span id="canvasLiveDomain">valentinamoreno.com.ar</span>
+                </div>
+                <span class="canvas-live-badge">🟢 Render en Vivo</span>
+              </div>
+
+              <!-- Canvas Document Body -->
+              <div class="canvas-document-viewport" id="canvasDocViewport">
+                
+                <!-- Navbar Mock -->
+                <div class="canvas-mock-nav">
+                  <strong class="canvas-nav-brand" id="canvasBrandName">Dra. Valentina Moreno</strong>
+                  <div class="canvas-nav-links">
+                    <span>Sobre mí</span>
+                    <span>Servicios</span>
+                    <span>Ubicación</span>
+                  </div>
+                </div>
+
+                <!-- Hero Section of Mock -->
+                <div class="canvas-mock-hero">
+                  <div class="canvas-mock-hero-text">
+                    <span class="canvas-hero-pill" id="canvasPillRole">PSICOTERAPIA CLÍNICA & TCC</span>
+                    <h2 class="canvas-hero-title" id="canvasTitleName">Dra. Valentina Moreno</h2>
+                    <p class="canvas-hero-desc" id="canvasHeroDesc">Espacio clínico dedicado al tratamiento integral de la ansiedad, crisis vitales y vínculos de pareja.</p>
+                    
+                    <div class="canvas-hero-actions" id="canvasHeroActions">
+                      <div class="canvas-mock-btn-wa" id="canvasHeroWaBtn">
+                        <span>💬 Consultar por WhatsApp</span>
+                      </div>
+                      <div class="canvas-mock-btn-sec">
+                        <span>Ver servicios</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="canvas-mock-photo-wrap" id="canvasPhotoWrap">
+                    <div class="canvas-photo-box">👩‍⚕️</div>
+                    <span class="canvas-photo-caption">Retrato Profesional</span>
+                  </div>
+                </div>
+
+                <!-- Specialties Block in Mock -->
+                <div class="canvas-mock-section" id="canvasSpecialtiesSection">
+                  <h4 class="canvas-section-heading">Áreas de Especialidad</h4>
+                  <div class="canvas-specialties-chips-list" id="canvasSpecialtiesChipsList">
+                    <span class="canvas-chip-pill">Ansiedad & Estrés</span>
+                    <span class="canvas-chip-pill">Terapia de Parejas</span>
+                  </div>
+                </div>
+
+                <!-- Services List in Mock -->
+                <div class="canvas-mock-section" id="canvasServicesSection">
+                  <h4 class="canvas-section-heading">Servicios & Modalidades</h4>
+                  <div class="canvas-services-cards-grid" id="canvasServicesCardsGrid">
+                    <div class="canvas-svc-card">
+                      <strong>Sesión Individual (50 min)</strong>
+                      <p>Atención personalizada presencial u online.</p>
+                    </div>
+                    <div class="canvas-svc-card">
+                      <strong>Terapia de Pareja (75 min)</strong>
+                      <p>Resolución de conflictos y dinámicas vinculares.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Location Block in Mock -->
+                <div class="canvas-mock-section" id="canvasLocationSection">
+                  <h4 class="canvas-section-heading">Consultorio & Ubicación</h4>
+                  <div class="canvas-location-box" id="canvasLocationBox">
+                    <div class="canvas-loc-pin">📍</div>
+                    <div>
+                      <strong id="canvasLocAddress">Bv. Oroño 1100, Rosario</strong>
+                      <span>Google Maps GPS activo · Consultorio privado</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /canvas-document-viewport -->
+
+              <!-- Bottom Builder Celebration Bar -->
+              <div class="builder-bottom-completion-bar" id="builderCompletionBar">
+                <div class="completion-info">
+                  <span class="completion-tag">⚡ Estructura Armada</span>
+                  <p class="completion-phrase">Acabás de ver cómo se ordena tu presencia profesional en segundos.</p>
+                </div>
+                <a href="onboarding.html" class="btn-builder-finish-cta">
+                  <span>Quiero construir la mía →</span>
+                </a>
+              </div>
+
+            </div><!-- /live-canvas-window -->
+
           </div>
 
-          <div class="invoice-card">
-            <div>
-              <div class="invoice-stamp stamp-standard">ORDEN 03 • ALTA GAMA</div>
-              <h3 style="font-size: 1.5rem; font-weight: 800; color: #000000;">Autoridad Total</h3>
-              <p style="font-size: 0.88rem; color: #475569; margin-top: 4px;">Para clínicas, estudios o diseño a medida.</p>
-              <div class="invoice-price">$140 <span style="font-size: 1.1rem; font-weight: 600;">USD</span></div>
-              <span style="font-size: 0.76rem; font-weight: 800; color: var(--klein-blue);">Pago único • Entrega en 5 días</span>
-              <ul class="invoice-deliverables">
-                <li>✓ <strong>Todo lo del Plan Pro</strong> +</li>
-                <li>✓ Galería de obras y casos de éxito</li>
-                <li>✓ Multi-sección con páginas dedicadas</li>
-                <li>✓ Integración agenda online (Calendly)</li>
-                <li>✓ Soporte VIP prioritario</li>
-              </ul>
-            </div>
-            <a href="#armar-web" class="btn-manifesto-action" style="background: var(--bg-surface); color: #000000; justify-content: center; width: 100%; font-size: 0.9rem;">Elegir Autoridad →</a>
-          </div>
         </div>
+
       </div>
     </section>
 
-    <footer class="container">
-      <div class="footer-wrap">
-        <div>
-          <strong style="color: #000000; font-size: 1.05rem; letter-spacing: -0.02em;">TRAYECTORIA</strong> © 2026 • Webs para profesionales de alta categoría.
+    <!-- ==========================================================================
+         SECCIÓN 5 — WEBS REALES EXPLORABLES (SHOWROOM ACTIVO)
+         ========================================================================== -->
+    <section id="proyectos" class="projects-showroom-section section-wrapper workbench-grid-section">
+      <div class="container">
+
+        <div class="section-head text-center">
+          <span class="section-badge">✦ Showroom en Vivo</span>
+          <h2 class="section-title">Webs reales funcionando en vivo.</h2>
+          <p class="section-subtitle">
+            Cada proyecto es un espacio único diseñado con tipografía editorial, optimización SEO en Google y enlace directo a WhatsApp. Hacé clic para explorarlas en pantalla completa.
+          </p>
         </div>
-        <div>
-          <a href="#armar-web" style="color: var(--klein-blue); text-decoration: none; font-weight: 700;">WhatsApp Directo →</a>
+
+        <div class="showroom-grid-interactive">
+
+          <!-- Card 1 -->
+          <article class="showroom-project-card" data-project-key="wellness">
+            <div class="showroom-card-top">
+              <span class="showroom-category-tag">Salud & Bienestar</span>
+              <span class="showroom-domain-mono">thewellnessclub.com.ar</span>
+            </div>
+            <div class="showroom-card-body">
+              <h3>The Wellness Club</h3>
+              <p>Plataforma y espacio integral de entrenamiento físico, nutrición personalizada y hábitos saludables.</p>
+              <div class="showroom-features-row">
+                <span>✦ Membresías</span>
+                <span>✦ WhatsApp directo</span>
+                <span>✦ Horarios</span>
+              </div>
+            </div>
+            <div class="showroom-card-action">
+              <span>Explorar Trayectoria →</span>
+              <span class="arrow-corner">↗</span>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="showroom-project-card" data-project-key="sofia">
+            <div class="showroom-card-top">
+              <span class="showroom-category-tag">Psicología Clínica</span>
+              <span class="showroom-domain-mono">sofiaalbarracin.com.ar</span>
+            </div>
+            <div class="showroom-card-body">
+              <h3>Lic. Sofía Albarracín</h3>
+              <p>Psicoterapia individual y online basada en TCC. Consultorio en Palermo Soho y atención remota.</p>
+              <div class="showroom-features-row">
+                <span>✦ Especialidades</span>
+                <span>✦ Turnos 1-clic</span>
+                <span>✦ FAQs</span>
+              </div>
+            </div>
+            <div class="showroom-card-action">
+              <span>Explorar Trayectoria →</span>
+              <span class="arrow-corner">↗</span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="showroom-project-card" data-project-key="benitez">
+            <div class="showroom-card-top">
+              <span class="showroom-category-tag">Derecho & Legal</span>
+              <span class="showroom-domain-mono">estudiobenitez.com.ar</span>
+            </div>
+            <div class="showroom-card-body">
+              <h3>Estudio Benítez & Asoc.</h3>
+              <p>Soluciones jurídicas estratégicas corporativas, contractuales y laborales en Tribunales.</p>
+              <div class="showroom-features-row">
+                <span>✦ Áreas de Práctica</span>
+                <span>✦ Presupuestos</span>
+                <span>✦ Ubicación</span>
+              </div>
+            </div>
+            <div class="showroom-card-action">
+              <span>Explorar Trayectoria →</span>
+              <span class="arrow-corner">↗</span>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="showroom-project-card" data-project-key="varela">
+            <div class="showroom-card-top">
+              <span class="showroom-category-tag">Traumatología</span>
+              <span class="showroom-domain-mono">drvarela.com.ar</span>
+            </div>
+            <div class="showroom-card-body">
+              <h3>Dr. Marcelo E. Varela</h3>
+              <p>Cirugía articular, lesiones deportivas de alto rendimiento y artroscopía en Alto Palermo.</p>
+              <div class="showroom-features-row">
+                <span>✦ Patologías</span>
+                <span>✦ Prepagas</span>
+                <span>✦ Consultorio</span>
+              </div>
+            </div>
+            <div class="showroom-card-action">
+              <span>Explorar Trayectoria →</span>
+              <span class="arrow-corner">↗</span>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="showroom-project-card" data-project-key="zaldivar">
+            <div class="showroom-card-top">
+              <span class="showroom-category-tag">Arquitectura</span>
+              <span class="showroom-domain-mono">camilazaldivar.com</span>
+            </div>
+            <div class="showroom-card-body">
+              <h3>Arq. Camila Zaldívar</h3>
+              <p>Proyectos residenciales, interiorismo y reformas integrales contemporáneas en Colegiales.</p>
+              <div class="showroom-features-row">
+                <span>✦ Obras</span>
+                <span>✦ Metodología</span>
+                <span>✦ Contacto</span>
+              </div>
+            </div>
+            <div class="showroom-card-action">
+              <span>Explorar Trayectoria →</span>
+              <span class="arrow-corner">↗</span>
+            </div>
+          </article>
+
         </div>
+
+        <div class="showroom-closing-callout">
+          <div class="closing-callout-text">
+            <strong>Esta página no es un mockup. Está funcionando.</strong>
+            <span>Tu nombre y profesión también pueden tener un lugar con este nivel de pulido.</span>
+          </div>
+          <a href="onboarding.html" class="btn-showroom-cta">
+            <span>Pedir mi página web →</span>
+          </a>
+        </div>
+
       </div>
-    </footer>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 6 — ANTES / DESPUÉS (INTERACTIVE DRAG COMPARISON SLIDER)
+         ========================================================================== -->
+    <section id="antes-despues" class="before-after-section section-wrapper">
+      <div class="container">
+
+        <div class="section-head text-center">
+          <span class="section-badge">✦ El Antes y el Después</span>
+          <h2 class="section-title">Todo está ahí. Solo está demasiado separado.</h2>
+          <p class="section-subtitle">
+            Arrastrá el divisor horizontal para ver la transformación entre una presencia dispersa y una Trayectoria unificada.
+          </p>
+        </div>
+
+        <div class="slider-comparison-container" id="sliderComparisonContainer">
+          
+          <!-- Layer Left: SIN TRAYECTORIA (Desorden) -->
+          <div class="comparison-layer layer-before">
+            <div class="layer-content-wrap">
+              <div class="layer-badge-tag badge-before">SIN TRAYECTORIA (DISPERSO)</div>
+              
+              <div class="scattered-items-cloud">
+                <div class="scatter-bubble sb-1">📸 Instagram (126 posts viejos)</div>
+                <div class="scatter-bubble sb-2">💬 WhatsApp (chat sin contexto)</div>
+                <div class="scatter-bubble sb-3">📍 Google Maps (pin sin web)</div>
+                <div class="scatter-bubble sb-4">💼 LinkedIn (CV desactualizado)</div>
+                <div class="scatter-bubble sb-5">📄 PDF de honorarios en Drive</div>
+                <div class="scatter-bubble sb-6">📩 Mensajes directos perdidos</div>
+                <div class="scatter-bubble sb-7">🔗 Linktree genérico con 5 botones</div>
+              </div>
+
+              <div class="layer-caption-box">
+                <h4>Tu identidad fragmentada</h4>
+                <p>El cliente salta de una app a otra, se cansa y termina consultando a otro profesional.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer Right: CON TRAYECTORIA (Orden) -->
+          <div class="comparison-layer layer-after" id="layerAfter">
+            <div class="layer-content-wrap">
+              <div class="layer-badge-tag badge-after">CON TRAYECTORIA (UNIFICADO)</div>
+
+              <div class="unified-showcase-box">
+                <div class="unified-brand-row">
+                  <span class="unified-dot"></span>
+                  <strong>Dra. Valentina Moreno · Psicoterapia Clínica</strong>
+                </div>
+                <div class="unified-modules-grid">
+                  <div class="u-mod"><span>✓</span> Presentación & Autoridad</div>
+                  <div class="u-mod"><span>✓</span> Servicios & Honorarios</div>
+                  <div class="u-mod"><span>✓</span> Consultorio & Mapa GPS</div>
+                  <div class="u-mod"><span>✓</span> WhatsApp Directo en 1 clic</div>
+                </div>
+              </div>
+
+              <div class="layer-caption-box caption-after">
+                <h4>Todo lo que sos profesionalmente. En un solo lugar.</h4>
+                <p>Tu cliente encuentra certezas, profesionalismo y contacto inmediato en 5 segundos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Draggable Divider Handle -->
+          <div class="slider-divider-line" id="sliderDividerLine">
+            <div class="slider-handle-circle">
+              <span>◀ ▶</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 7 — DETECTOR DE TRAYECTORIA (DIAGNÓSTICO & SCORE)
+         ========================================================================== -->
+    <section id="detector" class="detector-section section-wrapper workbench-grid-section">
+      <div class="container">
+
+        <div class="detector-card-panel">
+          <div class="detector-header">
+            <span class="detector-badge">✦ Diagnóstico de Presencia</span>
+            <h2 class="detector-title">Detectamos un problema en tu presencia digital.</h2>
+            <p class="detector-desc">
+              Tildá los canales que tenés activos actualmente para calcular tu nivel real de centralización:
+            </p>
+          </div>
+
+          <div class="detector-checklist-grid" id="detectorChecklistGrid">
+            <label class="detector-check-item active">
+              <input type="checkbox" checked data-score="10" class="detector-cb">
+              <span class="cb-custom">✓</span>
+              <div class="cb-text">
+                <strong>Cuenta de Instagram activa</strong>
+                <span>Publicás contenido pero la información de servicios queda vieja</span>
+              </div>
+            </label>
+
+            <label class="detector-check-item active">
+              <input type="checkbox" checked data-score="10" class="detector-cb">
+              <span class="cb-custom">✓</span>
+              <div class="cb-text">
+                <strong>WhatsApp Comercial</strong>
+                <span>Recibís preguntas pero tenés que explicar tus servicios una y otra vez</span>
+              </div>
+            </label>
+
+            <label class="detector-check-item active">
+              <input type="checkbox" checked data-score="10" class="detector-cb">
+              <span class="cb-custom">✓</span>
+              <div class="cb-text">
+                <strong>Ficha en Google Maps</strong>
+                <span>Tenés el local/consultorio marcado pero no tiene sitio web enlazado</span>
+              </div>
+            </label>
+
+            <label class="detector-check-item active">
+              <input type="checkbox" checked data-score="12" class="detector-cb">
+              <span class="cb-custom">✓</span>
+              <div class="cb-text">
+                <strong>Perfil en LinkedIn</strong>
+                <span>Historial académico sin llamada a la acción para clientes finales</span>
+              </div>
+            </label>
+
+            <label class="detector-check-item missing">
+              <input type="checkbox" data-score="58" class="detector-cb">
+              <span class="cb-custom">✕</span>
+              <div class="cb-text">
+                <strong>Sitio Web Profesional Propio (.com / .com.ar)</strong>
+                <span>Un espacio con tu estética, sin intermediarios ni algoritmos que te oculten</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Score Result & Action -->
+          <div class="detector-score-board">
+            <div class="score-number-col">
+              <span class="score-label">Nivel de Trayectoria Actual</span>
+              <div class="score-big-digit"><span id="detectorScoreDigit">42</span>%</div>
+            </div>
+
+            <div class="score-bar-col">
+              <div class="score-progress-track">
+                <div class="score-progress-fill" id="detectorScoreFill" style="width: 42%;"></div>
+              </div>
+              <p class="score-analysis-text" id="detectorScoreText">
+                ⚠️ <strong>Tu presencia está fragmentada.</strong> Tenés experiencia y clientes, pero dependés 100% de que las redes sociales muestren tus publicaciones.
+              </p>
+            </div>
+
+            <div class="score-cta-col">
+              <a href="#personalizacion" class="btn-detector-upgrade" id="btnUpgradeScore">
+                <span>Subir al 100% →</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 8 — PERSONALIZÁ TU TRAYECTORIA (DECISIÓN INTERACTIVA)
+         ========================================================================== -->
+    <section id="personalizacion" class="decision-section section-wrapper">
+      <div class="container">
+
+        <div class="section-head text-center">
+          <span class="section-badge">✦ Recomendador a Medida</span>
+          <h2 class="section-title">¿Qué necesitás realmente?</h2>
+          <p class="section-subtitle">
+            Seleccioná tu objetivo principal para ver qué plan y estructura se adaptan exactamente a tu momento profesional:
+          </p>
+        </div>
+
+        <!-- 3 Decision Cards -->
+        <div class="decision-cards-grid">
+          
+          <div class="decision-card" data-plan="express" id="decCardExpress">
+            <div class="decision-card-top">
+              <span class="decision-number">OPCIÓN 1</span>
+              <h3>"Solo necesito existir online con seriedad."</h3>
+              <p>Quiero un lugar oficial donde me encuentren en Google, vean mi dirección y me manden WhatsApp sin complicaciones.</p>
+            </div>
+            <div class="decision-match-badge">
+              <span>Recomendado: <strong>PERFIL EXPRESS</strong> ($65 USD)</span>
+            </div>
+          </div>
+
+          <div class="decision-card selected" data-plan="pro" id="decCardPro">
+            <div class="decision-card-top">
+              <div class="popular-ribbon">MÁS ELEGIDO</div>
+              <span class="decision-number">OPCIÓN 2</span>
+              <h3>"Quiero convertir visitas en consultas y filtrar pacientes."</h3>
+              <p>Quiero mostrar mis especialidades, responder dudas frecuentes y que el paciente llegue informado al WhatsApp.</p>
+            </div>
+            <div class="decision-match-badge">
+              <span>Recomendado: <strong>CONSULTORIO PRO</strong> ($95 USD)</span>
+            </div>
+          </div>
+
+          <div class="decision-card" data-plan="autoridad" id="decCardAutoridad">
+            <div class="decision-card-top">
+              <span class="decision-number">OPCIÓN 3</span>
+              <h3>"Quiero una presencia profesional completa y de alto prestigio."</h3>
+              <p>Tengo trayectoria, equipo, publicaciones o proyectos y quiero una plataforma que me posicione como referente indiscutido.</p>
+            </div>
+            <div class="decision-match-badge">
+              <span>Recomendado: <strong>AUTORIDAD TOTAL</strong> ($140 USD)</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 9 — PRECIOS (EVOLUCIÓN DE PRESENCIA)
+         ========================================================================== -->
+    <section id="precios" class="pricing-section section-wrapper workbench-grid-section">
+      <div class="container">
+
+        <div class="section-head text-center">
+          <span class="section-badge">✦ Inversión Transparente</span>
+          <h2 class="section-title">¿Hasta dónde querés llevar tu presencia?</h2>
+          <p class="section-subtitle">
+            Pago único. Sin mensualidades sorpresivas. Tu sitio web profesional entregado y funcionando en 72 horas.
+          </p>
+        </div>
+
+        <div class="pricing-evolution-grid">
+          
+          <!-- Plan 1 -->
+          <div class="pricing-card" id="pricingCardExpress">
+            <div class="pricing-card-header">
+              <span class="pricing-tier-tag">NIVEL 01 · PRESENCIA BÁSICA</span>
+              <h3 class="pricing-tier-name">Perfil Express</h3>
+              <p class="pricing-tier-desc">Para existir oficialmente en Google y recibir consultas directas a tu WhatsApp ya.</p>
+              
+              <div class="pricing-amount-row">
+                <span class="currency">$</span>
+                <span class="amount">65</span>
+                <span class="unit">USD</span>
+              </div>
+              <span class="pricing-timing">Pago único · Entrega en 72hs</span>
+            </div>
+
+            <div class="pricing-card-body">
+              <ul class="pricing-checklist">
+                <li>✓ Página One-Page de alto impacto visual</li>
+                <li>✓ Botón flotante directo a WhatsApp</li>
+                <li>✓ Ubicación de consultorio / local en Maps</li>
+                <li>✓ Adaptación 100% responsiva para celulares</li>
+                <li>✓ Configuración de dominio oficial .com.ar</li>
+              </ul>
+            </div>
+
+            <div class="pricing-card-footer">
+              <a href="onboarding.html?plan=express" class="btn-pricing-action btn-outline">
+                <span>Elegir Perfil Express →</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Plan 2 (Highlighted) -->
+          <div class="pricing-card highlight-tier" id="pricingCardPro">
+            <div class="pricing-popular-badge">⭐ PLAN RECOMENDADO</div>
+            
+            <div class="pricing-card-header">
+              <span class="pricing-tier-tag">NIVEL 02 · CONVERSIÓN & ESPECIALIDADES</span>
+              <h3 class="pricing-tier-name">Consultorio Pro</h3>
+              <p class="pricing-tier-desc">Para profesionales que quieren educar al paciente, mostrar especialidades y filtrar consultas.</p>
+              
+              <div class="pricing-amount-row">
+                <span class="currency">$</span>
+                <span class="amount">95</span>
+                <span class="unit">USD</span>
+              </div>
+              <span class="pricing-timing timing-emerald">Pago único · Entrega en 72 a 96hs</span>
+            </div>
+
+            <div class="pricing-card-body">
+              <ul class="pricing-checklist">
+                <li>✓ <strong>Todo lo incluido en Perfil Express</strong></li>
+                <li>✓ Sección de Especialidades clínicas / profesionales</li>
+                <li>✓ Preguntas Frecuentes (FAQ) interactivas</li>
+                <li>✓ Optimización SEO Técnico & Local en Google</li>
+                <li>✓ Mensajes de WhatsApp personalizados con contexto</li>
+                <li>✓ Paleta de color y tipografía a medida</li>
+              </ul>
+            </div>
+
+            <div class="pricing-card-footer">
+              <a href="onboarding.html?plan=pro" class="btn-pricing-action btn-klein">
+                <span>Elegir Consultorio Pro →</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="pricing-card" id="pricingCardAutoridad">
+            <div class="pricing-card-header">
+              <span class="pricing-tier-tag">NIVEL 03 · PRESENCIA COMPLETA</span>
+              <h3 class="pricing-tier-name">Autoridad Total</h3>
+              <p class="pricing-tier-desc">Para clínicas, estudios de arquitectura, abogados corporativos o profesionales de referencia.</p>
+              
+              <div class="pricing-amount-row">
+                <span class="currency">$</span>
+                <span class="amount">140</span>
+                <span class="unit">USD</span>
+              </div>
+              <span class="pricing-timing">Pago único · Entrega en 5 días</span>
+            </div>
+
+            <div class="pricing-card-body">
+              <ul class="pricing-checklist">
+                <li>✓ <strong>Todo lo incluido en Consultorio Pro</strong></li>
+                <li>✓ Galería de casos de éxito, obras o portfolio</li>
+                <li>✓ Estructura multi-sección con páginas dedicadas</li>
+                <li>✓ Integración con agenda de turnos online</li>
+                <li>✓ Redacción persuasiva completa de textos</li>
+                <li>✓ Soporte VIP prioritario post-lanzamiento</li>
+              </ul>
+            </div>
+
+            <div class="pricing-card-footer">
+              <a href="onboarding.html?plan=autoridad" class="btn-pricing-action btn-outline">
+                <span>Elegir Autoridad Total →</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FAQ Micro-strip -->
+        <div class="pricing-guarantee-box">
+          <div class="guarantee-item">
+            <span class="g-icon">🔒</span>
+            <div>
+              <strong>Sin costos de mantenimiento ocultos</strong>
+              <p>Tu web te pertenece 100%. Te entregamos todo el código y dominio configurado.</p>
+            </div>
+          </div>
+          <div class="guarantee-item">
+            <span class="g-icon">⏱</span>
+            <div>
+              <strong>Entrega garantizada en 72hs</strong>
+              <p>Completás el cuestionario guiado de 10 minutos y nosotros nos encargamos del resto.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 10 — CTA FINAL EMOCIONAL & EDITORIAL
+         ========================================================================== -->
+    <section class="final-cta-section section-wrapper">
+      <div class="container">
+        
+        <div class="final-cta-box">
+          <div class="final-cta-badge">✦ TU LUGAR PROPIO EN INTERNET</div>
+          
+          <h2 class="final-cta-title">
+            Tu trayectoria ya existe.<br>
+            Ahora tiene que tener un lugar.
+          </h2>
+
+          <p class="final-cta-text">
+            Sin depender de los cambios de una red social.<br>
+            Sin construirla desde cero.<br>
+            Sin complicaciones técnicas.
+          </p>
+
+          <div class="final-cta-actions">
+            <a href="onboarding.html" class="btn-final-primary">
+              <span>Crear mi Trayectoria →</span>
+            </a>
+            <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quisiera%20consultar%20por%20mi%20página%20web" target="_blank" rel="noopener noreferrer" class="btn-final-secondary">
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+
+          <span class="final-cta-note">Completá el cuestionario en 10 minutos y te enviamos la propuesta en el día.</span>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
-  <!-- MODAL MACOS -->
-  <div class="macos-browser-modal" id="macosBrowserModal">
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-dot"></span>
+          <strong>TRAYECTORIA</strong>
+        </div>
+        <p class="footer-tagline">Páginas web profesionales y arquitectura digital para personas con trayectoria.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#test-5s">Test 5 Segundos</a>
+        <a href="#constructor">Constructor</a>
+        <a href="#proyectos">Casos Reales</a>
+        <a href="#precios">Precios</a>
+        <a href="onboarding.html">Crear Web</a>
+      </div>
+
+      <div class="footer-right">
+        <span class="copyright">© 2026 TRAYECTORIA · Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL MACOS INTERACTIVO PARA CASOS REALES
+       ========================================================================== -->
+  <div class="macos-browser-modal" id="macosBrowserModal" role="dialog" aria-modal="true" aria-label="Visualizador de proyectos en vivo">
     <div class="macos-modal-window">
       <div class="macos-modal-topbar">
         <div class="window-dots">
-          <div class="w-dot w-dot-red" id="closeMacosModalDot"></div>
+          <div class="w-dot w-dot-red" id="closeMacosModalDot" title="Cerrar"></div>
           <div class="w-dot w-dot-yellow"></div>
           <div class="w-dot w-dot-green"></div>
         </div>
@@ -400,13 +1269,15 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path></svg>
           <span id="macosModalAddress">https://thewellnessclub.com.ar/</span>
         </div>
-        <button id="closeMacosModalBtn" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #64748B;">✕</button>
+        <button type="button" id="closeMacosModalBtn" class="macos-close-btn" aria-label="Cerrar">✕</button>
       </div>
-      <div class="macos-viewport-body" id="macosViewportContainer"></div>
+      <div class="macos-viewport-body" id="macosViewportContainer">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
     </div>
   </div>
 
-  <script src="js/app.js?v=2026.11"></script>
-  <script src="js/funnel.js?v=2026.11"></script>
+  <!-- Scripts -->
+  <script src="js/app.js?v=2026.20"></script>
 </body>
 </html>
