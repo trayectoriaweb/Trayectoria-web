@@ -6,6 +6,7 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', () => {
+    initTemplatesFilters();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -814,3 +815,32 @@
   }
 
 })();
+
+
+  /* =========================================================================
+     SECCIÓN 4 — PLANTILLAS DE TRAYECTORIA (INTERACTIVE FILTERS)
+     ========================================================================= */
+  function initTemplatesFilters() {
+    const btnProfessional = document.getElementById('btnFilterProfessional');
+    const btnBusiness = document.getElementById('btnFilterBusiness');
+    const proCards = document.querySelectorAll('.professional-card');
+    const bizCards = document.querySelectorAll('.business-card');
+
+    if (!btnProfessional || !btnBusiness) return;
+
+    btnProfessional.addEventListener('click', () => {
+      btnProfessional.classList.add('active');
+      btnBusiness.classList.remove('active');
+
+      proCards.forEach(c => c.style.display = 'flex');
+      bizCards.forEach(c => c.style.display = 'none');
+    });
+
+    btnBusiness.addEventListener('click', () => {
+      btnBusiness.classList.add('active');
+      btnProfessional.classList.remove('active');
+
+      proCards.forEach(c => c.style.display = 'none');
+      bizCards.forEach(c => c.style.display = 'flex');
+    });
+  }

@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.1300">
+  <link rel="stylesheet" href="css/styles.css?v=2026.1500">
 </head>
 <body>
 
@@ -586,7 +586,320 @@
       </div>
     </section>
 
+    
     <!-- ==========================================================================
+         SECCIÓN 4 — PLANTILLAS DE TRAYECTORIA (MOCK BROWSER CARD PREVIEWS)
+         ========================================================================== -->
+    <section id="plantillas" class="templates-section section-wrapper">
+      <div class="container">
+        
+        <div class="section-head text-center">
+          <span class="section-badge">✦ Catálogo Estético</span>
+          <h2 class="section-title">Una trayectoria no debería costar una fortuna.</h2>
+          <p class="section-subtitle">Plantillas profesionales, listas para personalizar y publicar.</p>
+          
+          <!-- Three key benefits -->
+          <div class="templates-benefits-row">
+            <span class="benefit-tag">MÁS ECONÓMICA</span>
+            <span class="benefit-tag">MÁS RÁPIDA</span>
+            <span class="benefit-tag">WHATSAPP DIRECTO</span>
+          </div>
+
+          <p class="templates-clarification">
+            Sin formularios. Sin vueltas. Tu web lleva directamente a WhatsApp.
+          </p>
+        </div>
+
+        <!-- Filter Tab Switcher -->
+        <div class="templates-filter-bar">
+          <button type="button" class="filter-tab active" id="btnFilterProfessional">
+            <span>Profesionales</span>
+            <span class="filter-count">4</span>
+          </button>
+          <button type="button" class="filter-tab" id="btnFilterBusiness">
+            <span>Negocios</span>
+            <span class="filter-count">2</span>
+          </button>
+        </div>
+
+        <!-- Templates Previews Grid -->
+        <div class="templates-grid" id="templatesGrid">
+          
+          <!-- PROFESSIONAL 01: Sobrio -->
+          <div class="template-card professional-card" data-template="sobrio">
+            <div class="template-window-header">
+              <div class="window-dots">
+                <span class="w-dot w-dot-red"></span>
+                <span class="w-dot w-dot-yellow"></span>
+                <span class="w-dot w-dot-green"></span>
+              </div>
+              <span class="template-url">valentinamoreno.com.ar/sobrio</span>
+            </div>
+            
+            <div class="template-preview-body body-sobrio">
+              <!-- Mock website content -->
+              <div class="mock-website">
+                <div class="mock-nav"><strong>Dr. Fernando Castro</strong><span>Abogado</span></div>
+                <div class="mock-hero">
+                  <h4>Derecho Civil & Comercial</h4>
+                  <p>Asesoramiento jurídico integral con enfoque preventivo en CABA.</p>
+                </div>
+                <div class="mock-services">
+                  <span class="mock-sec-title">Especialidades</span>
+                  <div class="mock-list">
+                    <div>✦ Contratos & Acuerdos</div>
+                    <div>✦ Sucesiones & Familia</div>
+                  </div>
+                </div>
+                <div class="mock-cta-bar">
+                  <span>📍 Av. Corrientes 1400</span>
+                  <span class="mock-wa-btn">💬 Contactar por WhatsApp</span>
+                </div>
+              </div>
+              <!-- Hover Overlay -->
+              <div class="template-hover-overlay">
+                <span class="btn-view-template">Ver plantilla</span>
+              </div>
+            </div>
+
+            <div class="template-card-footer">
+              <div class="template-meta">
+                <span class="template-number">01</span>
+                <strong>Sobrio</strong>
+                <span class="template-style-desc">Formal, corporativo, con foco en el rigor y la solidez institucional.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROFESSIONAL 02: Editorial -->
+          <div class="template-card professional-card" data-template="editorial">
+            <div class="template-window-header">
+              <div class="window-dots">
+                <span class="w-dot w-dot-red"></span>
+                <span class="w-dot w-dot-yellow"></span>
+                <span class="w-dot w-dot-green"></span>
+              </div>
+              <span class="template-url">valentinamoreno.com.ar/editorial</span>
+            </div>
+            
+            <div class="template-preview-body body-editorial">
+              <div class="mock-website">
+                <div class="mock-nav"><strong>Estudio Zaldívar</strong><span>Arquitectura</span></div>
+                <div class="mock-hero">
+                  <h4>Espacios Contemporáneos</h4>
+                  <p>Diseño residencial y reformas con una mirada minimalista y funcional.</p>
+                </div>
+                <div class="mock-services">
+                  <span class="mock-sec-title">Obras</span>
+                  <div class="mock-grid">
+                    <div class="mock-img-placeholder">Reforma Palermo</div>
+                    <div class="mock-img-placeholder">Casa Tigre</div>
+                  </div>
+                </div>
+                <div class="mock-cta-bar">
+                  <span>📍 Colegiales, CABA</span>
+                  <span class="mock-wa-btn">💬 Hablar por WhatsApp</span>
+                </div>
+              </div>
+              <div class="template-hover-overlay">
+                <span class="btn-view-template">Ver plantilla</span>
+              </div>
+            </div>
+
+            <div class="template-card-footer">
+              <div class="template-meta">
+                <span class="template-number">02</span>
+                <strong>Editorial</strong>
+                <span class="template-style-desc">Estético, asimétrico y sofisticado. Ideal para diseño, arquitectura u obras.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROFESSIONAL 03: Creativo -->
+          <div class="template-card professional-card" data-template="creativo">
+            <div class="template-window-header">
+              <div class="window-dots">
+                <span class="w-dot w-dot-red"></span>
+                <span class="w-dot w-dot-yellow"></span>
+                <span class="w-dot w-dot-green"></span>
+              </div>
+              <span class="template-url">valentinamoreno.com.ar/creativo</span>
+            </div>
+            
+            <div class="template-preview-body body-creativo">
+              <div class="mock-website">
+                <div class="mock-nav"><strong>Valeria Ponieman</strong><span>Diseño Visual</span></div>
+                <div class="mock-hero">
+                  <h4>Dirección de Arte & Brand Identity</h4>
+                  <p>Construyo marcas con propósito a través de ideas simples y audaces.</p>
+                </div>
+                <div class="mock-services">
+                  <div class="mock-chips">
+                    <span>Branding</span> <span>Packaging</span> <span>UX/UI</span>
+                  </div>
+                </div>
+                <div class="mock-cta-bar">
+                  <span>📍 Palermo, CABA</span>
+                  <span class="mock-wa-btn">💬 Contactar por WhatsApp</span>
+                </div>
+              </div>
+              <div class="template-hover-overlay">
+                <span class="btn-view-template">Ver plantilla</span>
+              </div>
+            </div>
+
+            <div class="template-card-footer">
+              <div class="template-meta">
+                <span class="template-number">03</span>
+                <strong>Creativo</strong>
+                <span class="template-style-desc">Vibrante, audaz y tipográfico. Pensado para perfiles modernos e independientes.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROFESSIONAL 04: Directo -->
+          <div class="template-card professional-card" data-template="directo">
+            <div class="template-window-header">
+              <div class="window-dots">
+                <span class="w-dot w-dot-red"></span>
+                <span class="w-dot w-dot-yellow"></span>
+                <span class="w-dot w-dot-green"></span>
+              </div>
+              <span class="template-url">valentinamoreno.com.ar/directo</span>
+            </div>
+            
+            <div class="template-preview-body body-directo">
+              <div class="mock-website">
+                <div class="mock-nav"><strong>Dr. Marcelo Varela</strong><span>Traumatólogo</span></div>
+                <div class="mock-hero">
+                  <h4>Consultas Médicas Directas</h4>
+                  <p>Atención inmediata en consultorio particular y cirugías programadas.</p>
+                </div>
+                <div class="mock-services">
+                  <div class="mock-list">
+                    <div>✓ Cirugía mini-invasiva</div>
+                    <div>✓ Artroscopia de rodilla</div>
+                  </div>
+                </div>
+                <div class="mock-cta-bar">
+                  <span>📍 Alto Palermo, CABA</span>
+                  <span class="mock-wa-btn">💬 Hablar por WhatsApp</span>
+                </div>
+              </div>
+              <div class="template-hover-overlay">
+                <span class="btn-view-template">Ver plantilla</span>
+              </div>
+            </div>
+
+            <div class="template-card-footer">
+              <div class="template-meta">
+                <span class="template-number">04</span>
+                <strong>Directo</strong>
+                <span class="template-style-desc">Minimalista, ultra compacto y optimizado para una conversión inmediata.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUSINESS 01: Servicios -->
+          <div class="template-card business-card" data-template="servicios" style="display: none;">
+            <div class="template-window-header">
+              <div class="window-dots">
+                <span class="w-dot w-dot-red"></span>
+                <span class="w-dot w-dot-yellow"></span>
+                <span class="w-dot w-dot-green"></span>
+              </div>
+              <span class="template-url">valentinamoreno.com.ar/servicios</span>
+            </div>
+            
+            <div class="template-preview-body body-servicios">
+              <div class="mock-website">
+                <div class="mock-nav"><strong>Clínica Dental Oroño</strong><span>Odontología</span></div>
+                <div class="mock-hero">
+                  <h4>Salud Bucal Integral</h4>
+                  <p>Equipo de profesionales especializados en implantes, ortodoncia y estética dental.</p>
+                </div>
+                <div class="mock-services">
+                  <span class="mock-sec-title">Nuestros Tratamientos</span>
+                  <div class="mock-list">
+                    <div>✦ Implantes de alta complejidad</div>
+                    <div>✦ Ortodoncia invisible (Invisalign)</div>
+                  </div>
+                </div>
+                <div class="mock-cta-bar">
+                  <span>📍 Bv. Oroño 1200, Rosario</span>
+                  <span class="mock-wa-btn">💬 Contactar por WhatsApp</span>
+                </div>
+              </div>
+              <div class="template-hover-overlay">
+                <span class="btn-view-template">Ver plantilla</span>
+              </div>
+            </div>
+
+            <div class="template-card-footer">
+              <div class="template-meta">
+                <span class="template-number">01</span>
+                <strong>Servicios</strong>
+                <span class="template-style-desc">Para consultorios, centros de salud o estudios donde importa el equipo y la consulta.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUSINESS 02: Espacio -->
+          <div class="template-card business-card" data-template="espacio" style="display: none;">
+            <div class="template-window-header">
+              <div class="window-dots">
+                <span class="w-dot w-dot-red"></span>
+                <span class="w-dot w-dot-yellow"></span>
+                <span class="w-dot w-dot-green"></span>
+              </div>
+              <span class="template-url">valentinamoreno.com.ar/espacio</span>
+            </div>
+            
+            <div class="template-preview-body body-espacio">
+              <div class="mock-website">
+                <div class="mock-nav"><strong>Studio Pilates Zen</strong><span>Espacio Wellness</span></div>
+                <div class="mock-hero">
+                  <h4>Sentí tu Cuerpo en Equilibrio</h4>
+                  <p>Clases personalizadas en camilla y circuito funcional con profesores certificados.</p>
+                </div>
+                <div class="mock-services">
+                  <div class="mock-grid-large">
+                    <div class="mock-img-large">Galería de fotos de nuestras camillas y espacio físico</div>
+                  </div>
+                </div>
+                <div class="mock-cta-bar">
+                  <span>📍 Palermo Soho, CABA</span>
+                  <span class="mock-wa-btn">💬 Hablar por WhatsApp</span>
+                </div>
+              </div>
+              <div class="template-hover-overlay">
+                <span class="btn-view-template">Ver plantilla</span>
+              </div>
+            </div>
+
+            <div class="template-card-footer">
+              <div class="template-meta">
+                <span class="template-number">02</span>
+                <strong>Espacio</strong>
+                <span class="template-style-desc">Para centros de yoga, gimnasios o locales donde la experiencia física y las fotos mandan.</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /templates-grid -->
+
+        <!-- Section Footer Action -->
+        <div class="templates-footer-cta text-center">
+          <p class="templates-footer-title">Elegí cómo querés mostrar tu trayectoria.</p>
+          <a href="#precios" class="btn-templates-all">
+            <span>Ver todas las plantillas</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+<!-- ==========================================================================
          SECCIÓN 4 — INSTAGRAM VS TRAYECTORIA (EXPERIENCIA COMPARATIVA)
          ========================================================================== -->
     <section id="comparativa" class="comparison-section section-wrapper">
@@ -1426,6 +1739,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.1100"></script>
+  <script src="js/app.v2.js?v=2026.1500"></script>
 </body>
 </html>
