@@ -276,11 +276,6 @@
          PASO 1: SOBRE VOS
          ──────────────────────────────────────────────────────────────────────── -->
     <section class="onboarding-step-pane" id="stepPane_1">
-      <div style="margin-bottom: 16px;">
-        <button type="button" class="btn-onboarding-back" id="btnChangeService_Prof" style="font-size: 0.82rem; padding: 6px 14px;">
-          ← Elegir otro tipo de servicio
-        </button>
-      </div>
       <div class="step-heading-group">
         <span class="step-eyebrow">Paso 1 de 5 · Web Profesional</span>
         <h2 class="step-main-title">Empecemos por lo básico.</h2>
@@ -382,7 +377,9 @@
       </div>
 
       <div class="onboarding-nav-bar">
-        <div></div>
+        <button type="button" class="btn-onboarding-back" id="btnChangeService_Prof">
+          ← Elegir otro tipo de servicio
+        </button>
         <button type="button" class="btn-onboarding-next" id="btnStep1_Next">
           Siguiente: Tu Historia →
         </button>
@@ -684,7 +681,7 @@
             <div class="segmented-radio-circle"></div>
             <div>
               <strong style="display:block; font-size:0.92rem;">Sí, tengo logo</strong>
-              <span style="font-size:0.8rem; color:var(--text-muted);">Subir archivo o vector</span>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Subir archivo de mi marca para la cabecera</span>
             </div>
           </div>
 
@@ -692,7 +689,7 @@
             <div class="segmented-radio-circle"></div>
             <div>
               <strong style="display:block; font-size:0.92rem;">No tengo logo</strong>
-              <span style="font-size:0.8rem; color:var(--text-muted);">Armaremos un logotipo tipográfico sobrio</span>
+              <span style="font-size:0.8rem; color:var(--text-muted);">Mostraremos tu nombre en texto con tipografía limpia (no diseñamos logos)</span>
             </div>
           </div>
         </div>
@@ -781,11 +778,6 @@
 
     <!-- PASO 1 BIZ: IDENTIDAD DEL NEGOCIO -->
     <section class="onboarding-step-pane" id="stepBiz_1">
-      <div style="margin-bottom: 16px;">
-        <button type="button" class="btn-onboarding-back" id="btnChangeService_Biz" style="font-size: 0.82rem; padding: 6px 14px;">
-          ← Elegir otro tipo de servicio
-        </button>
-      </div>
       <div class="step-heading-group">
         <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 1 de 5 · Web Negocio</span>
         <h2 class="step-main-title">Identidad de tu Negocio</h2>
@@ -841,15 +833,15 @@
           <div class="segmented-card selected" data-group="biz_tieneLogo" data-value="no">
             <div class="segmented-card-radio"></div>
             <div class="segmented-card-content">
-              <span class="segmented-card-title">No tengo / Necesito uno simple</span>
-              <span class="segmented-card-desc">Diseñamos un isotipo tipográfico moderno incluido en el servicio.</span>
+              <span class="segmented-card-title">No tengo logo</span>
+              <span class="segmented-card-desc">Mostraremos el nombre de tu negocio en texto con tipografía moderna y limpia (no diseñamos logos).</span>
             </div>
           </div>
           <div class="segmented-card" data-group="biz_tieneLogo" data-value="yes">
             <div class="segmented-card-radio"></div>
             <div class="segmented-card-content">
               <span class="segmented-card-title">Sí, ya tengo logo</span>
-              <span class="segmented-card-desc">Lo adaptamos y colocamos en alta resolución en tu web.</span>
+              <span class="segmented-card-desc">Lo colocamos en alta resolución en la cabecera de tu web.</span>
             </div>
           </div>
         </div>
@@ -857,7 +849,7 @@
 
       <div class="onboarding-nav-bar">
         <button type="button" class="btn-onboarding-back" id="btnBiz1_Back">
-          ← Cambiar Tipo de Web
+          ← Elegir otro tipo de servicio
         </button>
         <button type="button" class="btn-onboarding-next" id="btnBiz1_Next">
           Continuar al Paso 2 →
@@ -883,8 +875,8 @@
       </div>
 
       <div class="form-card">
-        <h3 class="form-card-title">Productos, Servicios o Planes Destacados</h3>
-        <p class="form-card-hint">Agregá los que quieras mostrar en la web (con o sin precio):</p>
+        <h3 class="form-card-title">Productos, Servicios o Planes Destacados (Catálogo / Muestra)</h3>
+        <p class="form-card-hint">Agregá los que quieras exhibir en tu web (con o sin precio). Todas las consultas y pedidos se derivan a tu WhatsApp (la web es una vidriera de muestra, no hay venta online):</p>
 
         <div class="dynamic-items-container" id="bizServicesContainer"></div>
 
@@ -938,7 +930,7 @@
             <div class="segmented-card-radio"></div>
             <div class="segmented-card-content">
               <span class="segmented-card-title">No, es 100% online / a domicilio</span>
-              <span class="segmented-card-desc">Nos enfocamos en envíos y consultas por WhatsApp o web.</span>
+              <span class="segmented-card-desc">Nos enfocamos en catálogo de muestra y consultas directas por WhatsApp.</span>
             </div>
           </div>
         </div>
@@ -980,12 +972,12 @@
     <section class="onboarding-step-pane" id="stepBiz_4">
       <div class="step-heading-group">
         <span class="step-eyebrow" style="background:#fef3c7; color:#b45309;">Paso 4 de 5 · Web Negocio</span>
-        <h2 class="step-main-title">Canales de Venta & Contacto</h2>
-        <p class="step-subtitle">Configurá a dónde deben escribirte tus clientes para pedir o reservar.</p>
+        <h2 class="step-main-title">Canal de Consultas & Contacto</h2>
+        <p class="step-subtitle">Tu web funciona como vidriera de muestra: todas las consultas y ventas se coordinan directamente por WhatsApp.</p>
       </div>
 
       <div class="form-card">
-        <h3 class="form-card-title">Canal Principal de Pedidos</h3>
+        <h3 class="form-card-title">Canal Principal de Consultas</h3>
         <p class="form-card-hint">El botón más destacado de tu página web:</p>
 
         <div class="segmented-card-group">
@@ -1007,7 +999,7 @@
             <div class="segmented-card-radio"></div>
             <div class="segmented-card-content">
               <span class="segmented-card-title">Instagram DM</span>
-              <span class="segmented-card-desc">Consultas y venta directa por redes sociales.</span>
+              <span class="segmented-card-desc">Consultas y contacto directo por redes sociales.</span>
             </div>
           </div>
         </div>
