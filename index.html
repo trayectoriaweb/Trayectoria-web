@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.400">
+  <link rel="stylesheet" href="css/styles.css?v=2026.500">
 </head>
 <body>
 
@@ -450,7 +450,147 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 3 — INSTAGRAM VS TRAYECTORIA (EL PROBLEMA REAL)
+         SECCIÓN 3 — DEMOSTRACIÓN INTERACTIVA: EL INVESTIGADOR IA
+         PLENO AZUL KLEIN · CHAT TIPO IA CON BORDES FINOS BLANCOS
+         ========================================================================== -->
+    <section id="investigador-ia" class="ai-investigator-section section-wrapper section-full-blue">
+      <div class="container">
+
+        <div class="section-head text-center head-white">
+          <span class="section-badge badge-white">✦ Experimento de Presencia Digital</span>
+          <h2 class="section-title">¿Qué dice la IA sobre vos cuando tu información está dispersa?</h2>
+          <p class="section-subtitle">
+            Si no tenés una web que ordene tu carrera, los algoritmos mezclan tus datos con homónimos, publicaciones viejas y el caos de internet.
+          </p>
+        </div>
+
+        <!-- AI Chat Software Window (Thin white borders, translucent full-blue interior) -->
+        <div class="ai-chat-window" id="aiChatWindow">
+          
+          <!-- Top Window Toolbar -->
+          <div class="ai-chat-topbar">
+            <div class="ai-chat-header-left">
+              <div class="ai-window-dots">
+                <span class="ai-dot"></span>
+                <span class="ai-dot"></span>
+                <span class="ai-dot"></span>
+              </div>
+              <div class="ai-model-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>trayectoria_crawler.ai · v2.6</span>
+              </div>
+            </div>
+            <div class="ai-status-indicator">
+              <span class="status-live-dot"></span>
+              <span>crawler activo</span>
+            </div>
+          </div>
+
+          <!-- Chat Interior Body -->
+          <div class="ai-chat-body" id="aiChatBody">
+            
+            <!-- STAGE 1: THE INPUT PROMPT FORM -->
+            <div class="ai-chat-stage ai-stage-prompt" id="aiStagePrompt">
+              <div class="ai-welcome-msg">
+                <div class="ai-bot-avatar">✦</div>
+                <div class="ai-bot-bubble">
+                  <h3 class="ai-prompt-title">¿A quién buscamos hoy?</h3>
+                  <p class="ai-prompt-desc">Ingresá tu nombre y profesión para ejecutar una búsqueda en fuentes abiertas de internet.</p>
+                </div>
+              </div>
+
+              <form class="ai-search-form" id="aiSearchForm" autocomplete="off" onsubmit="return false;">
+                <div class="ai-inputs-grid">
+                  <div class="ai-input-wrapper">
+                    <label for="aiInputName" class="ai-field-label">Nombre y Apellido</label>
+                    <input 
+                      type="text" 
+                      id="aiInputName" 
+                      class="ai-text-input" 
+                      placeholder="Ej: Lic. Martín Gómez" 
+                      autocomplete="off" 
+                      spellcheck="false"
+                      required
+                    >
+                  </div>
+
+                  <div class="ai-input-wrapper">
+                    <label for="aiInputRole" class="ai-field-label">Profesión o Especialidad</label>
+                    <input 
+                      type="text" 
+                      id="aiInputRole" 
+                      class="ai-text-input" 
+                      placeholder="Ej: Psicólogo Clínico" 
+                      autocomplete="off" 
+                      spellcheck="false"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <div class="ai-form-actions">
+                  <button type="submit" class="btn-ai-submit" id="btnAiSubmit">
+                    <span>Investigar en Internet →</span>
+                  </button>
+                  <span class="ai-hint-mono">Respuesta inmediata sin esperas</span>
+                </div>
+              </form>
+            </div>
+
+            <!-- STAGE 2: THE AI RESPONSE REPORT -->
+            <div class="ai-chat-stage ai-stage-response" id="aiStageResponse" style="display: none;">
+              
+              <!-- User Command Echo -->
+              <div class="ai-user-prompt-echo">
+                <span class="ai-prompt-symbol">&gt;</span>
+                <span>investigar a <strong id="echoTargetName">Nombre</strong> (<span id="echoTargetRole">Profesión</span>) en registros públicos de internet...</span>
+              </div>
+
+              <!-- AI Assistant Response Box -->
+              <div class="ai-response-message">
+                <div class="ai-bot-avatar">✦</div>
+                <div class="ai-response-content">
+                  
+                  <div class="ai-response-header-meta">
+                    <span class="ai-meta-tag">INFORME BIOGRÁFICO GENERADO</span>
+                    <span class="ai-sources-tag">4 fuentes indexadas</span>
+                  </div>
+
+                  <!-- The Dynamic Bio Text (Populated by JS with 1 of 5 variants) -->
+                  <div class="ai-bio-prose" id="aiBioProse">
+                    <!-- Populated in real-time -->
+                  </div>
+
+                  <!-- Punchline & Conclusion Box -->
+                  <div class="ai-conclusion-box">
+                    <div class="ai-punchline-quote" id="aiPunchlineQuote">
+                      "Quizás esto no habría pasado si toda su información profesional estuviera en un solo lugar."
+                    </div>
+
+                    <div class="ai-response-actions">
+                      <a href="onboarding.html" class="btn-ai-cta-primary">
+                        <span>Crear mi Trayectoria →</span>
+                      </a>
+                      <button type="button" class="btn-ai-restart" id="btnAiRestart">
+                        <span>↻ Probar con otro nombre</span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div><!-- /ai-response-content -->
+              </div><!-- /ai-response-message -->
+
+            </div><!-- /ai-stage-response -->
+
+          </div><!-- /ai-chat-body -->
+
+        </div><!-- /ai-chat-window -->
+
+      </div>
+    </section>
+    
+    <!-- ==========================================================================
+         SECCIÓN 4 — INSTAGRAM VS TRAYECTORIA (EL PROBLEMA REAL)
          ========================================================================== -->
     <section id="comparativa" class="insta-vs-trayectoria-section section-wrapper workbench-grid-section">
       <div class="container">
@@ -1452,6 +1592,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.400"></script>
+  <script src="js/app.v2.js?v=2026.500"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initManifestoHero();
+    initAiInvestigator();
     init5sTest();
     initComparisonSwitcher();
     initLiveBuilder();
@@ -96,6 +97,151 @@
       nameInput.focus();
     });
   }
+
+  
+  /* =========================================================================
+     SECCIÓN 3 — EL INVESTIGADOR IA (5 VARIANTES DOCUMENTALES CON HUMOR ABSURDO)
+     ========================================================================= */
+  function initAiInvestigator() {
+    const form = document.getElementById('aiSearchForm');
+    const inputName = document.getElementById('aiInputName');
+    const inputRole = document.getElementById('aiInputRole');
+    const stagePrompt = document.getElementById('aiStagePrompt');
+    const stageResponse = document.getElementById('aiStageResponse');
+    const echoName = document.getElementById('echoTargetName');
+    const echoRole = document.getElementById('echoTargetRole');
+    const bioProse = document.getElementById('aiBioProse');
+    const punchlineQuote = document.getElementById('aiPunchlineQuote');
+    const btnRestart = document.getElementById('btnAiRestart');
+
+    if (!form || !inputName || !inputRole || !stagePrompt || !stageResponse || !bioProse) return;
+
+    let lastVariantIndex = -1;
+
+    function detectGrammar(name, role) {
+      const lowerName = name.toLowerCase().trim();
+      const lowerRole = role.toLowerCase().trim();
+
+      const isFemale = lowerName.startsWith('dra.') || lowerName.startsWith('lic.') && lowerName.includes('a') ||
+                       lowerName.endsWith('a') || lowerName.endsWith('ia') ||
+                       lowerRole.endsWith('a') || lowerRole.includes('psicóloga') || lowerRole.includes('médica') || lowerRole.includes('abogada') || lowerRole.includes('arquitecta');
+
+      return {
+        art: isFemale ? 'la' : 'el',
+        prep: isFemale ? 'de la' : 'del',
+        pronoun: isFemale ? 'ella' : 'él',
+        ident: isFemale ? 'identificada' : 'identificado',
+        vinc: isFemale ? 'vinculada' : 'vinculado',
+        menc: isFemale ? 'mencionada' : 'mencionado',
+        sen: isFemale ? 'señalada' : 'señalado',
+        tit: isFemale ? 'titular' : 'titular',
+        elim: isFemale ? 'eliminada' : 'eliminado',
+        grad: isFemale ? 'graduada' : 'graduado',
+        rec: isFemale ? 'reconocida' : 'reconocido'
+      };
+    }
+
+    const variants = [
+      // VARIANTE 1: Peppa Pig + Deuda de Cotillón + Tuppers
+      {
+        getBio: (name, role, g) => [
+          `<strong>${name}</strong> es ${role} y cuenta con una trayectoria profesional respaldada por años de formación, dedicación rigurosa y un compromiso constante con la excelencia en su disciplina. Distintas fuentes académicas y laborales destacan su criterio técnico y su capacidad para resolver problemas complejos con absoluta solvencia.`,
+          `En paralelo, un análisis exhaustivo de registros digitales públicos permite reconstruir facetas complementarias de su perfil. Según documentos de libre acceso en la web, ${name} aparece ${g.vinc} a una deuda impaga de $14.200 pesos con una distribuidora mayorista de cotillón por la compra de 400 silbatos con forma de delfín en octubre de 2021.`,
+          `Asimismo, su nombre figura asociado a un video viral que alcanzó miles de reproducciones: en él, una persona presuntamente ${g.ident} como ${name} viste un traje no homologado de Peppa Pig mientras baila cumbia en uno de los Trenes de la Alegría de Mar del Plata. Un comentario anónimo al pie del video agrega además: <em>"es una persona muy respetable pero nunca devuelve los tuppers"</em>.`
+        ],
+        quote: `"Quizás esto no habría pasado si toda su información profesional estuviera en un solo lugar."`
+      },
+
+      // VARIANTE 2: Fiestas Clandestinas en Pandemia + Mancha de Mate en el Techo + Campeonato de Truco
+      {
+        getBio: (name, role, g) => [
+          `Con una sólida presencia en su campo de especialidad, <strong>${name}</strong> ejerce como ${role}, consolidando un prestigio profesional basado en la ética de trabajo, el rigor metodológico y la confianza construida con sus clientes a lo largo de su carrera.`,
+          `Sin embargo, los motores de búsqueda asocian su identidad a antecedentes sumamente heterogéneos. Durante los primeros meses de 2020, ${name} aparece reiteradamente ${g.menc} en foros vecinales como la presunta organizadora de tres fiestas clandestinas temáticas denominadas <em>"CoronaFest VIP"</em> en un galpón industrial. La información resulta llamativa considerando que su profesión no guarda vínculo aparente con la nocturnidad.`,
+          `Los registros también revelan una consulta técnica formulada en Yahoo Respuestas en 2018 bajo su nombre: <em>"urgente cómo sacar mancha de yerba mate hervida del techo sin que se entere el dueño del departamento"</em>. A ello se suma su participación en el Torneo Abierto de Truco de Villa Gesell, donde fue ${g.elim} en primera ronda tras cantar 33 de envido teniendo solo dos sotas.`
+        ],
+        quote: `"Internet puede mezclarte con cualquiera. Una web profesional, no debería."`
+      },
+
+      // VARIANTE 3: Adiestradora de Cucarachas + Discusión Absurda por la Milanesa
+      {
+        getBio: (name, role, g) => [
+          `<strong>${name}</strong> se desempeña como ${role}, contando con una respetable trayectoria y un enfoque centrado en brindar soluciones profesionales de alto nivel a pacientes y clientes de su sector.`,
+          `No obstante, la huella digital pública arroja datos desconcertantes. En portales de clasificados online de 2019, ${name} figura como ${g.tit} de un microemprendimiento de <em>"Adiestramiento conductual de cucarachas domésticas para espectáculos infantiles y disuasión de plagas"</em>. No existen testimonios suficientes para confirmar si el servicio llegó a comercializarse formalmente.`,
+          `Por otra parte, su nombre quedó registrado en un acalorado debate de 47 comentarios en un grupo de Facebook barrial acerca de si una milanesa recalentada en microondas conserva o no la dignidad gastronómica. El intercambio concluyó con el bloqueo mutuo de cinco usuarios y la intervención de un administrador.`
+        ],
+        quote: `"Todo esto podría haberse evitado con una web que contara exactamente quién es y qué hace."`
+      },
+
+      // VARIANTE 4: El Perro Ajeno + Peppa Pig + Deuda de Cotillón
+      {
+        getBio: (name, role, g) => [
+          `La labor de <strong>${name}</strong> como ${role} se distingue por la responsabilidad profesional, la permanente actualización académica y un perfil respetado dentro de su ámbito laboral.`,
+          `A pesar de ello, los algoritmos de búsqueda indexan episodios de naturaleza dispar. En 2022, ${name} protagonizó un hilo en redes sociales tras ser vista paseando con total naturalidad a un caniche gigante teñido de turquesa que, según confirmó una vecina dos horas más tarde, pertenecía a una familia de la cuadra siguiente.`,
+          `Los archivos digitales también la vinculan al extravío de una partida de 80 gorros de cotillón con luces LED y a un registro audiovisual donde aparece animando un cumpleaños infantil vestida de Peppa Pig en plena costanera. La pericia técnica no permite descartar que se trate de una mera coincidencia nominal.`
+        ],
+        quote: `"En internet, si no tenés tu propio espacio, los algoritmos deciden quién sos por vos."`
+      },
+
+      // VARIANTE 5: Fiestas Clandestinas + Adiestramiento de Cucarachas + Discusión de Suprema + Tuppers
+      {
+        getBio: (name, role, g) => [
+          `${g.rec.charAt(0).toUpperCase() + g.rec.slice(1)} en su sector, <strong>${name}</strong> ejerce como ${role}, habiendo forjado una reputación intachable construida a base de esfuerzo, trayectoria y resultados concretos.`,
+          `Pese a este currículum impecable, la web ofrece un mosaico de identidades superpuestas. Durante 2020, ${name} fue ${g.sen} en una denuncia anónima por presuntamente albergar una fiesta clandestina con DJ en vivo y catering de choripanes gourmet. Casi en simultáneo, su nombre apareció vinculado a un curso intensivo de adiestramiento de insectos de cocina dictado por Zoom.`,
+          `Para completar el cuadro, una reseña de Google Maps de una rotisería de barrio incluye un reclamo hacia ${name} por una discusión sobre el grosor del empanado de una suprema y el reiterado reclamo de recipientes herméticos plásticos jamás devueltos.`
+        ],
+        quote: `"Tu trayectoria real merece un lugar oficial para que nadie te confunda con el resto de internet."`
+      }
+    ];
+
+    function runAiInvestigation() {
+      const rawName = inputName.value.trim();
+      const rawRole = inputRole.value.trim();
+
+      if (!rawName || !rawRole) return;
+
+      const g = detectGrammar(rawName, rawRole);
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * variants.length);
+      } while (randomIndex === lastVariantIndex && variants.length > 1);
+
+      lastVariantIndex = randomIndex;
+      const selected = variants[randomIndex];
+      const paragraphs = selected.getBio(rawName, rawRole, g);
+
+      if (echoName) echoName.textContent = rawName;
+      if (echoRole) echoRole.textContent = rawRole;
+      if (punchlineQuote) punchlineQuote.textContent = selected.quote;
+
+      stagePrompt.style.display = 'none';
+      stageResponse.style.display = 'block';
+      bioProse.innerHTML = '';
+
+      paragraphs.forEach((pText, idx) => {
+        setTimeout(() => {
+          const p = document.createElement('p');
+          p.style.animation = 'fadeIn 0.25s ease forwards';
+          p.innerHTML = pText;
+          bioProse.appendChild(p);
+        }, idx * 180);
+      });
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      runAiInvestigation();
+    });
+
+    btnRestart?.addEventListener('click', () => {
+      stageResponse.style.display = 'none';
+      stagePrompt.style.display = 'block';
+      inputName.value = '';
+      inputRole.value = '';
+      inputName.focus();
+    });
+  }
+
 
   /* =========================================================================
      3. SECCIÓN 2 — TEST DE 5 SEGUNDOS
