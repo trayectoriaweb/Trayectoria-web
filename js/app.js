@@ -257,6 +257,16 @@
       }
     }
 
+    const chipBtns = document.querySelectorAll('.chat-chip-btn');
+    chipBtns.forEach(chip => {
+      chip.addEventListener('click', () => {
+        if (inputName) inputName.value = chip.dataset.name || '';
+        if (inputRole) inputRole.value = chip.dataset.role || '';
+        if (inputLoc) inputLoc.value = chip.dataset.loc || '';
+        sendChatSearch();
+      });
+    });
+
     promptForm.addEventListener('submit', (e) => {
       e.preventDefault();
       sendChatSearch();

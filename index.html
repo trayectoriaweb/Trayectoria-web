@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.4100">
+  <link rel="stylesheet" href="css/styles.css?v=2026.4200">
 </head>
 <body>
 
@@ -336,43 +336,52 @@
 
           </div><!-- /real-chat-messages-area -->
 
-          <!-- BOTTOM CONVERSATIONAL WRITING BAR -->
+          <!-- QUICK PRESET CHIPS -->
+          <div class="chat-chips-area">
+            <span class="chat-chips-label">Ejemplos rápidos:</span>
+            <button type="button" class="chat-chip-btn" data-name="Lic. Sofía Albarracín" data-role="Psicóloga Clínica" data-loc="Palermo">Psicóloga</button>
+            <button type="button" class="chat-chip-btn" data-name="Dr. Fernando Castro" data-role="Abogado Corporativo" data-loc="Tribunales">Abogado</button>
+            <button type="button" class="chat-chip-btn" data-name="Arq. Camila Zaldívar" data-role="Arquitecta" data-loc="Colegiales">Arquitecta</button>
+            <button type="button" class="chat-chip-btn" data-name="Dr. Marcelo Varela" data-role="Traumatólogo" data-loc="Alto Palermo">Traumatólogo</button>
+          </div>
+
+          <!-- BOTTOM CONVERSATIONAL WRITING BAR (BULLETPROOF MAQUETATION) -->
           <div class="real-chat-bottom-bar">
             <form class="conversational-prompt-form" id="chatPromptForm" autocomplete="off" onsubmit="return false;">
               <div class="conversational-prompt-box">
-                <span class="prompt-static-text">Busco a</span>
-                <input 
-                  type="text" 
-                  class="chat-inline-input input-name" 
-                  id="chatInputName" 
-                  placeholder="tu nombre" 
-                  autocomplete="off" 
-                  spellcheck="false"
-                  required
-                >
-                <span class="prompt-static-text">que es un/a</span>
-                <input 
-                  type="text" 
-                  class="chat-inline-input input-role" 
-                  id="chatInputRole" 
-                  placeholder="profesión" 
-                  autocomplete="off" 
-                  spellcheck="false"
-                  required
-                >
-                <span class="prompt-static-text">en</span>
-                <input 
-                  type="text" 
-                  class="chat-inline-input input-location" 
-                  id="chatInputLocation" 
-                  placeholder="zona / ciudad" 
-                  autocomplete="off" 
-                  spellcheck="false"
-                  required
-                >
+                <div class="chat-inputs-cluster">
+                  <input 
+                    type="text" 
+                    class="chat-inline-input input-name" 
+                    id="chatInputName" 
+                    placeholder="Tu nombre completo" 
+                    autocomplete="off" 
+                    spellcheck="false"
+                    required
+                  >
+                  <input 
+                    type="text" 
+                    class="chat-inline-input input-role" 
+                    id="chatInputRole" 
+                    placeholder="Profesión / Rubro" 
+                    autocomplete="off" 
+                    spellcheck="false"
+                    required
+                  >
+                  <input 
+                    type="text" 
+                    class="chat-inline-input input-location" 
+                    id="chatInputLocation" 
+                    placeholder="Ciudad / Zona" 
+                    autocomplete="off" 
+                    spellcheck="false"
+                    required
+                  >
+                </div>
                 
                 <button type="submit" class="btn-chat-send" id="btnChatSend" aria-label="Enviar búsqueda">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  <span class="btn-send-label">Buscar</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
               </div>
             </form>
@@ -866,6 +875,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.4100"></script>
+  <script src="js/app.v2.js?v=2026.4200"></script>
 </body>
 </html>
