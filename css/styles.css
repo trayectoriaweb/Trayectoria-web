@@ -2975,10 +2975,11 @@ body {
 .ai-investigator-section .section-subtitle,
 .head-white .section-subtitle,
 .section-full-blue .section-subtitle {
-  color: #BFDBFE !important;
-  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
-  line-height: 1.5;
-  opacity: 0.95;
+  color: #FFFFFF !important;
+  font-size: clamp(0.98rem, 1.6vw, 1.12rem);
+  font-weight: 500;
+  line-height: 1.55;
+  opacity: 1;
 }
 
 .ai-investigator-section .section-badge.badge-white,
