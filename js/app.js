@@ -65,26 +65,26 @@
       stage3.style.display = 'none';
       if (resultsList) resultsList.innerHTML = '';
 
-      let delay = 250;
+      let delay = 750;
       channels.forEach((ch, idx) => {
         setTimeout(() => {
           if (!resultsList) return;
           const item = document.createElement('div');
           item.className = 'manifesto-result-item';
-          item.style.animationDelay = `${idx * 0.05}s`;
           item.innerHTML = `
-            <span>${ch.name}</span>
-            <span class="m-check">${ch.status}</span>
+            <span>\${ch.name}</span>
+            <span class="m-check">\${ch.status}</span>
           `;
           resultsList.appendChild(item);
         }, delay);
-        delay += 250;
+        delay += 650;
       });
 
+      // Pause to let the user digest all 4 channels before the closing revelation
       setTimeout(() => {
         stage2.style.display = 'none';
         stage3.style.display = 'flex';
-      }, delay + 400);
+      }, delay + 1400);
     }
 
     btnSearch?.addEventListener('click', executeManifestoSearch);
