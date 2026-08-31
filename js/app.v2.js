@@ -9,7 +9,7 @@
     initTemplatesFilters();
     initDraggableAndWindowActions();
     initDossierPricing();
-    initTypographicCloud();
+    initKineticReel();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -1204,142 +1204,170 @@
 
 
 
+
   /* =========================================================================
-     CASOS REALES — NUBE TIPOGRÁFICA INTERACTIVA & PREVIEW FOTOGRÁFICA
+     CASOS REALES — ROSTER CINÉTICO VERTICAL & VISUALIZADOR FOTOGRÁFICO
      ========================================================================= */
-  function initTypographicCloud() {
-    const workbench = document.getElementById('namesCloudWorkbench');
-    const nameItems = document.querySelectorAll('.cloud-name-item');
-    const photoCard = document.getElementById('photoPreviewCard');
-    const photoScreen = document.getElementById('photoPreviewScreen');
-    const photoUrlTag = document.getElementById('photoUrlTag');
+  function initKineticReel() {
+    const viewport = document.getElementById('kineticReelViewport');
+    const track = document.getElementById('kineticReelTrack');
+    const items = document.querySelectorAll('.kinetic-item');
+    const photoScreen = document.getElementById('kineticPhotoScreen');
+    const urlText = document.getElementById('kineticUrlText');
+    const linkBtn = document.getElementById('kineticLinkBtn');
 
-    if (!workbench || !photoCard || !nameItems.length) return;
+    if (!viewport || !track || !items.length || !photoScreen) return;
 
-    const websites = {
+    const projects = {
       'dirusso': {
         url: 'dirusso.com.ar',
-        mockClass: 'mock-dirusso',
-        kicker: 'DERECHO CORPORATIVO & LITIGIOS',
         brand: 'Maurizio Di Russo & Asoc.',
-        headline: 'Soluciones jurídicas estratégicas para empresas en CABA.',
-        cta: '💬 Consulta WhatsApp'
+        badge: 'DERECHO CORPORATIVO',
+        kicker: 'LITIGIOS & AUDITORÍA LEGAL',
+        title: 'Soluciones jurídicas estratégicas para empresas en CABA.',
+        desc: 'Asesoramiento preventivo, contratos comerciales y representación en tribunales.',
+        tags: ['Contratos', 'Tribunales', 'CABA'],
+        snapClass: 'k-snap-dirusso'
       },
       'vitale': {
         url: 'julietavitale.com.ar',
-        mockClass: 'mock-vitale',
-        kicker: 'PSICOTERAPIA CLÍNICA & MINDFULNESS',
         brand: 'Lic. Julieta Vitale',
-        headline: 'Atención psicológica individual basada en evidencia.',
-        cta: '💬 Solicitar Turno'
-      },
-      'adrian': {
-        url: 'adrianperez.com.ar',
-        mockClass: 'mock-adrian',
-        kicker: 'ENTRENAMIENTO DE ALTO RENDIMIENTO',
-        brand: 'Adrian Perez · Coach',
-        headline: 'Planes de fuerza y transformación física integral.',
-        cta: '💬 Agendar Evaluación'
-      },
-      'gympro': {
-        url: 'gympro.com.ar',
-        mockClass: 'mock-gympro',
-        kicker: 'CENTRO FITNESS & WELLNESS',
-        brand: 'Gympro Rosario',
-        headline: 'Espacio de musculación, clases grupales y nutrición.',
-        cta: '💬 Ver Membresías'
+        badge: 'PSICOTERAPIA CLÍNICA',
+        kicker: 'ENFOQUE BASADO EN EVIDENCIA',
+        title: 'Psicoterapia individual y mindfulness para adultos.',
+        desc: 'Atención personalizada en consultorio Palermo y modalidad 100% online.',
+        tags: ['Ansiedad', 'Parejas', 'Online'],
+        snapClass: 'k-snap-vitale'
       },
       'wellness': {
         url: 'thewellnessclub.com.ar',
-        mockClass: 'mock-wellness',
-        kicker: 'ESPACIO WELLNESS INTEGRAL',
         brand: 'The Wellness Club',
-        headline: 'Entrenamiento consciente, pilates reformer y salud.',
-        cta: '💬 Hablar por WhatsApp'
+        badge: 'BIENESTAR & MOVIMIENTO',
+        kicker: 'SALUD INTEGRAL & FITNESS',
+        title: 'Entrenamiento consciente, pilates reformer y nutrición.',
+        desc: 'Clases personalizadas y seguimiento integral en Rosario.',
+        tags: ['Reformer', 'Membresías', 'Rosario'],
+        snapClass: 'k-snap-wellness'
+      },
+      'adrian': {
+        url: 'adrianperez.com.ar',
+        brand: 'Adrian Perez · Coach',
+        badge: 'ALTO RENDIMIENTO',
+        kicker: 'TRANSFORMACIÓN FÍSICA',
+        title: 'Planes de fuerza, acondicionamiento y nutrición deportiva.',
+        desc: 'Programas de entrenamiento 1 a 1 adaptados a tus objetivos.',
+        tags: ['Fuerza', 'Hipertrofia', '1 a 1'],
+        snapClass: 'k-snap-adrian'
+      },
+      'gympro': {
+        url: 'gympro.com.ar',
+        brand: 'Gympro Rosario',
+        badge: 'CENTRO FITNESS',
+        kicker: 'MUSCULACIÓN & CARDIO',
+        title: 'Espacio de musculación, clases guiadas y vestuarios premium.',
+        desc: 'Equipamiento biomecánico de última generación y pases libres.',
+        tags: ['Pase Libre', 'Cross', 'Bio-Fitness'],
+        snapClass: 'k-snap-gympro'
       },
       'zaldivar': {
         url: 'camilazaldivar.com',
-        mockClass: 'mock-zaldivar',
-        kicker: 'ARQUITECTURA & REFORMAS',
         brand: 'Studio Zaldívar',
-        headline: 'Espacios residenciales contemporáneos y minimalistas.',
-        cta: '💬 Consultar Obra'
+        badge: 'ARQUITECTURA',
+        kicker: 'DISEÑO RESIDENCIAL',
+        title: 'Espacios residenciales contemporáneos, minimalistas y funcionales.',
+        desc: 'Dirección de obra, reformas integrales y renderizado arquitectónico 3D.',
+        tags: ['Obras', 'Renders 3D', 'Colegiales'],
+        snapClass: 'k-snap-zaldivar'
       },
       'varela': {
         url: 'drvarela.com.ar',
-        mockClass: 'mock-varela',
-        kicker: 'TRAUMATOLOGÍA ARTICULAR',
         brand: 'Dr. Marcelo Varela',
-        headline: 'Cirugía mini-invasiva y medicina deportiva de avanzada.',
-        cta: '💬 Consultorio Privado'
+        badge: 'TRAUMATOLOGÍA',
+        kicker: 'CIRUGÍA ARTICULAR',
+        title: 'Cirugía mini-invasiva articular y medicina deportiva de avanzada.',
+        desc: 'Evaluación de lesiones ligamentarias y atención en consultorio privado.',
+        tags: ['Artroscopía', 'Prepagas', 'Alto Palermo'],
+        snapClass: 'k-snap-varela'
       },
       'ponieman': {
         url: 'valeriaponieman.com',
-        mockClass: 'mock-ponieman',
-        kicker: 'DIRECCIÓN DE ARTE & BRANDING',
         brand: 'Valeria Ponieman',
-        headline: 'Construyo identidades visuales con propósito y carácter.',
-        cta: '💬 Iniciar Proyecto'
+        badge: 'DIRECCIÓN DE ARTE',
+        kicker: 'BRAND IDENTITY',
+        title: 'Construyo identidades visuales memorables con propósito y carácter.',
+        desc: 'Sistemas de diseño, branding estratégico y packaging editorial.',
+        tags: ['Branding', 'Packaging', 'UX / UI'],
+        snapClass: 'k-snap-ponieman'
       }
     };
 
-    let isHovering = false;
+    let currentIndex = 0;
 
-    nameItems.forEach(item => {
-      item.addEventListener('mouseenter', (e) => {
-        const key = item.dataset.projectKey;
-        const data = websites[key];
-        if (!data) return;
+    function activateItem(index) {
+      if (index < 0 || index >= items.length) return;
+      currentIndex = index;
 
-        isHovering = true;
-        photoUrlTag.textContent = data.url;
-        photoScreen.innerHTML = `
-          <div class="photo-mock-stage ${data.mockClass}">
-            <div class="photo-mock-header">
-              <span class="photo-mock-brand">${data.brand}</span>
-              <span>Online ✓</span>
-            </div>
-            <div class="photo-mock-body">
-              <span class="photo-mock-kicker">${data.kicker}</span>
-              <h4 class="photo-mock-headline">${data.headline}</h4>
-              <span class="photo-mock-cta-pill">${data.cta}</span>
+      items.forEach((it, idx) => {
+        it.classList.toggle('active', idx === index);
+      });
+
+      const key = items[index].dataset.projectKey;
+      const data = projects[key];
+      if (!data) return;
+
+      // Update Visualizer
+      urlText.textContent = data.url;
+      linkBtn.href = `https://${data.url}`;
+
+      photoScreen.innerHTML = `
+        <div class="k-snapshot-stage ${data.snapClass}">
+          <div class="k-snapshot-header">
+            <span class="k-snapshot-brand">${data.brand}</span>
+            <span class="k-snapshot-badge">✦ ${data.badge}</span>
+          </div>
+          <div class="k-snapshot-body">
+            <span class="k-snapshot-kicker">${data.kicker}</span>
+            <h4 class="k-snapshot-title">${data.title}</h4>
+            <p class="k-snapshot-desc">${data.desc}</p>
+            <div class="k-snapshot-tags">
+              ${data.tags.map(t => `<span>${t}</span>`).join('')}
             </div>
           </div>
-        `;
+        </div>
+      `;
 
-        photoCard.classList.add('is-visible');
-        updateCardPosition(e, item);
-      });
+      // Scroll Drum Track so active item is centered in viewport
+      const itemEl = items[index];
+      const viewportHeight = viewport.clientHeight;
+      const itemTop = itemEl.offsetTop;
+      const itemHeight = itemEl.clientHeight;
 
-      item.addEventListener('mousemove', (e) => {
-        if (isHovering) {
-          updateCardPosition(e, item);
-        }
-      });
+      const targetOffset = (viewportHeight / 2) - (itemTop + itemHeight / 2);
+      track.style.transform = `translateY(${targetOffset}px)`;
+    }
 
-      item.addEventListener('mouseleave', () => {
-        isHovering = false;
-        photoCard.classList.remove('is-visible');
-      });
+    // Hover or Click on each item
+    items.forEach((item, idx) => {
+      item.addEventListener('mouseenter', () => activateItem(idx));
+      item.addEventListener('click', () => activateItem(idx));
     });
 
-    function updateCardPosition(e, itemEl) {
-      const benchRect = workbench.getBoundingClientRect();
-      const itemRect = itemEl.getBoundingClientRect();
+    // Wheel Scroll inside Viewport
+    let wheelTimeout;
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (e.deltaY > 0) {
+          // Scroll down
+          if (currentIndex < items.length - 1) activateItem(currentIndex + 1);
+        } else {
+          // Scroll up
+          if (currentIndex > 0) activateItem(currentIndex - 1);
+        }
+      }, 40);
+    }, { passive: false });
 
-      const relativeTop = itemRect.top - benchRect.top;
-      const mouseX = e.clientX - benchRect.left;
-      const benchWidth = benchRect.width;
-
-      // If mouse is on left half of workbench, place preview on right; otherwise place on left
-      if (mouseX < benchWidth / 2) {
-        photoCard.style.left = 'auto';
-        photoCard.style.right = '20px';
-      } else {
-        photoCard.style.left = '20px';
-        photoCard.style.right = 'auto';
-      }
-
-      photoCard.style.top = `${Math.max(0, relativeTop - 60)}px`;
-    }
+    // Initial activation
+    activateItem(0);
   }
