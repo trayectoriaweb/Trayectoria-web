@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.2900">
+  <link rel="stylesheet" href="css/styles.css?v=2026.3000">
 </head>
 <body>
 
@@ -154,111 +154,65 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 2 — CASOS REALES: ROSTER CINÉTICO VERTICAL & VISUALIZADOR FOTOGRÁFICO
+         SECCIÓN 2 — CASOS REALES: MARQUEE VERTICAL GIGANTE & PREVIEWS FLOTANTES AL CURSOR
          ========================================================================== -->
-    <section id="proyectos" class="showcase-kinetic-section section-wrapper">
+    <section id="proyectos" class="showcase-marquee-section section-wrapper">
       <div class="container">
 
         <div class="section-head text-center">
           <span class="section-badge">✦ Trabajos Reales Entregados</span>
           <h2 class="section-title">Webs reales funcionando en vivo.</h2>
           <p class="section-subtitle">
-            Cada cliente tiene un lugar propio en Internet: serio, estético y directo a su WhatsApp. Deslizá o pasá el cursor por los nombres.
+            Cada cliente tiene un lugar propio en Internet: serio, estético y directo a su WhatsApp. Pasá el cursor por los nombres.
           </p>
         </div>
 
-        <!-- Kinetic Stage Workbench -->
-        <div class="kinetic-workbench" id="kineticWorkbench">
+      </div><!-- /container -->
+
+      <!-- Full-Width Vertical Scrolling Stage -->
+      <div class="marquee-vertical-stage" id="marqueeVerticalStage">
+        
+        <div class="marquee-vertical-track" id="marqueeVerticalTrack">
           
-          <!-- LEFT: Giant Vertical Drum Reel -->
-          <div class="kinetic-reel-viewport" id="kineticReelViewport">
-            
-            <div class="kinetic-reel-track" id="kineticReelTrack">
-              
-              <div class="kinetic-item active" data-project-key="dirusso">
-                <span class="k-num">01</span>
-                <span class="k-name">Maurizio Di Russo</span>
-                <span class="k-spec">Derecho Corporativo · CABA</span>
-              </div>
+          <!-- SET 1 -->
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="dirusso">MAURIZIO DI RUSSO</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="vitale">JULIETA VITALE</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="wellness">THE WELLNESS CLUB</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="adrian">ADRIAN PEREZ</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="gympro">GYMPRO ROSARIO</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="zaldivar">STUDIO ZALDÍVAR</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="varela">DR. MARCELO VARELA</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="ponieman">VALERIA PONIEMAN</a>
 
-              <div class="kinetic-item" data-project-key="vitale">
-                <span class="k-num">02</span>
-                <span class="k-name">Julieta Vitale</span>
-                <span class="k-spec">Psicoterapia Clínica & Mindfulness</span>
-              </div>
+          <!-- SET 2 (SEAMLESS INFINITE LOOP) -->
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="dirusso" aria-hidden="true" tabindex="-1">MAURIZIO DI RUSSO</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="vitale" aria-hidden="true" tabindex="-1">JULIETA VITALE</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="wellness" aria-hidden="true" tabindex="-1">THE WELLNESS CLUB</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="adrian" aria-hidden="true" tabindex="-1">ADRIAN PEREZ</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="gympro" aria-hidden="true" tabindex="-1">GYMPRO ROSARIO</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="zaldivar" aria-hidden="true" tabindex="-1">STUDIO ZALDÍVAR</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="varela" aria-hidden="true" tabindex="-1">DR. MARCELO VARELA</a>
+          <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="marquee-name-item" data-project-key="ponieman" aria-hidden="true" tabindex="-1">VALERIA PONIEMAN</a>
 
-              <div class="kinetic-item" data-project-key="wellness">
-                <span class="k-num">03</span>
-                <span class="k-name">The Wellness Club</span>
-                <span class="k-spec">Espacio Wellness & Salud Integral</span>
-              </div>
-
-              <div class="kinetic-item" data-project-key="adrian">
-                <span class="k-num">04</span>
-                <span class="k-name">Adrian Perez</span>
-                <span class="k-spec">Entrenamiento de Alto Rendimiento</span>
-              </div>
-
-              <div class="kinetic-item" data-project-key="gympro">
-                <span class="k-num">05</span>
-                <span class="k-name">Gympro Rosario</span>
-                <span class="k-spec">Centro Fitness & Musculación</span>
-              </div>
-
-              <div class="kinetic-item" data-project-key="zaldivar">
-                <span class="k-num">06</span>
-                <span class="k-name">Studio Zaldívar</span>
-                <span class="k-spec">Arquitectura Contemporánea & Obras</span>
-              </div>
-
-              <div class="kinetic-item" data-project-key="varela">
-                <span class="k-num">07</span>
-                <span class="k-name">Dr. Marcelo Varela</span>
-                <span class="k-spec">Traumatología & Cirugía Articular</span>
-              </div>
-
-              <div class="kinetic-item" data-project-key="ponieman">
-                <span class="k-num">08</span>
-                <span class="k-name">Valeria Ponieman</span>
-                <span class="k-spec">Dirección de Arte & Brand Identity</span>
-              </div>
-
-            </div>
-
-            <!-- Focus Line Indicators -->
-            <div class="kinetic-focus-bracket top-bracket"></div>
-            <div class="kinetic-focus-bracket bottom-bracket"></div>
-          </div>
-
-          <!-- RIGHT: Synchronized Photographic Visualizer (No Windows / No Dots) -->
-          <div class="kinetic-visualizer-container">
-            <div class="kinetic-photo-card" id="kineticPhotoCard">
-              
-              <div class="kinetic-photo-screen" id="kineticPhotoScreen">
-                <!-- Rendered dynamically by JS -->
-              </div>
-
-              <div class="kinetic-photo-footer">
-                <div class="k-meta-left">
-                  <span class="k-live-dot"></span>
-                  <span class="k-url-text" id="kineticUrlText">dirusso.com.ar</span>
-                </div>
-                <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="btn-kinetic-open" id="kineticLinkBtn">
-                  <span>Abrir Web en Vivo ↗</span>
-                </a>
-              </div>
-
-            </div>
-          </div>
-
-        </div><!-- /kinetic-workbench -->
-
-        <div class="text-center" style="margin-top: 40px;">
-          <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20consultar%20para%20crear%20mi%20web" target="_blank" rel="noopener noreferrer" class="btn-slider-cta">
-            <span>Quiero una web así para mi profesión →</span>
-          </a>
         </div>
 
+        <!-- Floating Cursor Follower Photographic Card -->
+        <div class="cursor-photo-card" id="cursorPhotoCard">
+          <div class="cursor-photo-screen" id="cursorPhotoScreen">
+            <!-- Rendered dynamically by JS -->
+          </div>
+          <div class="cursor-photo-footer">
+            <span class="cursor-url-text" id="cursorUrlText">dirusso.com.ar</span>
+            <span class="cursor-click-hint">Clic para abrir ↗</span>
+          </div>
+        </div>
+
+      </div><!-- /marquee-vertical-stage -->
+
+      <div class="container text-center" style="margin-top: 36px;">
+        <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20consultar%20para%20crear%20mi%20web" target="_blank" rel="noopener noreferrer" class="btn-slider-cta">
+          <span>Quiero una web así para mi profesión →</span>
+        </a>
       </div>
     </section>
 
@@ -880,6 +834,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.2900"></script>
+  <script src="js/app.v2.js?v=2026.3000"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
     initTemplatesFilters();
     initDraggableAndWindowActions();
     initDossierPricing();
-    initKineticReel();
+    initVerticalMarquee();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -1205,29 +1205,29 @@
 
 
 
+
   /* =========================================================================
-     CASOS REALES — ROSTER CINÉTICO VERTICAL & VISUALIZADOR FOTOGRÁFICO
+     CASOS REALES — MARQUEE VERTICAL GIGANTE & PREVIEWS AL CURSOR
      ========================================================================= */
-  function initKineticReel() {
-    const viewport = document.getElementById('kineticReelViewport');
-    const track = document.getElementById('kineticReelTrack');
-    const items = document.querySelectorAll('.kinetic-item');
-    const photoScreen = document.getElementById('kineticPhotoScreen');
-    const urlText = document.getElementById('kineticUrlText');
-    const linkBtn = document.getElementById('kineticLinkBtn');
+  function initVerticalMarquee() {
+    const stage = document.getElementById('marqueeVerticalStage');
+    const nameItems = document.querySelectorAll('.marquee-name-item');
+    const photoCard = document.getElementById('cursorPhotoCard');
+    const photoScreen = document.getElementById('cursorPhotoScreen');
+    const urlText = document.getElementById('cursorUrlText');
 
-    if (!viewport || !track || !items.length || !photoScreen) return;
+    if (!stage || !photoCard || !nameItems.length || !photoScreen) return;
 
-    const projects = {
+    const websites = {
       'dirusso': {
         url: 'dirusso.com.ar',
         brand: 'Maurizio Di Russo & Asoc.',
         badge: 'DERECHO CORPORATIVO',
         kicker: 'LITIGIOS & AUDITORÍA LEGAL',
         title: 'Soluciones jurídicas estratégicas para empresas en CABA.',
-        desc: 'Asesoramiento preventivo, contratos comerciales y representación en tribunales.',
+        desc: 'Asesoramiento preventivo, contratos y tribunales.',
         tags: ['Contratos', 'Tribunales', 'CABA'],
-        snapClass: 'k-snap-dirusso'
+        themeClass: 'c-snap-dirusso'
       },
       'vitale': {
         url: 'julietavitale.com.ar',
@@ -1235,9 +1235,9 @@
         badge: 'PSICOTERAPIA CLÍNICA',
         kicker: 'ENFOQUE BASADO EN EVIDENCIA',
         title: 'Psicoterapia individual y mindfulness para adultos.',
-        desc: 'Atención personalizada en consultorio Palermo y modalidad 100% online.',
+        desc: 'Consultorio Palermo y modalidad 100% online.',
         tags: ['Ansiedad', 'Parejas', 'Online'],
-        snapClass: 'k-snap-vitale'
+        themeClass: 'c-snap-vitale'
       },
       'wellness': {
         url: 'thewellnessclub.com.ar',
@@ -1245,9 +1245,9 @@
         badge: 'BIENESTAR & MOVIMIENTO',
         kicker: 'SALUD INTEGRAL & FITNESS',
         title: 'Entrenamiento consciente, pilates reformer y nutrición.',
-        desc: 'Clases personalizadas y seguimiento integral en Rosario.',
+        desc: 'Clases personalizadas y seguimiento en Rosario.',
         tags: ['Reformer', 'Membresías', 'Rosario'],
-        snapClass: 'k-snap-wellness'
+        themeClass: 'c-snap-wellness'
       },
       'adrian': {
         url: 'adrianperez.com.ar',
@@ -1255,119 +1255,125 @@
         badge: 'ALTO RENDIMIENTO',
         kicker: 'TRANSFORMACIÓN FÍSICA',
         title: 'Planes de fuerza, acondicionamiento y nutrición deportiva.',
-        desc: 'Programas de entrenamiento 1 a 1 adaptados a tus objetivos.',
+        desc: 'Programas de entrenamiento 1 a 1 adaptados.',
         tags: ['Fuerza', 'Hipertrofia', '1 a 1'],
-        snapClass: 'k-snap-adrian'
+        themeClass: 'c-snap-adrian'
       },
       'gympro': {
         url: 'gympro.com.ar',
         brand: 'Gympro Rosario',
         badge: 'CENTRO FITNESS',
         kicker: 'MUSCULACIÓN & CARDIO',
-        title: 'Espacio de musculación, clases guiadas y vestuarios premium.',
-        desc: 'Equipamiento biomecánico de última generación y pases libres.',
+        title: 'Espacio de musculación, clases guiadas y pases libres.',
+        desc: 'Equipamiento biomecánico de última generación.',
         tags: ['Pase Libre', 'Cross', 'Bio-Fitness'],
-        snapClass: 'k-snap-gympro'
+        themeClass: 'c-snap-gympro'
       },
       'zaldivar': {
         url: 'camilazaldivar.com',
         brand: 'Studio Zaldívar',
         badge: 'ARQUITECTURA',
         kicker: 'DISEÑO RESIDENCIAL',
-        title: 'Espacios residenciales contemporáneos, minimalistas y funcionales.',
-        desc: 'Dirección de obra, reformas integrales y renderizado arquitectónico 3D.',
+        title: 'Espacios residenciales contemporáneos y minimalistas.',
+        desc: 'Dirección de obra, reformas y renders 3D.',
         tags: ['Obras', 'Renders 3D', 'Colegiales'],
-        snapClass: 'k-snap-zaldivar'
+        themeClass: 'c-snap-zaldivar'
       },
       'varela': {
         url: 'drvarela.com.ar',
         brand: 'Dr. Marcelo Varela',
         badge: 'TRAUMATOLOGÍA',
         kicker: 'CIRUGÍA ARTICULAR',
-        title: 'Cirugía mini-invasiva articular y medicina deportiva de avanzada.',
-        desc: 'Evaluación de lesiones ligamentarias y atención en consultorio privado.',
+        title: 'Cirugía mini-invasiva articular y medicina deportiva.',
+        desc: 'Lesiones ligamentarias y consultorio privado.',
         tags: ['Artroscopía', 'Prepagas', 'Alto Palermo'],
-        snapClass: 'k-snap-varela'
+        themeClass: 'c-snap-varela'
       },
       'ponieman': {
         url: 'valeriaponieman.com',
         brand: 'Valeria Ponieman',
         badge: 'DIRECCIÓN DE ARTE',
         kicker: 'BRAND IDENTITY',
-        title: 'Construyo identidades visuales memorables con propósito y carácter.',
-        desc: 'Sistemas de diseño, branding estratégico y packaging editorial.',
+        title: 'Construyo identidades visuales memorables y estratégicas.',
+        desc: 'Sistemas de diseño, branding y packaging.',
         tags: ['Branding', 'Packaging', 'UX / UI'],
-        snapClass: 'k-snap-ponieman'
+        themeClass: 'c-snap-ponieman'
       }
     };
 
-    let currentIndex = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isHovering = false;
+    let rafId = null;
 
-    function activateItem(index) {
-      if (index < 0 || index >= items.length) return;
-      currentIndex = index;
-
-      items.forEach((it, idx) => {
-        it.classList.toggle('active', idx === index);
-      });
-
-      const key = items[index].dataset.projectKey;
-      const data = projects[key];
+    function renderSnapshot(key) {
+      const data = websites[key];
       if (!data) return;
 
-      // Update Visualizer
       urlText.textContent = data.url;
-      linkBtn.href = `https://${data.url}`;
-
       photoScreen.innerHTML = `
-        <div class="k-snapshot-stage ${data.snapClass}">
-          <div class="k-snapshot-header">
-            <span class="k-snapshot-brand">${data.brand}</span>
-            <span class="k-snapshot-badge">✦ ${data.badge}</span>
+        <div class="c-snapshot-stage ${data.themeClass}">
+          <div class="c-snapshot-header">
+            <span class="c-snapshot-brand">${data.brand}</span>
+            <span class="c-snapshot-badge">✦ ${data.badge}</span>
           </div>
-          <div class="k-snapshot-body">
-            <span class="k-snapshot-kicker">${data.kicker}</span>
-            <h4 class="k-snapshot-title">${data.title}</h4>
-            <p class="k-snapshot-desc">${data.desc}</p>
-            <div class="k-snapshot-tags">
+          <div class="c-snapshot-body">
+            <span class="c-snapshot-kicker">${data.kicker}</span>
+            <h4 class="c-snapshot-title">${data.title}</h4>
+            <p class="c-snapshot-desc">${data.desc}</p>
+            <div class="c-snapshot-tags">
               ${data.tags.map(t => `<span>${t}</span>`).join('')}
             </div>
           </div>
         </div>
       `;
-
-      // Scroll Drum Track so active item is centered in viewport
-      const itemEl = items[index];
-      const viewportHeight = viewport.clientHeight;
-      const itemTop = itemEl.offsetTop;
-      const itemHeight = itemEl.clientHeight;
-
-      const targetOffset = (viewportHeight / 2) - (itemTop + itemHeight / 2);
-      track.style.transform = `translateY(${targetOffset}px)`;
     }
 
-    // Hover or Click on each item
-    items.forEach((item, idx) => {
-      item.addEventListener('mouseenter', () => activateItem(idx));
-      item.addEventListener('click', () => activateItem(idx));
+    function animateCursorFollow() {
+      if (!isHovering) return;
+
+      // Smooth lerp towards mouse position with slight offset to not cover cursor
+      currentX += (targetX - currentX) * 0.18;
+      currentY += (targetY - currentY) * 0.18;
+
+      photoCard.style.left = `${currentX}px`;
+      photoCard.style.top = `${currentY}px`;
+
+      rafId = requestAnimationFrame(animateCursorFollow);
+    }
+
+    nameItems.forEach(item => {
+      item.addEventListener('mouseenter', (e) => {
+        const key = item.dataset.projectKey;
+        if (!key) return;
+
+        renderSnapshot(key);
+        isHovering = true;
+        photoCard.classList.add('is-visible');
+
+        // Initial instant placement with offset to side of cursor
+        const offsetSide = e.clientX > window.innerWidth / 2 ? -190 : 190;
+        targetX = e.clientX + offsetSide;
+        targetY = e.clientY;
+        currentX = targetX;
+        currentY = targetY;
+
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(animateCursorFollow);
+      });
+
+      item.addEventListener('mousemove', (e) => {
+        const offsetSide = e.clientX > window.innerWidth / 2 ? -190 : 190;
+        targetX = e.clientX + offsetSide;
+        targetY = e.clientY;
+      });
+
+      item.addEventListener('mouseleave', () => {
+        isHovering = false;
+        photoCard.classList.remove('is-visible');
+        cancelAnimationFrame(rafId);
+      });
     });
-
-    // Wheel Scroll inside Viewport
-    let wheelTimeout;
-    viewport.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      clearTimeout(wheelTimeout);
-      wheelTimeout = setTimeout(() => {
-        if (e.deltaY > 0) {
-          // Scroll down
-          if (currentIndex < items.length - 1) activateItem(currentIndex + 1);
-        } else {
-          // Scroll up
-          if (currentIndex > 0) activateItem(currentIndex - 1);
-        }
-      }, 40);
-    }, { passive: false });
-
-    // Initial activation
-    activateItem(0);
   }
