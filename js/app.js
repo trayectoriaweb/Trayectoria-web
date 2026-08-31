@@ -99,22 +99,23 @@
   }
 
   
+  
   /* =========================================================================
-     SECCIÓN 3 — EL INVESTIGADOR IA (5 VARIANTES DOCUMENTALES CON HUMOR ABSURDO)
+     SECCIÓN 3 — EL INVESTIGADOR IA: VENTANA DE CHAT REAL CON BARRA CONVERSACIONAL
      ========================================================================= */
   function initAiInvestigator() {
-    const form = document.getElementById('aiSearchForm');
-    const inputName = document.getElementById('aiInputName');
-    const inputRole = document.getElementById('aiInputRole');
-    const stagePrompt = document.getElementById('aiStagePrompt');
-    const stageResponse = document.getElementById('aiStageResponse');
-    const echoName = document.getElementById('echoTargetName');
-    const echoRole = document.getElementById('echoTargetRole');
-    const bioProse = document.getElementById('aiBioProse');
-    const punchlineQuote = document.getElementById('aiPunchlineQuote');
-    const btnRestart = document.getElementById('btnAiRestart');
+    const promptForm = document.getElementById('chatPromptForm');
+    const inputName = document.getElementById('chatInputName');
+    const inputRole = document.getElementById('chatInputRole');
+    const inputLoc = document.getElementById('chatInputLocation');
+    const dynamicThread = document.getElementById('chatDynamicThread');
+    const userEchoText = document.getElementById('chatUserEchoText');
+    const reportProse = document.getElementById('chatReportProse');
+    const reportQuote = document.getElementById('chatReportQuote');
+    const btnRestart = document.getElementById('btnChatRestart');
+    const messagesArea = document.getElementById('realChatMessagesArea');
 
-    if (!form || !inputName || !inputRole || !stagePrompt || !stageResponse || !bioProse) return;
+    if (!promptForm || !inputName || !inputRole || !dynamicThread || !reportProse) return;
 
     let lastVariantIndex = -1;
 
@@ -144,8 +145,8 @@
     const variants = [
       // VARIANTE 1: Peppa Pig + Deuda de Cotillón + Tuppers
       {
-        getBio: (name, role, g) => [
-          `<strong>${name}</strong> es ${role} y cuenta con una trayectoria profesional respaldada por años de formación, dedicación rigurosa y un compromiso constante con la excelencia en su disciplina. Distintas fuentes académicas y laborales destacan su criterio técnico y su capacidad para resolver problemas complejos con absoluta solvencia.`,
+        getBio: (name, role, loc, g) => [
+          `<strong>${name}</strong> es ${role} con atención en ${loc}, contando con una respetable trayectoria profesional respaldada por años de formación, dedicación rigurosa y un compromiso constante con la excelencia en su disciplina. Distintas fuentes académicas y laborales destacan su criterio técnico y su capacidad para resolver problemas complejos con absoluta solvencia.`,
           `En paralelo, un análisis exhaustivo de registros digitales públicos permite reconstruir facetas complementarias de su perfil. Según documentos de libre acceso en la web, ${name} aparece ${g.vinc} a una deuda impaga de $14.200 pesos con una distribuidora mayorista de cotillón por la compra de 400 silbatos con forma de delfín en octubre de 2021.`,
           `Asimismo, su nombre figura asociado a un video viral que alcanzó miles de reproducciones: en él, una persona presuntamente ${g.ident} como ${name} viste un traje no homologado de Peppa Pig mientras baila cumbia en uno de los Trenes de la Alegría de Mar del Plata. Un comentario anónimo al pie del video agrega además: <em>"es una persona muy respetable pero nunca devuelve los tuppers"</em>.`
         ],
@@ -154,8 +155,8 @@
 
       // VARIANTE 2: Fiestas Clandestinas en Pandemia + Mancha de Mate en el Techo + Campeonato de Truco
       {
-        getBio: (name, role, g) => [
-          `Con una sólida presencia en su campo de especialidad, <strong>${name}</strong> ejerce como ${role}, consolidando un prestigio profesional basado en la ética de trabajo, el rigor metodológico y la confianza construida con sus clientes a lo largo de su carrera.`,
+        getBio: (name, role, loc, g) => [
+          `Con una sólida presencia en ${loc}, <strong>${name}</strong> ejerce como ${role}, consolidando un prestigio profesional basado en la ética de trabajo, el rigor metodológico y la confianza construida con sus clientes a lo largo de su carrera.`,
           `Sin embargo, los motores de búsqueda asocian su identidad a antecedentes sumamente heterogéneos. Durante los primeros meses de 2020, ${name} aparece reiteradamente ${g.menc} en foros vecinales como la presunta organizadora de tres fiestas clandestinas temáticas denominadas <em>"CoronaFest VIP"</em> en un galpón industrial. La información resulta llamativa considerando que su profesión no guarda vínculo aparente con la nocturnidad.`,
           `Los registros también revelan una consulta técnica formulada en Yahoo Respuestas en 2018 bajo su nombre: <em>"urgente cómo sacar mancha de yerba mate hervida del techo sin que se entere el dueño del departamento"</em>. A ello se suma su participación en el Torneo Abierto de Truco de Villa Gesell, donde fue ${g.elim} en primera ronda tras cantar 33 de envido teniendo solo dos sotas.`
         ],
@@ -164,8 +165,8 @@
 
       // VARIANTE 3: Adiestradora de Cucarachas + Discusión Absurda por la Milanesa
       {
-        getBio: (name, role, g) => [
-          `<strong>${name}</strong> se desempeña como ${role}, contando con una respetable trayectoria y un enfoque centrado en brindar soluciones profesionales de alto nivel a pacientes y clientes de su sector.`,
+        getBio: (name, role, loc, g) => [
+          `<strong>${name}</strong> se desempeña como ${role} en ${loc}, contando con una respetable trayectoria y un enfoque centrado en brindar soluciones profesionales de alto nivel a pacientes y clientes de su sector.`,
           `No obstante, la huella digital pública arroja datos desconcertantes. En portales de clasificados online de 2019, ${name} figura como ${g.tit} de un microemprendimiento de <em>"Adiestramiento conductual de cucarachas domésticas para espectáculos infantiles y disuasión de plagas"</em>. No existen testimonios suficientes para confirmar si el servicio llegó a comercializarse formalmente.`,
           `Por otra parte, su nombre quedó registrado en un acalorado debate de 47 comentarios en un grupo de Facebook barrial acerca de si una milanesa recalentada en microondas conserva o no la dignidad gastronómica. El intercambio concluyó con el bloqueo mutuo de cinco usuarios y la intervención de un administrador.`
         ],
@@ -174,8 +175,8 @@
 
       // VARIANTE 4: El Perro Ajeno + Peppa Pig + Deuda de Cotillón
       {
-        getBio: (name, role, g) => [
-          `La labor de <strong>${name}</strong> como ${role} se distingue por la responsabilidad profesional, la permanente actualización académica y un perfil respetado dentro de su ámbito laboral.`,
+        getBio: (name, role, loc, g) => [
+          `La labor de <strong>${name}</strong> como ${role} en ${loc} se distingue por la responsabilidad profesional, la permanente actualización académica y un perfil respetado dentro de su ámbito laboral.`,
           `A pesar de ello, los algoritmos de búsqueda indexan episodios de naturaleza dispar. En 2022, ${name} protagonizó un hilo en redes sociales tras ser vista paseando con total naturalidad a un caniche gigante teñido de turquesa que, según confirmó una vecina dos horas más tarde, pertenecía a una familia de la cuadra siguiente.`,
           `Los archivos digitales también la vinculan al extravío de una partida de 80 gorros de cotillón con luces LED y a un registro audiovisual donde aparece animando un cumpleaños infantil vestida de Peppa Pig en plena costanera. La pericia técnica no permite descartar que se trate de una mera coincidencia nominal.`
         ],
@@ -184,8 +185,8 @@
 
       // VARIANTE 5: Fiestas Clandestinas + Adiestramiento de Cucarachas + Discusión de Suprema + Tuppers
       {
-        getBio: (name, role, g) => [
-          `${g.rec.charAt(0).toUpperCase() + g.rec.slice(1)} en su sector, <strong>${name}</strong> ejerce como ${role}, habiendo forjado una reputación intachable construida a base de esfuerzo, trayectoria y resultados concretos.`,
+        getBio: (name, role, loc, g) => [
+          `${g.rec.charAt(0).toUpperCase() + g.rec.slice(1)} en ${loc}, <strong>${name}</strong> ejerce como ${role}, habiendo forjado una reputación intachable construida a base de esfuerzo, trayectoria y resultados concretos.`,
           `Pese a este currículum impecable, la web ofrece un mosaico de identidades superpuestas. Durante 2020, ${name} fue ${g.sen} en una denuncia anónima por presuntamente albergar una fiesta clandestina con DJ en vivo y catering de choripanes gourmet. Casi en simultáneo, su nombre apareció vinculado a un curso intensivo de adiestramiento de insectos de cocina dictado por Zoom.`,
           `Para completar el cuadro, una reseña de Google Maps de una rotisería de barrio incluye un reclamo hacia ${name} por una discusión sobre el grosor del empanado de una suprema y el reiterado reclamo de recipientes herméticos plásticos jamás devueltos.`
         ],
@@ -193,9 +194,10 @@
       }
     ];
 
-    function runAiInvestigation() {
+    function sendChatSearch() {
       const rawName = inputName.value.trim();
       const rawRole = inputRole.value.trim();
+      const rawLoc = inputLoc ? (inputLoc.value.trim() || 'su ciudad') : 'su zona';
 
       if (!rawName || !rawRole) return;
 
@@ -208,36 +210,46 @@
 
       lastVariantIndex = randomIndex;
       const selected = variants[randomIndex];
-      const paragraphs = selected.getBio(rawName, rawRole, g);
+      const paragraphs = selected.getBio(rawName, rawRole, rawLoc, g);
 
-      if (echoName) echoName.textContent = rawName;
-      if (echoRole) echoRole.textContent = rawRole;
-      if (punchlineQuote) punchlineQuote.textContent = selected.quote;
+      // Render user prompt message
+      if (userEchoText) {
+        userEchoText.textContent = `Busco a ${rawName}, que es ${rawRole} en ${rawLoc}`;
+      }
+      if (reportQuote) {
+        reportQuote.textContent = selected.quote;
+      }
 
-      stagePrompt.style.display = 'none';
-      stageResponse.style.display = 'block';
-      bioProse.innerHTML = '';
+      dynamicThread.style.display = 'flex';
+      dynamicThread.style.flexDirection = 'column';
+      dynamicThread.style.gap = '20px';
+      reportProse.innerHTML = '';
 
       paragraphs.forEach((pText, idx) => {
         setTimeout(() => {
           const p = document.createElement('p');
           p.style.animation = 'fadeIn 0.25s ease forwards';
           p.innerHTML = pText;
-          bioProse.appendChild(p);
-        }, idx * 180);
+          reportProse.appendChild(p);
+
+          // Scroll messages area smoothly to bottom
+          if (messagesArea) {
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+          }
+        }, idx * 160);
       });
     }
 
-    form.addEventListener('submit', (e) => {
+    promptForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      runAiInvestigation();
+      sendChatSearch();
     });
 
     btnRestart?.addEventListener('click', () => {
-      stageResponse.style.display = 'none';
-      stagePrompt.style.display = 'block';
+      dynamicThread.style.display = 'none';
       inputName.value = '';
       inputRole.value = '';
+      if (inputLoc) inputLoc.value = '';
       inputName.focus();
     });
   }
