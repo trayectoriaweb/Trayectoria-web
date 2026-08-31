@@ -4202,17 +4202,61 @@ body {
   overflow: hidden;
 }
 
-/* Vertical Scrolling Stage */
+/* Physical Structural Slits Wrapper (No transparency/gradients) */
+.marquee-slot-wrapper {
+  max-width: 1000px;
+  margin: 20px auto 0 auto;
+  position: relative;
+  background: #FFFFFF;
+}
+
+.marquee-slot-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 0;
+  position: relative;
+  z-index: 10;
+  background: #FFFFFF;
+}
+
+.slot-bar-top {
+  border-bottom: 2px solid #0F172A;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.slot-bar-bottom {
+  border-top: 2px solid #0F172A;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.slot-line {
+  flex: 1;
+  height: 1px;
+  background: #E2E8F0;
+}
+
+.slot-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--klein-blue);
+  background: rgba(0, 51, 255, 0.06);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+/* Vertical Scrolling Stage with Clean Sharp Mechanical Boundaries */
 .marquee-vertical-stage {
   width: 100%;
-  height: 720px;
-  margin: 30px auto 0 auto;
+  height: 600px;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  background: #FFFFFF;
   cursor: pointer;
 }
 
