@@ -4487,3 +4487,103 @@ body {
 .templates-mobile-cta-wrap {
   display: none;
 }
+
+
+/* ==========================================================================
+   MOBILE INTERACTION — BACKGROUND WEBSITE SNAPSHOT ON 1ST TAP
+   ========================================================================== */
+.marquee-mobile-backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .marquee-mobile-backdrop {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .marquee-mobile-backdrop.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2;
+  }
+
+  .mobile-backdrop-content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .marquee-vertical-track {
+    position: relative;
+    z-index: 5;
+  }
+
+  .marquee-name-item {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .marquee-name-item.is-active-mobile {
+    color: #38BDF8 !important;
+    transform: scale(1.1) !important;
+    text-shadow: 0 0 24px rgba(56, 189, 248, 0.8) !important;
+  }
+
+  .marquee-mobile-backdrop.is-active ~ .marquee-vertical-track .marquee-name-item:not(.is-active-mobile) {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  .mobile-backdrop-hint-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background: var(--klein-blue);
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 6px 20px rgba(0, 51, 255, 0.45);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .hint-live-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34D399;
+    box-shadow: 0 0 8px #34D399;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+}

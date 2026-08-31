@@ -1344,7 +1344,63 @@
       rafId = requestAnimationFrame(animateCursorFollow);
     }
 
+    // Mobile Backdrop & 2-Tap Mechanics
+    const mobileBackdrop = document.getElementById('marqueeMobileBackdrop');
+    const mobileBackdropContent = document.getElementById('mobileBackdropContent');
+    const mobileBackdropHintBar = document.getElementById('mobileBackdropHintBar');
+    const mobileBackdropHintText = document.getElementById('mobileBackdropHintText');
+    let activeMobileKey = null;
+
+    if (mobileBackdropHintBar) {
+      mobileBackdropHintBar.addEventListener('click', () => {
+        if (activeMobileKey && websites[activeMobileKey]) {
+          window.open('https://' + websites[activeMobileKey].url, '_blank');
+        }
+      });
+    }
+
     nameItems.forEach(item => {
+      // Mobile Touch Handler (2-tap interaction)
+      item.addEventListener('click', (e) => {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return; // Desktop uses default click navigation
+
+        const key = item.dataset.projectKey;
+        const data = websites[key];
+        if (!data) return;
+
+        if (activeMobileKey !== key) {
+          // 1st Tap: Reveal background image and activate name
+          e.preventDefault();
+          activeMobileKey = key;
+
+          nameItems.forEach(n => n.classList.remove('is-active-mobile'));
+          item.classList.add('is-active-mobile');
+
+          if (mobileBackdropContent) {
+            mobileBackdropContent.innerHTML = 
+              '<div class="c-snapshot-stage ' + data.themeClass + '" style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px 20px;">' +
+                '<span class="c-snapshot-badge" style="margin-bottom:12px;">✦ ' + data.badge + '</span>' +
+                '<h3 style="font-size:1.6rem; font-weight:900; color:#FFFFFF; margin-bottom:8px; letter-spacing:-0.03em;">' + data.brand + '</h3>' +
+                '<p style="font-size:0.9rem; color:rgba(255,255,255,0.9); max-width:320px; line-height:1.4; margin-bottom:14px;">' + data.title + '</p>' +
+                '<div class="c-snapshot-tags" style="justify-content:center; margin-bottom:16px;">' +
+                  data.tags.map(t => '<span style="background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:4px; font-size:0.75rem;">' + t + '</span>').join('') +
+                '</div>' +
+              '</div>';
+          }
+
+          if (mobileBackdropHintText) {
+            mobileBackdropHintText.textContent = '✦ Tocá de nuevo para abrir ' + data.url + ' ↗';
+          }
+
+          if (mobileBackdrop) {
+            mobileBackdrop.classList.add('is-active');
+          }
+        } else {
+          // 2nd Tap: Open website
+          window.open('https://' + data.url, '_blank');
+        }
+      });
       item.addEventListener('mouseenter', (e) => {
         const key = item.dataset.projectKey;
         if (!key) return;

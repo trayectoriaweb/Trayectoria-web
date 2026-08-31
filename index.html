@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.3600">
+  <link rel="stylesheet" href="css/styles.css?v=2026.3700">
 </head>
 <body>
 
@@ -180,6 +180,18 @@
         </div>
 
         <div class="marquee-vertical-stage" id="marqueeVerticalStage">
+          
+          <!-- Mobile Full-Stage Background Website Snapshot Container (Reveals on 1st tap) -->
+          <div class="marquee-mobile-backdrop" id="marqueeMobileBackdrop">
+            <div class="mobile-backdrop-overlay"></div>
+            <div class="mobile-backdrop-content" id="mobileBackdropContent">
+              <!-- Rendered dynamically on first tap -->
+            </div>
+            <div class="mobile-backdrop-hint-bar" id="mobileBackdropHintBar">
+              <span class="hint-live-pulse"></span>
+              <span id="mobileBackdropHintText">✦ Tocá de nuevo para abrir web ↗</span>
+            </div>
+          </div>
           
           <div class="marquee-vertical-track" id="marqueeVerticalTrack">
             
@@ -854,6 +866,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.3600"></script>
+  <script src="js/app.v2.js?v=2026.3700"></script>
 </body>
 </html>
