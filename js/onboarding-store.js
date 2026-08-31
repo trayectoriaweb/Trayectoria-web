@@ -310,7 +310,158 @@
     },
 
     /**
-     * Saves or merges client onboarding data into storage
+     * Supabase Cloud Connector
+     */
+    getSupabase: function () {
+      if (window._trayectoriaSupabaseClient) return window._trayectoriaSupabaseClient;
+      const SUPABASE_URL = 'https://boazzxgfxywpqioouyvf.supabase.co';
+      const SUPABASE_KEY = 'sb_publishable_-BwE2GKzMoXjM6omTbat2Q_V0M3jJba';
+      if (window.supabase && typeof window.supabase.createClient === 'function') {
+        try {
+          window._trayectoriaSupabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        } catch (err) {
+          console.warn('Could not initialize Supabase client:', err);
+        }
+      }
+      return window._trayectoriaSupabaseClient || null;
+    },
+
+    /**
+     * Asynchronously syncs client data to Supabase Cloud
+     */
+    syncToSupabase: async function (clientId, data) {
+      const sb = this.getSupabase();
+      if (!sb) return;
+
+      try {
+        const p = data.personalInfo || {};
+        const fullName = `${p.nombre || ''} ${p.apellido || ''}`.trim() || 'Nuevo Cliente';
+        const commercialName = p.nombreEnSitio || p.nombreProfesional || fullName;
+        const profession = p.profesion || 'Profesional';
+        const today = new Date().toISOString().split('T')[0];
+
+        const mappedContent = {
+          identity: {
+            name: commercialName,
+            profession: profession,
+            colors: data.style?.coloresPreferidos ? [data.style.coloresPreferidos] : ['#0033FF', '#FFFFFF'],
+            fonts: 'Plus Jakarta Sans',
+            isComplete: !!(p.nombre && p.profesion),
+          },
+          presentation: {
+            bio: data.history?.presentacionCorta || '',
+            shortDescription: p.especialidadPrincipal || '',
+            mainSlogan: commercialName,
+            isComplete: !!data.history?.presentacionCorta,
+          },
+          services: {
+            items: (data.offer?.servicios || []).map((s, idx) => ({
+              id: s.id || `srv-${idx}`,
+              name: s.nombre,
+              description: s.descripcion,
+            })),
+            isComplete: (data.offer?.servicios?.length || 0) > 0,
+          },
+          education: {
+            items: (data.history?.formacion || []).map((f, idx) => ({
+              id: f.id || `for-${idx}`,
+              career: f.carrera,
+              institution: f.institucion,
+              year: f.anio,
+            })),
+            isComplete: (data.history?.formacion?.length || 0) > 0,
+          },
+          experience: {
+            items: (data.history?.experiencias || []).map((e, idx) => ({
+              id: e.id || `exp-${idx}`,
+              role: e.rol,
+              company: e.lugar,
+              year: e.anio,
+              description: e.descripcion,
+            })),
+            isComplete: (data.history?.experiencias?.length || 0) > 0,
+          },
+          contact: {
+            whatsapp: data.contact?.whatsapp || p.whatsapp || '',
+            email: data.contact?.email || p.email || '',
+            instagram: data.contact?.instagram || '',
+            linkedin: data.contact?.linkedin || '',
+            location: data.contact?.ubicacion?.ciudad || p.ciudad || 'Buenos Aires',
+            googleMapsUrl: data.contact?.ubicacion?.googleMapsUrl || '',
+            isComplete: !!(data.contact?.whatsapp || data.contact?.email),
+          },
+          portfolio: {
+            items: (data.offer?.proyectos || []).map((pr, idx) => ({
+              id: pr.id || `pro-${idx}`,
+              title: pr.nombre,
+              description: pr.descripcion,
+              year: pr.anio,
+              url: pr.url,
+            })),
+            isComplete: (data.offer?.proyectos?.length || 0) > 0,
+          },
+        };
+
+        const clientRow = {
+          id: clientId,
+          full_name: fullName,
+          commercial_name: commercialName,
+          profession: profession,
+          email: data.contact?.email || p.email || '',
+          whatsapp: data.contact?.whatsapp || p.whatsapp || '',
+          instagram: data.contact?.instagram || '',
+          linkedin: data.contact?.linkedin || '',
+          city: p.ciudad || data.contact?.ubicacion?.ciudad || 'Buenos Aires',
+          country: 'Argentina',
+          status: data.status === 'submitted' ? 'Activo' : 'Prospecto',
+          specialties: data.offer?.especialidades || [],
+          bio: data.history?.presentacionCorta || '',
+          short_description: p.especialidadPrincipal || '',
+          commercial_notes: `Datos cargados vía Onboarding Web (Estado: ${data.status}). Sensaciones: ${(data.style?.sensaciones || []).join(', ')}.`,
+          content: mappedContent,
+          last_contact: today,
+        };
+
+        await sb.from('clients').upsert(clientRow, { onConflict: 'id' });
+
+        if (data.status === 'submitted') {
+          const numPart = clientId.replace('TRAY-', '');
+          const projectId = `PROJ-${numPart}`;
+
+          const projectRow = {
+            id: projectId,
+            client_id: clientId,
+            client_name: fullName,
+            name: `${commercialName} — Web Principal`,
+            project_type: 'Sitio Web Completo',
+            status: 'En diseño',
+            start_date: today,
+            price: '$95 USD',
+            responsible: 'Operaciones Trayectoria',
+            notes: 'Proyecto generado automáticamente desde el formulario web del cliente.',
+          };
+          await sb.from('projects').upsert(projectRow, { onConflict: 'id' });
+
+          const actRow = {
+            id: `ACT-${Date.now().toString().slice(-6)}`,
+            client_id: clientId,
+            client_name: fullName,
+            project_id: projectId,
+            type: 'client_created',
+            title: 'Información recibida desde formulario web',
+            description: `${fullName} (${profession}) completó y envió todos los datos para su sitio web.`,
+            date: today,
+            author: 'Onboarding Web',
+          };
+          await sb.from('activity_logs').insert([actRow]);
+        }
+      } catch (err) {
+        console.warn('Supabase sync warning:', err);
+      }
+    },
+
+    /**
+     * Saves or merges client onboarding data into storage & Supabase
      */
     saveClient: function (clientId, data) {
       if (!clientId) clientId = 'TRAY-00001';
@@ -326,6 +477,9 @@
           index.push(clientId);
           localStorage.setItem(CLIENTS_INDEX_KEY, JSON.stringify(index));
         }
+
+        // Async cloud sync
+        this.syncToSupabase(clientId, data);
         
         return { success: true, data: data };
       } catch (e) {
