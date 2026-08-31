@@ -2988,15 +2988,15 @@ body {
   border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-/* Solid Deep Midnight Navy Chat Window */
+/* Solid Klein Blue Chat Window with Thin White Lines */
 .real-chat-window {
   max-width: 880px;
   margin: 0 auto;
-  background: #020617;
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background: var(--klein-blue);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   border-radius: var(--radius-window);
   overflow: hidden;
-  box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.12) inset;
   display: flex;
   flex-direction: column;
   min-height: 480px;
@@ -3008,8 +3008,8 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  background: #090F26;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .chat-header-left {
@@ -3027,7 +3027,7 @@ body {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .chat-bot-status {
@@ -3040,8 +3040,8 @@ body {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3059,7 +3059,7 @@ body {
 
 .c-bot-meta span {
   font-size: 0.7rem;
-  color: #94A3B8;
+  color: #BFDBFE;
 }
 
 .chat-status-pill {
@@ -3068,11 +3068,11 @@ body {
   gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.15);
   padding: 3px 9px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .c-live-dot {
@@ -3090,7 +3090,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  background: #020617;
+  background: transparent;
   overflow-y: auto;
 }
 
@@ -3118,8 +3118,8 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -3139,28 +3139,29 @@ body {
 }
 
 .msg-bot-bubble {
-  background: #0D1636;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-top-left-radius: 4px;
   max-width: 760px;
 }
 
 .msg-user-bubble {
-  background: var(--klein-blue);
-  border: 1px solid rgba(191, 219, 254, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-top-right-radius: 4px;
   color: #FFFFFF;
   font-weight: 700;
   font-size: 0.9rem;
   max-width: 620px;
-  box-shadow: 0 4px 14px rgba(0, 51, 255, 0.3);
 }
 
+/* INTERNAL DARK NAVY READING CARD */
 .msg-report-bubble {
-  background: #080E24;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 22px 24px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  background: #03071E !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.24) !important;
+  border-radius: 16px !important;
+  padding: 24px 26px !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
 }
 
 .report-meta-header {
@@ -3204,8 +3205,8 @@ body {
 }
 
 .report-prose-body em {
-  color: #CBD5E1;
-  font-style: italic;
+  color: #E2E8F0;
+  font-style: normal;
 }
 
 .report-conclusion-footer {
@@ -3214,15 +3215,16 @@ body {
   margin-top: 18px;
 }
 
+/* Pure White, Non-Italic Closing Quote */
 .report-quote-phrase {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
   font-weight: 800;
-  letter-spacing: -0.025em;
-  color: #67E8F9;
-  line-height: 1.38;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  line-height: 1.4;
   margin-bottom: 18px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .report-actions-row {
@@ -3255,11 +3257,11 @@ body {
 
 .btn-chat-restart {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 600;
-  color: #CBD5E1;
+  color: #FFFFFF;
   padding: 8px 14px;
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -3267,7 +3269,7 @@ body {
 }
 
 .btn-chat-restart:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
   border-color: #FFFFFF;
 }
@@ -3275,8 +3277,8 @@ body {
 /* BOTTOM CONVERSATIONAL WRITING BAR */
 .real-chat-bottom-bar {
   padding: 14px 18px;
-  background: #090F26;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .conversational-prompt-box {
@@ -3284,8 +3286,8 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 8px 6px;
-  background: #030718;
-  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   border-radius: 14px;
   padding: 8px 14px;
   transition: all 0.2s;
@@ -3293,22 +3295,22 @@ body {
 
 .conversational-prompt-box:focus-within {
   border-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
-  background: #020617;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .prompt-static-text {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   font-weight: 700;
-  color: #93C5FD;
+  color: #FFFFFF;
   user-select: none;
   white-space: nowrap;
 }
 
 .chat-inline-input {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px dashed rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px dashed rgba(255, 255, 255, 0.5);
   border-radius: 6px;
   padding: 5px 10px;
   font-family: var(--font-sans);
@@ -3320,14 +3322,14 @@ body {
 }
 
 .chat-inline-input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 500;
 }
 
 .chat-inline-input:focus {
   border-style: solid;
   border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .input-name {
@@ -3366,5 +3368,6 @@ body {
   background: #F1F5F9;
   transform: scale(1.06);
 }
+
 
 
