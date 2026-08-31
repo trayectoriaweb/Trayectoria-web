@@ -817,30 +817,80 @@
 })();
 
 
+
   /* =========================================================================
-     SECCIÓN 4 — PLANTILLAS DE TRAYECTORIA (INTERACTIVE FILTERS)
+     SECCIÓN 4 — PLANTILLAS DE TRAYECTORIA (INTERACTIVE STUDIO EXPLORER)
      ========================================================================= */
   function initTemplatesFilters() {
     const btnProfessional = document.getElementById('btnFilterProfessional');
     const btnBusiness = document.getElementById('btnFilterBusiness');
-    const proCards = document.querySelectorAll('.professional-card');
-    const bizCards = document.querySelectorAll('.business-card');
+    const navCards = document.querySelectorAll('.template-nav-card');
+    const viewContents = document.querySelectorAll('.template-view-content');
+    const stageUrlText = document.getElementById('stageUrlText');
 
-    if (!btnProfessional || !btnBusiness) return;
+    if (!btnProfessional || !btnBusiness || !navCards.length) return;
 
+    const urls = {
+      'sobrio': 'valentinamoreno.com.ar/sobrio',
+      'editorial': 'valentinamoreno.com.ar/editorial',
+      'creativo': 'valentinamoreno.com.ar/creativo',
+      'directo': 'valentinamoreno.com.ar/directo',
+      'servicios': 'valentinamoreno.com.ar/servicios',
+      'espacio': 'valentinamoreno.com.ar/espacio'
+    };
+
+    function selectTemplate(templateKey) {
+      navCards.forEach(card => {
+        if (card.dataset.targetTemplate === templateKey) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      viewContents.forEach(view => {
+        if (view.id === `viewTemplate${templateKey.charAt(0).toUpperCase() + templateKey.slice(1)}`) {
+          view.classList.add('active');
+        } else {
+          view.classList.remove('active');
+        }
+      });
+
+      if (stageUrlText && urls[templateKey]) {
+        stageUrlText.textContent = urls[templateKey];
+      }
+    }
+
+    // Nav card click
+    navCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const target = card.dataset.targetTemplate;
+        if (target) selectTemplate(target);
+      });
+    });
+
+    // Group Tab Switch
     btnProfessional.addEventListener('click', () => {
       btnProfessional.classList.add('active');
       btnBusiness.classList.remove('active');
 
-      proCards.forEach(c => c.style.display = 'flex');
-      bizCards.forEach(c => c.style.display = 'none');
+      navCards.forEach(c => {
+        if (c.dataset.category === 'pro') c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+
+      selectTemplate('sobrio');
     });
 
     btnBusiness.addEventListener('click', () => {
       btnBusiness.classList.add('active');
       btnProfessional.classList.remove('active');
 
-      proCards.forEach(c => c.style.display = 'none');
-      bizCards.forEach(c => c.style.display = 'flex');
+      navCards.forEach(c => {
+        if (c.dataset.category === 'biz') c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+
+      selectTemplate('servicios');
     });
   }
