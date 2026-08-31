@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.20">
+  <link rel="stylesheet" href="css/styles.css?v=2026.25">
 </head>
 <body>
 
@@ -37,9 +37,9 @@
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#test-5s">Experiencia</a></li>
           <li><a href="#comparativa">Instagram vs Web</a></li>
-          <li><a href="#constructor">Probar</a></li>
+          <li><a href="#constructor">Constructor</a></li>
           <li><a href="#proyectos">Casos Reales</a></li>
-          <li><a href="#precios">Precios</a></li>
+          <li><a href="#precios">Planes</a></li>
         </ul>
       </nav>
 
@@ -62,7 +62,7 @@
         
         <div class="hero-header-badge">
           <span class="pulse-indicator"></span>
-          <span>Presencia Digital Profesional · 2026</span>
+          <span>Arquitectura Digital para Profesionales · 2026</span>
         </div>
 
         <h1 class="hero-question">
@@ -83,7 +83,7 @@
               type="text" 
               class="scanner-input" 
               id="heroSearchInput" 
-              placeholder="Escribí tu nombre o profesión (ej: Dra. Valentina Moreno)..." 
+              placeholder="Escribí tu nombre o profesión..." 
               autocomplete="off"
               spellcheck="false"
             >
@@ -98,12 +98,14 @@
             <span class="scanner-chips-label">Probar con un ejemplo:</span>
             <button type="button" class="scanner-chip" data-name="Dra. Valentina Moreno" data-role="Psicoterapia Clínica · Rosario">Dra. Valentina Moreno (Psicóloga)</button>
             <button type="button" class="scanner-chip" data-name="Estudio Benítez & Asoc." data-role="Derecho Corporativo · Córdoba">Estudio Benítez (Abogados)</button>
-            <button type="button" class="scanner-chip" data-name="Arq. Santiago Rossi" data-role="Arquitectura & Reformas · CABA">Arq. Santiago Rossi (Arquitecto)</button>
             <button type="button" class="scanner-chip" data-name="Dr. Marcelo Varela" data-role="Traumatología · Buenos Aires">Dr. Marcelo Varela (Médico)</button>
+            <button type="button" class="scanner-chip" data-name="Arq. Camila Zaldívar" data-role="Arquitectura & Reformas · CABA">Arq. Camila Zaldívar (Arquitecta)</button>
           </div>
 
           <!-- Simulated Live Diagnosis Result (Appears when typed or clicked) -->
           <div class="scanner-result-panel" id="scannerResultPanel">
+            <div class="scanner-scan-line" id="scannerScanLine"></div>
+            
             <div class="scanner-result-header">
               <div class="scanner-target-info">
                 <strong class="scanner-target-name" id="resTargetName">Dra. Valentina Moreno</strong>
@@ -160,7 +162,7 @@
                 <p>Quien busca tu servicio encuentra pedazos sueltos, no la dimensión real de tu trabajo.</p>
               </div>
               <a href="#test-5s" class="btn-revelation-action" id="btnHeroToTest">
-                <span>Quiero mi Trayectoria →</span>
+                <span>Comprobar el impacto en 5s →</span>
               </a>
             </div>
           </div>
@@ -216,7 +218,7 @@
               <span>Observá con qué claridad se presenta la información</span>
             </div>
 
-            <div class="test-card-header">
+            <div class="test-card-header" id="testItemHeader">
               <div class="test-card-avatar-wrap">
                 <div class="test-card-avatar" id="testCardAvatar">👩‍⚕️</div>
                 <div class="test-card-status-dot"></div>
@@ -268,6 +270,12 @@
             </div>
 
             <div class="feedback-response-text" id="feedbackResponseText"></div>
+            
+            <div class="feedback-next-step-wrap" id="feedbackNextStep" style="display:none; margin-top:20px;">
+              <a href="#comparativa" class="btn-feedback-next">
+                <span>¿Por qué esto no pasa en Instagram? Ver comparativa ↓</span>
+              </a>
+            </div>
           </div>
 
         </div>
@@ -339,7 +347,7 @@
 
                 <!-- Interactive "Find the Info" challenge -->
                 <div class="insta-interactive-quest">
-                  <span class="quest-title">🔍 Intentá encontrar información básica de Valentina:</span>
+                  <span class="quest-title">🔍 Hacé clic para buscar información básica de Valentina:</span>
                   <div class="quest-buttons-grid">
                     <button type="button" class="quest-btn" data-target="info-address">¿Dónde atiende presencial?</button>
                     <button type="button" class="quest-btn" data-target="info-services">¿Qué honorarios o prepagas atiende?</button>
@@ -501,9 +509,9 @@
             </div>
 
             <!-- Module 2: Especialidades -->
-            <div class="builder-module-accordion" data-module="specialties">
+            <div class="builder-module-accordion open" data-module="specialties">
               <button type="button" class="module-header-btn">
-                <span class="module-check-circle" id="checkModuleSpecialties">+</span>
+                <span class="module-check-circle" id="checkModuleSpecialties">✓</span>
                 <span class="module-title-text">2. Especialidades</span>
               </button>
               <div class="module-body-content">
@@ -520,9 +528,9 @@
             </div>
 
             <!-- Module 3: Servicios -->
-            <div class="builder-module-accordion" data-module="services">
+            <div class="builder-module-accordion open" data-module="services">
               <button type="button" class="module-header-btn">
-                <span class="module-check-circle" id="checkModuleServices">+</span>
+                <span class="module-check-circle" id="checkModuleServices">✓</span>
                 <span class="module-title-text">3. Servicios & Honorarios</span>
               </button>
               <div class="module-body-content">
@@ -544,9 +552,9 @@
             </div>
 
             <!-- Module 4: Ubicación & Maps -->
-            <div class="builder-module-accordion" data-module="location">
+            <div class="builder-module-accordion open" data-module="location">
               <button type="button" class="module-header-btn">
-                <span class="module-check-circle" id="checkModuleLocation">+</span>
+                <span class="module-check-circle" id="checkModuleLocation">✓</span>
                 <span class="module-title-text">4. Ubicación & GPS</span>
               </button>
               <div class="module-body-content">
@@ -566,9 +574,9 @@
             </div>
 
             <!-- Module 5: Contacto WhatsApp -->
-            <div class="builder-module-accordion" data-module="contact">
+            <div class="builder-module-accordion open" data-module="contact">
               <button type="button" class="module-header-btn">
-                <span class="module-check-circle" id="checkModuleContact">+</span>
+                <span class="module-check-circle" id="checkModuleContact">✓</span>
                 <span class="module-title-text">5. Botón de Conversión WhatsApp</span>
               </button>
               <div class="module-body-content">
@@ -1278,6 +1286,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/app.js?v=2026.20"></script>
+  <script src="js/app.js?v=2026.25"></script>
 </body>
 </html>

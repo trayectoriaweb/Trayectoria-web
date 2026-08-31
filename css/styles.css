@@ -1,6 +1,6 @@
 /* ==========================================================================
-   TRAYECTORIA — DESIGN SYSTEM & INTERACTIVE PRODUCT EXPERIENCE v2026.20
-   Editorial · Minimalista · Apple-inspired UI · High Performance
+   TRAYECTORIA — DESIGN SYSTEM & INTERACTIVE PRODUCT EXPERIENCE v2026.25
+   Senior UX/UI & CRO Polish · Editorial · High Performance · 0 Fricción
    ========================================================================== */
 
 :root {
@@ -9,7 +9,7 @@
   --klein-blue-hover: #0026CC;
   --klein-blue-light: #EFF6FF;
   --klein-blue-border: #BFDBFE;
-  --klein-blue-glow: rgba(0, 51, 255, 0.14);
+  --klein-blue-glow: rgba(0, 51, 255, 0.16);
 
   --bg-page: #FFFFFF;
   --bg-surface: #F8FAFC;
@@ -329,6 +329,8 @@ body {
   padding: 24px;
   box-shadow: var(--shadow-card);
   text-align: left;
+  position: relative;
+  overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -368,6 +370,7 @@ body {
 .scanner-input::placeholder {
   color: var(--text-muted);
   font-weight: 400;
+  transition: opacity 0.2s;
 }
 
 .scanner-btn-submit {
@@ -428,23 +431,43 @@ body {
   transition: all 0.15s;
 }
 
-.scanner-chip:hover {
+.scanner-chip:hover, .scanner-chip.active {
   border-color: var(--klein-blue);
   color: var(--klein-blue);
   background: var(--klein-blue-light);
 }
 
-/* Result Diagnosis Panel */
+/* Result Diagnosis Panel & Scanner Pulse */
 .scanner-result-panel {
   display: none;
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid var(--border-light);
+  position: relative;
   animation: fadeIn 0.3s ease forwards;
 }
 
 .scanner-result-panel.visible {
   display: block;
+}
+
+.scanner-scan-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--klein-blue), transparent);
+  box-shadow: 0 0 10px var(--klein-blue);
+  display: none;
+}
+
+.scanner-scan-line.scanning {
+  display: block;
+  animation: scanLineMove 0.4s ease forwards;
+}
+
+@keyframes scanLineMove {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 @keyframes fadeIn {
@@ -499,6 +522,7 @@ body {
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   font-size: 0.86rem;
+  transition: transform 0.2s;
 }
 
 .audit-item-icon {
@@ -703,7 +727,7 @@ body {
   width: 100%;
   height: 100%;
   background: var(--klein-blue);
-  transition: width 0.1s linear;
+  transition: width 0.05s linear;
 }
 
 /* The Revealable Card */
@@ -719,7 +743,7 @@ body {
 .test-card-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(248, 250, 252, 0.96);
+  background: rgba(248, 250, 252, 0.94);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 10;
@@ -759,6 +783,7 @@ body {
   align-items: flex-start;
   gap: 18px;
   margin-bottom: 24px;
+  transition: all 0.3s var(--ease-spring);
 }
 
 .test-card-avatar-wrap {
@@ -825,6 +850,13 @@ body {
   border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: 14px 16px;
+  transition: all 0.3s var(--ease-spring);
+}
+
+.test-grid-item.pulse-step {
+  border-color: var(--klein-blue);
+  box-shadow: 0 0 0 2px var(--klein-blue-border);
+  transform: scale(1.01);
 }
 
 .test-grid-label {
@@ -913,7 +945,7 @@ body {
   transition: all 0.15s var(--ease-spring);
 }
 
-.btn-feedback-option:hover {
+.btn-feedback-option:hover, .btn-feedback-option.active {
   border-color: var(--klein-blue);
   background: var(--klein-blue-light);
   color: var(--klein-blue);
@@ -925,6 +957,25 @@ body {
   line-height: 1.5;
   color: var(--text-secondary);
   min-height: 48px;
+}
+
+.btn-feedback-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-primary);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s;
+}
+
+.btn-feedback-next:hover {
+  background: var(--klein-blue);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
@@ -1435,7 +1486,7 @@ body {
   color: var(--rose);
 }
 
-/* Accordion Module Cards */
+/* Direct Module Cards */
 .builder-module-accordion {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
@@ -1461,7 +1512,6 @@ body {
   font-size: 0.9rem;
   font-weight: 800;
   color: var(--text-primary);
-  cursor: pointer;
   text-align: left;
 }
 
@@ -1469,8 +1519,8 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--bg-subtle);
-  color: var(--text-muted);
+  background: var(--klein-blue);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1478,18 +1528,8 @@ body {
   font-weight: 900;
 }
 
-.builder-module-accordion.open .module-check-circle {
-  background: var(--klein-blue);
-  color: #FFFFFF;
-}
-
 .module-body-content {
-  display: none;
   padding: 0 14px 14px 14px;
-}
-
-.builder-module-accordion.open .module-body-content {
-  display: block;
 }
 
 .module-hint {
@@ -2526,6 +2566,7 @@ body {
   border-color: var(--klein-blue);
   background: #FFFFFF;
   box-shadow: 0 16px 40px var(--klein-blue-glow);
+  transform: translateY(-4px);
 }
 
 .pricing-popular-badge {
@@ -2947,36 +2988,4 @@ body {
   overflow-y: auto;
   background: #FFFFFF;
   padding: 32px;
-}
-
-/* Modal Internal Tabs */
-.modal-sim-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 16px;
-  margin-bottom: 24px;
-}
-
-.modal-sim-tabs {
-  display: flex;
-  gap: 12px;
-}
-
-.modal-sim-tab-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-family: inherit;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.modal-sim-tab-btn.active {
-  background: var(--klein-blue);
-  color: #FFFFFF;
-  border-color: var(--klein-blue);
 }

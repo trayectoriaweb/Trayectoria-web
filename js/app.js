@@ -1,6 +1,6 @@
 /**
- * TRAYECTORIA v2026.20 — Master Digital Product & Funnel Experience Controller
- * High-performance, zero-bloat vanilla JavaScript interactions
+ * TRAYECTORIA v2026.25 — Master Digital Product & Funnel Experience Controller
+ * CRO Specialist & Senior UX/UI Polish
  */
 
 (function () {
@@ -35,17 +35,34 @@
   }
 
   /* =========================================================================
-     2. SECCIÓN 1 — HERO INTERACTIVE SCANNER
+     2. SECCIÓN 1 — HERO INTERACTIVE SCANNER (WITH SMOOTH SCAN PULSE)
      ========================================================================= */
   function initHeroScanner() {
     const searchInput = document.getElementById('heroSearchInput');
     const submitBtn = document.getElementById('heroSearchSubmitBtn');
     const resultPanel = document.getElementById('scannerResultPanel');
+    const scanLine = document.getElementById('scannerScanLine');
     const resName = document.getElementById('resTargetName');
     const resRole = document.getElementById('resTargetRole');
     const chips = document.querySelectorAll('.scanner-chip');
 
     if (!searchInput || !resultPanel) return;
+
+    // Typewriter placeholder animation
+    const placeholders = [
+      'Dra. Valentina Moreno (Psicóloga)...',
+      'Dr. Marcelo Varela (Médico Traumatólogo)...',
+      'Estudio Benítez & Asoc. (Abogados)...',
+      'Arq. Camila Zaldívar (Arquitecta)...',
+      'Escribí tu nombre o profesión...'
+    ];
+    let phIndex = 0;
+    let phTimer = setInterval(() => {
+      if (document.activeElement !== searchInput && !searchInput.value) {
+        phIndex = (phIndex + 1) % placeholders.length;
+        searchInput.setAttribute('placeholder', placeholders[phIndex]);
+      }
+    }, 3200);
 
     function runDiagnosis(queryName, queryRole) {
       const name = (queryName || searchInput.value.trim()) || 'Tu Nombre Profesional';
@@ -55,6 +72,18 @@
       if (resRole) resRole.textContent = role;
 
       resultPanel.classList.add('visible');
+
+      // Scanner laser pulse animation
+      if (scanLine) {
+        scanLine.classList.remove('scanning');
+        void scanLine.offsetWidth; // force reflow
+        scanLine.classList.add('scanning');
+      }
+
+      // Smooth scroll if mobile
+      if (window.innerWidth < 768) {
+        resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
 
     submitBtn?.addEventListener('click', () => runDiagnosis());
@@ -68,6 +97,8 @@
 
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
         const name = chip.dataset.name;
         const role = chip.dataset.role;
         searchInput.value = name;
@@ -77,7 +108,7 @@
   }
 
   /* =========================================================================
-     3. SECCIÓN 2 — TEST DE 5 SEGUNDOS
+     3. SECCIÓN 2 — TEST DE 5 SEGUNDOS (WITH PROGRESSIVE ELEMENT ILLUMINATION)
      ========================================================================= */
   function init5sTest() {
     const startBtn = document.getElementById('btnStart5sTest');
@@ -88,20 +119,27 @@
     const btnYes = document.getElementById('btnFeedbackYes');
     const btnNo = document.getElementById('btnFeedbackNo');
     const feedbackResponse = document.getElementById('feedbackResponseText');
+    const feedbackNext = document.getElementById('feedbackNextStep');
+
+    // Items to highlight in sync with countdown
+    const itemHeader = document.getElementById('testItemHeader');
+    const itemServices = document.getElementById('testItemServices');
+    const itemLocation = document.getElementById('testItemLocation');
+    const itemContact = document.getElementById('testItemContact');
 
     let testInterval = null;
-    let secondsLeft = 5;
 
     if (!startBtn || !overlay) return;
 
     startBtn.addEventListener('click', () => {
-      // Reset
       clearInterval(testInterval);
-      secondsLeft = 5;
       if (countdownDigit) countdownDigit.textContent = '5';
       if (progressBar) progressBar.style.width = '100%';
       if (feedbackBox) feedbackBox.classList.remove('visible');
       if (feedbackResponse) feedbackResponse.innerHTML = '';
+      if (feedbackNext) feedbackNext.style.display = 'none';
+
+      [itemHeader, itemServices, itemLocation, itemContact].forEach(el => el?.classList.remove('pulse-step'));
       
       overlay.classList.add('hidden');
       startBtn.style.pointerEvents = 'none';
@@ -118,6 +156,12 @@
         if (countdownDigit) countdownDigit.textContent = String(sec);
         if (progressBar) progressBar.style.width = `${(remaining / totalDuration) * 100}%`;
 
+        // Progressive reveal pulse
+        if (sec === 5) itemHeader?.classList.add('pulse-step');
+        if (sec === 3) itemServices?.classList.add('pulse-step');
+        if (sec === 2) itemLocation?.classList.add('pulse-step');
+        if (sec === 1) itemContact?.classList.add('pulse-step');
+
         if (remaining <= 0) {
           clearInterval(testInterval);
           if (countdownDigit) countdownDigit.textContent = '0';
@@ -130,21 +174,27 @@
     });
 
     btnYes?.addEventListener('click', () => {
+      btnYes.classList.add('active');
+      btnNo?.classList.remove('active');
       if (feedbackResponse) {
         feedbackResponse.innerHTML = `
           <strong style="color:#0033FF; display:block; margin-bottom:4px;">✨ Exactamente.</strong>
           Ese es el poder de una buena página profesional: en 5 segundos el paciente tiene claridad absoluta de quién sos, qué problemas resolvés y cómo pedir un turno por WhatsApp sin perder tiempo en publicaciones viejas.
         `;
       }
+      if (feedbackNext) feedbackNext.style.display = 'block';
     });
 
     btnNo?.addEventListener('click', () => {
+      btnNo.classList.add('active');
+      btnYes?.classList.remove('active');
       if (feedbackResponse) {
         feedbackResponse.innerHTML = `
           <strong style="color:#B45309; display:block; margin-bottom:4px;">💡 Imaginate en Instagram.</strong>
           Si en una ficha ordenada 5 segundos resultan breves, en un feed de Instagram la información básica queda completamente sepultada entre fotos personales y links rotos.
         `;
       }
+      if (feedbackNext) feedbackNext.style.display = 'block';
     });
   }
 
@@ -192,7 +242,7 @@
         if (clueBubble && clues[target]) {
           clueBubble.innerHTML = clues[target];
           clueBubble.style.animation = 'none';
-          clueBubble.offsetHeight; /* trigger reflow */
+          void clueBubble.offsetWidth;
           clueBubble.style.animation = 'fadeIn 0.25s ease';
         }
       });
@@ -203,7 +253,6 @@
      5. SECCIÓN 4 — LIVE INTERACTIVE BUILDER
      ========================================================================= */
   function initLiveBuilder() {
-    const accordions = document.querySelectorAll('.builder-module-accordion');
     const inputName = document.getElementById('builderInputName');
     const inputRole = document.getElementById('builderInputRole');
     const inputAddress = document.getElementById('builderInputAddress');
@@ -224,17 +273,6 @@
     const canvasLocBox = document.getElementById('canvasLocAddress');
     const canvasWaBtn = document.getElementById('canvasHeroWaBtn');
 
-    // Accordion expand/collapse
-    accordions.forEach(acc => {
-      const btn = acc.querySelector('.module-header-btn');
-      btn?.addEventListener('click', () => {
-        const isOpen = acc.classList.contains('open');
-        accordions.forEach(a => a.classList.remove('open'));
-        if (!isOpen) acc.classList.add('open');
-      });
-    });
-
-    // 1. Name & Role Sync
     function updateIdentity() {
       const name = inputName?.value.trim() || 'Tu Nombre';
       const role = inputRole?.value.trim() || 'Profesión / Especialidad';
@@ -251,7 +289,6 @@
     inputName?.addEventListener('input', updateIdentity);
     inputRole?.addEventListener('input', updateIdentity);
 
-    // 2. Specialties Chips Sync
     specChips.forEach(chip => {
       chip.addEventListener('click', () => {
         chip.classList.toggle('active');
@@ -265,7 +302,6 @@
       canvasChipsList.innerHTML = activeSpecs.map(s => `<span class="canvas-chip-pill">${s}</span>`).join('');
     }
 
-    // 3. Services Checkboxes Sync
     serviceChecks.forEach(cb => {
       cb.addEventListener('change', renderServices);
     });
@@ -285,7 +321,6 @@
       `).join('');
     }
 
-    // 4. Location Mode Sync
     btnLocPresencial?.addEventListener('click', () => {
       btnLocPresencial.classList.add('active');
       btnLocOnline?.classList.remove('active');
@@ -304,14 +339,12 @@
       }
     });
 
-    // 5. WhatsApp Toggle Sync
     toggleWA?.addEventListener('change', () => {
       if (canvasWaBtn) {
         canvasWaBtn.style.display = toggleWA.checked ? 'inline-flex' : 'none';
       }
     });
 
-    // Reset Builder Demo
     btnReset?.addEventListener('click', () => {
       if (inputName) inputName.value = 'Dra. Valentina Moreno';
       if (inputRole) inputRole.value = 'Psicoterapia Clínica & TCC';
@@ -357,10 +390,9 @@
         domain: 'https://sofiaalbarracin.com.ar',
         role: 'Psicóloga Especialista en Ansiedad & Parejas',
         address: 'Honduras 4800, Palermo Soho, CABA',
-        specialties: ['Terapia Cognitivo-Conductual', 'Crisis de Ansiedad', 'Vínculos de Pareja', 'Terapia Online'],
         services: [
-          { name: 'Psicoterapia Individual', desc: 'Sesiones de 50 minutos con objetivos claros.' },
-          { name: 'Orientación a Parejas', desc: 'Comunicación asertiva y resolución de crisis.' }
+          { name: 'Psicoterapia Individual (50 min)', desc: 'Sesiones semanales con objetivos terapéuticos claros.' },
+          { name: 'Orientación a Parejas', desc: 'Resolución de conflictos y dinámicas vinculares asertivas.' }
         ]
       },
       'benitez': {
@@ -368,9 +400,8 @@
         domain: 'https://estudiobenitez.com.ar',
         role: 'Abogados Corporativos & Laborales',
         address: 'Av. Corrientes 1400, Tribunales, CABA',
-        specialties: ['Derecho Laboral', 'Contratos Comerciales', 'Sucesiones', 'Asesoría PyMEs'],
         services: [
-          { name: 'Auditoría Legal Empresarial', desc: 'Prevención de contingencias laborales.' },
+          { name: 'Auditoría Legal Empresarial', desc: 'Prevención de contingencias laborales y societarias.' },
           { name: 'Litigios y Conciliación', desc: 'Representación en fueros comerciales y laborales.' }
         ]
       },
@@ -379,10 +410,9 @@
         domain: 'https://drvarela.com.ar',
         role: 'Médico Traumatólogo · Cirugía Articular',
         address: 'Av. Santa Fe 3200, Alto Palermo, CABA',
-        specialties: ['Lesiones de Rodilla', 'Hombro & Manguito Rotador', 'Medicina Deportiva'],
         services: [
           { name: 'Consulta Traumatológica', desc: 'Evaluación física exhaustiva y lectura de RMN.' },
-          { name: 'Artroscopía Mini-Invasiva', desc: 'Procedimientos quirúrgicos de rápida recuperación.' }
+          { name: 'Artroscopía Mini-Invasiva', desc: 'Procedimientos de rápida recuperación articular.' }
         ]
       },
       'zaldivar': {
@@ -390,10 +420,9 @@
         domain: 'https://camilazaldivar.com',
         role: 'Arquitecta · Proyectos Residenciales',
         address: 'Estudio Colegiales, CABA',
-        specialties: ['Viviendas Unifamiliares', 'Reformas Integrales', 'Dirección de Obra'],
         services: [
-          { name: 'Proyecto & Documentación', desc: 'Planos ejecutivos, renders 3D y presupuesto.' },
-          { name: 'Interiorismo Comercial', desc: 'Diseño de identidad espacial para marcas.' }
+          { name: 'Proyecto & Documentación', desc: 'Planos ejecutivos, renders 3D y presupuesto cerrado.' },
+          { name: 'Interiorismo Contemporáneo', desc: 'Diseño espacial integral para viviendas y estudios.' }
         ]
       }
     };
@@ -502,7 +531,6 @@
       isDragging = false;
     });
 
-    // Touch support for Mobile
     container.addEventListener('touchstart', (e) => {
       isDragging = true;
       if (e.touches[0]) setSliderPosition(e.touches[0].clientX);
@@ -519,7 +547,7 @@
   }
 
   /* =========================================================================
-     8. SECCIÓN 7 — DETECTOR DE TRAYECTORIA (CHECKLIST & SCORE)
+     8. SECCIÓN 7 — DETECTOR DE TRAYECTORIA (CHECKLIST & DYNAMIC SCORE)
      ========================================================================= */
   function initTrajectoryDetector() {
     const checkboxes = document.querySelectorAll('.detector-cb');
@@ -528,6 +556,41 @@
     const scoreText = document.getElementById('detectorScoreText');
 
     if (!checkboxes.length || !scoreDigit || !scoreFill) return;
+
+    let currentDisplayedScore = 42;
+
+    function animateScore(targetScore) {
+      const duration = 300;
+      const start = currentDisplayedScore;
+      const diff = targetScore - start;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        currentDisplayedScore = Math.round(start + diff * progress);
+
+        scoreDigit.textContent = String(currentDisplayedScore);
+        scoreFill.style.width = `${currentDisplayedScore}%`;
+
+        if (currentDisplayedScore >= 90) {
+          scoreDigit.style.color = '#10B981';
+          scoreFill.style.background = '#10B981';
+        } else if (currentDisplayedScore >= 50) {
+          scoreDigit.style.color = '#F59E0B';
+          scoreFill.style.background = '#F59E0B';
+        } else {
+          scoreDigit.style.color = '#EF4444';
+          scoreFill.style.background = '#EF4444';
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
 
     function recalculateScore() {
       let total = 0;
@@ -547,20 +610,13 @@
         }
       });
 
-      scoreDigit.textContent = String(total);
-      scoreFill.style.width = `${total}%`;
+      animateScore(total);
 
       if (total >= 90) {
-        scoreDigit.style.color = '#10B981';
-        scoreFill.style.background = '#10B981';
         if (scoreText) scoreText.innerHTML = '🌟 <strong>Presencia 100% sólida y centralizada.</strong> Todo tu prestigio tiene un destino claro para convertir consultas.';
       } else if (total >= 50) {
-        scoreDigit.style.color = '#F59E0B';
-        scoreFill.style.background = '#F59E0B';
         if (scoreText) scoreText.innerHTML = '⚠️ <strong>Presencia parcialmente unificada.</strong> Tenés canales valiosos pero falta el centro de conversión para no perder pacientes.';
       } else {
-        scoreDigit.style.color = '#EF4444';
-        scoreFill.style.background = '#EF4444';
         if (scoreText) scoreText.innerHTML = '🚨 <strong>Presencia altamente dispersa.</strong> Tus potenciales clientes se pierden entre apps antes de poder contactarte.';
       }
     }
@@ -571,7 +627,7 @@
   }
 
   /* =========================================================================
-     9. SECCIÓN 8 — PERSONALIZACIÓN & DECISIÓN INTERACTIVA
+     9. SECCIÓN 8 & 9 — PERSONALIZACIÓN & DECISIÓN CRO UNIFICADA
      ========================================================================= */
   function initPersonalizationDecision() {
     const decisionCards = document.querySelectorAll('.decision-card');
@@ -594,7 +650,7 @@
         Object.values(pricingCards).forEach(pCard => pCard?.classList.remove('highlight-tier'));
         if (pricingCards[planKey]) {
           pricingCards[planKey].classList.add('highlight-tier');
-          pricingCards[planKey].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          pricingCards[planKey].scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       });
     });
