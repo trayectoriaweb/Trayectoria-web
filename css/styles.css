@@ -3848,268 +3848,262 @@ body {
 }
 
 
+
 /* ==========================================================================
-   SECCIÓN — PRECIOS (DISPOSICIÓN ESTRATÉGICA & ESCALERA DE VALOR)
+   SECCIÓN — PRECIOS (MATRIZ EDITORIAL COMPACTA · CERO EMOJIS)
    ========================================================================== */
 .pricing-section {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-light);
-  padding: 90px 0 100px 0;
-  position: relative;
+  padding: 80px 0 90px 0;
 }
 
-/* Strategic Trust Ribbon */
-.pricing-trust-ribbon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  margin-top: 20px;
-}
-
-.trust-pill {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #475569;
-  background: #FFFFFF;
-  border: 1px solid var(--border-medium);
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-}
-
-/* Pricing Grid */
-.pricing-evolution-grid {
+.compact-pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 22px;
+  margin-top: 36px;
   align-items: stretch;
-  margin-top: 42px;
 }
 
-@media (max-width: 990px) {
-  .pricing-evolution-grid {
+@media (max-width: 900px) {
+  .compact-pricing-grid {
     grid-template-columns: 1fr;
-    max-width: 520px;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
-    gap: 32px;
+    gap: 24px;
   }
 }
 
-/* Pricing Cards */
-.pricing-card {
+.compact-price-card {
   background: #FFFFFF;
   border: 1.5px solid var(--border-medium);
   border-radius: var(--radius-window);
-  padding: 28px 26px;
+  padding: 24px 22px;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-  transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s var(--ease-spring);
 }
 
-.pricing-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+.compact-price-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
 }
 
-/* Highlight Tier (Consultorio Pro) */
-.pricing-card.highlight-tier {
+.compact-price-card.c-card-highlight {
   border-color: var(--klein-blue);
-  box-shadow: 0 16px 40px rgba(0, 51, 255, 0.12), 0 0 0 1.5px var(--klein-blue);
-  background: #FFFFFF;
+  box-shadow: 0 12px 32px rgba(0, 51, 255, 0.1), 0 0 0 1px var(--klein-blue);
 }
 
-.pricing-popular-badge {
+.c-popular-pill {
   position: absolute;
-  top: -14px;
+  top: -11px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--klein-blue);
   color: #FFFFFF;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 900;
-  letter-spacing: 0.06em;
-  padding: 4px 14px;
+  letter-spacing: 0.08em;
+  padding: 3px 12px;
   border-radius: var(--radius-pill);
-  box-shadow: 0 4px 12px rgba(0, 51, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 51, 255, 0.25);
   white-space: nowrap;
 }
 
 /* Card Header */
-.pricing-header-top {
+.c-tier-meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.pricing-tier-tag {
+.c-tier-num {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--text-secondary);
-  background: #F1F5F9;
-  padding: 3px 8px;
-  border-radius: 6px;
+  color: var(--klein-blue);
 }
 
-.pricing-tier-tag.tag-highlight {
+.c-tier-tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.c-tier-tag.tag-blue {
   color: var(--klein-blue);
   background: rgba(0, 51, 255, 0.08);
 }
 
-.pricing-timing {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--klein-blue);
-}
-
-.pricing-timing.timing-emerald {
-  color: #059669;
-}
-
-.pricing-tier-name {
+.c-tier-title {
   font-family: var(--font-sans);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
   margin-bottom: 6px;
 }
 
-.pricing-tier-desc {
+.c-tier-desc {
   font-family: var(--font-sans);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   color: #64748B;
-  line-height: 1.45;
-  min-height: 48px;
-  margin-bottom: 16px;
+  line-height: 1.4;
+  min-height: 42px;
+  margin-bottom: 14px;
 }
 
-/* Price Amount Row */
-.pricing-amount-row {
+/* Price Box */
+.c-price-amount-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.c-amount-line {
   display: flex;
   align-items: baseline;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: 20px;
+  gap: 2px;
 }
 
-.pricing-amount-row .currency {
-  font-size: 1.3rem;
+.c-currency {
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin-right: 2px;
 }
 
-.pricing-amount-row .amount {
+.c-amount {
   font-family: var(--font-mono);
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
   line-height: 1;
   color: var(--text-primary);
   letter-spacing: -0.03em;
 }
 
-.pricing-amount-row .unit {
+.c-unit {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 800;
   color: var(--text-muted);
-  margin-left: 4px;
+  margin-left: 3px;
 }
 
-.pricing-payment-type {
+.c-timing-tag {
+  display: block;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #94A3B8;
-  margin-left: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+  margin-top: 4px;
 }
 
-/* Card Body & Checklist */
-.pricing-card-body {
+.c-timing-tag.tag-emerald {
+  color: #059669;
+}
+
+/* Features List */
+.c-features-list {
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.pricing-list-title {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #94A3B8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-
-.pricing-checklist {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 0.84rem;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
   color: #475569;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
-.pricing-checklist li {
-  line-height: 1.4;
+.c-feature-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1.35;
 }
 
-.pricing-checklist li strong {
+.c-feature-item span {
+  font-family: var(--font-mono);
+  color: var(--klein-blue);
+  font-weight: 800;
+}
+
+.c-feature-item strong {
   color: var(--text-primary);
   font-weight: 700;
 }
 
-/* Card Footer Actions */
-.pricing-card-footer {
+/* Card Button */
+.c-card-footer {
   margin-top: auto;
 }
 
-.btn-pricing-action {
+.btn-c-price {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 13px 20px;
+  padding: 11px 16px;
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 800;
   text-decoration: none;
   transition: all 0.2s var(--ease-spring);
 }
 
-.btn-outline {
+.btn-c-outline {
   background: #FFFFFF;
   color: var(--text-primary);
   border: 1.5px solid var(--border-medium);
 }
 
-.btn-outline:hover {
+.btn-c-outline:hover {
   background: var(--text-primary);
   color: #FFFFFF;
   border-color: var(--text-primary);
 }
 
-.btn-klein {
+.btn-c-klein {
   background: var(--klein-blue);
   color: #FFFFFF;
   border: none;
-  box-shadow: 0 4px 14px rgba(0, 51, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 51, 255, 0.2);
 }
 
-.btn-klein:hover {
+.btn-c-klein:hover {
   background: #0022DD;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 51, 255, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 51, 255, 0.35);
+}
+
+/* Bottom Trust Bar (Clean Editorial) */
+.compact-pricing-trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: #64748B;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-medium);
+}
+
+.trust-sep {
+  color: #CBD5E1;
 }
