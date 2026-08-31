@@ -4342,3 +4342,148 @@ body {
     display: none; /* Direct tap on mobile */
   }
 }
+
+
+/* ==========================================================================
+   MOBILE OPTIMIZATION — PLANTILLAS STUDIO EXPLORER "TODO EN UNO"
+   ========================================================================== */
+@media (max-width: 860px) {
+  .templates-section {
+    padding: 60px 0 70px 0;
+  }
+
+  .templates-studio-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  .templates-nav-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .templates-filter-header {
+    margin-bottom: 6px !important;
+    justify-content: center !important;
+  }
+
+  /* Compact Horizontal Pills Track (Names only, no long descriptions) */
+  .templates-nav-list {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    padding: 4px 4px 10px 4px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .templates-nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .template-nav-card {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    padding: 8px 16px !important;
+    border-radius: var(--radius-pill) !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #CBD5E1 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .template-nav-card.active {
+    background: var(--klein-blue) !important;
+    border-color: var(--klein-blue) !important;
+    box-shadow: 0 4px 14px rgba(0, 51, 255, 0.3) !important;
+  }
+
+  .nav-card-head {
+    margin-bottom: 0 !important;
+    gap: 6px !important;
+    align-items: center !important;
+  }
+
+  .nav-card-num {
+    font-size: 0.72rem !important;
+    font-weight: 900 !important;
+    color: var(--klein-blue) !important;
+  }
+
+  .template-nav-card.active .nav-card-num {
+    color: #FFFFFF !important;
+  }
+
+  .nav-card-head strong {
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    margin-left: 0 !important;
+    color: #0F172A !important;
+  }
+
+  .template-nav-card.active .nav-card-head strong {
+    color: #FFFFFF !important;
+  }
+
+  /* Hide descriptions and arrows on mobile to keep it ultra compact */
+  .nav-card-desc,
+  .nav-card-arrow {
+    display: none !important;
+  }
+
+  .templates-nav-footer {
+    display: none !important;
+  }
+
+  /* Stage Panel right below the pills */
+  .templates-stage-panel {
+    order: 2;
+  }
+
+  .template-stage-window {
+    min-height: 420px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .template-stage-body {
+    padding: 12px !important;
+  }
+
+  .mock-website {
+    padding: 12px 14px !important;
+  }
+
+  .templates-mobile-cta-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 16px !important;
+    order: 3 !important;
+  }
+
+  .btn-templates-mobile-wa {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    background: var(--klein-blue) !important;
+    color: #FFFFFF !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.92rem !important;
+    font-weight: 800 !important;
+    padding: 13px 20px !important;
+    border-radius: var(--radius-pill) !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(0, 51, 255, 0.25) !important;
+  }
+}
+.templates-mobile-cta-wrap {
+  display: none;
+}
