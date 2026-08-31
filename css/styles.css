@@ -5596,3 +5596,173 @@ body {
     display: inline !important;
   }
 }
+
+
+/* ==========================================================================
+   EXPLICIT LABELED CHAT FORM (NOMBRE, PROFESIÓN, CIUDAD + BOTÓN CLARO)
+   ========================================================================== */
+.chat-chips-area {
+  padding: 10px 20px;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.chat-chips-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #64748B;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chat-chip-btn {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  color: #1E293B;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.chat-chip-btn:hover {
+  background: #EBF2FF;
+  border-color: var(--klein-blue);
+  color: var(--klein-blue);
+  transform: translateY(-1px);
+}
+
+.real-chat-bottom-bar {
+  padding: 18px 22px;
+  background: #F8FAFC;
+  border-top: 1.5px solid #E2E8F0;
+  flex-shrink: 0;
+}
+
+.chat-structured-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chat-form-fields-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr;
+  gap: 12px;
+}
+
+.chat-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.chat-form-label {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #334155;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.chat-form-input {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0F172A;
+  outline: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chat-form-input:focus {
+  border-color: var(--klein-blue);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.14);
+}
+
+.chat-form-input::placeholder {
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.chat-form-submit-row {
+  width: 100%;
+}
+
+.btn-chat-explicit-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--klein-blue);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 800;
+  padding: 13px 24px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-spring);
+  box-shadow: 0 4px 14px rgba(0, 51, 255, 0.28);
+}
+
+.btn-chat-explicit-submit:hover {
+  background: #0022DD;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 51, 255, 0.38);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE RULES FOR EXPLICIT CHAT FORM
+   ========================================================================== */
+@media (max-width: 768px) {
+  .real-chat-window {
+    height: auto !important;
+    min-height: 520px !important;
+  }
+
+  .real-chat-bottom-bar {
+    padding: 14px 12px !important;
+  }
+
+  .chat-form-fields-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .chat-form-label {
+    font-size: 0.72rem !important;
+  }
+
+  .chat-form-input {
+    padding: 11px 14px !important;
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
+  }
+
+  .btn-chat-explicit-submit {
+    padding: 13px 18px !important;
+    font-size: 0.9rem !important;
+  }
+}

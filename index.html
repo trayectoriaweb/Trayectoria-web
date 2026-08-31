@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Stylesheets with clean cache-buster -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.4200">
+  <link rel="stylesheet" href="css/styles.css?v=2026.4300">
 </head>
 <body>
 
@@ -338,52 +338,77 @@
 
           <!-- QUICK PRESET CHIPS -->
           <div class="chat-chips-area">
-            <span class="chat-chips-label">Ejemplos rápidos:</span>
+            <span class="chat-chips-label">✦ Ejemplos rápidos:</span>
             <button type="button" class="chat-chip-btn" data-name="Lic. Sofía Albarracín" data-role="Psicóloga Clínica" data-loc="Palermo">Psicóloga</button>
             <button type="button" class="chat-chip-btn" data-name="Dr. Fernando Castro" data-role="Abogado Corporativo" data-loc="Tribunales">Abogado</button>
             <button type="button" class="chat-chip-btn" data-name="Arq. Camila Zaldívar" data-role="Arquitecta" data-loc="Colegiales">Arquitecta</button>
             <button type="button" class="chat-chip-btn" data-name="Dr. Marcelo Varela" data-role="Traumatólogo" data-loc="Alto Palermo">Traumatólogo</button>
           </div>
 
-          <!-- BOTTOM CONVERSATIONAL WRITING BAR (BULLETPROOF MAQUETATION) -->
+          <!-- BOTTOM EXPLICIT STRUCTURED FORM -->
           <div class="real-chat-bottom-bar">
-            <form class="conversational-prompt-form" id="chatPromptForm" autocomplete="off" onsubmit="return false;">
-              <div class="conversational-prompt-box">
-                <div class="chat-inputs-cluster">
+            <form class="chat-structured-form" id="chatPromptForm" autocomplete="off" onsubmit="return false;">
+              
+              <div class="chat-form-fields-grid">
+                
+                <!-- FIELD 1: NOMBRE -->
+                <div class="chat-form-group">
+                  <label for="chatInputName" class="chat-form-label">
+                    <span>Nombre</span>
+                  </label>
                   <input 
                     type="text" 
-                    class="chat-inline-input input-name" 
+                    class="chat-form-input" 
                     id="chatInputName" 
-                    placeholder="Tu nombre completo" 
-                    autocomplete="off" 
-                    spellcheck="false"
-                    required
-                  >
-                  <input 
-                    type="text" 
-                    class="chat-inline-input input-role" 
-                    id="chatInputRole" 
-                    placeholder="Profesión / Rubro" 
-                    autocomplete="off" 
-                    spellcheck="false"
-                    required
-                  >
-                  <input 
-                    type="text" 
-                    class="chat-inline-input input-location" 
-                    id="chatInputLocation" 
-                    placeholder="Ciudad / Zona" 
+                    placeholder="Ej: Dr. Fernando Castro" 
                     autocomplete="off" 
                     spellcheck="false"
                     required
                   >
                 </div>
-                
-                <button type="submit" class="btn-chat-send" id="btnChatSend" aria-label="Enviar búsqueda">
-                  <span class="btn-send-label">Buscar</span>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+
+                <!-- FIELD 2: PROFESIÓN -->
+                <div class="chat-form-group">
+                  <label for="chatInputRole" class="chat-form-label">
+                    <span>Profesión</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    class="chat-form-input" 
+                    id="chatInputRole" 
+                    placeholder="Ej: Abogado Civil" 
+                    autocomplete="off" 
+                    spellcheck="false"
+                    required
+                  >
+                </div>
+
+                <!-- FIELD 3: CIUDAD -->
+                <div class="chat-form-group">
+                  <label for="chatInputLocation" class="chat-form-label">
+                    <span>Ciudad</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    class="chat-form-input" 
+                    id="chatInputLocation" 
+                    placeholder="Ej: CABA / Rosario" 
+                    autocomplete="off" 
+                    spellcheck="false"
+                    required
+                  >
+                </div>
+
+              </div><!-- /chat-form-fields-grid -->
+
+              <!-- SUBMIT BUTTON -->
+              <div class="chat-form-submit-row">
+                <button type="submit" class="btn-chat-explicit-submit" id="btnChatSend">
+                  <span>✦ Buscar qué dice internet sobre mí</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
               </div>
+
             </form>
           </div>
 
@@ -875,6 +900,6 @@
   </div>
 
   <!-- Scripts (New filename to completely bypass browser/CDN cache) -->
-  <script src="js/app.v2.js?v=2026.4200"></script>
+  <script src="js/app.v2.js?v=2026.4300"></script>
 </body>
 </html>
