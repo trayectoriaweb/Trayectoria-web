@@ -100,8 +100,9 @@
 
   
   
+  
   /* =========================================================================
-     SECCIÓN 3 — EL INVESTIGADOR IA: VENTANA DE CHAT REAL CON BARRA CONVERSACIONAL
+     SECCIÓN 3 — EL INVESTIGADOR IA: 10 VARIANTES DE MINI-BIOGRAFÍA CORRIDA
      ========================================================================= */
   function initAiInvestigator() {
     const promptForm = document.getElementById('chatPromptForm');
@@ -135,62 +136,80 @@
         vinc: isFemale ? 'vinculada' : 'vinculado',
         menc: isFemale ? 'mencionada' : 'mencionado',
         sen: isFemale ? 'señalada' : 'señalado',
-        tit: isFemale ? 'titular' : 'titular',
         elim: isFemale ? 'eliminada' : 'eliminado',
-        grad: isFemale ? 'graduada' : 'graduado',
-        rec: isFemale ? 'reconocida' : 'reconocido'
+        rec: isFemale ? 'Reconocida' : 'Reconocido'
       };
     }
 
     const variants = [
-      // VARIANTE 1: Peppa Pig + Deuda de Cotillón + Tuppers
+      // VARIANTE 1: CoronaFest VIP
       {
-        getBio: (name, role, loc, g) => [
-          `<strong>${name}</strong> es ${role} con atención en ${loc}, contando con una respetable trayectoria profesional respaldada por años de formación, dedicación rigurosa y un compromiso constante con la excelencia en su disciplina. Distintas fuentes académicas y laborales destacan su criterio técnico y su capacidad para resolver problemas complejos con absoluta solvencia.`,
-          `En paralelo, un análisis exhaustivo de registros digitales públicos permite reconstruir facetas complementarias de su perfil. Según documentos de libre acceso en la web, ${name} aparece ${g.vinc} a una deuda impaga de $14.200 pesos con una distribuidora mayorista de cotillón por la compra de 400 silbatos con forma de delfín en octubre de 2021.`,
-          `Asimismo, su nombre figura asociado a un video viral que alcanzó miles de reproducciones: en él, una persona presuntamente ${g.ident} como ${name} viste un traje no homologado de Peppa Pig mientras baila cumbia en uno de los Trenes de la Alegría de Mar del Plata. Un comentario anónimo al pie del video agrega además: <em>"es una persona muy respetable pero nunca devuelve los tuppers"</em>.`
-        ],
-        quote: `"Quizás esto no habría pasado si toda su información profesional estuviera en un solo lugar."`
+        getBio: (name, role, loc, g) => 
+          `<strong>${name}</strong> ejerce como ${role} en ${loc} y ha construido una trayectoria profesional basada en la formación, el compromiso y la confianza de sus clientes. Durante los primeros meses de 2020, sin embargo, también habría organizado tres fiestas clandestinas bajo el nombre "CoronaFest VIP", una faceta poco documentada de su carrera y que aparece asociada reiteradamente a su nombre.`,
+        quote: `Internet puede confundirte con cualquiera. Una web profesional, no.`
       },
 
-      // VARIANTE 2: Fiestas Clandestinas en Pandemia + Mancha de Mate en el Techo + Campeonato de Truco
+      // VARIANTE 2: Adiestradora de cucarachas
       {
-        getBio: (name, role, loc, g) => [
-          `Con una sólida presencia en ${loc}, <strong>${name}</strong> ejerce como ${role}, consolidando un prestigio profesional basado en la ética de trabajo, el rigor metodológico y la confianza construida con sus clientes a lo largo de su carrera.`,
-          `Sin embargo, los motores de búsqueda asocian su identidad a antecedentes sumamente heterogéneos. Durante los primeros meses de 2020, ${name} aparece reiteradamente ${g.menc} en foros vecinales como la presunta organizadora de tres fiestas clandestinas temáticas denominadas <em>"CoronaFest VIP"</em> en un galpón industrial. La información resulta llamativa considerando que su profesión no guarda vínculo aparente con la nocturnidad.`,
-          `Los registros también revelan una consulta técnica formulada en Yahoo Respuestas en 2018 bajo su nombre: <em>"urgente cómo sacar mancha de yerba mate hervida del techo sin que se entere el dueño del departamento"</em>. A ello se suma su participación en el Torneo Abierto de Truco de Villa Gesell, donde fue ${g.elim} en primera ronda tras cantar 33 de envido teniendo solo dos sotas.`
-        ],
-        quote: `"Internet puede mezclarte con cualquiera. Una web profesional, no debería."`
+        getBio: (name, role, loc, g) => 
+          `<strong>${name}</strong> es ${role} en ${loc} y cuenta con una sólida trayectoria en su campo, caracterizada por la formación continua y el compromiso con sus clientes. Paralelamente, desarrolló una particular especialización como adiestradora de cucarachas, actividad que según distintas referencias habría realizado durante varios años. No existen registros que permitan establecer si ambas carreras llegaron a complementarse.`,
+        quote: `Tu trayectoria merece una versión más precisa.`
       },
 
-      // VARIANTE 3: Adiestradora de Cucarachas + Discusión Absurda por la Milanesa
+      // VARIANTE 3: Peppa Pig en Tren de la Alegría
       {
-        getBio: (name, role, loc, g) => [
-          `<strong>${name}</strong> se desempeña como ${role} en ${loc}, contando con una respetable trayectoria y un enfoque centrado en brindar soluciones profesionales de alto nivel a pacientes y clientes de su sector.`,
-          `No obstante, la huella digital pública arroja datos desconcertantes. En portales de clasificados online de 2019, ${name} figura como ${g.tit} de un microemprendimiento de <em>"Adiestramiento conductual de cucarachas domésticas para espectáculos infantiles y disuasión de plagas"</em>. No existen testimonios suficientes para confirmar si el servicio llegó a comercializarse formalmente.`,
-          `Por otra parte, su nombre quedó registrado en un acalorado debate de 47 comentarios en un grupo de Facebook barrial acerca de si una milanesa recalentada en microondas conserva o no la dignidad gastronómica. El intercambio concluyó con el bloqueo mutuo de cinco usuarios y la intervención de un administrador.`
-        ],
-        quote: `"Todo esto podría haberse evitado con una web que contara exactamente quién es y qué hace."`
+        getBio: (name, role, loc, g) => 
+          `Con una destacada presencia en ${loc}, <strong>${name}</strong> se desempeña como ${role}, habiendo consolidado un perfil respetado por su rigor técnico y excelencia. Asimismo, distintas fuentes registran su participación en los Trenes de la Alegría de Mar del Plata, donde durante dos temporadas de verano habría personificado a Peppa Pig antes de dedicarse por completo a su especialidad actual.`,
+        quote: `Quizás convenga que internet sepa quién sos realmente.`
       },
 
-      // VARIANTE 4: El Perro Ajeno + Peppa Pig + Deuda de Cotillón
+      // VARIANTE 4: Campeonato de Truco (33 de envido con dos sotas)
       {
-        getBio: (name, role, loc, g) => [
-          `La labor de <strong>${name}</strong> como ${role} en ${loc} se distingue por la responsabilidad profesional, la permanente actualización académica y un perfil respetado dentro de su ámbito laboral.`,
-          `A pesar de ello, los algoritmos de búsqueda indexan episodios de naturaleza dispar. En 2022, ${name} protagonizó un hilo en redes sociales tras ser vista paseando con total naturalidad a un caniche gigante teñido de turquesa que, según confirmó una vecina dos horas más tarde, pertenecía a una familia de la cuadra siguiente.`,
-          `Los archivos digitales también la vinculan al extravío de una partida de 80 gorros de cotillón con luces LED y a un registro audiovisual donde aparece animando un cumpleaños infantil vestida de Peppa Pig en plena costanera. La pericia técnica no permite descartar que se trate de una mera coincidencia nominal.`
-        ],
-        quote: `"En internet, si no tenés tu propio espacio, los algoritmos deciden quién sos por vos."`
+        getBio: (name, role, loc, g) => 
+          `La carrera de <strong>${name}</strong> como ${role} en ${loc} se distingue por la solvencia técnica, la ética laboral y la dedicación personalizada a cada caso. En el plano competitivo, diversos registros documentan su participación en el Torneo Abierto de Truco de Villa Gesell, donde fue ${g.elim} en primera ronda tras cantar 33 de envido disponiendo únicamente de dos sotas.`,
+        quote: `Una trayectoria profesional no debería depender de lo que aparezca primero en Google.`
       },
 
-      // VARIANTE 5: Fiestas Clandestinas + Adiestramiento de Cucarachas + Discusión de Suprema + Tuppers
+      // VARIANTE 5: Deuda de cotillón de $4.800
       {
-        getBio: (name, role, loc, g) => [
-          `${g.rec.charAt(0).toUpperCase() + g.rec.slice(1)} en ${loc}, <strong>${name}</strong> ejerce como ${role}, habiendo forjado una reputación intachable construida a base de esfuerzo, trayectoria y resultados concretos.`,
-          `Pese a este currículum impecable, la web ofrece un mosaico de identidades superpuestas. Durante 2020, ${name} fue ${g.sen} en una denuncia anónima por presuntamente albergar una fiesta clandestina con DJ en vivo y catering de choripanes gourmet. Casi en simultáneo, su nombre apareció vinculado a un curso intensivo de adiestramiento de insectos de cocina dictado por Zoom.`,
-          `Para completar el cuadro, una reseña de Google Maps de una rotisería de barrio incluye un reclamo hacia ${name} por una discusión sobre el grosor del empanado de una suprema y el reiterado reclamo de recipientes herméticos plásticos jamás devueltos.`
-        ],
-        quote: `"Tu trayectoria real merece un lugar oficial para que nadie te confunda con el resto de internet."`
+        getBio: (name, role, loc, g) => 
+          `<strong>${name}</strong> cuenta con un amplio reconocimiento en ${loc} ejerciendo como ${role}, respaldado por años de experiencia y actualización académica. En paralelo, figura en registros comerciales ${g.vinc} a una deuda impaga de $4.800 pesos con un proveedor de cotillón por la provisión de silbatos con forma de delfín en octubre de 2021, sin constancia de cancelación formal.`,
+        quote: `Hay muchas versiones de vos en internet. Esta debería ser la correcta.`
+      },
+
+      // VARIANTE 6: Mancha de yerba mate en el techo
+      {
+        getBio: (name, role, loc, g) => 
+          `<strong>${name}</strong> ejerce como ${role} en ${loc} y goza de una reputación intachable construida mediante la atención rigurosa y el compromiso profesional. Entre sus antecedentes públicos figura también una detallada consulta técnica en foros de 2018 sobre cómo remover una mancha de yerba mate hervida del techo sin alertar al propietario del inmueble.`,
+        quote: `Ordenar tu información también es parte de construir tu trayectoria.`
+      },
+
+      // VARIANTE 7: Discusión por la milanesa
+      {
+        getBio: (name, role, loc, g) => 
+          `${g.rec} figura en ${loc}, <strong>${name}</strong> desarrolla su labor como ${role} con un enfoque orientado a la satisfacción y el bienestar de sus clientes. No obstante, los registros digitales también la asocian a un extenso debate de 47 comentarios en foros vecinales acerca de si una milanesa recalentada en microondas conserva o no la dignidad gastronómica.`,
+        quote: `Cualquiera puede googlear tu nombre. Asegurate de que encuentren lo que corresponde.`
+      },
+
+      // VARIANTE 8: Persona que nunca devuelve los tuppers
+      {
+        getBio: (name, role, loc, g) => 
+          `<strong>${name}</strong> es ${role} en ${loc} y se ha consolidado en su disciplina gracias a su formación metódica y su criterio profesional. De manera complementaria, distintas referencias vecinales abiertas la describen de forma consistente como una persona de intachable calidad humana pero que nunca devuelve los recipientes plásticos herméticos prestados.`,
+        quote: `Tu nombre tiene valor. No dejes que los algoritmos inventen tu historia.`
+      },
+
+      // VARIANTE 9: Perro que aparentemente no era suyo
+      {
+        getBio: (name, role, loc, g) => 
+          `La trayectoria de <strong>${name}</strong> como ${role} en ${loc} refleja un firme compromiso con la ética y los más altos estándares de su especialidad. En 2022, diversos registros comunitarios documentan además su vinculación al paseo matutino habitual de un caniche gigante teñido de turquesa que, según se constató con posterioridad, pertenecía a una familia vecina.`,
+        quote: `Internet mezcla todo. Una web oficial separa quién sos de quién no sos.`
+      },
+
+      // VARIANTE 10: Fiestas clandestinas + Peppa Pig
+      {
+        getBio: (name, role, loc, g) => 
+          `<strong>${name}</strong> ejerce como ${role} en ${loc}, habiendo cimentado un sólido prestigio respaldado por la confianza de sus clientes. Archivos públicos indexan paralelamente su coordinación de eventos no autorizados en 2020 y una actuación esporádica con traje de Peppa Pig en la costa atlántica, eventos que la web atribuye a su historial previo.`,
+        quote: `Tu carrera profesional merece un lugar propio en internet.`
       }
     ];
 
@@ -210,11 +229,10 @@
 
       lastVariantIndex = randomIndex;
       const selected = variants[randomIndex];
-      const paragraphs = selected.getBio(rawName, rawRole, rawLoc, g);
+      const singleBioText = selected.getBio(rawName, rawRole, rawLoc, g);
 
-      // Render user prompt message
       if (userEchoText) {
-        userEchoText.textContent = `Busco a ${rawName}, que es ${rawRole} en ${rawLoc}`;
+        userEchoText.textContent = `Busco a ${rawName} que es un/a ${rawRole} en ${rawLoc}`;
       }
       if (reportQuote) {
         reportQuote.textContent = selected.quote;
@@ -225,19 +243,14 @@
       dynamicThread.style.gap = '20px';
       reportProse.innerHTML = '';
 
-      paragraphs.forEach((pText, idx) => {
-        setTimeout(() => {
-          const p = document.createElement('p');
-          p.style.animation = 'fadeIn 0.25s ease forwards';
-          p.innerHTML = pText;
-          reportProse.appendChild(p);
+      const p = document.createElement('p');
+      p.style.animation = 'fadeIn 0.3s ease forwards';
+      p.innerHTML = singleBioText;
+      reportProse.appendChild(p);
 
-          // Scroll messages area smoothly to bottom
-          if (messagesArea) {
-            messagesArea.scrollTop = messagesArea.scrollHeight;
-          }
-        }, idx * 160);
-      });
+      if (messagesArea) {
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+      }
     }
 
     promptForm.addEventListener('submit', (e) => {
