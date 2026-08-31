@@ -7,6 +7,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     initTemplatesFilters();
+    initDraggableAndWindowActions();
     initHeaderScroll();
     initManifestoHero();
     initAiInvestigator();
@@ -893,4 +894,210 @@
 
       selectTemplate('servicios');
     });
+  }
+
+
+  /* =========================================================================
+     DRAGGABLE WINDOWS, MINIMIZE / RESTORE & SCROLL ANIMATIONS SYSTEM
+     ========================================================================= */
+  function initDraggableAndWindowActions() {
+    const minimizedTray = document.getElementById('minimizedAppsTray');
+
+    // 1. DRAGGABLE WINDOW UTILITY
+    function makeDraggable(windowEl, handleEl) {
+      if (!windowEl || !handleEl) return;
+
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let currentX = 0, currentY = 0;
+
+      function onStart(e) {
+        // Ignore clicks on buttons, inputs or dots
+        if (e.target.closest('input') || e.target.closest('button') || e.target.closest('.w-dot') || e.target.closest('.c-dot')) {
+          return;
+        }
+
+        isDragging = true;
+        windowEl.classList.add('is-dragging');
+
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+
+        startX = clientX - currentX;
+        startY = clientY - currentY;
+
+        document.addEventListener('mousemove', onMove, { passive: false });
+        document.addEventListener('mouseup', onEnd);
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onEnd);
+      }
+
+      function onMove(e) {
+        if (!isDragging) return;
+        if (e.cancelable) e.preventDefault();
+
+        const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+
+        let nextX = clientX - startX;
+        let nextY = clientY - startY;
+
+        // Clamping to avoid window getting lost off-screen
+        const clampX = Math.max(-180, Math.min(180, nextX));
+        const clampY = Math.max(-80, Math.min(120, nextY));
+
+        currentX = clampX;
+        currentY = clampY;
+
+        windowEl.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      }
+
+      function onEnd() {
+        isDragging = false;
+        windowEl.classList.remove('is-dragging');
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onEnd);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onEnd);
+      }
+
+      handleEl.addEventListener('mousedown', onStart);
+      handleEl.addEventListener('touchstart', onStart, { passive: true });
+
+      // Double-click to reset position
+      handleEl.addEventListener('dblclick', () => {
+        currentX = 0;
+        currentY = 0;
+        windowEl.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        windowEl.style.transform = 'translate3d(0, 0, 0)';
+        setTimeout(() => { windowEl.style.transition = ''; }, 300);
+      });
+    }
+
+    // Apply Draggable to Section 1 & Section 3 Windows
+    const manifestoWindow = document.getElementById('manifestoWindow');
+    const manifestoToolbar = manifestoWindow ? manifestoWindow.querySelector('.window-toolbar') : null;
+    makeDraggable(manifestoWindow, manifestoToolbar);
+
+    const chatWindow = document.getElementById('realChatWindow');
+    const chatHeader = chatWindow ? chatWindow.querySelector('.real-chat-header') : null;
+    makeDraggable(chatWindow, chatHeader);
+
+    // 2. CLOSE / MINIMIZE & RESTORE SYSTEM
+    const closeManifestoBtn = document.getElementById('closeManifestoDot');
+    const sectionInicio = document.getElementById('inicio');
+    const navInicio = document.getElementById('navLinkInicio');
+
+    const closeChatBtn = document.getElementById('closeChatDot');
+    const sectionChat = document.getElementById('investigador-ia');
+    const navChat = document.getElementById('navLinkInvestigador');
+
+    function minimizeWindow(type) {
+      if (type === 'manifesto') {
+        if (!manifestoWindow || !sectionInicio) return;
+        manifestoWindow.classList.add('window-closing');
+        setTimeout(() => {
+          sectionInicio.classList.add('section-collapsed');
+        }, 200);
+
+        addMinimizedPill('manifesto', 'Trayectoria_Manifiesto.app');
+      } else if (type === 'chat') {
+        if (!chatWindow || !sectionChat) return;
+        chatWindow.classList.add('window-closing');
+        setTimeout(() => {
+          sectionChat.classList.add('section-collapsed');
+        }, 200);
+
+        addMinimizedPill('chat', 'Investigador_IA.app');
+      }
+    }
+
+    function restoreWindow(type) {
+      if (type === 'manifesto') {
+        if (!manifestoWindow || !sectionInicio) return;
+        sectionInicio.classList.remove('section-collapsed');
+        manifestoWindow.classList.remove('window-closing');
+        manifestoWindow.classList.add('window-restoring');
+        manifestoWindow.style.transform = 'translate3d(0, 0, 0)';
+
+        setTimeout(() => {
+          manifestoWindow.classList.remove('window-restoring');
+          sectionInicio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+
+        removeMinimizedPill('manifesto');
+      } else if (type === 'chat') {
+        if (!chatWindow || !sectionChat) return;
+        sectionChat.classList.remove('section-collapsed');
+        chatWindow.classList.remove('window-closing');
+        chatWindow.classList.add('window-restoring');
+        chatWindow.style.transform = 'translate3d(0, 0, 0)';
+
+        setTimeout(() => {
+          chatWindow.classList.remove('window-restoring');
+          sectionChat.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+
+        removeMinimizedPill('chat');
+      }
+    }
+
+    function addMinimizedPill(id, name) {
+      if (!minimizedTray) return;
+      if (minimizedTray.querySelector(`[data-restore="${id}"]`)) return;
+
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'minimized-app-pill';
+      pill.dataset.restore = id;
+      pill.innerHTML = `<span class="app-dot-indicator"></span> <span>${name} ↺</span>`;
+      pill.addEventListener('click', () => restoreWindow(id));
+      minimizedTray.appendChild(pill);
+    }
+
+    function removeMinimizedPill(id) {
+      if (!minimizedTray) return;
+      const pill = minimizedTray.querySelector(`[data-restore="${id}"]`);
+      if (pill) pill.remove();
+    }
+
+    closeManifestoBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      minimizeWindow('manifesto');
+    });
+
+    closeChatBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      minimizeWindow('chat');
+    });
+
+    navInicio?.addEventListener('click', () => {
+      if (sectionInicio?.classList.contains('section-collapsed')) {
+        restoreWindow('manifesto');
+      }
+    });
+
+    navChat?.addEventListener('click', () => {
+      if (sectionChat?.classList.contains('section-collapsed')) {
+        restoreWindow('chat');
+      }
+    });
+
+    // 3. SCROLL REVEAL MICRO-ANIMATIONS
+    const revealTargets = document.querySelectorAll(
+      '.section-head, .slide-project-card, .templates-studio-block, .pricing-strip-row, .final-cta-box'
+    );
+
+    revealTargets.forEach(el => el.classList.add('reveal-on-scroll'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealTargets.forEach(el => observer.observe(el));
   }
