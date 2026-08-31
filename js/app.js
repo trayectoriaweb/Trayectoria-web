@@ -903,6 +903,7 @@
      DRAGGABLE WINDOWS, MINIMIZE / RESTORE & SCROLL ANIMATIONS SYSTEM
      ========================================================================= */
   function initDraggableAndWindowActions() {
+    const isMobileDevice = window.innerWidth <= 768 || ('ontouchstart' in window);
     const minimizedTray = document.getElementById('minimizedAppsTray');
 
     // 1. DRAGGABLE WINDOW UTILITY

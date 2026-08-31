@@ -4587,3 +4587,218 @@ body {
     50% { opacity: 0.5; transform: scale(1.2); }
   }
 }
+
+
+/* ==========================================================================
+   MASTER MOBILE REFINEMENTS & STABILIZATION (MAX-WIDTH: 768PX)
+   ========================================================================== */
+@media (max-width: 768px), (hover: none) {
+  /* 1. Complete stabilization: Windows NEVER jump, levitate, or float on mobile */
+  .manifesto-window,
+  .real-chat-window,
+  .template-stage-window,
+  .dossier-card,
+  .photo-preview-card,
+  .cursor-photo-card {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .manifesto-window:hover,
+  .real-chat-window:hover,
+  .template-stage-window:hover,
+  .dossier-card:hover {
+    transform: none !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .window-toolbar,
+  .real-chat-header {
+    cursor: default !important;
+  }
+
+  /* 2. Header Mobile Ultralimpio */
+  .site-header {
+    padding: 10px 0 !important;
+  }
+
+  .header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .logo-trayectoria {
+    gap: 6px !important;
+  }
+
+  .logo-text {
+    font-size: 0.92rem !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .btn-header-cta {
+    font-size: 0.76rem !important;
+    padding: 7px 12px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 3. Hero Manifesto Window Mobile Padding */
+  .hero-manifesto-section {
+    padding-top: 85px !important;
+    padding-bottom: 50px !important;
+    min-height: auto !important;
+  }
+
+  .manifesto-body {
+    padding: 32px 20px 24px 20px !important;
+    min-height: auto !important;
+  }
+
+  .manifesto-heading {
+    font-size: 1.65rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .btn-manifesto-action {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 4. Showcase Casos Reales Mobile Styling */
+  .showcase-marquee-section {
+    padding: 60px 0 70px 0 !important;
+  }
+
+  .marquee-slot-wrapper {
+    margin-top: 14px !important;
+  }
+
+  .marquee-vertical-stage {
+    height: 480px !important;
+  }
+
+  .marquee-name-item {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+    padding: 6px 16px !important;
+  }
+
+  .marquee-vertical-track {
+    gap: 16px !important;
+    padding: 20px 0 !important;
+    animation: verticalMarqueeScroll 10s linear infinite !important;
+  }
+
+  /* 5. Experimento IA Chat Mobile Layout */
+  .ai-investigator-section {
+    padding: 65px 0 !important;
+  }
+
+  .real-chat-window {
+    min-height: 440px !important;
+  }
+
+  .real-chat-bottom-bar {
+    padding: 12px 14px !important;
+  }
+
+  .conversational-prompt-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    padding: 12px 14px !important;
+  }
+
+  .conversational-prompt-box .chat-inline-input {
+    width: 100% !important;
+    font-size: 0.85rem !important;
+  }
+
+  .conversational-prompt-box .btn-chat-send {
+    width: 100% !important;
+    border-radius: var(--radius-pill) !important;
+    height: 40px !important;
+    margin-top: 4px !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+  }
+
+  .chat-chips-area {
+    padding: 10px 14px !important;
+  }
+
+  /* 6. Precios Dossier Mobile Layout */
+  .pricing-section {
+    padding: 65px 0 75px 0 !important;
+  }
+
+  .dossier-nav-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    margin: 20px auto 16px auto !important;
+  }
+
+  .dossier-tab-btn {
+    min-width: unset !important;
+    padding: 10px 6px !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    text-align: center !important;
+    border-radius: 10px !important;
+  }
+
+  .dossier-tab-btn .d-tab-title {
+    margin: 0 !important;
+    font-size: 0.78rem !important;
+    text-align: center !important;
+  }
+
+  .dossier-tab-btn .d-tab-price {
+    font-size: 0.75rem !important;
+  }
+
+  .dossier-tab-btn .d-tab-num {
+    display: none !important;
+  }
+
+  .d-tab-badge {
+    top: -8px !important;
+    font-size: 0.58rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .dossier-col-commercial {
+    padding: 24px 18px !important;
+  }
+
+  .dossier-col-specs {
+    padding: 20px 18px !important;
+  }
+
+  .dossier-specs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* 7. Final CTA Mobile */
+  .final-cta-section {
+    padding: 70px 0 !important;
+  }
+
+  .final-cta-box {
+    padding: 40px 20px !important;
+  }
+
+  .final-cta-title {
+    font-size: 1.85rem !important;
+  }
+
+  .btn-final-cta {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
