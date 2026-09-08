@@ -1,6 +1,6 @@
 /**
- * TRAYECTORIA — Mid-Century Modular JavaScript (v2026.midcentury.60s.1)
- * Handles interactive cabinet reveal, diagnostic search, template switcher, and pricing tabs.
+ * TRAYECTORIA — Poster Edge-to-Edge System JavaScript (v2026.poster.edge.1)
+ * Preserves all functionality: Hero reveal, 10 Diagnostic bio variants, Template studio, and Pricing tabs.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (heroResultName) heroResultName.textContent = name;
       if (heroResultText) {
-        heroResultText.innerHTML = `Módulo web configurado para <strong>${name}</strong> (${role} en ${loc}). Presencia 100% centralizada con dominio propio y WhatsApp directo en 72 horas.`;
+        heroResultText.innerHTML = `Módulo web configurado para <strong>${name}</strong> (${role} en ${loc}). Presencia centralizada con dominio propio y WhatsApp directo en 72 horas.`;
       }
 
       heroResults.style.display = 'block';
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 2. DIAGNOSTIC TERMINAL CHAT (10 BIO VARIANTS)
+  // 2. DIAGNOSTIC TERMINAL (10 BIOGRAPHIC VARIANTS)
   // =========================================================================
   const diagForm = document.getElementById('diagPromptForm');
   const diagName = document.getElementById('diagInputName');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 3. TEMPLATES STUDIO SWITCHER
   // =========================================================================
-  const tplPills = document.querySelectorAll('.tpl-nav-pill');
+  const tplPills = document.querySelectorAll('.tpl-select-pill');
   const tplViews = document.querySelectorAll('.tpl-view');
   const tplUrlText = document.getElementById('tplUrlText');
 
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 4. PRICING DOSSIER TAB SWITCHER
   // =========================================================================
-  const pricingTabs = document.querySelectorAll('.pricing-tab-btn');
+  const pricingTabs = document.querySelectorAll('.p-tab-btn');
   const tierTag = document.getElementById('dossierTierTag');
   const planTitle = document.getElementById('dossierPlanTitle');
   const priceVal = document.getElementById('dossierPrice');
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctaBtn.href = 'https://wa.me/5491123456789?text=' + encodeURIComponent(data.ctaText);
       }
       if (specsList) {
-        specsList.innerHTML = data.specs.map(s => `<div class="spec-item">${s}</div>`).join('');
+        specsList.innerHTML = data.specs.map(s => `<div class="spec-row">${s}</div>`).join('');
       }
     });
   });
