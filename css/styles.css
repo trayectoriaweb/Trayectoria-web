@@ -1,12 +1,13 @@
 /* ================================================================
-   TRAYECTORIA — Sistema de Diseño Editorial Modernista
+   TRAYECTORIA — Sistema de Diseño Editorial Modernista (FULL BLEED)
    Inspirado directamente en la referencia gráfica (media_1788886004225.jpg)
+   Sin cajas centradas estrechas. Utiliza TODO el ancho del viewport de punta a punta.
    ================================================================ */
 
 :root {
   /* Paleta cromática exacta */
   --bg-canvas:        #EFECE6;  /* Crema cálido de base */
-  --bg-canvas-card:   #E8E4DD;  /* Crema ligeramente más profundo */
+  --bg-canvas-card:   #E7E3DC;  /* Crema ligeramente más profundo */
   --color-dark:       #201A17;  /* Marrón espresso casi negro para texto y titulares */
   --color-terracotta: #E05328;  /* Naranja terracota pleno vibrante */
   --color-cobalt:     #3F4E8D;  /* Azul cobalto profundo */
@@ -21,10 +22,10 @@
   --font-mono:    'IBM Plex Mono', monospace;
   --font-body:    'Plus Jakarta Sans', sans-serif;
 
-  /* Espaciados */
-  --max-w: 1400px;
-  --nav-h: 72px;
+  /* Header & Transiciones */
+  --nav-h: 76px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bleed-pad: clamp(1.5rem, 3.5vw, 4.5rem);
 }
 
 /* Reset general */
@@ -47,8 +48,7 @@ body.poster-body {
   font-family: var(--font-body);
   line-height: 1.5;
   overflow-x: hidden;
-  background-image: radial-gradient(rgba(32, 26, 23, 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
+  width: 100%;
 }
 
 a {
@@ -64,40 +64,38 @@ img {
 }
 
 /* ================================================================
-   TOP NAVIGATION
+   TOP NAVIGATION (DE BORDE A BORDE REAL)
    ================================================================ */
 .poster-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   height: var(--nav-h);
-  background-color: rgba(239, 236, 230, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(239, 236, 230, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 1000;
   border-bottom: 1px solid var(--color-hairline);
-  transition: all 0.3s ease;
 }
 
 .header-inner {
-  max-width: var(--max-w);
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+  padding: 0 var(--bleed-pad);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
 }
 
-/* Logo: ✦ TRAYECTORIA */
+/* Logo a la izquierda extrema */
 .poster-brand {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-brand);
-  font-size: 1.15rem;
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
   font-weight: 800;
   letter-spacing: 0.14em;
   color: var(--color-dark);
@@ -110,25 +108,23 @@ img {
 
 .brand-sparkle {
   color: var(--color-terracotta);
-  font-size: 1.2rem;
-  display: inline-block;
+  font-size: 1.3rem;
   line-height: 1;
 }
 
 .poster-nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(1.2rem, 2.5vw, 2.8rem);
+  gap: clamp(1.5rem, 3vw, 3.5rem);
   list-style: none;
 }
 
 .poster-nav-list .nav-link {
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--color-dark);
   letter-spacing: 0.01em;
-  position: relative;
   transition: color 0.2s ease;
 }
 
@@ -137,14 +133,15 @@ img {
   color: var(--color-terracotta);
 }
 
+/* Botón a la derecha extrema */
 .btn-pill-header {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-dark);
   background: transparent;
   border: 1px solid var(--color-dark);
-  padding: 0.5rem 1.4rem;
+  padding: 0.55rem 1.6rem;
   border-radius: 999px;
   letter-spacing: 0.02em;
   transition: all 0.25s var(--ease);
@@ -157,49 +154,54 @@ img {
 }
 
 /* ================================================================
-   HERO POSTER (COMPOSICIÓN EDITORIAL DE LA REFERENCIA)
+   HERO POSTER — 4 COLUMNAS FULL BLEED (EDGE TO EDGE)
    ================================================================ */
 .hero-poster-section {
-  padding-top: calc(var(--nav-h) + 2.5rem);
-  padding-bottom: clamp(3rem, 6vw, 6rem);
+  padding-top: calc(var(--nav-h) + 2rem);
+  padding-bottom: clamp(3rem, 5vw, 6rem);
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
 }
 
-.poster-canvas {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+.poster-canvas-fullbleed {
   width: 100%;
+  padding: 0 var(--bleed-pad);
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr 0.95fr;
-  grid-template-rows: auto auto;
-  column-gap: clamp(1.5rem, 3.5vw, 3.2rem);
-  row-gap: clamp(2rem, 4vw, 3.8rem);
-  align-items: start;
+  grid-template-columns: 1.35fr 1.15fr 0.95fr 0.9fr;
+  column-gap: clamp(1.8rem, 2.8vw, 3.5rem);
+  align-items: stretch;
 }
 
-/* Tipografías base de tiles */
+/* Columnas individuales que contienen fila superior e inferior */
+.poster-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(2.5rem, 4vw, 4.5rem);
+}
+
+/* Tipografía mono y divisores */
 .mono-kicker {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .hairline-divider {
   width: 100%;
   height: 1px;
   background-color: var(--color-hairline);
-  margin: 0.9rem 0;
+  margin: 1rem 0;
 }
 
-/* ===== TILE 1: TITULAR PRINCIPAL ===== */
-.tile-headline {
+/* ===== COLUMNA 1 ===== */
+.item-headline {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -208,20 +210,19 @@ img {
 
 .display-title {
   font-family: var(--font-display);
-  font-size: clamp(3.8rem, 6.2vw, 6.4rem);
+  font-size: clamp(4.2rem, 6.4vw, 7.8rem);
   font-weight: 800;
   line-height: 0.92;
   letter-spacing: -0.025em;
   color: var(--color-dark);
-  text-transform: none;
 }
 
 .hero-desc {
   font-family: var(--font-mono);
-  font-size: clamp(0.8rem, 1vw, 0.88rem);
+  font-size: clamp(0.82rem, 0.95vw, 0.92rem);
   color: var(--color-muted);
-  line-height: 1.65;
-  max-width: 36ch;
+  line-height: 1.7;
+  max-width: 38ch;
 }
 
 .btn-pill-action {
@@ -229,11 +230,11 @@ img {
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-body);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-dark);
   border: 1px solid var(--color-dark);
-  padding: 0.55rem 1.35rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 999px;
   transition: all 0.25s var(--ease);
   width: fit-content;
@@ -254,118 +255,7 @@ img {
   transform: translateX(3px);
 }
 
-/* ===== TILE 2: FOTO PRINCIPAL + CÍRCULO TERRACOTA ===== */
-.tile-portrait-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.floating-circle-orange {
-  position: absolute;
-  top: -1.2rem;
-  left: -1.2rem;
-  width: clamp(70px, 6.5vw, 95px);
-  height: clamp(70px, 6.5vw, 95px);
-  border-radius: 50%;
-  background-color: var(--color-terracotta);
-  z-index: 2;
-  box-shadow: 0 10px 30px rgba(224, 83, 40, 0.25);
-  animation: floatCircle 5s ease-in-out infinite;
-}
-
-@keyframes floatCircle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.frame-portrait {
-  width: 100%;
-  height: clamp(340px, 28vw, 420px);
-  border-radius: 40px 180px 40px 140px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 14px 40px rgba(32, 26, 23, 0.08);
-  transition: transform 0.4s var(--ease);
-}
-
-.frame-portrait:hover {
-  transform: scale(1.015);
-}
-
-/* ===== TILE 3: TARJETA AZUL COBALTO ===== */
-.tile-blue-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.blue-card-inner {
-  background-color: var(--color-cobalt);
-  color: var(--color-white);
-  padding: clamp(1.8rem, 2.5vw, 2.4rem);
-  border-radius: 30px 120px 30px 30px;
-  position: relative;
-  box-shadow: 0 14px 40px rgba(63, 78, 141, 0.22);
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  height: 100%;
-  min-height: 280px;
-}
-
-.blue-card-title {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.blue-divider {
-  width: 32px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.blue-list {
-  list-style: none;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.03em;
-}
-
-.blue-card-arrow {
-  margin-top: auto;
-  font-size: 1.4rem;
-  color: var(--color-white);
-  transition: transform 0.2s ease;
-  width: fit-content;
-}
-
-.blue-card-arrow:hover {
-  transform: translateX(5px);
-}
-
-/* ===== TILE 4: OBJETO DE DISEÑO / MONITOR RETRO ===== */
-.tile-object-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-.frame-arch-top {
-  width: 100%;
-  height: clamp(220px, 18vw, 290px);
-  border-radius: 110px 110px 24px 24px;
-  overflow: hidden;
-  box-shadow: 0 12px 35px rgba(32, 26, 23, 0.07);
-}
-
-/* ===== TILE 5: ARQUITECTURA BRUTALISTA CURVA + BADGE ===== */
-.tile-architecture-wrap {
+.item-brutalist-wrap {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -373,10 +263,10 @@ img {
 
 .frame-curve-corner {
   width: 100%;
-  height: clamp(200px, 16vw, 250px);
+  height: clamp(210px, 18vw, 270px);
   border-radius: 24px 140px 24px 24px;
   overflow: hidden;
-  box-shadow: 0 12px 35px rgba(32, 26, 23, 0.07);
+  box-shadow: 0 12px 35px rgba(32, 26, 23, 0.08);
 }
 
 .proof-badge {
@@ -396,22 +286,59 @@ img {
 
 .mono-badge-text {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--color-muted);
-  line-height: 1.4;
+  line-height: 1.45;
   letter-spacing: 0.04em;
 }
 
-/* ===== TILE 6: EL "01" GIGANTE + DIAGNÓSTICO ===== */
-.tile-step-big {
+/* ===== COLUMNA 2 ===== */
+.item-portrait-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.floating-circle-orange {
+  position: absolute;
+  top: -1.4rem;
+  left: -1.4rem;
+  width: clamp(75px, 6vw, 100px);
+  height: clamp(75px, 6vw, 100px);
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(224, 83, 40, 0.25);
+  animation: floatCircle 5s ease-in-out infinite;
+}
+
+@keyframes floatCircle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.frame-portrait {
+  width: 100%;
+  height: clamp(360px, 30vw, 460px);
+  border-radius: 40px 180px 40px 140px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 14px 40px rgba(32, 26, 23, 0.09);
+  transition: transform 0.4s var(--ease);
+}
+
+.frame-portrait:hover {
+  transform: scale(1.015);
+}
+
+.item-step-wrap {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.4rem;
   align-items: flex-start;
 }
 
 .step-num-huge {
   font-family: var(--font-display);
-  font-size: clamp(6.5rem, 8.5vw, 9.5rem);
+  font-size: clamp(6.5rem, 8.5vw, 10rem);
   font-weight: 900;
   line-height: 0.78;
   color: var(--color-dark);
@@ -435,14 +362,14 @@ img {
 
 .step-desc-text {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--color-muted);
-  line-height: 1.55;
+  line-height: 1.6;
   max-width: 28ch;
 }
 
 .step-arrow-link {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--color-dark);
   transition: transform 0.2s ease;
 }
@@ -451,10 +378,62 @@ img {
   transform: translateX(4px);
 }
 
-/* ===== TILE 7: CÁPSULA HORIZONTAL CON FOTO DE ESTUDIO ===== */
-.tile-pill-photo-wrap {
+/* ===== COLUMNA 3 ===== */
+.item-blue-card-wrap {
+  width: 100%;
+}
+
+.blue-card-inner {
+  background-color: var(--color-cobalt);
+  color: var(--color-white);
+  padding: clamp(1.8rem, 2.5vw, 2.5rem);
+  border-radius: 30px 120px 30px 30px;
+  position: relative;
+  box-shadow: 0 14px 40px rgba(63, 78, 141, 0.22);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: clamp(340px, 28vw, 420px);
+}
+
+.blue-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.blue-divider {
+  width: 34px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.blue-list {
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.03em;
+}
+
+.blue-card-arrow {
+  margin-top: auto;
+  font-size: 1.5rem;
+  color: var(--color-white);
+  transition: transform 0.2s ease;
+  width: fit-content;
+}
+
+.blue-card-arrow:hover {
+  transform: translateX(5px);
+}
+
+.item-pill-photo-wrap {
+  width: 100%;
 }
 
 .frame-horizontal-pill {
@@ -465,20 +444,33 @@ img {
   box-shadow: 0 12px 35px rgba(32, 26, 23, 0.07);
 }
 
-/* ===== TILE 8: ARCO ESCULTÓRICO AZUL + ESTRELLA ===== */
-.tile-sculpture-wrap {
+/* ===== COLUMNA 4 ===== */
+.item-object-wrap {
+  width: 100%;
+}
+
+.frame-arch-top {
+  width: 100%;
+  height: clamp(230px, 19vw, 300px);
+  border-radius: 120px 120px 24px 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(32, 26, 23, 0.07);
+}
+
+.item-sculpture-wrap {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  width: 100%;
 }
 
 .poster-star-terracotta {
   position: absolute;
-  top: -1.6rem;
+  top: -1.8rem;
   left: -1rem;
   color: var(--color-terracotta);
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   line-height: 1;
   z-index: 2;
   user-select: none;
@@ -498,20 +490,20 @@ img {
 }
 
 /* ================================================================
-   SECCIONES EDITORIALES SECUNDARIAS (CASOS, PROCESO, BENEFICIOS)
+   SECCIONES FULL BLEED (CASOS, PROCESO, BENEFICIOS, CONTACTO)
    ================================================================ */
 .section-cases,
 .section-process,
 .section-benefits,
 .section-contact {
-  padding: clamp(5rem, 8vw, 8rem) 0;
+  padding: clamp(5rem, 8vw, 9rem) 0;
   border-top: 1px solid var(--color-hairline);
+  width: 100%;
 }
 
-.section-container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+.section-container-fullbleed {
+  width: 100%;
+  padding: 0 var(--bleed-pad);
 }
 
 .section-header-row {
@@ -524,29 +516,30 @@ img {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+  font-size: clamp(2.8rem, 4.8vw, 4.8rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--color-dark);
   margin-top: 0.5rem;
-  max-width: 20ch;
+  max-width: 24ch;
 }
 
 .section-lead {
   font-family: var(--font-mono);
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
   color: var(--color-muted);
-  max-width: 42ch;
-  line-height: 1.6;
+  max-width: 44ch;
+  line-height: 1.65;
 }
 
-/* ===== CASOS GRID ===== */
-.cases-grid {
+/* ===== CASOS EN 4 COLUMNAS DE BORDE A BORDE ===== */
+.cases-grid-fullbleed {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: clamp(1.5rem, 3.5vw, 3.5rem);
-  row-gap: clamp(3rem, 5vw, 5rem);
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: clamp(1.5rem, 2.5vw, 3rem);
+  row-gap: 3rem;
+  width: 100%;
 }
 
 .case-card {
@@ -558,7 +551,7 @@ img {
 .case-visual {
   position: relative;
   width: 100%;
-  height: clamp(280px, 26vw, 380px);
+  height: clamp(280px, 25vw, 380px);
   overflow: hidden;
   box-shadow: 0 16px 45px rgba(32, 26, 23, 0.09);
   transition: transform 0.4s var(--ease);
@@ -568,7 +561,6 @@ img {
   transform: translateY(-6px);
 }
 
-/* Formas orgánicas únicas por cada caso */
 .frame-case-1 { border-radius: 40px 140px 40px 40px; }
 .frame-case-2 { border-radius: 140px 40px 40px 40px; }
 .frame-case-3 { border-radius: 40px 40px 140px 40px; }
@@ -604,7 +596,7 @@ img {
 
 .case-client-name {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
   font-weight: 800;
   color: var(--color-dark);
   letter-spacing: -0.01em;
@@ -631,32 +623,32 @@ img {
 }
 
 .case-summary {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--color-dark);
   line-height: 1.55;
   margin-top: 0.4rem;
-  max-width: 50ch;
 }
 
 /* ===== PROCESO GRID ===== */
 .process-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.8rem, 3vw, 3.5rem);
+  width: 100%;
 }
 
 .process-card {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-canvas-card);
-  padding: clamp(2rem, 3vw, 2.8rem);
-  border-radius: 36px 36px 120px 36px;
-  box-shadow: 0 10px 30px rgba(32, 26, 23, 0.05);
+  padding: clamp(2.5rem, 3.5vw, 3.5rem);
+  border-radius: 36px 36px 140px 36px;
+  box-shadow: 0 12px 35px rgba(32, 26, 23, 0.05);
 }
 
 .step-num-large {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 5vw, 5rem);
+  font-size: clamp(4rem, 6vw, 6rem);
   font-weight: 900;
   color: var(--color-terracotta);
   line-height: 0.8;
@@ -665,7 +657,7 @@ img {
 
 .process-card-title {
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: var(--color-dark);
   margin-top: 0.4rem;
@@ -673,22 +665,23 @@ img {
 }
 
 .process-card-text {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--color-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* ===== BENEFICIOS BANNER ===== */
+/* ===== BENEFICIOS BANNER (ANCHO COMPLETO) ===== */
 .benefits-banner {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: clamp(2.5rem, 5vw, 5rem);
+  grid-template-columns: 1.3fr 0.8fr;
+  gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: clamp(3rem, 6vw, 5rem);
-  border-radius: 40px 160px 40px 40px;
+  padding: clamp(3.5rem, 6vw, 6rem);
+  border-radius: 40px 180px 40px 40px;
   box-shadow: 0 20px 60px rgba(32, 26, 23, 0.15);
+  width: 100%;
 }
 
 .benefits-banner .mono-kicker {
@@ -697,24 +690,24 @@ img {
 
 .benefits-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-size: clamp(2.6rem, 4.4vw, 4.4rem);
   font-weight: 800;
   line-height: 0.98;
   margin: 0.8rem 0 1.4rem;
 }
 
 .benefits-p {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.65;
-  max-width: 48ch;
-  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  max-width: 52ch;
+  margin-bottom: 2.2rem;
 }
 
 .benefits-points {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.3rem;
 }
 
 .point-item {
@@ -725,46 +718,46 @@ img {
 
 .point-check {
   color: var(--color-terracotta);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.2;
 }
 
 .point-item strong {
   display: block;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
 }
 
 .point-item span {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .graphic-terracotta-card {
   background-color: var(--color-terracotta);
   color: var(--color-white);
-  padding: clamp(2.5rem, 4vw, 3.5rem);
-  border-radius: 120px 30px 30px 30px;
+  padding: clamp(2.8rem, 4.5vw, 4rem);
+  border-radius: 140px 30px 30px 30px;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.4rem;
 }
 
 .card-huge-star {
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   line-height: 1;
 }
 
 .card-quote {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
   font-weight: 800;
   line-height: 1.1;
 }
 
 .card-author {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   opacity: 0.9;
   letter-spacing: 0.05em;
 }
@@ -772,16 +765,15 @@ img {
 /* ===== CONTACTO ===== */
 .contact-box {
   background-color: var(--color-white);
-  padding: clamp(3.5rem, 7vw, 6rem) clamp(2rem, 5vw, 4.5rem);
-  border-radius: 40px 180px 40px 40px;
+  padding: clamp(4rem, 7vw, 7rem) clamp(2rem, 5vw, 5rem);
+  border-radius: 40px 200px 40px 40px;
   box-shadow: 0 20px 60px rgba(32, 26, 23, 0.06);
   text-align: center;
-  max-width: 860px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .brand-sparkle-lg {
-  font-size: 3rem;
+  font-size: 3.2rem;
   color: var(--color-terracotta);
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -789,7 +781,7 @@ img {
 
 .contact-big-title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
   font-weight: 800;
   line-height: 0.95;
   color: var(--color-dark);
@@ -798,9 +790,9 @@ img {
 
 .contact-subtitle {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
   color: var(--color-muted);
-  max-width: 48ch;
+  max-width: 52ch;
   margin: 0 auto 2.5rem;
   line-height: 1.6;
 }
@@ -819,9 +811,9 @@ img {
   background-color: var(--color-dark);
   color: var(--color-white);
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  padding: 1rem 2.5rem;
+  padding: 1.1rem 2.8rem;
   border-radius: 999px;
   box-shadow: 0 12px 30px rgba(32, 26, 23, 0.2);
   transition: all 0.25s var(--ease);
@@ -843,7 +835,7 @@ img {
 
 .btn-cta-sub {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--color-muted);
   border-bottom: 1px solid var(--color-hairline);
   transition: color 0.2s ease;
@@ -855,18 +847,18 @@ img {
 }
 
 /* ================================================================
-   FOOTER
+   FOOTER (FULL BLEED)
    ================================================================ */
 .poster-footer {
   border-top: 1px solid var(--color-hairline);
-  padding: 3rem 0;
+  padding: 3.5rem 0;
   background-color: var(--bg-canvas);
+  width: 100%;
 }
 
 .footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+  width: 100%;
+  padding: 0 var(--bleed-pad);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -879,7 +871,7 @@ img {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-brand);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   color: var(--color-dark);
@@ -887,20 +879,20 @@ img {
 
 .footer-copy-text {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--color-muted);
   margin-top: 0.3rem;
 }
 
 .footer-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
 }
 
 .footer-links a {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--color-dark);
   transition: color 0.2s ease;
 }
@@ -910,15 +902,16 @@ img {
 }
 
 /* ================================================================
-   RESPONSIVE (MOBILE & TABLET)
+   RESPONSIVE (TABLET & MOBILE)
    ================================================================ */
-@media (max-width: 1024px) {
-  .poster-canvas {
+@media (max-width: 1200px) {
+  .poster-canvas-fullbleed {
     grid-template-columns: 1fr 1fr;
+    row-gap: 3.5rem;
   }
 
-  .tile-headline {
-    grid-column: span 2;
+  .cases-grid-fullbleed {
+    grid-template-columns: 1fr 1fr;
   }
 
   .benefits-banner {
@@ -932,23 +925,15 @@ img {
 
 @media (max-width: 768px) {
   .poster-nav {
-    display: none; /* Mobile menu simplification */
+    display: none;
   }
 
-  .poster-canvas {
+  .poster-canvas-fullbleed {
     grid-template-columns: 1fr;
-    row-gap: 2.2rem;
+    row-gap: 2.5rem;
   }
 
-  .tile-headline {
-    grid-column: span 1;
-  }
-
-  .display-title {
-    font-size: clamp(3.2rem, 12vw, 4.5rem);
-  }
-
-  .cases-grid {
+  .cases-grid-fullbleed {
     grid-template-columns: 1fr;
   }
 
@@ -956,6 +941,10 @@ img {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
+  }
+
+  .display-title {
+    font-size: clamp(3.2rem, 12vw, 4.8rem);
   }
 
   .footer-inner {
