@@ -3,466 +3,599 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRAYECTORIA — Diseño Web & Dirección de Arte para Profesionales</title>
-  <meta name="description" content="Diseño y desarrollo web de autor para profesionales independientes. Composición editorial contemporánea de borde a borde y entrega en 72 horas.">
+  <title>ENCICLOPEDIA DE WEBS — Trayectoria</title>
+  <meta name="description" content="Trayectorias digitales. Ciudades. Proyectos. Una cartografía interactiva del diseño y desarrollo web de autor.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="TRAYECTORIA · Sitios que avanzan">
-  <meta property="og:description" content="Dirección de arte contemporánea y sitios web a medida en 72 horas.">
+  <meta property="og:title" content="ENCICLOPEDIA DE WEBS · Trayectoria">
+  <meta property="og:description" content="Trayectorias digitales. Ciudades. Proyectos. Por Trayectoria.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23221C18'/><path d='M50 20 L56 44 L80 50 L56 56 L50 80 L44 56 L20 50 L44 44 Z' fill='%23E05328'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23162b4e'/><text y='.78em' x='50%' text-anchor='middle' font-size='60' fill='%23C9A96E' font-family='serif'>E</text></svg>">
 
-  <!-- Google Fonts: Syne (Logo) + Barlow Condensed (Titulares de impacto) + IBM Plex Mono (Técnico) + Plus Jakarta Sans (Cuerpo) -->
+  <!-- Google Fonts: EB Garamond (Serif clásico) + IBM Plex Mono (Anotaciones técnicas) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.editorial.poster.2">
+  <link rel="stylesheet" href="css/styles.css?v=2026.enciclopedia.1">
 </head>
-<body class="poster-body">
+<body class="enciclopedia-body">
 
-  <!-- ==================== TOP NAVIGATION (FULL BLEED) ==================== -->
-  <header class="poster-header" id="siteHeader">
+  <!-- ==================== HEADER / MARGEN SUPERIOR ==================== -->
+  <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <!-- Logo a la izquierda extrema -->
-      <a href="#hero" class="poster-brand" aria-label="Trayectoria Inicio">
-        <span class="brand-sparkle">✦</span>
-        <span class="brand-wordmark">TRAYECTORIA</span>
+      <a href="#portada" class="brand-link" aria-label="Inicio">
+        <span class="brand-monogram">T</span>
+        <span class="brand-name">TRAYECTORIA</span>
       </a>
 
-      <!-- Menu links centrados orgánicamente -->
-      <nav class="poster-nav" aria-label="Navegación principal">
-        <ul class="poster-nav-list">
-          <li><a href="#hero" class="nav-link active">Inicio</a></li>
-          <li><a href="#proceso" class="nav-link">Cómo funciona</a></li>
-          <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
-          <li><a href="#casos" class="nav-link">Casos</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      <nav class="site-nav" aria-label="Navegación del volumen">
+        <ul class="nav-list">
+          <li><a href="#geografia" class="nav-anchor">Geografía</a></li>
+          <li><a href="#entradas" class="nav-anchor">Entradas</a></li>
+          <li><a href="#contacto" class="nav-anchor">Colofón</a></li>
         </ul>
       </nav>
 
-      <!-- CTA a la derecha extrema -->
-      <div class="header-actions">
-        <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20crear%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="btn-pill-header">
-          Hablemos
-        </a>
+      <div class="header-status">
+        <span class="status-dot"></span>
+        <span class="status-text">VOLUMEN I · 2024–2026</span>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- ==================== HERO POSTER (4 COLUMNAS DE BORDE A BORDE) ==================== -->
-    <section class="hero-poster-section" id="hero">
-      <div class="poster-canvas-fullbleed">
-
-        <!-- ===== COLUMNA 1: TITULAR + ARQUITECTURA INFERIOR ===== -->
-        <div class="poster-column col-1">
-          <!-- Superior: Título principal -->
-          <div class="col-item item-headline">
-            <p class="mono-kicker">TECNOLOGÍA PARA<br>EL DESARROLLO PROFESIONAL</p>
-            <h1 class="display-title">
-              Sitios<br>que avanzan.
-            </h1>
-            <p class="hero-desc">
-              Trayectoria es un estudio que potencia la presencia digital de profesionales independientes a través de la dirección de arte contemporánea y el acompañamiento real.
-            </p>
-            <a href="#casos" class="btn-pill-action">
-              <span>Conocé más</span>
-              <span class="arrow">→</span>
-            </a>
-          </div>
-
-          <!-- Inferior: Arquitectura brutalista curva + badge -->
-          <div class="col-item item-brutalist-wrap">
-            <div class="organic-frame frame-curve-corner">
-              <img 
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85" 
-                alt="Arquitectura modernista de hormigón"
-                class="tile-img"
-                loading="eager"
-              >
-            </div>
-            <div class="proof-badge">
-              <span class="olive-dot"></span>
-              <p class="mono-badge-text">
-                + 100% PERSONALIZADO<br>
-                profesionales ya forman<br>
-                parte de Trayectoria
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===== COLUMNA 2: FOTO PRINCIPAL + EL "01" GIGANTE ===== -->
-        <div class="poster-column col-2">
-          <!-- Superior: Retrato cálido en sillón + esfera terracota -->
-          <div class="col-item item-portrait-wrap">
-            <div class="floating-circle-orange" aria-hidden="true"></div>
-            <div class="organic-frame frame-portrait">
-              <img 
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" 
-                alt="Retrato profesional en sillón de diseño con luz natural"
-                class="tile-img"
-                loading="eager"
-              >
-            </div>
-          </div>
-
-          <!-- Inferior: "01" colosal + Diagnóstico -->
-          <div class="col-item item-step-wrap">
-            <div class="step-num-huge">01</div>
-            <div class="step-meta-box">
-              <p class="mono-kicker">UN DIAGNÓSTICO<br>REAL DE TU POTENCIAL</p>
-              <div class="hairline-divider"></div>
-              <div class="step-bottom-row">
-                <p class="step-desc-text">
-                  Analizamos tus habilidades, intereses y trayectoria para construir un perfil único.
-                </p>
-                <a href="#contacto" class="step-arrow-link" aria-label="Comenzar diagnóstico">→</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===== COLUMNA 3: TARJETA AZUL COBALTO + CÁPSULA HORIZONTAL ===== -->
-        <div class="poster-column col-3">
-          <!-- Superior: Tarjeta asimétrica azul cobalto -->
-          <div class="col-item item-blue-card-wrap">
-            <div class="blue-card-inner">
-              <p class="blue-card-title">
-                DISEÑO +<br>
-                ESTRATEGIA =<br>
-                MEJORES<br>
-                DECISIONES
-              </p>
-              <div class="blue-divider"></div>
-              <ul class="blue-list">
-                <li>Identidad</li>
-                <li>Dirección de arte</li>
-                <li>Presencia única</li>
-                <li>Seguimiento</li>
-              </ul>
-              <a href="#proceso" class="blue-card-arrow" aria-label="Ver proceso">→</a>
-            </div>
-          </div>
-
-          <!-- Inferior: Cápsula elíptica horizontal con libros/diseño -->
-          <div class="col-item item-pill-photo-wrap">
-            <div class="organic-frame frame-horizontal-pill">
-              <img 
-                src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1000&q=85" 
-                alt="Estudio de diseño y notas técnicas"
-                class="tile-img"
-                loading="lazy"
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- ===== COLUMNA 4: OBJETO VINTAGE + ARCO AZUL ESCULTÓRICO ===== -->
-        <div class="poster-column col-4">
-          <!-- Superior: Objeto de diseño con arco superior redondeado -->
-          <div class="col-item item-object-wrap">
-            <div class="organic-frame frame-arch-top">
-              <img 
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85" 
-                alt="Detalle de diseño industrial retro"
-                class="tile-img"
-                loading="eager"
-              >
-            </div>
-          </div>
-
-          <!-- Inferior: Estrella terracota + Arco escultórico -->
-          <div class="col-item item-sculpture-wrap">
-            <div class="poster-star-terracotta" aria-hidden="true">✱</div>
-            <div class="organic-frame frame-arch-blue">
-              <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=85" 
-                alt="Arquitectura moderna y curvas contemporáneas"
-                class="tile-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="sculpture-caption">
-              <p class="mono-kicker">EL FUTURO<br>TAMBIÉN SE PLANIFICA</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== CASOS REALES / SHOWCASE (FULL BLEED) ==================== -->
-    <section class="section-cases" id="casos">
-      <div class="section-container-fullbleed">
+    <!-- ==================== SECCIÓN 1: PORTADA (TAPA) ==================== -->
+    <section class="s-hero" id="portada">
+      <div class="hero-container">
         
-        <div class="section-header-row">
-          <div>
-            <p class="mono-kicker">PROYECTOS RECIENTES</p>
-            <h2 class="section-title">Casos reales de profesionales que ya destacan.</h2>
-          </div>
-          <p class="section-lead">
-            Sin plantillas repetidas. Cada sitio es una solución de autor adaptada a la disciplina, tono y prestigio de cada cliente.
+        <div class="s-hero__top">
+          <span class="kicker kicker--on-navy" data-reveal>ENCICLOPEDIA TEMÁTICA INTERACTIVA · TOMO DIGITAL</span>
+          <span class="annotation annotation--on-navy" data-reveal data-reveal-delay="1">REG. Nº 0824-AR</span>
+        </div>
+
+        <div class="s-hero__body">
+          <h1 class="s-hero__title" data-reveal data-reveal-delay="1">
+            <span class="s-hero__title-line">ENCICLOPEDIA</span>
+            <span class="s-hero__title-line">DE WEBS</span>
+          </h1>
+
+          <p class="s-hero__subtitle" data-reveal data-reveal-delay="2">
+            Trayectorias digitales. Ciudades. Proyectos.<br>
+            Una cartografía del diseño y desarrollo web para profesionales independientes.
           </p>
         </div>
 
-        <!-- Grid de los 4 proyectos reales de borde a borde -->
-        <div class="cases-grid-fullbleed">
-
-          <!-- CASO 01: Guido Castellotti -->
-          <article class="case-card">
-            <div class="case-visual frame-case-1">
-              <img 
-                src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=85" 
-                alt="Portfolio Guido Castellotti" 
-                class="case-img"
-                loading="lazy"
-              >
-              <div class="case-overlay-pill">01 / AUDIOVISUAL</div>
-            </div>
-            <div class="case-info">
-              <div class="case-title-row">
-                <h3 class="case-client-name">Guido Castellotti</h3>
-                <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener" class="case-ext-link">
-                  Ver sitio ↗
-                </a>
-              </div>
-              <p class="case-category">Realizador Audiovisual & Diseñador Gráfico · Rosario</p>
-              <p class="case-summary">
-                Secuencia panorámica de proyectos a pantalla completa, logotipo SVG conceptual y navegación cinematográfica minimalista.
-              </p>
-            </div>
-          </article>
-
-          <!-- CASO 02: The Wellness Club -->
-          <article class="case-card">
-            <div class="case-visual frame-case-2">
-              <img 
-                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=85" 
-                alt="The Wellness Club Pilates Reformer" 
-                class="case-img"
-                loading="lazy"
-              >
-              <div class="case-overlay-pill">02 / STUDIO</div>
-            </div>
-            <div class="case-info">
-              <div class="case-title-row">
-                <h3 class="case-client-name">The Wellness Club</h3>
-                <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener" class="case-ext-link">
-                  Ver sitio ↗
-                </a>
-              </div>
-              <p class="case-category">Pilates Reformer & Self-care Club · San Miguel</p>
-              <p class="case-summary">
-                Atmósfera cálida y estética editorial de revista con tipografía itálica sensual, sistema de reservas directo y grilla de comunidad.
-              </p>
-            </div>
-          </article>
-
-          <!-- CASO 03: Maurizio Di Russo -->
-          <article class="case-card">
-            <div class="case-visual frame-case-3">
-              <img 
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=85" 
-                alt="Maurizio Di Russo Executive" 
-                class="case-img"
-                loading="lazy"
-              >
-              <div class="case-overlay-pill">03 / CORPORATE</div>
-            </div>
-            <div class="case-info">
-              <div class="case-title-row">
-                <h3 class="case-client-name">Maurizio Di Russo</h3>
-                <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener" class="case-ext-link">
-                  Ver sitio ↗
-                </a>
-              </div>
-              <p class="case-category">Mobility, Data & Insurance · Executive Perspective</p>
-              <p class="case-summary">
-                Presencia corporativa de alto impacto en azul noche y acero, resumen curricular ejecutivo y generación automatizada de dossier en PDF.
-              </p>
-            </div>
-          </article>
-
-          <!-- CASO 04: Julieta Vitale -->
-          <article class="case-card">
-            <div class="case-visual frame-case-4">
-              <img 
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=85" 
-                alt="Julieta Vitale Abogada Penalista" 
-                class="case-img"
-                loading="lazy"
-              >
-              <div class="case-overlay-pill">04 / LEGAL</div>
-            </div>
-            <div class="case-info">
-              <div class="case-title-row">
-                <h3 class="case-client-name">Julieta Vitale</h3>
-                <a href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" target="_blank" rel="noopener" class="case-ext-link">
-                  Ver sitio ↗
-                </a>
-              </div>
-              <p class="case-category">Abogada Penalista · Buenos Aires</p>
-              <p class="case-summary">
-                Estructura de respuesta inmediata a urgencias penales, tono de confianza humana y derivación estratégica por caso en WhatsApp.
-              </p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CÓMO FUNCIONA / PROCESO ==================== -->
-    <section class="section-process" id="proceso">
-      <div class="section-container-fullbleed">
-        
-        <div class="section-header-row">
-          <div>
-            <p class="mono-kicker">METODOLOGÍA EN 72 HORAS</p>
-            <h2 class="section-title">De tu experiencia al sitio en vivo, sin vueltas.</h2>
-          </div>
-        </div>
-
-        <div class="process-grid">
-          <div class="process-card">
-            <div class="step-num-large">01</div>
-            <div class="hairline-divider"></div>
-            <p class="mono-kicker">RELEVAMIENTO & CONCEPTO</p>
-            <h3 class="process-card-title">Dirección de arte a medida</h3>
-            <p class="process-card-text">
-              Completás un formulario simple de 5 minutos sobre tu profesión y trayectoria. Definimos paleta, tipografía y estilo visual único.
-            </p>
+        <footer class="s-hero__foot">
+          <div class="hero-foot-col" data-reveal data-reveal-delay="3">
+            <span class="kicker kicker--on-navy">CIUDADES REGISTRADAS</span>
+            <p class="annotation annotation--on-navy">Buenos Aires — Rosario — Italia</p>
           </div>
 
-          <div class="process-card">
-            <div class="step-num-large">02</div>
-            <div class="hairline-divider"></div>
-            <p class="mono-kicker">DESARROLLO & MAQUETADO</p>
-            <h3 class="process-card-title">Construcción ágil</h3>
-            <p class="process-card-text">
-              Diseñamos la estructura completa, adaptada a celulares y computadoras, con textos persuasivos y botones directos a WhatsApp.
-            </p>
+          <div class="hero-foot-col" data-reveal data-reveal-delay="3">
+            <span class="kicker kicker--on-navy">AUTORÍA</span>
+            <p class="annotation annotation--on-navy">TRAYECTORIA Estudio</p>
           </div>
 
-          <div class="process-card">
-            <div class="step-num-large">03</div>
-            <div class="hairline-divider"></div>
-            <p class="mono-kicker">LANZAMIENTO OFICIAL</p>
-            <h3 class="process-card-title">En vivo en 72 horas</h3>
-            <p class="process-card-text">
-              Publicamos en tu dominio personalizado, configuramos analítica básica y te entregamos tu sitio listo para compartir con el mundo.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== BENEFICIOS ==================== -->
-    <section class="section-benefits" id="beneficios">
-      <div class="section-container-fullbleed">
-        <div class="benefits-banner">
-          <div class="benefits-col-text">
-            <p class="mono-kicker">¿POR QUÉ TRAYECTORIA?</p>
-            <h2 class="benefits-title">Tu trabajo habla por vos. Tu web debería hacer lo mismo.</h2>
-            <p class="benefits-p">
-              Las redes sociales cambian su algoritmo todos los días y no te pertenecen. Un sitio web propio es tu carta de presentación definitiva ante colegas, clientes e instituciones.
-            </p>
-            <div class="benefits-points">
-              <div class="point-item">
-                <span class="point-check">✦</span>
-                <div>
-                  <strong>Sin plantillas genéricas</strong>
-                  <span>Composición gráfica cuidada y singular.</span>
-                </div>
-              </div>
-              <div class="point-item">
-                <span class="point-check">✦</span>
-                <div>
-                  <strong>Todo resuelto en 72 horas</strong>
-                  <span>Vos te enfocás en tus pacientes o clientes; nosotros en la web.</span>
-                </div>
-              </div>
-              <div class="point-item">
-                <span class="point-check">✦</span>
-                <div>
-                  <strong>Contacto directo por WhatsApp</strong>
-                  <span>Facilitamos que quien te busque pueda escribirte en un solo toque.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="benefits-col-graphic">
-            <div class="graphic-terracotta-card">
-              <span class="card-huge-star">✦</span>
-              <h3 class="card-quote">"Tener mi web cambió la seriedad con la que me perciben mis clientes."</h3>
-              <p class="card-author">— Profesionales en Trayectoria</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CONTACTO ==================== -->
-    <section class="section-contact" id="contacto">
-      <div class="section-container-fullbleed">
-        <div class="contact-box">
-          <div class="contact-header">
-            <span class="brand-sparkle-lg">✦</span>
-            <p class="mono-kicker">INICIEMOS TU PROYECTO</p>
-            <h2 class="contact-big-title">¿Listo para tener un sitio a tu altura?</h2>
-            <p class="contact-subtitle">
-              Escribinos directamente contándonos tu especialidad o profesión. Te respondemos con una propuesta personalizada en el día.
-            </p>
-          </div>
-
-          <div class="contact-cta-group">
-            <a 
-              href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20crear%20mi%20sitio%20web" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="btn-cta-main"
-            >
-              <span>Escribinos por WhatsApp</span>
-              <span class="cta-arrow">→</span>
-            </a>
-            
-            <a href="mailto:hola@trayectoria.com.ar" class="btn-cta-sub">
-              O envianos un email a hola@trayectoria.com.ar
+          <div class="hero-foot-col hero-foot-action" data-reveal data-reveal-delay="4">
+            <a href="#geografia" class="s-hero__scroll annotation annotation--on-navy">
+              Abrir volumen <span class="scroll-arrow">↓</span>
             </a>
           </div>
+        </footer>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECCIÓN 2: GEOGRAFÍA DIGITAL (MAPA) ==================== -->
+    <section class="s-map" id="geografia">
+      <div class="map-header-container">
+        <div class="map-meta-row" data-reveal>
+          <span class="kicker">SECCIÓN I · CARTOGRAFÍA</span>
+          <span class="annotation">COORDENADAS 34°S / 58°W · 41°N / 12°E</span>
         </div>
+
+        <h2 class="s-map__title" data-reveal data-reveal-delay="1">
+          Buenos Aires.<br>Rosario. Italia.
+        </h2>
+
+        <p class="s-map__desc annotation" data-reveal data-reveal-delay="2">
+          Tres latitudes, múltiples trayectorias. Cada pin en el mapa representa una práctica profesional llevada a la web con rigor editorial. Hacé clic en los puntos para inspeccionar cada entrada.
+        </p>
+      </div>
+
+      <!-- MAPA SVG INTERACTIVO CARTOGRÁFICO -->
+      <div class="s-map__canvas-wrap" data-reveal>
+        <div class="map-interactive-box">
+          
+          <svg class="cartography-svg" viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Retícula de coordenadas -->
+              <pattern id="gridCoords" width="100" height="100" patternUnits="userSpaceOnUse">
+                <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(26,20,16,0.06)" stroke-width="0.8" stroke-dasharray="3 3"/>
+              </pattern>
+            </defs>
+
+            <!-- Fondo con retícula -->
+            <rect width="1400" height="700" fill="transparent" />
+            <rect width="1400" height="700" fill="url(#gridCoords)" />
+
+            <!-- Líneas de navegación marítimas / cartografía vintage -->
+            <path d="M 380 480 C 580 430, 850 320, 1020 220" fill="none" stroke="rgba(201,169,110,0.35)" stroke-width="1.2" stroke-dasharray="4 6"/>
+            <path d="M 340 460 C 350 490, 360 520, 390 530" fill="none" stroke="rgba(26,20,16,0.18)" stroke-width="0.8"/>
+
+            <!-- Silueta estilizada de Sudamérica -->
+            <g class="geo-region sudamerica" transform="translate(180, 200)">
+              <path d="M 120 40 Q 180 50, 240 100 T 260 210 Q 220 280, 190 350 T 130 460 Q 90 410, 80 340 T 70 210 Q 90 120, 120 40 Z" 
+                    fill="var(--c-cream-dark)" stroke="rgba(26,20,16,0.2)" stroke-width="1"/>
+              <text x="140" y="240" font-family="var(--font-serif)" font-size="12" fill="var(--c-ink-muted)" letter-spacing="4">AMÉRICA DEL SUR</text>
+            </g>
+
+            <!-- Silueta estilizada de Europa / Italia -->
+            <g class="geo-region europa" transform="translate(880, 100)">
+              <!-- Masa europea continental sutil -->
+              <path d="M 40 30 Q 140 20, 220 60 T 240 140 Q 170 160, 90 130 Z" 
+                    fill="var(--c-cream-dark)" stroke="rgba(26,20,16,0.2)" stroke-width="1"/>
+              <!-- Bota itálica característica -->
+              <path d="M 120 110 L 145 150 L 180 180 L 195 210 L 170 215 L 150 190 L 130 160 Z" 
+                    fill="var(--c-navy)" opacity="0.85" stroke="var(--c-gold)" stroke-width="1"/>
+              <text x="90" y="70" font-family="var(--font-serif)" font-size="12" fill="var(--c-ink-muted)" letter-spacing="4">EUROPA</text>
+            </g>
+
+            <!-- ================= PINS INTERACTIVOS ================= -->
+
+            <!-- PIN 1: BUENOS AIRES -->
+            <g class="map-pin-group" id="pin-ba" transform="translate(360, 520)" tabindex="0" role="button" aria-label="Buenos Aires">
+              <circle cx="0" cy="0" r="14" fill="rgba(201,169,110,0.2)" class="pin-pulse" />
+              <circle cx="0" cy="0" r="6" fill="var(--c-navy)" stroke="var(--c-gold)" stroke-width="2" class="pin-dot" />
+              <text x="14" y="4" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--c-ink)" letter-spacing="1">BUENOS AIRES</text>
+              <text x="14" y="18" font-family="var(--font-mono)" font-size="9" fill="var(--c-ink-muted)">3 ENTRADAS REGISTRADAS</text>
+            </g>
+
+            <!-- PIN 2: ROSARIO -->
+            <g class="map-pin-group" id="pin-rosario" transform="translate(330, 480)" tabindex="0" role="button" aria-label="Rosario">
+              <circle cx="0" cy="0" r="14" fill="rgba(201,169,110,0.2)" class="pin-pulse" />
+              <circle cx="0" cy="0" r="6" fill="var(--c-navy)" stroke="var(--c-gold)" stroke-width="2" class="pin-dot" />
+              <text x="-120" y="4" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--c-ink)" letter-spacing="1">ROSARIO</text>
+              <text x="-120" y="18" font-family="var(--font-mono)" font-size="9" fill="var(--c-ink-muted)">1 ENTRADA REGISTRADA</text>
+            </g>
+
+            <!-- PIN 3: ITALIA -->
+            <g class="map-pin-group" id="pin-italia" transform="translate(1040, 270)" tabindex="0" role="button" aria-label="Italia">
+              <circle cx="0" cy="0" r="14" fill="rgba(201,169,110,0.2)" class="pin-pulse" />
+              <circle cx="0" cy="0" r="6" fill="var(--c-gold)" stroke="var(--c-navy)" stroke-width="2" class="pin-dot" />
+              <text x="16" y="4" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--c-ink)" letter-spacing="1">ITALIA</text>
+              <text x="16" y="18" font-family="var(--font-mono)" font-size="9" fill="var(--c-ink-muted)">EN DESARROLLO · 2025</text>
+            </g>
+
+            <!-- Rosa de los vientos enciclopédica decorativa -->
+            <g class="compass-rose" transform="translate(700, 120)">
+              <circle cx="0" cy="0" r="28" fill="none" stroke="rgba(26,20,16,0.12)" stroke-width="0.8"/>
+              <path d="M 0 -28 L 5 -8 L 28 0 L 8 5 L 0 28 L -5 8 L -28 0 L -8 -5 Z" fill="none" stroke="var(--c-navy)" stroke-width="0.8"/>
+              <text x="-3" y="-33" font-family="var(--font-mono)" font-size="9" fill="var(--c-navy)" font-weight="600">N</text>
+            </g>
+          </svg>
+
+          <!-- Drawer de información del mapa interactivo -->
+          <div class="map-inspector" id="mapInspector">
+            <div class="inspector-header">
+              <span class="kicker" id="inspKicker">COORDENADAS SELECCIONADAS</span>
+              <button class="insp-close" id="inspClose" aria-label="Cerrar ficha">×</button>
+            </div>
+            <h3 class="insp-city" id="inspCity">Buenos Aires, Argentina</h3>
+            <p class="insp-text annotation" id="inspDesc">
+              Núcleo de desarrollo inicial. Proyectos de dirección de arte, arquitectura legal, coaching ejecutivo y estudios de bienestar.
+            </p>
+            <div class="insp-links" id="inspLinks">
+              <a href="#guido-castellotti" class="insp-jump">→ Entrada 01: Guido Castellotti</a>
+              <a href="#wellness-club" class="insp-jump">→ Entrada 02: The Wellness Club</a>
+              <a href="#maurizio-di-russo" class="insp-jump">→ Entrada 03: Maurizio Di Russo</a>
+              <a href="#julieta-vitale" class="insp-jump">→ Entrada 04: Julieta Vitale</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECCIÓN 3: LAS ENTRADAS (PROYECTOS) ==================== -->
+    <section class="s-entries" id="entradas">
+      <div class="entries-section-intro">
+        <span class="kicker" data-reveal>SECCIÓN II · ÍNDICE RAZONADO</span>
+        <h2 class="entries-main-title" data-reveal data-reveal-delay="1">
+          Catálogo de Entradas
+        </h2>
+        <p class="entries-main-desc annotation" data-reveal data-reveal-delay="2">
+          Cada proyecto es una monografía digital: contexto del cliente, resolución técnica, registro fotográfico y aprendizajes consolidados.
+        </p>
+      </div>
+
+      <!-- ==================== ENTRADA 01: GUIDO CASTELLOTTI ==================== -->
+      <div class="entry-divider" data-reveal>
+        <div class="divider-container">
+          <div class="divider-num-wrap">
+            <span class="entry-num">01</span>
+            <span class="entry-flag annotation annotation--on-navy">ROSARIO / BUENOS AIRES · CINEMATOGRAFÍA</span>
+          </div>
+          <hr class="hairline-navy">
+        </div>
+      </div>
+
+      <article class="entry" id="guido-castellotti">
+        <div class="entry-container">
+          <div class="entry__grid">
+
+            <!-- COLUMNA PRINCIPAL (2fr) -->
+            <div class="entry__main">
+              <span class="kicker" data-reveal>ENTRADA MONOGRÁFICA Nº 01</span>
+              <h2 class="entry__title" data-reveal data-reveal-delay="1">Guido Castellotti</h2>
+
+              <figure class="entry__figure" data-reveal data-reveal-delay="2">
+                <img 
+                  src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=85" 
+                  alt="Dirección fotográfica y portfolio de Guido Castellotti" 
+                  loading="lazy"
+                >
+                <figcaption class="annotation">FIG. 1.1 — Panorama visual y composición cinemática de alta escala.</figcaption>
+              </figure>
+
+              <div class="entry__text" data-reveal>
+                <p>
+                  Guido Castellotti es realizador audiovisual y diseñador gráfico establecido en Rosario. Su práctica requería una plataforma digital donde el material fílmico respirara sin interferencias ornamentales. Diseñamos una interfaz panorámica de borde a borde basada en transiciones fluidas, tipografía condensada de póster y una galería sin interrupciones con más de veintisiete obras registradas.
+                </p>
+                <p>
+                  El sitio prioriza la velocidad de carga cinematográfica: lazy-loading agresivo sobre miniaturas de video, logotipo vectorial estilizado y navegación lateral que no disputa protagonismo con la obra del autor.
+                </p>
+              </div>
+            </div>
+
+            <!-- COLUMNA DE ANOTACIONES MARGINALES (1fr) -->
+            <aside class="entry__annotations" data-reveal data-reveal-delay="1">
+              <div class="marginalia-head">
+                <span class="kicker">FICHA TÉCNICA</span>
+              </div>
+
+              <dl class="annotation-block">
+                <dt class="kicker">Ubicación</dt>
+                <dd class="annotation">Rosario / Buenos Aires</dd>
+
+                <dt class="kicker">Año</dt>
+                <dd class="annotation">2024</dd>
+
+                <dt class="kicker">Tipología</dt>
+                <dd class="annotation">Portfolio de Realizador Audiovisual</dd>
+
+                <dt class="kicker">Arquitectura</dt>
+                <dd class="annotation">Astro · CSS Grid · JavaScript Nativo</dd>
+
+                <dt class="kicker">Entrega</dt>
+                <dd class="annotation">Producción completa</dd>
+              </dl>
+
+              <hr class="hairline">
+
+              <div class="marginalia-cta">
+                <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener" class="entry__link annotation">
+                  Inspeccionar sitio en vivo ↗
+                </a>
+              </div>
+
+              <div class="entry__learnings">
+                <span class="kicker">NOTAS DE CAMPO & APRENDIZAJES</span>
+                <ul class="annotation">
+                  <li>— La austeridad visual maximiza la autoridad del fotógrafo.</li>
+                  <li>— Reducción rigurosa de elementos no esenciales para favorecer la inmersión.</li>
+                  <li>— Las galerías pesadas demandan maquetado CSS puro sin sobrecarga de librerías.</li>
+                </ul>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- ==================== ENTRADA 02: THE WELLNESS CLUB ==================== -->
+      <div class="entry-divider" data-reveal>
+        <div class="divider-container">
+          <div class="divider-num-wrap">
+            <span class="entry-num">02</span>
+            <span class="entry-flag annotation annotation--on-navy">SAN MIGUEL · PILATES REFORMER & STUDIO</span>
+          </div>
+          <hr class="hairline-navy">
+        </div>
+      </div>
+
+      <article class="entry" id="wellness-club">
+        <div class="entry-container">
+          <div class="entry__grid">
+
+            <!-- COLUMNA PRINCIPAL (2fr) -->
+            <div class="entry__main">
+              <span class="kicker" data-reveal>ENTRADA MONOGRÁFICA Nº 02</span>
+              <h2 class="entry__title" data-reveal data-reveal-delay="1">The Wellness Club</h2>
+
+              <figure class="entry__figure" data-reveal data-reveal-delay="2">
+                <img 
+                  src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=85" 
+                  alt="Espacio interior The Wellness Club Pilates Reformer" 
+                  loading="lazy"
+                >
+                <figcaption class="annotation">FIG. 2.1 — Estudio de luz natural y equipamiento Reformer en San Miguel.</figcaption>
+              </figure>
+
+              <div class="entry__text" data-reveal>
+                <p>
+                  The Wellness Club es un espacio de entrenamiento consciente y pilates reformer en San Miguel. El desafío residía en trasladar la calidez sensorial, la iluminación serena y la pulcritud de su estudio arquitectónico a una experiencia web que no cayera en los clichés de los gimnasios tradicionales.
+                </p>
+                <p>
+                  Optamos por un lenguaje editorial con serifas refinadas, marquesinas sutiles, fotografías de comunidad y un sistema de enlace directo con turneros y WhatsApp que redujo a cero la fricción para alumnos nuevos.
+                </p>
+              </div>
+            </div>
+
+            <!-- COLUMNA DE ANOTACIONES MARGINALES (1fr) -->
+            <aside class="entry__annotations" data-reveal data-reveal-delay="1">
+              <div class="marginalia-head">
+                <span class="kicker">FICHA TÉCNICA</span>
+              </div>
+
+              <dl class="annotation-block">
+                <dt class="kicker">Ubicación</dt>
+                <dd class="annotation">San Miguel, Buenos Aires</dd>
+
+                <dt class="kicker">Año</dt>
+                <dd class="annotation">2024</dd>
+
+                <dt class="kicker">Tipología</dt>
+                <dd class="annotation">Studio de Pilates & Bienestar</dd>
+
+                <dt class="kicker">Arquitectura</dt>
+                <dd class="annotation">Next.js · CSS Modules · Responsive Fluid</dd>
+
+                <dt class="kicker">Entrega</dt>
+                <dd class="annotation">En producción comercial</dd>
+              </dl>
+
+              <hr class="hairline">
+
+              <div class="marginalia-cta">
+                <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener" class="entry__link annotation">
+                  Inspeccionar sitio en vivo ↗
+                </a>
+              </div>
+
+              <div class="entry__learnings">
+                <span class="kicker">NOTAS DE CAMPO & APRENDIZAJES</span>
+                <ul class="annotation">
+                  <li>— Los proyectos de bienestar dependen de la atmósfera lumínica de sus imágenes.</li>
+                  <li>— La tipografía clásica eleva el valor percibido del abono mensual.</li>
+                  <li>— La derivación a reservas debe ser visible sin resultar intrusiva.</li>
+                </ul>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- ==================== ENTRADA 03: MAURIZIO DI RUSSO ==================== -->
+      <div class="entry-divider" data-reveal>
+        <div class="divider-container">
+          <div class="divider-num-wrap">
+            <span class="entry-num">03</span>
+            <span class="entry-flag annotation annotation--on-navy">BUENOS AIRES · MOBILITY, DATA & CORPORATE</span>
+          </div>
+          <hr class="hairline-navy">
+        </div>
+      </div>
+
+      <article class="entry" id="maurizio-di-russo">
+        <div class="entry-container">
+          <div class="entry__grid">
+
+            <!-- COLUMNA PRINCIPAL (2fr) -->
+            <div class="entry__main">
+              <span class="kicker" data-reveal>ENTRADA MONOGRÁFICA Nº 03</span>
+              <h2 class="entry__title" data-reveal data-reveal-delay="1">Maurizio Di Russo</h2>
+
+              <figure class="entry__figure" data-reveal data-reveal-delay="2">
+                <img 
+                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85" 
+                  alt="Presencia ejecutiva de Maurizio Di Russo" 
+                  loading="lazy"
+                >
+                <figcaption class="annotation">FIG. 3.1 — Identidad sobria orientada a directores y corporaciones de movilidad.</figcaption>
+              </figure>
+
+              <div class="entry__text" data-reveal>
+                <p>
+                  Maurizio Di Russo es un ejecutivo con más de dos décadas de trayectoria en la intersección entre la industria automotriz, seguros y modelos predictivos de datos. Necesitaba un sitio web personal que funcionara como carta credencial ante comités internacionales y consejos de administración.
+                </p>
+                <p>
+                  La resolución gráfica utiliza un azul medianoche riguroso, métricas concisas de impacto y un generador dinámico de dossier curricular en PDF listo para descargar por parte de fondos de inversión y socios estratégicos.
+                </p>
+              </div>
+            </div>
+
+            <!-- COLUMNA DE ANOTACIONES MARGINALES (1fr) -->
+            <aside class="entry__annotations" data-reveal data-reveal-delay="1">
+              <div class="marginalia-head">
+                <span class="kicker">FICHA TÉCNICA</span>
+              </div>
+
+              <dl class="annotation-block">
+                <dt class="kicker">Ubicación</dt>
+                <dd class="annotation">Buenos Aires, Argentina</dd>
+
+                <dt class="kicker">Año</dt>
+                <dd class="annotation">2024</dd>
+
+                <dt class="kicker">Tipología</dt>
+                <dd class="annotation">Presencia Corporativa & Dossier Ejecutivo</dd>
+
+                <dt class="kicker">Arquitectura</dt>
+                <dd class="annotation">HTML5 · CSS3 Moderno · PDF Export Kit</dd>
+
+                <dt class="kicker">Entrega</dt>
+                <dd class="annotation">Publicación institucional</dd>
+              </dl>
+
+              <hr class="hairline">
+
+              <div class="marginalia-cta">
+                <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener" class="entry__link annotation">
+                  Inspeccionar sitio en vivo ↗
+                </a>
+              </div>
+
+              <div class="entry__learnings">
+                <span class="kicker">NOTAS DE CAMPO & APRENDIZAJES</span>
+                <ul class="annotation">
+                  <li>— El ámbito ejecutivo exige condensación: si no aporta a la decisión, se elimina.</li>
+                  <li>— Una paleta bicromática austera genera mayor solemnidad que el diseño recargado.</li>
+                  <li>— El formato dossier descargable complementa la web como credencial física.</li>
+                </ul>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- ==================== ENTRADA 04: JULIETA VITALE ==================== -->
+      <div class="entry-divider" data-reveal>
+        <div class="divider-container">
+          <div class="divider-num-wrap">
+            <span class="entry-num">04</span>
+            <span class="entry-flag annotation annotation--on-navy">BUENOS AIRES · DERECHO PENAL & ASISTENCIA</span>
+          </div>
+          <hr class="hairline-navy">
+        </div>
+      </div>
+
+      <article class="entry" id="julieta-vitale">
+        <div class="entry-container">
+          <div class="entry__grid">
+
+            <!-- COLUMNA PRINCIPAL (2fr) -->
+            <div class="entry__main">
+              <span class="kicker" data-reveal>ENTRADA MONOGRÁFICA Nº 04</span>
+              <h2 class="entry__title" data-reveal data-reveal-delay="1">Julieta Vitale</h2>
+
+              <figure class="entry__figure" data-reveal data-reveal-delay="2">
+                <img 
+                  src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1600&q=85" 
+                  alt="Estudio jurídico y biblioteca de derecho penal" 
+                  loading="lazy"
+                >
+                <figcaption class="annotation">FIG. 4.1 — Rigor documental y claridad en la comunicación de urgencias judiciales.</figcaption>
+              </figure>
+
+              <div class="entry__text" data-reveal>
+                <p>
+                  Julieta Vitale es abogada penalista con ejercicio en los fueros federal y provincial. En situaciones de apremio legal, quien busca asistencia no tiene paciencia para textos incomprensibles ni navegaciones barrocas.
+                </p>
+                <p>
+                  Desarrollamos una arquitectura de respuesta inmediata: lenguaje transparente sobre las etapas del proceso penal, garantías profesionales de confidencialidad y una vía de comunicación prioritaria hacia WhatsApp activa las veinticuatro horas.
+                </p>
+              </div>
+            </div>
+
+            <!-- COLUMNA DE ANOTACIONES MARGINALES (1fr) -->
+            <aside class="entry__annotations" data-reveal data-reveal-delay="1">
+              <div class="marginalia-head">
+                <span class="kicker">FICHA TÉCNICA</span>
+              </div>
+
+              <dl class="annotation-block">
+                <dt class="kicker">Ubicación</dt>
+                <dd class="annotation">Buenos Aires, Argentina</dd>
+
+                <dt class="kicker">Año</dt>
+                <dd class="annotation">2024</dd>
+
+                <dt class="kicker">Tipología</dt>
+                <dd class="annotation">Práctica Legal & Asistencia de Urgencia</dd>
+
+                <dt class="kicker">Arquitectura</dt>
+                <dd class="annotation">HTML5 Semántico · Microinteracciones CSS</dd>
+
+                <dt class="kicker">Entrega</dt>
+                <dd class="annotation">Operativo</dd>
+              </dl>
+
+              <hr class="hairline">
+
+              <div class="marginalia-cta">
+                <a href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" target="_blank" rel="noopener" class="entry__link annotation">
+                  Inspeccionar sitio en vivo ↗
+                </a>
+              </div>
+
+              <div class="entry__learnings">
+                <span class="kicker">NOTAS DE CAMPO & APRENDIZAJES</span>
+                <ul class="annotation">
+                  <li>— La sobriedad tipográfica transmite contención en momentos críticos.</li>
+                  <li>— El botón de contacto debe ser accesible en cualquier punto del recorrido.</li>
+                  <li>— La claridad en los honorarios y el método de trabajo disipa dudas iniciales.</li>
+                </ul>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== SECCIÓN 4: COLOFÓN (TAPA) ==================== -->
+    <section class="s-colofo" id="contacto">
+      <div class="colofo-container">
+
+        <div class="s-colofo__header" data-reveal>
+          <span class="kicker kicker--on-navy">SECCIÓN III · COLOFÓN</span>
+          <span class="annotation annotation--on-navy">CIERRE DEL VOLUMEN I</span>
+        </div>
+
+        <div class="s-colofo__body">
+          <h2 class="s-colofo__title" data-reveal data-reveal-delay="1">
+            ¿Trabajamos<br>juntos?
+          </h2>
+
+          <p class="s-colofo__text" data-reveal data-reveal-delay="2">
+            Cada proyecto es una conversación y un compromiso con la singularidad. Si tenés una práctica profesional, una trayectoria o una idea que merece una presencia digital a su altura, hablemos. Sin plantillas preconcebidas.
+          </p>
+
+          <div class="s-colofo__links" data-reveal data-reveal-delay="3">
+            <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20conversar%20sobre%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="s-colofo__link annotation">
+              Iniciar conversación en WhatsApp →
+            </a>
+            <a href="mailto:hola@trayectoria.com.ar" class="s-colofo__link annotation">
+              Escribir a hola@trayectoria.com.ar →
+            </a>
+          </div>
+        </div>
+
+        <footer class="s-colofo__imprint" data-reveal data-reveal-delay="4">
+          <hr class="hairline-navy">
+          <div class="imprint-row">
+            <span class="annotation annotation--on-navy">
+              TRAYECTORIA — Taller de diseño y arquitectura web para profesionales.
+            </span>
+            <span class="annotation annotation--on-navy">
+              Impreso digitalmente en Buenos Aires · © 2026.
+            </span>
+          </div>
+        </footer>
+
       </div>
     </section>
   </main>
 
-  <!-- ==================== FOOTER (FULL BLEED) ==================== -->
-  <footer class="poster-footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <div class="footer-brand-row">
-          <span class="brand-sparkle">✦</span>
-          <span class="footer-brand-name">TRAYECTORIA</span>
-        </div>
-        <p class="footer-copy-text">Diseño y desarrollo web de autor para profesionales independientes. © 2026.</p>
-      </div>
-
-      <div class="footer-right">
-        <ul class="footer-links">
-          <li><a href="#hero">Inicio</a></li>
-          <li><a href="#casos">Casos reales</a></li>
-          <li><a href="#proceso">Cómo funciona</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/app.v2.js?v=2026.editorial.poster.2"></script>
+  <!-- Script interactivo -->
+  <script src="js/app.v2.js?v=2026.enciclopedia.1"></script>
 </body>
 </html>

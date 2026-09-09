@@ -1,68 +1,135 @@
 /* ================================================================
-   TRAYECTORIA — app.js v2026.editorial.poster.1
-   Interacciones para la web editorial modernista
+   ENCICLOPEDIA DE WEBS — app.js v2026.enciclopedia.1
+   Interacciones: Mapa cartográfico, Header dinámico y Reveal
    ================================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- 1. Navegación activa según Scroll ---- */
-  const navLinks = document.querySelectorAll('.poster-nav-list .nav-link');
-  const sections = document.querySelectorAll('section[id]');
-
-  function updateActiveNav() {
-    let scrollY = window.pageYOffset;
-
-    sections.forEach(current => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
-      const sectionId = current.getAttribute('id');
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
+  /* ---- 1. Animaciones de Reveal progresivo ---- */
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
       }
     });
-  }
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  revealElements.forEach(el => revealObserver.observe(el));
 
-  /* ---- 2. Micro-interacción: Inclinación sutil (tilt) en las formas orgánicas del Hero ---- */
-  const organicFrames = document.querySelectorAll('.hero-poster-section .organic-frame');
 
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelector('.hero-poster-section')?.addEventListener('mousemove', (e) => {
-      const { clientX, clientY } = e;
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const deltaX = (clientX - centerX) / centerX;
-      const deltaY = (clientY - centerY) / centerY;
+  /* ---- 2. Header dinámico (Tapa / Interior) ---- */
+  const siteHeader = document.getElementById('siteHeader');
+  const interiorSections = document.querySelectorAll('.s-map, .s-entries');
 
-      organicFrames.forEach((frame, idx) => {
-        const factor = (idx % 2 === 0 ? 1 : -1) * (idx + 1) * 1.5;
-        frame.style.transform = `translate(${deltaX * factor}px, ${deltaY * factor}px)`;
-      });
+  const interiorObserver = new IntersectionObserver((entries) => {
+    let isAnyInterior = false;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        isAnyInterior = true;
+      }
     });
 
-    document.querySelector('.hero-poster-section')?.addEventListener('mouseleave', () => {
-      organicFrames.forEach(frame => {
-        frame.style.transform = 'translate(0px, 0px)';
-      });
+    if (siteHeader) {
+      if (isAnyInterior) {
+        siteHeader.classList.add('on-interior');
+      } else {
+        siteHeader.classList.remove('on-interior');
+      }
+    }
+  }, {
+    threshold: 0.05
+  });
+
+  interiorSections.forEach(sec => interiorObserver.observe(sec));
+
+
+  /* ---- 3. Mapa Cartográfico Interactivo ---- */
+  const pinsData = {
+    'pin-ba': {
+      city: 'Buenos Aires, Argentina',
+      desc: 'Núcleo inicial de operaciones y consultoría de diseño. Plataformas para el sector artístico, bienestar, legal y consultoría corporativa de datos.',
+      links: [
+        { label: '→ Entrada 01: Guido Castellotti (Rosario / BA)', href: '#guido-castellotti' },
+        { label: '→ Entrada 02: The Wellness Club (San Miguel)', href: '#wellness-club' },
+        { label: '→ Entrada 03: Maurizio Di Russo (Ejecutivo)', href: '#maurizio-di-russo' },
+        { label: '→ Entrada 04: Julieta Vitale (Abogada)', href: '#julieta-vitale' }
+      ]
+    },
+    'pin-rosario': {
+      city: 'Rosario, Santa Fe, Argentina',
+      desc: 'Sede de realización audiovisual y producción gráfica independiente. Proyectos de identidad visual y portfolios inmersivos para directores.',
+      links: [
+        { label: '→ Entrada 01: Guido Castellotti (Realizador Audiovisual)', href: '#guido-castellotti' }
+      ]
+    },
+    'pin-italia': {
+      city: 'Italia (Expansión Internacional)',
+      desc: 'Próxima cartografía en producción. Desarrollo de presencia digital para profesionales y marcas independientes en el circuito europeo.',
+      links: [
+        { label: '→ Proyecto próximo a catalogar (2025/2026)', href: '#contacto' }
+      ]
+    }
+  };
+
+  const mapInspector = document.getElementById('mapInspector');
+  const inspCity     = document.getElementById('inspCity');
+  const inspDesc     = document.getElementById('inspDesc');
+  const inspLinks    = document.getElementById('inspLinks');
+  const inspClose    = document.getElementById('inspClose');
+  const pinElements  = document.querySelectorAll('.map-pin-group');
+
+  function updateInspector(pinId) {
+    const data = pinsData[pinId];
+    if (!data || !mapInspector) return;
+
+    inspCity.textContent = data.city;
+    inspDesc.textContent = data.desc;
+    
+    inspLinks.innerHTML = data.links.map(l => `
+      <a href="${l.href}" class="insp-jump">${l.label}</a>
+    `).join('');
+
+    mapInspector.style.opacity = '1';
+    mapInspector.style.pointerEvents = 'auto';
+
+    pinElements.forEach(p => p.classList.toggle('active', p.id === pinId));
+  }
+
+  pinElements.forEach(pin => {
+    pin.addEventListener('click', () => updateInspector(pin.id));
+    pin.addEventListener('mouseenter', () => updateInspector(pin.id));
+    pin.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        updateInspector(pin.id);
+      }
+    });
+  });
+
+  if (inspClose && mapInspector) {
+    inspClose.addEventListener('click', () => {
+      mapInspector.style.opacity = '0';
+      mapInspector.style.pointerEvents = 'none';
+      pinElements.forEach(p => p.classList.remove('active'));
     });
   }
 
-  /* ---- 3. Smooth scroll para anclas ---- */
+
+  /* ---- 4. Smooth scroll nativo para anclas ---- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
         e.preventDefault();
-        targetElement.scrollIntoView({
+        targetEl.scrollIntoView({
           behavior: 'smooth'
         });
       }
