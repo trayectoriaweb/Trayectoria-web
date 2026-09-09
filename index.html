@@ -3,203 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRAYECTORIA — Diseño y Arquitectura Web</title>
-  <meta name="description" content="Diseño y arquitectura web para profesionales independientes. Buenos Aires · Rosario · Italia.">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="TRAYECTORIA — Diseño y Arquitectura Web">
-  <meta property="og:description" content="Diseño y arquitectura web para profesionales independientes. Buenos Aires · Rosario · Italia.">
-  <meta property="og:type" content="website">
+  <title>TRAYECTORIA</title>
+  <meta name="description" content="Diseño y desarrollo web para profesionales independientes.">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231a1a1a'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23ffffff' font-family='serif'>T</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>T</text></svg>">
 
-  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) + Inter (Clean Sans) -->
+  <!-- Google Fonts: Inter para UI + Garamond o Sans limpia para lectura -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.kinfolk.1">
+  <link rel="stylesheet" href="css/styles.css?v=2026.feed.1">
 </head>
 <body>
 
-  <!-- 1. NAV -->
-  <header class="site-nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">TRAYECTORIA</a>
-      <nav class="nav-links">
-        <a href="#contacto" class="nav-link">Contacto</a>
-      </nav>
+  <!-- HEADER MINIMALISTA -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">TRAYECTORIA</a>
+      <a href="#contacto" class="nav-contact">Contacto</a>
     </div>
   </header>
 
-  <!-- 2. STORY MODULE (Kinfolk Style) -->
-  <main class="story-module" id="storyModule">
+  <main class="feed-main">
+    <div class="feed-container">
 
-    <!-- PANEL IZQUIERDO: Lista de proyectos -->
-    <div class="story-left">
-
-      <!-- Intro statement -->
-      <div class="story-intro">
-        <p class="story-intro__text">
-          Diseño y arquitectura web<br>para profesionales independientes.
-        </p>
-        <span class="story-intro__label">Buenos Aires · Rosario · Italia</span>
-      </div>
-
-      <!-- Lista de proyectos -->
-      <ul class="story-list" role="list">
-
-        <!-- PROYECTO 01: GUIDO CASTELLOTTI -->
-        <li class="story-item is-active" data-project="guido" role="listitem">
-          <div class="story-item__content">
-            <div class="story-item__meta">
-              <span class="story-item__num">01</span>
-              <span class="story-item__cat">Realizador Audiovisual & Diseño Gráfico</span>
-            </div>
-            <h3 class="story-item__title">Guido Castellotti</h3>
-            <p class="story-item__sub">
-              <em>Portfolio inmersivo de dirección fotográfica y cinematografía. Rosario / Buenos Aires.</em>
-            </p>
-          </div>
-          <div class="story-item__actions">
-            <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener" class="story-item__visit">
-              Ver sitio <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </li>
-
-        <!-- PROYECTO 02: THE WELLNESS CLUB -->
-        <li class="story-item" data-project="wellness" role="listitem">
-          <div class="story-item__content">
-            <div class="story-item__meta">
-              <span class="story-item__num">02</span>
-              <span class="story-item__cat">Pilates Reformer & Studio de Bienestar</span>
-            </div>
-            <h3 class="story-item__title">The Wellness Club</h3>
-            <p class="story-item__sub">
-              <em>Identidad editorial y sistema de reservas para estudio de entrenamiento consciente. San Miguel.</em>
-            </p>
-          </div>
-          <div class="story-item__actions">
-            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener" class="story-item__visit">
-              Ver sitio <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </li>
-
-        <!-- PROYECTO 03: MAURIZIO DI RUSSO -->
-        <li class="story-item" data-project="maurizio" role="listitem">
-          <div class="story-item__content">
-            <div class="story-item__meta">
-              <span class="story-item__num">03</span>
-              <span class="story-item__cat">Presencia Ejecutiva & Dossier Corporativo</span>
-            </div>
-            <h3 class="story-item__title">Maurizio Di Russo</h3>
-            <p class="story-item__sub">
-              <em>Carta credencial digital para ejecutivo de Mobility & Data. Buenos Aires.</em>
-            </p>
-          </div>
-          <div class="story-item__actions">
-            <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener" class="story-item__visit">
-              Ver sitio <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </li>
-
-        <!-- PROYECTO 04: JULIETA VITALE -->
-        <li class="story-item" data-project="julieta" role="listitem">
-          <div class="story-item__content">
-            <div class="story-item__meta">
-              <span class="story-item__num">04</span>
-              <span class="story-item__cat">Abogada Penalista & Asistencia de Urgencia</span>
-            </div>
-            <h3 class="story-item__title">Julieta Vitale</h3>
-            <p class="story-item__sub">
-              <em>Sitio de respuesta inmediata para práctica legal penal. Buenos Aires.</em>
-            </p>
-          </div>
-          <div class="story-item__actions">
-            <a href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" target="_blank" rel="noopener" class="story-item__visit">
-              Ver sitio <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </li>
-
-      </ul>
-
-      <!-- Pie del panel izquierdo: CTA de contacto -->
-      <div class="story-footer" id="contacto">
-        <p class="story-footer__text">
-          ¿Tenés un proyecto?<br>
-          <a href="mailto:hola@trayectoria.com.ar" class="story-footer__email">hola@trayectoria.com.ar</a>
-          <br>
-          <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20conversar%20sobre%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="story-footer__whatsapp">WhatsApp ↗</a>
-        </p>
-        <span class="story-footer__meta">© TRAYECTORIA 2026</span>
-      </div>
-
-    </div>
-
-    <!-- PANEL DERECHO: Fotografías en fade (Sticky 100vh) -->
-    <div class="story-right" aria-hidden="true">
-
-      <!-- Capa 1: Guido Castellotti -->
-      <div class="photo-layer is-active" data-project="guido">
-        <img
-          src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2200&q=88"
-          alt="Guido Castellotti — Realizador Audiovisual"
-          loading="eager"
+      <!-- PROYECTO 1: GUIDO CASTELLOTI -->
+      <article class="project-entry">
+        <a 
+          href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="project-media-wrap"
+          aria-label="Ver sitio de Guido Castelloti"
         >
-        <div class="photo-caption">
-          <span class="caption-num">01</span>
-          <span class="caption-title">Guido Castellotti</span>
+          <img 
+            src="https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=1400&q=88" 
+            alt="Guido Castelloti — Realizador audiovisual y diseñador" 
+            class="project-img"
+            loading="eager"
+          >
+        </a>
+        <div class="project-info">
+          <h2 class="project-name">Guido Castelloti</h2>
+          <p class="project-desc">
+            El fotógrafo, diseñador y creador de universos visuales viviendo en Rosario, buscaba una web que pudiera albergar todos sus proyectos audiovisuales en sí.
+          </p>
         </div>
-      </div>
+      </article>
 
-      <!-- Capa 2: The Wellness Club -->
-      <div class="photo-layer" data-project="wellness">
-        <img
-          src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=2200&q=88"
-          alt="The Wellness Club — Pilates Reformer"
-          loading="lazy"
+      <!-- PROYECTO 2: THE WELLNESS CLUB -->
+      <article class="project-entry">
+        <a 
+          href="https://thewellnessclub.com.ar/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="project-media-wrap"
+          aria-label="Ver sitio de The Wellness Club"
         >
-        <div class="photo-caption">
-          <span class="caption-num">02</span>
-          <span class="caption-title">The Wellness Club</span>
+          <img 
+            src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=88" 
+            alt="The Wellness Club — Pilates Reformer" 
+            class="project-img"
+            loading="lazy"
+          >
+        </a>
+        <div class="project-info">
+          <h2 class="project-name">The Wellness Club</h2>
+          <p class="project-desc">
+            Studio de pilates reformer y entrenamiento consciente en San Miguel. Una plataforma que traslada la atmósfera lumínica y la calidez física del espacio.
+          </p>
         </div>
-      </div>
+      </article>
 
-      <!-- Capa 3: Maurizio Di Russo -->
-      <div class="photo-layer" data-project="maurizio">
-        <img
-          src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2200&q=88"
-          alt="Maurizio Di Russo — Ejecutivo"
-          loading="lazy"
+      <!-- PROYECTO 3: MAURIZIO DI RUSSO -->
+      <article class="project-entry">
+        <a 
+          href="https://angelesgoy.github.io/maurizio-di-russo/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="project-media-wrap"
+          aria-label="Ver sitio de Maurizio Di Russo"
         >
-        <div class="photo-caption">
-          <span class="caption-num">03</span>
-          <span class="caption-title">Maurizio Di Russo</span>
+          <img 
+            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=88" 
+            alt="Maurizio Di Russo — Presencia ejecutiva y corporativa" 
+            class="project-img"
+            loading="lazy"
+          >
+        </a>
+        <div class="project-info">
+          <h2 class="project-name">Maurizio Di Russo</h2>
+          <p class="project-desc">
+            Ejecutivo corporativo en Mobility & Data. Presencia institucional de alta autoridad y dossier curricular para comités internacionales e inversores.
+          </p>
         </div>
-      </div>
+      </article>
 
-      <!-- Capa 4: Julieta Vitale -->
-      <div class="photo-layer" data-project="julieta">
-        <img
-          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=2200&q=88"
-          alt="Julieta Vitale — Abogada Penalista"
-          loading="lazy"
+      <!-- PROYECTO 4: JULIETA VITALE -->
+      <article class="project-entry">
+        <a 
+          href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="project-media-wrap"
+          aria-label="Ver sitio de Julieta Vitale"
         >
-        <div class="photo-caption">
-          <span class="caption-num">04</span>
-          <span class="caption-title">Julieta Vitale</span>
+          <img 
+            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=88" 
+            alt="Julieta Vitale — Abogada penalista" 
+            class="project-img"
+            loading="lazy"
+          >
+        </a>
+        <div class="project-info">
+          <h2 class="project-name">Julieta Vitale</h2>
+          <p class="project-desc">
+            Abogada penalista en Buenos Aires. Una arquitectura de respuesta inmediata y contacto directo sin jerga jurídica compleja.
+          </p>
         </div>
+      </article>
+
+      <!-- ENLACE FINAL: VER MÁS TRAYECTORIAS (SIN BOTÓN, SOLO TEXTO SUBRAYADO EN HOVER) -->
+      <div class="feed-footer-actions">
+        <a href="#contacto" class="link-more-trajectories">Ver más trayectorias</a>
       </div>
 
     </div>
   </main>
 
-  <script src="js/app.v2.js?v=2026.kinfolk.1"></script>
+  <!-- SECCIÓN DE CONTACTO SUTIL AL PIE -->
+  <footer class="footer-contact" id="contacto">
+    <div class="footer-inner">
+      <div class="contact-block">
+        <p class="contact-prompt">¿Conversamos sobre tu web?</p>
+        <div class="contact-links">
+          <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20conversar%20sobre%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="contact-link">WhatsApp</a>
+          <span class="sep">·</span>
+          <a href="mailto:hola@trayectoria.com.ar" class="contact-link">hola@trayectoria.com.ar</a>
+        </div>
+      </div>
+      <p class="copyright">© TRAYECTORIA 2026</p>
+    </div>
+  </footer>
+
+  <script src="js/app.v2.js?v=2026.feed.1"></script>
 </body>
 </html>
