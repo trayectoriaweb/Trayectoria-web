@@ -1,12 +1,12 @@
 /*
   ================================================================
-  TRAYECTORIA — MINIMAL EDITORIAL FEED
-  Basado exactamente en la referencia visual:
-  - Fondo blanco puro, sin líneas ni jerarquías saturadas.
-  - Foto protagonista a gran escala (~75% de ancho).
-  - Hover con zoom suave de la foto (agranda y achica).
-  - Texto al costado derecho, chico y conciso (nombre + descripción).
-  - Enlace al pie "Ver más trayectorias" sin cajas ni círculos (solo subrayado al hover).
+  TRAYECTORIA — SLIDER VERTICAL CONTINUO EN VIEWPORT FIJO
+  Efecto Expansión de Referencia:
+  - Pantalla fija, sin scroll de página estándar.
+  - La imagen central se expande totalmente al 100% con su información al lado.
+  - Las imágenes anterior y posterior quedan reducidas (scale: 0.86) asomando arriba y abajo.
+  - Hover con zoom suave en la imagen activa.
+  - Botón de texto al costado abajo "Ver más trayectorias" (subrayado solo al hover).
   ================================================================
 */
 
@@ -21,26 +21,21 @@
   --c-bg: #FFFFFF;
   --c-black: #000000;
   --c-text: #111111;
-  --c-text-muted: #666666;
+  --c-muted: #777777;
   --pad-x: clamp(1.5rem, 4.5vw, 5rem);
+  --header-h: 68px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--c-bg);
-}
-
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Sin scrollbar nativo */
   background-color: var(--c-bg);
   color: var(--c-black);
   font-family: var(--font-sans);
-  line-height: 1.5;
-  overflow-x: hidden;
-  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
@@ -50,24 +45,26 @@ img {
   object-fit: cover;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
 /* ================================================================
    HEADER MINIMALISTA
    ================================================================ */
-.header {
-  position: sticky;
+.site-header {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  height: var(--header-h);
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 1.8rem 0;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
 }
 
 .header-inner {
@@ -78,94 +75,132 @@ a {
   align-items: center;
 }
 
-.logo {
-  font-size: 0.82rem;
+.brand-logo {
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-black);
+  text-decoration: none;
 }
 
-.nav-contact {
+.nav-contact-btn {
+  background: none;
+  border: none;
   font-size: 0.82rem;
   font-weight: 400;
   color: var(--c-black);
+  padding: 0.2rem 0;
   border-bottom: 1px solid transparent;
-  padding-bottom: 0.1rem;
   transition: border-color 0.2s ease;
 }
 
-.nav-contact:hover {
-  border-color: var(--c-black);
+.nav-contact-btn:hover {
+  border-bottom-color: var(--c-black);
 }
 
 /* ================================================================
-   FEED DE PROYECTOS
+   ESCENARIO SLIDER (VIEWPORT FIJO)
    ================================================================ */
-.feed-main {
-  width: 100%;
-  padding-top: clamp(2rem, 4vw, 4rem);
-  padding-bottom: clamp(6rem, 10vw, 12rem);
+.slider-stage {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  touch-action: none; /* Control táctil mediante script */
 }
 
-.feed-container {
+.slides-track {
   width: 100%;
-  padding: 0 var(--pad-x);
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(5rem, 9vw, 10rem);
+  will-change: transform;
+  transition: transform 0.82s var(--ease);
 }
 
-/* Entrada individual del proyecto: Layout 75% foto / 25% info */
-.project-entry {
+/* Fila individual de proyecto */
+.slide-row {
+  width: 100%;
+  padding: 0 var(--pad-x);
   display: grid;
   grid-template-columns: 76fr 24fr;
-  gap: clamp(1.8rem, 3.5vw, 4.5rem);
+  gap: clamp(1.8rem, 3.8vw, 4.8rem);
   align-items: flex-start;
-  width: 100%;
+  margin-bottom: clamp(3rem, 6vh, 5.5rem);
 }
 
-/* Marco de la fotografía */
-.project-media-wrap {
-  display: block;
+/* Marco de la imagen */
+.slide-media-wrap {
+  position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10.5;
+  height: clamp(340px, 58vh, 620px);
   overflow: hidden;
   background-color: #f4f4f4;
   cursor: pointer;
+  transform-origin: center center;
+  transition: transform 0.8s var(--ease), opacity 0.6s ease;
+  will-change: transform, opacity;
 }
 
-.project-img {
+.slide-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.001);
   transition: transform 0.65s var(--ease);
   will-change: transform;
 }
 
-/* Animación de hover: agranda suavemente */
-.project-media-wrap:hover .project-img {
+/* ESTADO INACTIVO (Asomando reducida arriba o abajo) */
+.slide-row:not(.is-active) .slide-media-wrap {
+  transform: scale(0.86);
+  opacity: 0.35;
+  cursor: pointer;
+}
+
+.slide-row:not(.is-active) .slide-info {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ESTADO ACTIVO (Totalmente expandida con información al lado) */
+.slide-row.is-active .slide-media-wrap {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Animación sutil de zoom en la imagen activa */
+.slide-row.is-active .slide-media-wrap:hover .slide-img {
   transform: scale(1.035);
 }
 
-/* Columna lateral de información (chiquita al costado) */
-.project-info {
+/* Columna de información al costado derecho */
+.slide-info {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  padding-top: 0.2rem;
+  padding-top: 0.25rem;
+  transition: opacity 0.5s ease 0.22s, transform 0.5s ease 0.22s;
+  will-change: opacity, transform;
 }
 
-.project-name {
-  font-size: clamp(1.05rem, 1.2vw, 1.22rem);
+.slide-client-name {
+  font-size: clamp(1.05rem, 1.25vw, 1.25rem);
   font-weight: 700;
   line-height: 1.2;
   color: var(--c-black);
   letter-spacing: -0.015em;
 }
 
-.project-desc {
+.slide-client-desc {
   font-size: clamp(0.85rem, 0.95vw, 0.96rem);
   font-weight: 400;
   line-height: 1.45;
@@ -174,99 +209,191 @@ a {
 }
 
 /* ================================================================
-   ACCIÓN AL PIE: "VER MÁS TRAYECTORIAS"
-   Sin cajas, sin círculos, solo texto que se subraya al hover
+   BOTÓN FLOTANTE AL PIE: "VER MÁS TRAYECTORIAS"
+   Sin fondos, sin recuadros ni círculos — solo texto subrayado
    ================================================================ */
-.feed-footer-actions {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: clamp(2rem, 4vw, 4rem);
+.action-dock {
+  position: fixed;
+  bottom: clamp(1.6rem, 3.2vh, 2.6rem);
+  right: var(--pad-x);
+  z-index: 50;
 }
 
-.link-more-trajectories {
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+.link-more-action {
+  background: none;
+  border: none;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
   font-weight: 500;
   color: var(--c-black);
-  display: inline-block;
+  padding-bottom: 0.18rem;
   border-bottom: 1px solid transparent;
-  padding-bottom: 0.2rem;
   transition: border-color 0.2s ease, opacity 0.2s ease;
 }
 
-.link-more-trajectories:hover {
+.link-more-action:hover {
   border-bottom-color: var(--c-black);
 }
 
 /* ================================================================
-   FOOTER DE CONTACTO SUTIL
+   DRAWER MINIMALISTA DE ARCHIVO Y CONTACTO
    ================================================================ */
-.footer-contact {
-  width: 100%;
-  padding: clamp(3rem, 6vw, 6rem) var(--pad-x) 4rem;
-  border-top: 1px solid #f0f0f0;
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.footer-inner {
+.drawer-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-sheet {
+  width: min(540px, 100vw);
+  height: 100%;
+  background-color: #ffffff;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease);
+  overflow-y: auto;
+}
+
+.drawer-backdrop.is-open .drawer-sheet {
+  transform: translateX(0);
+}
+
+.drawer-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.contact-prompt {
-  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-  font-weight: 500;
-  color: var(--c-black);
-  margin-bottom: 0.6rem;
-}
-
-.contact-links {
-  display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 0.92rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
-.contact-link {
+.drawer-kicker {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--c-muted);
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
   color: var(--c-black);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 0.1rem;
+  padding: 0 0.4rem;
+}
+
+.drawer-project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-bottom: 3rem;
+}
+
+.drawer-project-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-decoration: none;
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.drawer-project-link:hover {
+  transform: translateX(4px);
+}
+
+.dp-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--c-black);
+}
+
+.dp-cat {
+  font-size: 0.82rem;
+  color: var(--c-muted);
+}
+
+.drawer-contact-box {
+  background-color: #fafafa;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dcb-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--c-black);
+}
+
+.dcb-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dcb-link {
+  font-size: 0.92rem;
+  color: var(--c-black);
+  text-decoration: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.2rem;
+  width: fit-content;
   transition: border-color 0.2s ease;
 }
 
-.contact-link:hover {
+.dcb-link:hover {
   border-bottom-color: var(--c-black);
 }
 
-.sep {
-  color: #999999;
-}
-
-.copyright {
-  font-size: 0.78rem;
-  color: var(--c-text-muted);
-  letter-spacing: 0.05em;
+.drawer-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: var(--c-muted);
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1.2rem;
 }
 
 /* ================================================================
-   RESPONSIVE (TABLETS & MÓVILES)
+   RESPONSIVE (MÓVILES)
    ================================================================ */
-@media (max-width: 900px) {
-  .project-entry {
+@media (max-width: 860px) {
+  .slide-row {
     grid-template-columns: 1fr;
-    gap: 1.4rem;
+    gap: 1.2rem;
   }
 
-  .project-info {
-    padding-top: 0;
+  .slide-media-wrap {
+    height: clamp(280px, 45vh, 400px);
   }
 
-  .project-desc {
-    max-width: 100%;
+  .slide-row:not(.is-active) .slide-media-wrap {
+    transform: scale(0.9);
   }
 
-  .feed-footer-actions {
-    justify-content: flex-start;
+  .action-dock {
+    left: var(--pad-x);
+    right: auto;
   }
 }

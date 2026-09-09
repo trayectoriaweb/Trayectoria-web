@@ -9,145 +9,159 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>T</text></svg>">
 
-  <!-- Google Fonts: Inter para UI + Garamond o Sans limpia para lectura -->
+  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=2026.feed.1">
+  <link rel="stylesheet" href="css/styles.css?v=2026.slider.1">
 </head>
-<body>
+<body class="slider-body">
 
-  <!-- HEADER MINIMALISTA -->
-  <header class="header">
+  <!-- HEADER MINIMALISTA FIJO -->
+  <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="logo">TRAYECTORIA</a>
-      <a href="#contacto" class="nav-contact">Contacto</a>
+      <a href="/" class="brand-logo">TRAYECTORIA</a>
+      <button class="nav-contact-btn" id="btnHeaderContact" aria-label="Abrir contacto">Contacto</button>
     </div>
   </header>
 
-  <main class="feed-main">
-    <div class="feed-container">
+  <!-- ESCENARIO PRINCIPAL (VIEWPORT FIJO SIN SCROLL DE PÁGINA) -->
+  <main class="slider-stage" id="sliderStage">
+    <div class="slides-track" id="slidesTrack">
 
-      <!-- PROYECTO 1: GUIDO CASTELLOTI -->
-      <article class="project-entry">
-        <a 
-          href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="project-media-wrap"
-          aria-label="Ver sitio de Guido Castelloti"
-        >
+      <!-- SLIDE 0: GUIDO CASTELLOTI -->
+      <section class="slide-row is-active" data-index="0" data-url="https://trayectoriaweb.github.io/Guido-Castelloti-web/">
+        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de Guido Castelloti">
           <img 
-            src="https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=1400&q=88" 
-            alt="Guido Castelloti — Realizador audiovisual y diseñador" 
-            class="project-img"
+            src="https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=1600&q=88" 
+            alt="Guido Castelloti — Realizador audiovisual y diseño" 
+            class="slide-img"
             loading="eager"
           >
-        </a>
-        <div class="project-info">
-          <h2 class="project-name">Guido Castelloti</h2>
-          <p class="project-desc">
+        </div>
+        <div class="slide-info">
+          <h2 class="slide-client-name">Guido Castelloti</h2>
+          <p class="slide-client-desc">
             El fotógrafo, diseñador y creador de universos visuales viviendo en Rosario, buscaba una web que pudiera albergar todos sus proyectos audiovisuales en sí.
           </p>
         </div>
-      </article>
+      </section>
 
-      <!-- PROYECTO 2: THE WELLNESS CLUB -->
-      <article class="project-entry">
-        <a 
-          href="https://thewellnessclub.com.ar/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="project-media-wrap"
-          aria-label="Ver sitio de The Wellness Club"
-        >
+      <!-- SLIDE 1: THE WELLNESS CLUB -->
+      <section class="slide-row" data-index="1" data-url="https://thewellnessclub.com.ar/">
+        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de The Wellness Club">
           <img 
-            src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=88" 
+            src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=88" 
             alt="The Wellness Club — Pilates Reformer" 
-            class="project-img"
+            class="slide-img"
             loading="lazy"
           >
-        </a>
-        <div class="project-info">
-          <h2 class="project-name">The Wellness Club</h2>
-          <p class="project-desc">
+        </div>
+        <div class="slide-info">
+          <h2 class="slide-client-name">The Wellness Club</h2>
+          <p class="slide-client-desc">
             Studio de pilates reformer y entrenamiento consciente en San Miguel. Una plataforma que traslada la atmósfera lumínica y la calidez física del espacio.
           </p>
         </div>
-      </article>
+      </section>
 
-      <!-- PROYECTO 3: MAURIZIO DI RUSSO -->
-      <article class="project-entry">
-        <a 
-          href="https://angelesgoy.github.io/maurizio-di-russo/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="project-media-wrap"
-          aria-label="Ver sitio de Maurizio Di Russo"
-        >
+      <!-- SLIDE 2: MAURIZIO DI RUSSO -->
+      <section class="slide-row" data-index="2" data-url="https://angelesgoy.github.io/maurizio-di-russo/">
+        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de Maurizio Di Russo">
           <img 
-            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=88" 
-            alt="Maurizio Di Russo — Presencia ejecutiva y corporativa" 
-            class="project-img"
+            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=88" 
+            alt="Maurizio Di Russo — Presencia corporativa y dossier" 
+            class="slide-img"
             loading="lazy"
           >
-        </a>
-        <div class="project-info">
-          <h2 class="project-name">Maurizio Di Russo</h2>
-          <p class="project-desc">
+        </div>
+        <div class="slide-info">
+          <h2 class="slide-client-name">Maurizio Di Russo</h2>
+          <p class="slide-client-desc">
             Ejecutivo corporativo en Mobility & Data. Presencia institucional de alta autoridad y dossier curricular para comités internacionales e inversores.
           </p>
         </div>
-      </article>
+      </section>
 
-      <!-- PROYECTO 4: JULIETA VITALE -->
-      <article class="project-entry">
-        <a 
-          href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="project-media-wrap"
-          aria-label="Ver sitio de Julieta Vitale"
-        >
+      <!-- SLIDE 3: JULIETA VITALE -->
+      <section class="slide-row" data-index="3" data-url="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/">
+        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de Julieta Vitale">
           <img 
-            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=88" 
+            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1600&q=88" 
             alt="Julieta Vitale — Abogada penalista" 
-            class="project-img"
+            class="slide-img"
             loading="lazy"
           >
-        </a>
-        <div class="project-info">
-          <h2 class="project-name">Julieta Vitale</h2>
-          <p class="project-desc">
+        </div>
+        <div class="slide-info">
+          <h2 class="slide-client-name">Julieta Vitale</h2>
+          <p class="slide-client-desc">
             Abogada penalista en Buenos Aires. Una arquitectura de respuesta inmediata y contacto directo sin jerga jurídica compleja.
           </p>
         </div>
-      </article>
-
-      <!-- ENLACE FINAL: VER MÁS TRAYECTORIAS (SIN BOTÓN, SOLO TEXTO SUBRAYADO EN HOVER) -->
-      <div class="feed-footer-actions">
-        <a href="#contacto" class="link-more-trajectories">Ver más trayectorias</a>
-      </div>
+      </section>
 
     </div>
   </main>
 
-  <!-- SECCIÓN DE CONTACTO SUTIL AL PIE -->
-  <footer class="footer-contact" id="contacto">
-    <div class="footer-inner">
-      <div class="contact-block">
-        <p class="contact-prompt">¿Conversamos sobre tu web?</p>
-        <div class="contact-links">
-          <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20conversar%20sobre%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="contact-link">WhatsApp</a>
-          <span class="sep">·</span>
-          <a href="mailto:hola@trayectoria.com.ar" class="contact-link">hola@trayectoria.com.ar</a>
+  <!-- ACCIÓN FLOTANTE AL PIE: "VER MÁS TRAYECTORIAS" (TEXTO LIMPIO SUBRAYADO EN HOVER) -->
+  <aside class="action-dock">
+    <button class="link-more-action" id="btnMoreTrajectories">Ver más trayectorias</button>
+  </aside>
+
+  <!-- DRAWER / PANEL MINIMALISTA: ARCHIVO DE TRAYECTORIAS Y CONTACTO -->
+  <div class="drawer-backdrop" id="drawerBackdrop">
+    <div class="drawer-sheet" id="drawerSheet">
+      <div class="drawer-top">
+        <span class="drawer-kicker">ARCHIVO DE TRAYECTORIAS</span>
+        <button class="drawer-close-btn" id="btnDrawerClose" aria-label="Cerrar panel">×</button>
+      </div>
+
+      <div class="drawer-content">
+        <ul class="drawer-project-list">
+          <li>
+            <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
+              <span class="dp-name">Guido Castelloti</span>
+              <span class="dp-cat">Realizador Audiovisual · Rosario ↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
+              <span class="dp-name">The Wellness Club</span>
+              <span class="dp-cat">Pilates Reformer · San Miguel ↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
+              <span class="dp-name">Maurizio Di Russo</span>
+              <span class="dp-cat">Corporate Mobility & Data · Buenos Aires ↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
+              <span class="dp-name">Julieta Vitale</span>
+              <span class="dp-cat">Abogada Penalista · Buenos Aires ↗</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="drawer-contact-box">
+          <p class="dcb-title">¿Conversamos sobre tu próximo sitio web?</p>
+          <div class="dcb-actions">
+            <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20conversar%20sobre%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="dcb-link">Iniciar conversación en WhatsApp ↗</a>
+            <a href="mailto:hola@trayectoria.com.ar" class="dcb-link">hola@trayectoria.com.ar</a>
+          </div>
         </div>
       </div>
-      <p class="copyright">© TRAYECTORIA 2026</p>
-    </div>
-  </footer>
 
-  <script src="js/app.v2.js?v=2026.feed.1"></script>
+      <footer class="drawer-foot">
+        <span>TRAYECTORIA © 2026</span>
+        <span>Buenos Aires · Rosario · Italia</span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/app.v2.js?v=2026.slider.1"></script>
 </body>
 </html>
