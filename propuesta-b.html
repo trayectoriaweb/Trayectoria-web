@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRAYECTORIA — Propuesta B</title>
+  <meta name="description" content="Diseñamos sitios para profesionales, creativos y negocios. Una web a la altura de tu trabajo.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TRAYECTORIA — Propuesta B">
+  <meta property="og:description" content="Una web a la altura de tu trabajo.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23171717'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23fafaf7' font-family='sans-serif' font-weight='700'>T</text></svg>">
+
+  <!-- Tipografía: Archivo Variable (Omnibus-Type) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,400..700;1,100,400..700&display=swap" rel="stylesheet">
+
+  <!-- Estilos de Propuesta B -->
+  <link rel="stylesheet" href="css/propuesta-b.css?v=2026.b.1">
+</head>
+<body id="top">
+
+  <!-- ==================== 1. NAVEGACIÓN DISCRETA (52PX) ==================== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <span class="header-descriptor">Diseño y desarrollo web</span>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#escenario" class="nav-link">Proyectos</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main id="contenido">
+
+    <!-- ==================== 2. APERTURA EDITORIAL MONOLÍTICA ==================== -->
+    <section class="section-hero" aria-labelledby="hero-phrase">
+      
+      <!-- Marca de gran escala de margen a margen -->
+      <div class="brand-strip" aria-label="TRAYECTORIA">
+        <span class="brand-display" id="brand-display" aria-hidden="true">TRAYECTORIA</span>
+        <span class="sr-only">TRAYECTORIA</span>
+      </div>
+
+      <!-- Frase editorial como bajada directa -->
+      <h1 id="hero-phrase" class="hero-editorial-phrase">
+        Una web a la altura de tu trabajo.
+      </h1>
+
+      <!-- Escenario de proyectos a ancho completo -->
+      <div class="stage-grid" id="escenario">
+        
+        <!-- Imagen dominante (cols 1 a 18/19) -->
+        <div class="stage-media-col">
+          <div class="stage-media-frame">
+            <img 
+              id="stage-active-image" 
+              src="img/proyectos/guido-castellotti-hero.webp" 
+              alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
+              class="stage-active-img"
+              width="1600"
+              height="900"
+              loading="eager"
+            >
+          </div>
+        </div>
+
+        <!-- Ficha lateral pura (cols 20 a 24 / 21 a 24) -->
+        <aside class="stage-sidebar-col" aria-label="Ficha de proyecto">
+          
+          <!-- Información editorial superior -->
+          <div class="stage-info-top">
+            <h2 id="stage-project-name" class="stage-project-name">
+              Guido Castellotti
+            </h2>
+            <p id="stage-project-rubro" class="stage-project-rubro">
+              Fotografía y diseño
+            </p>
+            <p id="stage-project-desc" class="stage-project-desc">
+              Un sitio donde la fotografía organiza la experiencia y presenta una mirada propia.
+            </p>
+            <div class="stage-project-link-wrap">
+              <a 
+                id="stage-visit-link" 
+                href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="stage-visit-link"
+              >
+                Visitar sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Selector vertical en la misma columna, alineado hacia la base -->
+          <div class="stage-selector-wrap" role="group" aria-label="Seleccionar proyecto para visualizar en el escenario">
+            <button 
+              type="button" 
+              class="stage-selector-btn is-active" 
+              data-project="guido" 
+              aria-pressed="true"
+            >
+              Guido Castellotti
+            </button>
+            <button 
+              type="button" 
+              class="stage-selector-btn" 
+              data-project="julieta" 
+              aria-pressed="false"
+            >
+              Julieta Vitale
+            </button>
+            <button 
+              type="button" 
+              class="stage-selector-btn" 
+              data-project="maurizio" 
+              aria-pressed="false"
+            >
+              Maurizio Di Russo
+            </button>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== 3. ENSAYO DE CONTINUIDAD — CASO JULIETA ==================== -->
+    <section class="section-continuity" id="caso-julieta" aria-labelledby="continuity-heading">
+      
+      <div class="continuity-grid">
+        
+        <!-- Nota editorial izquierda explicando la decisión de diseño -->
+        <div class="continuity-note-col">
+          <p class="continuity-tag">Caso en estudio · Julieta Vitale</p>
+          <h2 id="continuity-heading" class="continuity-title">
+            Estructura por áreas de práctica
+          </h2>
+          <p class="continuity-desc">
+            Para una práctica penal donde las urgencias conviven con causas complejas, el sitio organiza las especialidades en fichas autónomas y directas. Cada área resume el alcance del servicio y ofrece una vía inmediata de consulta, sin obligar a navegar extensos textos jurídicos.
+          </p>
+          <div class="continuity-action">
+            <a 
+              href="https://angelesgoy.github.io/julieta-vitale-abogada/areas-de-practica/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="continuity-link"
+            >
+              Ver sección en el sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Captura real de la sección interior alineada al borde derecho -->
+        <div class="continuity-media-col">
+          <a 
+            href="https://angelesgoy.github.io/julieta-vitale-abogada/areas-de-practica/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="continuity-media-link"
+            aria-label="Ver sección Áreas de práctica en el sitio de Julieta Vitale"
+          >
+            <img 
+              src="img/proyectos/julieta-interior-areas.png" 
+              alt="Captura real de la sección Áreas de práctica del sitio de Julieta Vitale" 
+              class="continuity-img"
+              width="1600"
+              height="900"
+              loading="lazy"
+            >
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== 4. CIERRE DE CONTACTO ==================== -->
+    <section class="section-contact" id="contacto" aria-labelledby="contact-heading">
+      
+      <div class="contact-layout">
+        
+        <!-- Título monumental a la izquierda -->
+        <div class="contact-title-col">
+          <h2 id="contact-heading" class="contact-heading">
+            Hablemos de<br>tu próxima web.
+          </h2>
+        </div>
+
+        <!-- Columna derecha con invitación clara -->
+        <div class="contact-info-col">
+          <p class="contact-lead">
+            Contanos qué hacés y qué te gustaría mostrar.
+          </p>
+          
+          <div class="contact-cta-block">
+            <span class="contact-cta-label">Escribinos</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pie integrado -->
+      <footer class="contact-footer" role="contentinfo">
+        <span class="footer-brand">TRAYECTORIA</span>
+        <a href="#top" class="footer-back-top">Volver arriba ↑</a>
+      </footer>
+
+    </section>
+
+  </main>
+
+  <!-- Controlador interactivo de Propuesta B -->
+  <script src="js/propuesta-b.js?v=2026.b.1"></script>
+</body>
+</html>

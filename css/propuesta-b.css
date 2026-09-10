@@ -1,0 +1,694 @@
+/*
+  ================================================================
+  TRAYECTORIA — Propuesta B: Apertura Editorial Monolítica
+  
+  Características:
+  - Medio protagonista dominante (cols 1-18 o 1-19)
+  - Ficha lateral pura alineada arriba (cols 20-24 o 21-24)
+  - Selector vertical dentro de la misma columna alineado al pie del medio
+  - Marca TRAYECTORIA de margen a margen en una línea
+  - Frase editorial como bajada directa de la marca
+  - Ensayo de continuidad de Julieta (sección interior Áreas de práctica)
+  - Paleta: Blanco cálido #FAFAF7, Tinta #171717, Tinta secundaria #555550, Azul #2448FF
+  ================================================================
+*/
+
+:root {
+  --c-bg:             #FAFAF7;
+  --c-text:           #171717;
+  --c-text-muted:     #555550;
+  --c-blue:           #2448FF;
+  --c-surface-subtle: #EEEEEA;
+  --c-white:          #FFFFFF;
+
+  --font-family: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --gutter: clamp(20px, 1.667vw, 40px);
+  --col-gap: 16px;
+
+  --ease-editorial: cubic-bezier(.22, 1, .36, 1);
+  --trans-fade: 280ms ease-out;
+}
+
+/* ================================================================
+   RESET Y BASES
+   ================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-family);
+  font-weight: 400;
+  line-height: 1.4;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================================================
+   1. NAVEGACIÓN DISCRETA (52PX)
+   ================================================================ */
+.site-header {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background-color: var(--c-bg);
+  z-index: 50;
+}
+
+.header-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-descriptor {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  letter-spacing: -0.01em;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--c-text);
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--c-blue);
+}
+
+/* ================================================================
+   2. MARCA Y FRASE EDITORIAL
+   ================================================================ */
+.section-hero {
+  width: 100%;
+  padding: 0 var(--gutter);
+  margin-top: clamp(6px, 1vw, 16px);
+}
+
+.brand-strip {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0.82;
+  user-select: none;
+}
+
+.brand-display {
+  display: inline-block;
+  width: auto;
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  white-space: nowrap;
+  line-height: 0.82;
+  /* Tamaño seguro CSS inicial */
+  font-size: clamp(2.4rem, 11.4vw, 14.8rem);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Frase editorial: bajada directa de la marca */
+.hero-editorial-phrase {
+  margin-top: clamp(14px, 1.4vw, 22px);
+  font-size: clamp(1.25rem, 1.5vw, 1.75rem); /* ~24px en 1440, ~28px en 1920 */
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+/* ================================================================
+   3. ESCENARIO DE PROYECTOS (RETÍCULA 24 COLUMNAS)
+   ================================================================ */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  align-items: stretch;
+  margin-top: clamp(24px, 2.2vw, 32px);
+}
+
+/* Imagen dominante (cols 1 a 19 en pantallas muy anchas, 1 a 18 en estándar) */
+.stage-media-col {
+  grid-column: 1 / span 18;
+  position: relative;
+}
+
+@media (min-width: 1600px) {
+  .stage-media-col {
+    grid-column: 1 / span 19;
+  }
+}
+
+.stage-media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--c-surface-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stage-active-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  opacity: 1;
+  transition: opacity var(--trans-fade);
+}
+
+.stage-active-img.is-fading {
+  opacity: 0.08;
+}
+
+/* Ficha lateral pura (cols 20 a 24 o 21 a 24) */
+.stage-sidebar-col {
+  grid-column: 20 / span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+@media (min-width: 1600px) {
+  .stage-sidebar-col {
+    grid-column: 21 / span 4;
+  }
+}
+
+/* Contenido superior de la ficha */
+.stage-info-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.stage-project-name {
+  font-size: clamp(1.375rem, 1.45vw, 1.625rem); /* 22–26px */
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--c-text);
+}
+
+.stage-project-rubro {
+  margin-top: 6px;
+  font-size: clamp(0.9375rem, 1vw, 1rem); /* 15–16px */
+  font-weight: 400;
+  color: var(--c-text-muted);
+}
+
+.stage-project-desc {
+  margin-top: 20px;
+  font-size: clamp(1rem, 1.05vw, 1.125rem); /* 16–18px */
+  line-height: 1.4;
+  color: var(--c-text);
+  max-width: 340px;
+}
+
+.stage-project-link-wrap {
+  margin-top: 24px;
+}
+
+.stage-visit-link {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease;
+}
+
+.stage-visit-link:hover {
+  color: var(--c-blue);
+}
+
+.arrow-glyph {
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.85em;
+  margin-left: 2px;
+}
+
+/* Selector vertical inferior en la misma columna */
+.stage-selector-wrap {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stage-selector-btn {
+  text-align: left;
+  padding: 4px 0;
+  font-size: clamp(0.9375rem, 0.98vw, 1.0625rem);
+  font-weight: 400;
+  color: var(--c-text);
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: color 0.15s ease, font-weight 0.15s ease;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.stage-selector-btn:hover {
+  color: var(--c-blue);
+}
+
+.stage-selector-btn.is-active {
+  color: var(--c-blue);
+  font-weight: 600;
+}
+
+/* ================================================================
+   4. ENSAYO DE CONTINUIDAD — CASO JULIETA (SECCIÓN INTERIOR)
+   ================================================================ */
+.section-continuity {
+  width: 100%;
+  padding: 0 var(--gutter);
+  margin-top: clamp(80px, 8vw, 112px);
+}
+
+.continuity-grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+}
+
+/* Nota editorial izquierda (cols 1 a 7) */
+.continuity-note-col {
+  grid-column: 1 / span 7;
+  padding-top: clamp(8px, 1.5vw, 24px);
+}
+
+.continuity-tag {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.continuity-title {
+  margin-top: 16px;
+  font-size: clamp(1.5rem, 1.8vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--c-text);
+}
+
+.continuity-desc {
+  margin-top: 20px;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  color: var(--c-text);
+}
+
+.continuity-action {
+  margin-top: 24px;
+}
+
+.continuity-link {
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--c-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.15s ease;
+}
+
+.continuity-link:hover {
+  color: var(--c-blue);
+}
+
+/* Imagen interior alineada al borde derecho (cols 9 a 24) */
+.continuity-media-col {
+  grid-column: 9 / span 16;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--c-surface-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.continuity-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: opacity 0.2s ease;
+}
+
+.continuity-media-link:hover .continuity-img {
+  opacity: 0.96;
+}
+
+/* ================================================================
+   5. CIERRE DE CONTACTO (BLOQUE AZUL SÓLIDO #2448FF)
+   ================================================================ */
+.section-contact {
+  width: 100%;
+  margin-top: clamp(88px, 9vw, 140px);
+  background-color: var(--c-blue);
+  color: var(--c-white);
+  padding: clamp(48px, 4.5vw, 72px) var(--gutter) clamp(28px, 2.5vw, 40px) var(--gutter);
+  min-height: clamp(480px, 48vh, 620px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+  margin-bottom: clamp(48px, 5vw, 80px);
+}
+
+.contact-title-col {
+  grid-column: 1 / span 17;
+}
+
+.contact-heading {
+  font-size: clamp(2.75rem, 6.7vw, 8rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  color: var(--c-white);
+}
+
+.contact-info-col {
+  grid-column: 19 / span 6;
+  padding-top: clamp(16px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-lead {
+  font-size: clamp(1.125rem, 1.15vw, 1.25rem);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-cta-block {
+  margin-top: 28px;
+}
+
+.contact-cta-label {
+  display: inline-block;
+  font-size: clamp(1.25rem, 1.3vw, 1.375rem);
+  font-weight: 500;
+  color: var(--c-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  padding-bottom: 4px;
+  cursor: default;
+  user-select: none;
+}
+
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding-top: 24px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-brand {
+  letter-spacing: -0.01em;
+}
+
+.footer-back-top {
+  color: var(--c-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.18s ease;
+}
+
+.footer-back-top:hover {
+  opacity: 0.8;
+}
+
+/* ================================================================
+   6. RESPONSIVE: TABLET (768PX A 1099PX)
+   ================================================================ */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .stage-grid {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
+  }
+
+  .stage-media-col {
+    grid-column: 1 / span 8;
+  }
+
+  .stage-sidebar-col {
+    grid-column: 9 / span 4;
+  }
+
+  .continuity-grid {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
+  }
+
+  .continuity-note-col {
+    grid-column: 1 / span 4;
+  }
+
+  .continuity-media-col {
+    grid-column: 5 / span 8;
+  }
+
+  .contact-layout {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
+  }
+
+  .contact-title-col {
+    grid-column: 1 / span 8;
+  }
+
+  .contact-info-col {
+    grid-column: 9 / span 4;
+  }
+}
+
+/* ================================================================
+   7. RESPONSIVE: MÓVIL (< 768PX)
+   ================================================================ */
+@media (max-width: 767.98px) {
+  .site-header {
+    height: 48px;
+  }
+
+  .header-descriptor {
+    display: none;
+  }
+
+  .nav-list {
+    gap: 20px;
+  }
+
+  .section-hero {
+    margin-top: 4px;
+  }
+
+  .hero-editorial-phrase {
+    margin-top: 14px;
+    font-size: 1.3125rem; /* ~21px */
+    line-height: 1.25;
+  }
+
+  /* Escenario móvil: imagen a sangre, ficha y selector vertical */
+  .stage-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 0;
+  }
+
+  .stage-media-col {
+    width: calc(100% + 2 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+  }
+
+  .stage-sidebar-col {
+    width: 100%;
+    margin-top: 24px;
+    gap: 28px;
+  }
+
+  .stage-project-name {
+    font-size: 1.5rem;
+  }
+
+  .stage-project-desc {
+    max-width: 100%;
+    margin-top: 14px;
+    font-size: 1.0625rem;
+  }
+
+  .stage-project-link-wrap {
+    margin-top: 18px;
+  }
+
+  .stage-visit-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .stage-selector-wrap {
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  .stage-selector-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 0 4px;
+  }
+
+  /* Continuidad móvil */
+  .section-continuity {
+    margin-top: 56px;
+  }
+
+  .continuity-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .continuity-note-col {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .continuity-media-col {
+    width: calc(100% + 2 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+  }
+
+  /* Contacto móvil */
+  .section-contact {
+    margin-top: 64px;
+    min-height: auto;
+    padding: 56px 16px 28px 16px;
+  }
+
+  .contact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .contact-heading {
+    font-size: 3rem;
+    line-height: 1.02;
+  }
+
+  .contact-info-col {
+    padding-top: 0;
+  }
+
+  .contact-lead {
+    font-size: 1.125rem;
+  }
+
+  .contact-cta-block {
+    margin-top: 20px;
+  }
+
+  .contact-footer {
+    padding-top: 20px;
+  }
+}
