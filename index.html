@@ -3,165 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRAYECTORIA</title>
-  <meta name="description" content="Diseño y desarrollo web para profesionales independientes.">
+  <title>TRAYECTORIA — Sitios web personales y profesionales</title>
+  <meta name="description" content="Diseñamos cómo se presenta tu trabajo. Sitios web para profesionales independientes que necesitan ordenar su experiencia y facilitar el contacto.">
+
+  <!-- Open Graph básico -->
+  <meta property="og:title" content="TRAYECTORIA — Sitios web personales y profesionales">
+  <meta property="og:description" content="Tu trabajo tiene una historia. Diseñamos cómo se presenta.">
+  <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000000'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>T</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23121212'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23ffffff' font-family='sans-serif' font-weight='700'>T</text></svg>">
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter (400, 500, 600, 700) - Licencia SIL Open Font License -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=2026.slider.1">
+  <!-- Estilos de Entrega A -->
+  <link rel="stylesheet" href="css/styles.css?v=2026.entrega-a.1">
 </head>
-<body class="slider-body">
+<body>
 
-  <!-- HEADER MINIMALISTA FIJO -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="brand-logo">TRAYECTORIA</a>
-      <button class="nav-contact-btn" id="btnHeaderContact" aria-label="Abrir contacto">Contacto</button>
+  <!-- ==================== ENCABEZADO ==================== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <a href="#" class="brand-logo" aria-label="TRAYECTORIA — Ir al inicio">
+        TRAYECTORIA
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li class="nav-item-pending"><span class="nav-pending" title="Sección programada para la Entrega B">Cómo trabajamos</span></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ESCENARIO PRINCIPAL (VIEWPORT FIJO SIN SCROLL DE PÁGINA) -->
-  <main class="slider-stage" id="sliderStage">
-    <div class="slides-track" id="slidesTrack">
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main id="contenido">
 
-      <!-- SLIDE 0: GUIDO CASTELLOTI -->
-      <section class="slide-row is-active" data-index="0" data-url="https://trayectoriaweb.github.io/Guido-Castelloti-web/">
-        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de Guido Castelloti">
-          <img 
-            src="https://trayectoriaweb.github.io/Guido-Castelloti-web/img/proyectos/guido_0243.jpg" 
-            alt="Guido Castelloti — Realizador audiovisual y diseño" 
-            class="slide-img"
-            loading="eager"
-          >
-        </div>
-        <div class="slide-info">
-          <h2 class="slide-client-name">Guido Castelloti</h2>
-          <p class="slide-client-desc">
-            El fotógrafo, diseñador y creador de universos visuales viviendo en Rosario, buscaba una web que pudiera albergar todos sus proyectos audiovisuales en sí.
+    <!-- APERTURA / HERO -->
+    <section class="section-hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="section-kicker">SITIOS WEB PERSONALES Y PROFESIONALES</p>
+          
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-line">Tu trabajo tiene una historia.</span>
+            <span class="hero-line">Diseñamos cómo se presenta.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Creamos sitios web para profesionales que necesitan mostrar qué hacen, ordenar su experiencia y facilitar el próximo contacto.
           </p>
-        </div>
-      </section>
 
-      <!-- SLIDE 1: THE WELLNESS CLUB -->
-      <section class="slide-row" data-index="1" data-url="https://thewellnessclub.com.ar/">
-        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de The Wellness Club">
-          <img 
-            src="https://thewellnessclub.com.ar/images/studio-01.webp" 
-            alt="The Wellness Club — Pilates Reformer" 
-            class="slide-img"
-            loading="lazy"
-          >
-        </div>
-        <div class="slide-info">
-          <h2 class="slide-client-name">The Wellness Club</h2>
-          <p class="slide-client-desc">
-            Studio de pilates reformer y entrenamiento consciente en San Miguel. Una plataforma que traslada la atmósfera lumínica y la calidez física del espacio.
-          </p>
-        </div>
-      </section>
-
-      <!-- SLIDE 2: MAURIZIO DI RUSSO -->
-      <section class="slide-row" data-index="2" data-url="https://angelesgoy.github.io/maurizio-di-russo/">
-        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de Maurizio Di Russo">
-          <img 
-            src="https://i.postimg.cc/0N1qWhKT/portrait-bw-jpg.png" 
-            alt="Maurizio Di Russo — Presencia corporativa y dossier" 
-            class="slide-img"
-            loading="lazy"
-          >
-        </div>
-        <div class="slide-info">
-          <h2 class="slide-client-name">Maurizio Di Russo</h2>
-          <p class="slide-client-desc">
-            Ejecutivo corporativo en Mobility & Data. Presencia institucional de alta autoridad y dossier curricular para comités internacionales e inversores.
-          </p>
-        </div>
-      </section>
-
-      <!-- SLIDE 3: JULIETA VITALE -->
-      <section class="slide-row" data-index="3" data-url="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/">
-        <div class="slide-media-wrap" role="button" tabindex="0" aria-label="Visitar sitio de Julieta Vitale">
-          <img 
-            src="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/julieta-principal.png" 
-            alt="Julieta Vitale — Abogada penalista" 
-            class="slide-img"
-            loading="lazy"
-          >
-        </div>
-        <div class="slide-info">
-          <h2 class="slide-client-name">Julieta Vitale</h2>
-          <p class="slide-client-desc">
-            Abogada penalista en Buenos Aires. Una arquitectura de respuesta inmediata y contacto directo sin jerga jurídica compleja.
-          </p>
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <!-- ACCIÓN FLOTANTE AL PIE: "VER MÁS TRAYECTORIAS" (TEXTO LIMPIO SUBRAYADO EN HOVER) -->
-  <aside class="action-dock">
-    <button class="link-more-action" id="btnMoreTrajectories">Ver más trayectorias</button>
-  </aside>
-
-  <!-- DRAWER / PANEL MINIMALISTA: ARCHIVO DE TRAYECTORIAS Y CONTACTO -->
-  <div class="drawer-backdrop" id="drawerBackdrop">
-    <div class="drawer-sheet" id="drawerSheet">
-      <div class="drawer-top">
-        <span class="drawer-kicker">ARCHIVO DE TRAYECTORIAS</span>
-        <button class="drawer-close-btn" id="btnDrawerClose" aria-label="Cerrar panel">×</button>
-      </div>
-
-      <div class="drawer-content">
-        <ul class="drawer-project-list">
-          <li>
-            <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
-              <span class="dp-name">Guido Castelloti</span>
-              <span class="dp-cat">Realizador Audiovisual · Rosario ↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://thewellnessclub.com.ar/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
-              <span class="dp-name">The Wellness Club</span>
-              <span class="dp-cat">Pilates Reformer · San Miguel ↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
-              <span class="dp-name">Maurizio Di Russo</span>
-              <span class="dp-cat">Corporate Mobility & Data · Buenos Aires ↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://julieta-vitale-abogada.angelesgoy.chatgpt.site/" target="_blank" rel="noopener noreferrer" class="drawer-project-link">
-              <span class="dp-name">Julieta Vitale</span>
-              <span class="dp-cat">Abogada Penalista · Buenos Aires ↗</span>
-            </a>
-          </li>
-        </ul>
-
-        <div class="drawer-contact-box">
-          <p class="dcb-title">¿Conversamos sobre tu próximo sitio web?</p>
-          <div class="dcb-actions">
-            <a href="https://wa.me/5491123456789?text=Hola%20Trayectoria,%20quiero%20conversar%20sobre%20mi%20sitio%20web" target="_blank" rel="noopener noreferrer" class="dcb-link">Iniciar conversación en WhatsApp ↗</a>
-            <a href="mailto:hola@trayectoria.com.ar" class="dcb-link">hola@trayectoria.com.ar</a>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn-primary">Conversar sobre mi web</a>
+            <a href="#proyectos" class="link-secondary">Ver proyectos <span aria-hidden="true">↓</span></a>
           </div>
         </div>
       </div>
+    </section>
 
-      <footer class="drawer-foot">
-        <span>TRAYECTORIA © 2026</span>
-        <span>Buenos Aires · Rosario · Italia</span>
-      </footer>
+    <!-- PROYECTOS SELECCIONADOS (ENTREGA A: INTRODUCCIÓN + FICHA JULIETA VITALE) -->
+    <section class="section-projects" id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        
+        <!-- Encabezado de sección -->
+        <header class="projects-header">
+          <p class="section-kicker">PROYECTOS SELECCIONADOS</p>
+          <h2 id="projects-title" class="projects-intro">
+            Cada persona necesita una forma propia de presentar su trabajo.
+          </h2>
+        </header>
+
+        <!-- Ficha 01: Julieta Vitale -->
+        <article class="project-entry" aria-labelledby="project-julieta-title">
+          
+          <!-- Captura real de la web diseñada -->
+          <div class="project-visual">
+            <a 
+              href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="project-image-link"
+              aria-label="Ver sitio web de Julieta Vitale en una pestaña nueva"
+            >
+              <img 
+                src="img/proyectos/julieta-vitale-web.png" 
+                alt="Captura real del sitio web de Julieta Vitale — Abogada Penalista" 
+                class="project-image"
+                width="1440"
+                height="900"
+                loading="eager"
+              >
+            </a>
+            <p class="project-caption">
+              Vista del sitio web en producción: portada con navegación, síntesis de especialidad y acceso a urgencias.
+            </p>
+          </div>
+
+          <!-- Información editorial de la ficha -->
+          <div class="project-details">
+            <span class="project-category">SERVICIOS PROFESIONALES</span>
+            
+            <h3 id="project-julieta-title" class="project-name">
+              Julieta Vitale
+            </h3>
+
+            <p class="project-summary">
+              Una presentación clara de su práctica penal, con información organizada y acceso directo a consulta.
+            </p>
+
+            <p class="project-scope">
+              <span class="scope-label">Alcance resuelto:</span>
+              Servicios · Perfil profesional · Contacto
+            </p>
+
+            <div class="project-action-wrap">
+              <a 
+                href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="link-action"
+              >
+                Ver sitio <span aria-hidden="true" class="arrow-glyph">↗</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO (ESTADO PENDIENTE SEGÚN BRIEF) -->
+    <section class="section-contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container contact-container">
+        
+        <div class="contact-header">
+          <p class="section-kicker">CONTACTO</p>
+          <h2 id="contact-title" class="contact-title">Contanos qué hacés.</h2>
+          <p class="contact-lead">
+            Compartinos a qué te dedicás, qué necesitás mostrar y si ya tenés una web. Con eso podemos conversar sobre una propuesta.
+          </p>
+        </div>
+
+        <!-- Aviso transparente de estado de la entrega -->
+        <div class="contact-notice" role="note" aria-label="Estado del canal de contacto">
+          <div class="notice-indicator" aria-hidden="true"></div>
+          <div class="notice-content">
+            <strong class="notice-title">Canal de contacto pendiente de configurar</strong>
+            <p class="notice-text">
+              La salida externa se habilitará al confirmar el canal de atención acordado. Este pendiente no bloquea la revisión visual de la propuesta.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== PIE DE PÁGINA ==================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">TRAYECTORIA</span>
+        <span class="footer-desc">Sitios web personales y profesionales</span>
+      </div>
+
+      <div class="footer-nav">
+        <a href="#proyectos" class="footer-link">Proyectos</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="#contacto" class="footer-link">Contacto</a>
+      </div>
     </div>
-  </div>
+  </footer>
 
-  <script src="js/app.v2.js?v=2026.slider.1"></script>
+  <script src="js/app.js?v=2026.entrega-a.1"></script>
 </body>
 </html>
