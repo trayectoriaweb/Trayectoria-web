@@ -1,62 +1,41 @@
 /*
   ================================================================
-  TRAYECTORIA — Sistema de Diseño Editorial v0.1 (Entrega A)
-  Especificación: TRAYECTORIA-brief-v01.md & prompt-antigravity-v01
+  TRAYECTORIA — Sistema de Diseño Editorial v0.2
+  Especificación: TRAYECTORIA-direccion-investigada-v02.md
   
-  Principios:
-  - Blanco puro, jerarquía tipográfica sin estridencias
-  - Retícula de 12 columnas en escritorio; una columna ordenada en móvil
-  - Tipografía sans-serif Inter (SIL Open Font License) en 3 pesos: 400, 500, 700
-  - Sin degradados decorativos, sin sombras voluminosas, sin tarjetas redondeadas forzadas
-  - Scroll vertical nativo y respeto a reducción de movimiento
+  Principios de composición:
+  - Lienzo a pantalla completa: sin contenedor centralizado de 1280px.
+  - Retícula adaptable de 24 columnas en escritorio, 12 en tablet, 4 en móvil.
+  - Tipografía Archivo Variable (Omnibus-Type, SIL OFL).
+  - Jerarquía asimétrica: extremos, contrastes de escala, vacío compuesto.
+  - Paleta: Blanco cálido #FAFAF7, Tinta #171717, Tinta secundaria #555550, Acento azul #2448FF.
+  - Scroll vertical nativo y respeto absoluto a prefers-reduced-motion.
   ================================================================
 */
 
 :root {
-  /* Paleta cromática editorial */
-  --c-bg:          #FFFFFF;
-  --c-bg-subtle:   #F9F9F9;
-  --c-ink:         #121212; /* Texto principal suave */
-  --c-ink-mid:     #4A4A4A; /* Lectura secundaria */
-  --c-ink-muted:   #737373; /* Etiquetas, metadatos y notas */
-  --c-hairline:    #E5E5E5; /* Divisores y bordes sutiles */
-  --c-hairline-img:#EEEEEE;
-  
+  /* Paleta cromática */
+  --c-bg:             #FAFAF7;
+  --c-text:           #171717;
+  --c-text-muted:     #555550;
+  --c-blue:           #2448FF;
+  --c-surface-subtle: #EEEEEA;
+  --c-white:          #FFFFFF;
+
   /* Tipografía */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Escala tipográfica ajustada */
-  --type-display: clamp(2.125rem, 4.4vw, 4.15rem); /* 34px móvil a 66px escritorio */
-  --type-section: clamp(1.45rem, 2.6vw, 2.35rem);   /* 23px móvil a 37px escritorio */
-  --type-title:   clamp(1.35rem, 2.0vw, 1.9rem);    /* 21.6px a 30px */
-  --type-body:    clamp(1.0625rem, 1.15vw, 1.1875rem); /* 17px a 19px */
-  --type-small:   0.9375rem; /* 15px */
-  --type-kicker:  0.78125rem; /* 12.5px */
+  /* Márgenes y espaciados de retícula */
+  --gutter: clamp(20px, 1.667vw, 40px);
+  --col-gap: 16px;
 
-  /* Interlineados */
-  --leading-tight:   1.12;
-  --leading-display: 1.18;
-  --leading-body:    1.55;
-
-  /* Escala de espaciado modular (8, 16, 24, 32, 48, 64, 96 px) */
-  --space-8:   8px;
-  --space-16: 16px;
-  --space-24: 24px;
-  --space-32: 32px;
-  --space-48: 48px;
-  --space-64: 64px;
-  --space-96: 96px;
-
-  /* Márgenes de contenedor (48–64 px escritorio, 20–24 px móvil) */
-  --container-max: 1280px;
-  --pad-x: clamp(20px, 4.5vw, 56px);
-
-  /* Transición discreta */
-  --transition-fast: 0.18s ease;
+  /* Curva de animación del documento v02 */
+  --ease-editorial: cubic-bezier(.22, 1, .36, 1);
+  --trans-fast: 320ms ease-out;
 }
 
 /* ================================================================
-   RESET Y BASES
+   RESET Y BASE
    ================================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -70,16 +49,15 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--c-bg);
-  color: var(--c-ink);
+  color: var(--c-text);
 }
 
 body {
   background-color: var(--c-bg);
-  color: var(--c-ink);
-  font-family: var(--font-sans);
+  color: var(--c-text);
+  font-family: var(--font-family);
   font-weight: 400;
-  font-size: var(--type-body);
-  line-height: var(--leading-body);
+  line-height: 1.35;
   overflow-x: hidden;
   width: 100%;
 }
@@ -95,19 +73,29 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, p {
-  word-break: normal;
-  overflow-wrap: break-word;
+button {
+  font-family: inherit;
 }
 
-/* Enfoque accesible visible */
+/* Accesibilidad */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--c-ink);
+  outline: 2px solid var(--c-blue);
   outline-offset: 3px;
 }
 
-/* Reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -120,531 +108,690 @@ button:focus-visible {
 }
 
 /* ================================================================
-   CONTENEDOR
-   ================================================================ */
-.container {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--pad-x);
-  padding-right: var(--pad-x);
-}
-
-/* Antetítulos / Kickers */
-.section-kicker {
-  font-size: var(--type-kicker);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c-ink-muted);
-  margin-bottom: var(--space-16);
-}
-
-/* ================================================================
-   ENCABEZADO
+   1. NAVEGACIÓN SUPERIOR (PERIFÉRICA, 56PX)
    ================================================================ */
 .site-header {
   width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
   background-color: var(--c-bg);
-  border-bottom: 1px solid var(--c-hairline);
-  position: sticky;
-  top: 0;
   z-index: 50;
 }
 
 .header-inner {
-  height: 72px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-16);
 }
 
-.brand-logo {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--c-ink);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.site-nav {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+.header-descriptor {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  letter-spacing: -0.01em;
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2vw, 2.5rem);
   list-style: none;
+  gap: 32px;
 }
 
 .nav-link {
-  font-size: var(--type-small);
+  font-size: 1rem;
   font-weight: 500;
-  color: var(--c-ink-mid);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  white-space: nowrap;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  color: var(--c-text);
+  transition: color 0.15s ease;
 }
 
 .nav-link:hover {
-  color: var(--c-ink);
-  border-color: var(--c-ink);
+  color: var(--c-blue);
 }
 
-/* Elemento de navegación pendiente reportado */
-.nav-pending {
-  font-size: var(--type-small);
+/* ================================================================
+   2. APERTURA (HERO)
+   ================================================================ */
+.section-hero {
+  width: 100%;
+  padding: 0 var(--gutter);
+  margin-top: clamp(8px, 1.2vw, 20px);
+}
+
+/* Cabecera «TRAYECTORIA» de margen a margen */
+.brand-strip {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0.82;
+  user-select: none;
+  display: block;
+}
+
+.brand-display {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  white-space: nowrap;
+  line-height: 0.82;
+  font-size: clamp(2.8rem, 11.5vw, 14.8rem);
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 650ms var(--ease-editorial), transform 650ms var(--ease-editorial);
+}
+
+/* Composición desfasada */
+.hero-layout {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+  margin-top: clamp(40px, 3.5vw, 56px);
+}
+
+/* Bloque izquierdo: Frase y descripción */
+.hero-statement-col {
+  grid-column: 1 / span 9;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-statement {
+  font-size: clamp(2.5rem, 3.75vw, 4.25rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: var(--c-text);
+}
+
+.hero-desc {
+  margin-top: 28px;
+  font-size: clamp(1.0625rem, 1.1vw, 1.25rem);
+  line-height: 1.35;
+  color: var(--c-text-muted);
+  max-width: 460px;
+}
+
+.hero-action-wrap {
+  margin-top: 28px;
+}
+
+.hero-cta-link {
+  display: inline-block;
+  font-size: clamp(1.0625rem, 1.1vw, 1.25rem);
+  font-weight: 500;
+  color: var(--c-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.18s ease;
+}
+
+.hero-cta-link:hover {
+  color: var(--c-blue);
+}
+
+/* Bloque derecho: Medio protagonista y selector */
+.hero-media-col {
+  grid-column: 10 / span 15;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--c-surface-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.hero-active-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  opacity: 1;
+  transition: opacity 320ms ease-out, transform 420ms var(--ease-editorial);
+}
+
+.hero-active-img.is-transitioning {
+  opacity: 0.15;
+}
+
+/* Barra del selector de proyectos */
+.hero-selector-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 14px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-selector-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.selector-btn {
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-size: clamp(0.9375rem, 1vw, 1.0625rem);
   font-weight: 400;
-  color: var(--c-ink-muted);
-  cursor: default;
-  opacity: 0.8;
+  color: var(--c-text);
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: color 0.18s ease, font-weight 0.18s ease;
+  position: relative;
+}
+
+.selector-btn:hover {
+  color: var(--c-blue);
+}
+
+.selector-btn.is-active {
+  color: var(--c-blue);
+  font-weight: 600;
+}
+
+.hero-project-link-wrap {
+  margin-left: auto;
+}
+
+.hero-project-link {
+  font-size: clamp(0.9375rem, 1vw, 1.0625rem);
+  font-weight: 500;
+  color: var(--c-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.18s ease;
   white-space: nowrap;
 }
 
-@media (max-width: 680px) {
-  .site-header {
-    height: 64px;
-  }
-
-  .brand-logo {
-    font-size: 0.85rem;
-    letter-spacing: 0.14em;
-  }
-
-  .nav-list {
-    gap: 1.15rem;
-  }
-
-  .nav-link {
-    font-size: 0.85rem;
-  }
-
-  /* Ocultar elemento pendiente en móvil para no apiñar el encabezado */
-  .nav-item-pending {
-    display: none;
-  }
-}
-
-/* ================================================================
-   SECCIÓN DE APERTURA (HERO)
-   ================================================================ */
-.section-hero {
-  padding-top: clamp(var(--space-48), 7vw, var(--space-96));
-  padding-bottom: clamp(var(--space-64), 9vw, var(--space-96));
-  border-bottom: 1px solid var(--c-hairline);
-}
-
-/* Móvil: una columna limpia */
-.hero-grid {
-  display: block;
-}
-
-/* Escritorio: retícula de 12 columnas */
-@media (min-width: 900px) {
-  .hero-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--space-24);
-  }
-
-  .hero-content {
-    grid-column: 1 / span 11; /* Titular en 8–11 columnas según brief */
-  }
-}
-
-.hero-title {
-  font-size: var(--type-display);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: -0.025em;
-  color: var(--c-ink);
-  margin-bottom: var(--space-24);
-}
-
-.hero-line {
-  display: block; /* Mantiene la coherencia de las dos ideas de apertura */
-}
-
-.hero-lead {
-  font-size: var(--type-body);
-  line-height: var(--leading-body);
-  color: var(--c-ink-mid);
-  max-width: 54ch; /* Ancho de lectura acotado */
-  margin-bottom: var(--space-32);
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-24);
-  flex-wrap: wrap;
-}
-
-/* Botón principal sólido */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--c-ink);
-  color: var(--c-bg);
-  font-size: var(--type-small);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  padding: 13px 26px;
-  border: 1px solid var(--c-ink);
-  transition: background-color var(--transition-fast), color var(--transition-fast);
-}
-
-.btn-primary:hover {
-  background-color: #2D2D2D;
-  border-color: #2D2D2D;
-}
-
-/* Enlace secundario */
-.link-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--type-small);
-  font-weight: 500;
-  color: var(--c-ink);
-  border-bottom: 1px solid var(--c-ink);
-  padding-bottom: 2px;
-  transition: opacity var(--transition-fast);
-}
-
-.link-secondary:hover {
-  opacity: 0.65;
-}
-
-/* ================================================================
-   SECCIÓN PROYECTOS SELECCIONADOS
-   ================================================================ */
-.section-projects {
-  padding-top: clamp(var(--space-64), 9vw, var(--space-96));
-  padding-bottom: clamp(var(--space-64), 10vw, var(--space-96));
-  border-bottom: 1px solid var(--c-hairline);
-}
-
-.projects-header {
-  margin-bottom: clamp(var(--space-48), 6vw, var(--space-64));
-}
-
-.projects-intro {
-  font-size: var(--type-section);
-  font-weight: 700;
-  line-height: var(--leading-display);
-  letter-spacing: -0.02em;
-  color: var(--c-ink);
-  max-width: 36ch;
-}
-
-/* Ficha del proyecto: móvil (una columna) / escritorio (12 columnas) */
-.project-entry {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-24);
-}
-
-@media (min-width: 900px) {
-  .project-entry {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: clamp(var(--space-24), 4vw, var(--space-48));
-    row-gap: var(--space-32);
-    align-items: flex-start;
-  }
-
-  .project-visual {
-    grid-column: 1 / span 8; /* Imagen legible y ancha */
-  }
-
-  .project-details {
-    grid-column: 9 / span 4;
-    padding-top: var(--space-8);
-  }
-}
-
-.project-image-link {
-  display: block;
-  background-color: var(--c-bg-subtle);
-  border: 1px solid var(--c-hairline-img);
-  overflow: hidden;
-  position: relative;
-  transition: border-color var(--transition-fast);
-}
-
-.project-image-link:hover {
-  border-color: #D4D4D4;
-}
-
-.project-image {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
-  transition: opacity var(--transition-fast);
-}
-
-.project-image-link:hover .project-image {
-  opacity: 0.96;
-}
-
-.project-caption {
-  font-size: 0.8125rem;
-  color: var(--c-ink-muted);
-  line-height: 1.45;
-  margin-top: var(--space-8);
-}
-
-/* Columna de detalles de la ficha */
-.project-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-category {
-  font-size: var(--type-kicker);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c-ink-muted);
-  margin-bottom: var(--space-8);
-}
-
-.project-name {
-  font-size: var(--type-title);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: -0.015em;
-  color: var(--c-ink);
-  margin-bottom: var(--space-16);
-}
-
-.project-summary {
-  font-size: var(--type-body);
-  line-height: var(--leading-body);
-  color: var(--c-ink-mid);
-  margin-bottom: var(--space-24);
-}
-
-.project-scope {
-  font-size: var(--type-small);
-  line-height: 1.5;
-  color: var(--c-ink-mid);
-  border-top: 1px solid var(--c-hairline);
-  padding-top: var(--space-16);
-  margin-bottom: var(--space-24);
-}
-
-.scope-label {
-  display: block;
-  font-size: var(--type-kicker);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-ink-muted);
-  margin-bottom: 4px;
-}
-
-.project-action-wrap {
-  padding-top: var(--space-8);
-}
-
-.link-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--type-small);
-  font-weight: 600;
-  color: var(--c-ink);
-  border-bottom: 1px solid var(--c-ink);
-  padding-bottom: 2px;
-  transition: opacity var(--transition-fast);
-}
-
-.link-action:hover {
-  opacity: 0.65;
+.hero-project-link:hover {
+  color: var(--c-blue);
 }
 
 .arrow-glyph {
-  font-size: 1.05em;
-  line-height: 1;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.85em;
+  margin-left: 2px;
 }
 
 /* ================================================================
-   SECCIÓN CONTACTO
+   3. PROYECTOS SELECCIONADOS (JULIETA VITALE)
+   ================================================================ */
+.section-projects {
+  width: 100%;
+  padding: 0 var(--gutter);
+  margin-top: clamp(72px, 7.5vw, 120px);
+}
+
+.section-label {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--c-text-muted);
+  margin-bottom: clamp(32px, 3.5vw, 48px);
+  letter-spacing: -0.01em;
+}
+
+/* Caso Julieta: Apertura editorial */
+.project-julieta {
+  width: 100%;
+}
+
+.julieta-layout {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+}
+
+/* Imagen a sangre desde el borde izquierdo (cols 1 a 16) */
+.julieta-visual {
+  grid-column: 1 / span 16;
+  margin-left: calc(-1 * var(--gutter));
+  width: calc(100% + var(--gutter));
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--c-surface-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.julieta-media-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.julieta-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  transition: transform 420ms var(--ease-editorial), opacity 0.2s ease;
+}
+
+.julieta-media-link:hover .julieta-img {
+  opacity: 0.94;
+}
+
+/* Ficha lateral tipo nota al margen (cols 19 a 24) */
+.julieta-aside {
+  grid-column: 19 / span 6;
+  margin-top: clamp(40px, 8.5vw, 120px);
+  background: transparent;
+}
+
+.julieta-name {
+  font-size: clamp(1.4rem, 1.62vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--c-text);
+}
+
+.julieta-category {
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--c-text-muted);
+}
+
+.julieta-summary {
+  margin-top: 24px;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  color: var(--c-text);
+}
+
+.julieta-action {
+  margin-top: 24px;
+}
+
+.julieta-explore-link {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.18s ease;
+}
+
+.julieta-explore-link:hover {
+  color: var(--c-blue);
+}
+
+/* Detalle secundario opcional */
+.julieta-sub-layout {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  margin-top: clamp(32px, 3.5vw, 56px);
+}
+
+.julieta-mobile-detail {
+  grid-column: 12 / span 5;
+  max-width: 320px;
+}
+
+.julieta-mobile-img {
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+  border: 1px solid var(--c-surface-subtle);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.julieta-mobile-caption {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--c-text-muted);
+}
+
+/* ================================================================
+   4. CIERRE DE CONTACTO (BLOQUE AZUL SÓLIDO #2448FF)
    ================================================================ */
 .section-contact {
-  padding-top: clamp(var(--space-64), 9vw, var(--space-96));
-  padding-bottom: clamp(var(--space-64), 10vw, var(--space-96));
-  background-color: var(--c-bg);
-}
-
-.contact-container {
+  width: 100%;
+  margin-top: clamp(80px, 9vw, 140px);
+  background-color: var(--c-blue);
+  color: var(--c-white);
+  padding: clamp(48px, 4.5vw, 72px) var(--gutter) clamp(28px, 2.5vw, 40px) var(--gutter);
+  min-height: clamp(480px, 48vh, 620px);
   display: flex;
   flex-direction: column;
-  gap: var(--space-32);
+  justify-content: space-between;
 }
 
-@media (min-width: 900px) {
-  .contact-container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--space-24);
-    row-gap: var(--space-32);
-  }
-
-  .contact-header {
-    grid-column: 1 / span 7;
-  }
-
-  .contact-notice {
-    grid-column: 8 / span 5;
-    margin-top: var(--space-32);
-  }
+.contact-layout {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+  margin-bottom: clamp(48px, 5vw, 80px);
 }
 
-.contact-title {
-  font-size: var(--type-section);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
-  color: var(--c-ink);
-  margin-bottom: var(--space-16);
+.contact-title-col {
+  grid-column: 1 / span 17;
+}
+
+.contact-heading {
+  font-size: clamp(2.75rem, 6.7vw, 8rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  color: var(--c-white);
+}
+
+.contact-info-col {
+  grid-column: 19 / span 6;
+  padding-top: clamp(16px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-lead {
-  font-size: var(--type-body);
-  line-height: var(--leading-body);
-  color: var(--c-ink-mid);
-  max-width: 48ch;
+  font-size: clamp(1.125rem, 1.15vw, 1.25rem);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-/* Tarjeta informativa de canal pendiente */
-.contact-notice {
-  background-color: var(--c-bg-subtle);
-  border: 1px solid var(--c-hairline);
-  padding: var(--space-24);
-  display: flex;
-  gap: var(--space-16);
-  align-items: flex-start;
+.contact-cta-block {
+  margin-top: 28px;
 }
 
-.notice-indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #E09F3E; /* Indicador sutil de pendiente */
-  flex-shrink: 0;
-  margin-top: 6px;
+.contact-cta-label {
+  display: inline-block;
+  font-size: clamp(1.25rem, 1.3vw, 1.375rem);
+  font-weight: 500;
+  color: var(--c-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  padding-bottom: 4px;
+  cursor: default;
+  user-select: none;
 }
 
-.notice-content {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.notice-title {
-  font-size: var(--type-small);
-  font-weight: 600;
-  color: var(--c-ink);
-}
-
-.notice-text {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--c-ink-mid);
-}
-
-/* ================================================================
-   PIE DE PÁGINA
-   ================================================================ */
-.site-footer {
-  border-top: 1px solid var(--c-hairline);
-  padding: var(--space-32) 0;
-  background-color: var(--c-bg);
-}
-
-.footer-inner {
+/* Pie de página integrado en el bloque azul */
+.contact-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-16);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding-top: 24px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-16);
-  flex-wrap: wrap;
+  letter-spacing: -0.01em;
 }
 
-.footer-logo {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--c-ink);
+.footer-back-top {
+  color: var(--c-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.18s ease;
 }
 
-.footer-desc {
-  font-size: 0.8125rem;
-  color: var(--c-ink-muted);
-}
-
-.footer-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-16);
-}
-
-.footer-link {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--c-ink-mid);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 1px;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
-}
-
-.footer-link:hover {
-  color: var(--c-ink);
-  border-color: var(--c-ink);
-}
-
-.footer-sep {
-  color: var(--c-hairline);
+.footer-back-top:hover {
+  opacity: 0.8;
 }
 
 /* ================================================================
-   RESPONSIVE MÓVIL (< 768px)
+   5. RESPONSIVE: TABLET (768PX A 1099PX)
    ================================================================ */
-@media (max-width: 767px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-16);
+@media (min-width: 768px) and (max-width: 1099px) {
+  .hero-layout {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
   }
 
-  .btn-primary {
+  .hero-statement-col {
+    grid-column: 1 / span 5;
+  }
+
+  .hero-media-col {
+    grid-column: 6 / span 7;
+  }
+
+  .julieta-layout {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
+  }
+
+  .julieta-visual {
+    grid-column: 1 / span 8;
+  }
+
+  .julieta-aside {
+    grid-column: 9 / span 4;
+    margin-top: 32px;
+  }
+
+  .julieta-sub-layout {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
+  }
+
+  .julieta-mobile-detail {
+    grid-column: 6 / span 4;
+  }
+
+  .contact-layout {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 12px;
+  }
+
+  .contact-title-col {
+    grid-column: 1 / span 8;
+  }
+
+  .contact-info-col {
+    grid-column: 9 / span 4;
+    padding-top: 16px;
+  }
+}
+
+/* ================================================================
+   6. RESPONSIVE: MÓVIL (< 768PX)
+   ================================================================ */
+@media (max-width: 767.98px) {
+  .site-header {
+    height: 48px;
+  }
+
+  .header-descriptor {
+    display: none;
+  }
+
+  .nav-list {
+    gap: 20px;
+  }
+
+  .section-hero {
+    margin-top: 4px;
+  }
+
+  .brand-display {
+    font-size: clamp(2.4rem, 11.2vw, 3.8rem);
+    line-height: 0.85;
+  }
+
+  /* Reordenamiento exacto móvil según especificación */
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 0;
+  }
+
+  .hero-statement-col {
     width: 100%;
   }
 
-  .footer-inner {
+  .hero-statement {
+    font-size: 2.625rem; /* ~42px */
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-media-col {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .hero-media-frame {
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-selector-bar {
+    margin-top: 14px;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-16);
+    gap: 12px;
+  }
+
+  .hero-selector-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .selector-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 4px;
+    font-size: 0.9375rem;
+  }
+
+  .hero-project-link-wrap {
+    margin-left: 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .hero-desc {
+    margin-top: 20px;
+    font-size: 1.125rem;
+    line-height: 1.35;
+  }
+
+  .hero-action-wrap {
+    margin-top: 20px;
+  }
+
+  .hero-cta-link {
+    font-size: 1.125rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Julieta en móvil */
+  .section-projects {
+    margin-top: 56px;
+  }
+
+  .section-label {
+    margin-bottom: 24px;
+  }
+
+  .julieta-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .julieta-visual {
+    width: calc(100% + 2 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    aspect-ratio: 16 / 10;
+  }
+
+  .julieta-aside {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .julieta-name {
+    font-size: 1.5rem;
+  }
+
+  .julieta-summary {
+    margin-top: 14px;
+    font-size: 1.0625rem;
+  }
+
+  .julieta-action {
+    margin-top: 16px;
+  }
+
+  .julieta-explore-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .julieta-sub-layout {
+    display: none;
+  }
+
+  /* Contacto en móvil */
+  .section-contact {
+    margin-top: 64px;
+    min-height: auto;
+    padding: 56px 16px 28px 16px;
+  }
+
+  .contact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .contact-heading {
+    font-size: 3rem; /* 48px */
+    line-height: 1.02;
+  }
+
+  .contact-info-col {
+    padding-top: 0;
+  }
+
+  .contact-lead {
+    font-size: 1.125rem;
+  }
+
+  .contact-cta-block {
+    margin-top: 20px;
+  }
+
+  .contact-footer {
+    padding-top: 20px;
   }
 }

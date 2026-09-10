@@ -3,38 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRAYECTORIA — Sitios web personales y profesionales</title>
-  <meta name="description" content="Diseñamos cómo se presenta tu trabajo. Sitios web para profesionales independientes que necesitan ordenar su experiencia y facilitar el contacto.">
+  <title>TRAYECTORIA — Una web a la altura de tu trabajo</title>
+  <meta name="description" content="Diseñamos sitios para profesionales, creativos y negocios. Cada proyecto empieza por entender qué hacés y cómo querés presentarlo.">
 
-  <!-- Open Graph básico -->
-  <meta property="og:title" content="TRAYECTORIA — Sitios web personales y profesionales">
-  <meta property="og:description" content="Tu trabajo tiene una historia. Diseñamos cómo se presenta.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="TRAYECTORIA — Una web a la altura de tu trabajo">
+  <meta property="og:description" content="Diseñamos sitios para profesionales, creativos y negocios.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23121212'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23ffffff' font-family='sans-serif' font-weight='700'>T</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23171717'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23fafaf7' font-family='sans-serif' font-weight='700'>T</text></svg>">
 
-  <!-- Google Fonts: Inter (400, 500, 600, 700) - Licencia SIL Open Font License -->
+  <!-- Tipografía: Archivo Variable (Omnibus-Type) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,400..700;1,100,400..700&display=swap" rel="stylesheet">
 
-  <!-- Estilos de Entrega A -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.entrega-a.1">
+  <!-- Estilos v02 -->
+  <link rel="stylesheet" href="css/styles.css?v=2026.v02.2">
 </head>
-<body>
+<body id="top">
 
-  <!-- ==================== ENCABEZADO ==================== -->
+  <!-- ==================== NAVEGACIÓN SUPERIOR ==================== -->
   <header class="site-header" role="banner">
-    <div class="header-inner container">
-      <a href="#" class="brand-logo" aria-label="TRAYECTORIA — Ir al inicio">
-        TRAYECTORIA
-      </a>
-
+    <div class="header-inner">
+      <span class="header-descriptor">Diseño y desarrollo web</span>
       <nav class="site-nav" aria-label="Navegación principal">
         <ul class="nav-list">
           <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-          <li class="nav-item-pending"><span class="nav-pending" title="Sección programada para la Entrega B">Cómo trabajamos</span></li>
           <li><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </nav>
@@ -44,145 +40,204 @@
   <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
   <main id="contenido">
 
-    <!-- APERTURA / HERO -->
+    <!-- ==================== APERTURA (HERO) ==================== -->
     <section class="section-hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="section-kicker">SITIOS WEB PERSONALES Y PROFESIONALES</p>
-          
-          <h1 id="hero-title" class="hero-title">
-            <span class="hero-line">Tu trabajo tiene una historia.</span>
-            <span class="hero-line">Diseñamos cómo se presenta.</span>
+      
+      <!-- Marca de gran escala de borde a borde -->
+      <div class="brand-strip" aria-label="TRAYECTORIA">
+        <span class="brand-display" id="brand-display" aria-hidden="true">TRAYECTORIA</span>
+        <span class="sr-only">TRAYECTORIA</span>
+      </div>
+
+      <!-- Composición desfasada: Titular/Texto a la izquierda, Medio/Selector a la derecha -->
+      <div class="hero-layout">
+        
+        <!-- Bloque editorial izquierdo -->
+        <div class="hero-statement-col">
+          <h1 id="hero-title" class="hero-statement">
+            Una web a la<br>altura de<br>tu trabajo.
           </h1>
 
-          <p class="hero-lead">
-            Creamos sitios web para profesionales que necesitan mostrar qué hacen, ordenar su experiencia y facilitar el próximo contacto.
+          <p class="hero-desc">
+            Diseñamos sitios para profesionales, creativos y negocios. Cada proyecto empieza por entender qué hacés y cómo querés presentarlo.
           </p>
 
-          <div class="hero-actions">
-            <a href="#contacto" class="btn-primary">Conversar sobre mi web</a>
-            <a href="#proyectos" class="link-secondary">Ver proyectos <span aria-hidden="true">↓</span></a>
+          <div class="hero-action-wrap">
+            <a href="#contacto" class="hero-cta-link">Hablemos de tu web</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- PROYECTOS SELECCIONADOS (ENTREGA A: INTRODUCCIÓN + FICHA JULIETA VITALE) -->
-    <section class="section-projects" id="proyectos" aria-labelledby="projects-title">
-      <div class="container">
-        
-        <!-- Encabezado de sección -->
-        <header class="projects-header">
-          <p class="section-kicker">PROYECTOS SELECCIONADOS</p>
-          <h2 id="projects-title" class="projects-intro">
-            Cada persona necesita una forma propia de presentar su trabajo.
-          </h2>
-        </header>
-
-        <!-- Ficha 01: Julieta Vitale -->
-        <article class="project-entry" aria-labelledby="project-julieta-title">
+        <!-- Bloque multimedia derecho -->
+        <div class="hero-media-col">
           
-          <!-- Captura real de la web diseñada -->
-          <div class="project-visual">
-            <a 
-              href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="project-image-link"
-              aria-label="Ver sitio web de Julieta Vitale en una pestaña nueva"
+          <!-- Contenedor del medio activo (16:9) -->
+          <div class="hero-media-frame" id="hero-media-frame">
+            <img 
+              id="hero-active-image" 
+              src="img/proyectos/guido-castellotti-hero.webp" 
+              alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
+              class="hero-active-img"
+              width="1920"
+              height="1080"
+              loading="eager"
             >
-              <img 
-                src="img/proyectos/julieta-vitale-web.png" 
-                alt="Captura real del sitio web de Julieta Vitale — Abogada Penalista" 
-                class="project-image"
-                width="1440"
-                height="900"
-                loading="eager"
-              >
-            </a>
-            <p class="project-caption">
-              Vista del sitio web en producción: portada con navegación, síntesis de especialidad y acceso a urgencias.
-            </p>
           </div>
 
-          <!-- Información editorial de la ficha -->
-          <div class="project-details">
-            <span class="project-category">SERVICIOS PROFESIONALES</span>
-            
-            <h3 id="project-julieta-title" class="project-name">
-              Julieta Vitale
-            </h3>
+          <!-- Selector de proyectos periférico -->
+          <div class="hero-selector-bar" role="group" aria-label="Selector de proyectos destacados">
+            <div class="hero-selector-buttons">
+              <button 
+                type="button" 
+                class="selector-btn is-active" 
+                data-project="guido" 
+                aria-pressed="true"
+              >
+                Guido Castellotti
+              </button>
+              <button 
+                type="button" 
+                class="selector-btn" 
+                data-project="julieta" 
+                aria-pressed="false"
+              >
+                Julieta Vitale
+              </button>
+              <button 
+                type="button" 
+                class="selector-btn" 
+                data-project="maurizio" 
+                aria-pressed="false"
+              >
+                Maurizio Di Russo
+              </button>
+            </div>
 
-            <p class="project-summary">
-              Una presentación clara de su práctica penal, con información organizada y acceso directo a consulta.
-            </p>
-
-            <p class="project-scope">
-              <span class="scope-label">Alcance resuelto:</span>
-              Servicios · Perfil profesional · Contacto
-            </p>
-
-            <div class="project-action-wrap">
+            <div class="hero-project-link-wrap">
               <a 
-                href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+                id="hero-project-link" 
+                href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="link-action"
+                class="hero-project-link"
               >
-                Ver sitio <span aria-hidden="true" class="arrow-glyph">↗</span>
+                Ver proyecto <span class="arrow-glyph" aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
 
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CONTACTO (ESTADO PENDIENTE SEGÚN BRIEF) -->
-    <section class="section-contact" id="contacto" aria-labelledby="contact-title">
-      <div class="container contact-container">
-        
-        <div class="contact-header">
-          <p class="section-kicker">CONTACTO</p>
-          <h2 id="contact-title" class="contact-title">Contanos qué hacés.</h2>
-          <p class="contact-lead">
-            Compartinos a qué te dedicás, qué necesitás mostrar y si ya tenés una web. Con eso podemos conversar sobre una propuesta.
-          </p>
         </div>
 
-        <!-- Aviso transparente de estado de la entrega -->
-        <div class="contact-notice" role="note" aria-label="Estado del canal de contacto">
-          <div class="notice-indicator" aria-hidden="true"></div>
-          <div class="notice-content">
-            <strong class="notice-title">Canal de contacto pendiente de configurar</strong>
-            <p class="notice-text">
-              La salida externa se habilitará al confirmar el canal de atención acordado. Este pendiente no bloquea la revisión visual de la propuesta.
+      </div>
+
+    </section>
+
+    <!-- ==================== PROYECTOS SELECCIONADOS ==================== -->
+    <section class="section-projects" id="proyectos" aria-labelledby="projects-label">
+      
+      <p id="projects-label" class="section-label">Trabajos seleccionados</p>
+
+      <!-- CASO JULIETA VITALE: Imagen a sangre y ficha derecha -->
+      <article class="project-editorial project-julieta" aria-labelledby="julieta-title">
+        
+        <div class="julieta-layout">
+          
+          <!-- Imagen principal a sangre (cols 1 a 16) -->
+          <div class="julieta-visual">
+            <a 
+              href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="julieta-media-link"
+              aria-label="Ver sitio web de Julieta Vitale en pestaña nueva"
+            >
+              <img 
+                src="img/proyectos/julieta-vitale-web.png" 
+                alt="Captura real del sitio web de Julieta Vitale — Abogacía" 
+                class="julieta-img"
+                width="1440"
+                height="900"
+                loading="lazy"
+              >
+            </a>
+          </div>
+
+          <!-- Ficha lateral tipo nota al margen (cols 19 a 24, desfasada hacia abajo) -->
+          <aside class="julieta-aside">
+            <h2 id="julieta-title" class="julieta-name">Julieta Vitale</h2>
+            <p class="julieta-category">Abogacía</p>
+            <p class="julieta-summary">
+              Una presentación clara de su práctica penal y una forma directa de consultar.
             </p>
+            <div class="julieta-action">
+              <a 
+                href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="julieta-explore-link"
+              >
+                Explorar proyecto
+              </a>
+            </div>
+          </aside>
+
+        </div>
+
+        <!-- Detalle secundario opcional: captura móvil real anclada -->
+        <div class="julieta-sub-layout">
+          <div class="julieta-mobile-detail">
+            <img 
+              src="img/proyectos/julieta-vitale-mobile.png" 
+              alt="Detalle de vista móvil del sitio de Julieta Vitale" 
+              class="julieta-mobile-img"
+              width="390"
+              height="844"
+              loading="lazy"
+            >
+            <p class="julieta-mobile-caption">Detalle de lectura y consulta directa en móvil.</p>
+          </div>
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- ==================== CIERRE DE CONTACTO ==================== -->
+    <section class="section-contact" id="contacto" aria-labelledby="contact-heading">
+      
+      <div class="contact-layout">
+        
+        <!-- Título masivo a la izquierda (cols 1 a 17) -->
+        <div class="contact-title-col">
+          <h2 id="contact-heading" class="contact-heading">
+            Hablemos de<br>tu próxima web.
+          </h2>
+        </div>
+
+        <!-- Columna derecha de contacto (cols 19 a 24) -->
+        <div class="contact-info-col">
+          <p class="contact-lead">
+            Contanos qué hacés y qué te gustaría mostrar.
+          </p>
+          
+          <div class="contact-cta-block">
+            <!-- Llamada limpia y no engañosa, sin correo inventado ni enlace roto -->
+            <span class="contact-cta-label">Escribinos</span>
           </div>
         </div>
 
       </div>
+
+      <!-- Pie de página integrado -->
+      <footer class="contact-footer" role="contentinfo">
+        <span class="footer-brand">TRAYECTORIA</span>
+        <a href="#top" class="footer-back-top">Volver arriba ↑</a>
+      </footer>
+
     </section>
 
   </main>
 
-  <!-- ==================== PIE DE PÁGINA ==================== -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo">TRAYECTORIA</span>
-        <span class="footer-desc">Sitios web personales y profesionales</span>
-      </div>
-
-      <div class="footer-nav">
-        <a href="#proyectos" class="footer-link">Proyectos</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="#contacto" class="footer-link">Contacto</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/app.js?v=2026.entrega-a.1"></script>
+  <!-- Script interactivo v02 -->
+  <script src="js/app.js?v=2026.v02.2"></script>
 </body>
 </html>
