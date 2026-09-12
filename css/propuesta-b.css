@@ -1,24 +1,26 @@
 /*
   ================================================================
-  TRAYECTORIA — Propuesta B: Apertura Editorial Monolítica
+  TRAYECTORIA — Propuesta B Evolucionada
   
   Características:
-  - Medio protagonista dominante (cols 1-18 o 1-19)
-  - Ficha lateral pura alineada arriba (cols 20-24 o 21-24)
-  - Selector vertical dentro de la misma columna alineado al pie del medio
-  - Marca TRAYECTORIA de margen a margen en una línea
-  - Frase editorial como bajada directa de la marca
-  - Ensayo de continuidad de Julieta (sección interior Áreas de práctica)
-  - Paleta: Blanco cálido #FAFAF7, Tinta #171717, Tinta secundaria #555550, Azul #2448FF
+  - Marca TRAYECTORIA monumental de margen a margen calculada por sonda
+  - Mensaje editorial en dos líneas: "Diseñamos webs que expresan / tu trayectoria profesional."
+  - Secuencia de proyectos (Guido → Julieta → Maurizio) con cubrimiento nativo (sticky stacking)
+  - Imagen y ficha lateral desplazándose unidas como lámina
+  - Miniweb interactiva de perfil profesional (Alex — Consultoría y formación) con vistas funcionales
+  - Cierre asimétrico sin bloque azul sobre fondo claro y granulado
+  - Paleta: Blanco cálido #FAFAF7, Tinta #171717, Tinta secundaria #666660, Superficie miniweb #F3F2EE
+  - Cero desborde horizontal, foco de teclado visible y soporte completo para prefers-reduced-motion
   ================================================================
 */
 
 :root {
   --c-bg:             #FAFAF7;
   --c-text:           #171717;
-  --c-text-muted:     #555550;
-  --c-blue:           #2448FF;
-  --c-surface-subtle: #EEEEEA;
+  --c-text-muted:     #666660;
+  --c-surface-mini:   #F3F2EE;
+  --c-border-subtle:  rgba(23, 23, 23, 0.08);
+  --c-border-focus:   #171717;
   --c-white:          #FFFFFF;
 
   --grain-opacity:    0.022;
@@ -29,7 +31,7 @@
   --col-gap: 16px;
 
   --ease-editorial: cubic-bezier(.22, 1, .36, 1);
-  --trans-fade: 280ms ease-out;
+  --trans-fade: 180ms ease-out;
 }
 
 /* ================================================================
@@ -63,7 +65,7 @@ body {
 
 /* ================================================================
    GRANULADO NATIVO SVG (feTurbulence)
-   Estático, sólo sobre superficies claras, bajo el contenido
+   Estático, sobre superficies claras, bajo el contenido
    ================================================================ */
 .grain-layer {
   position: fixed;
@@ -108,7 +110,7 @@ button {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--c-blue);
+  outline: 2px solid var(--c-border-focus);
   outline-offset: 3px;
 }
 
@@ -133,6 +135,7 @@ button:focus-visible {
   align-items: center;
   padding: 0 var(--gutter);
   background-color: var(--c-bg);
+  position: relative;
   z-index: 50;
 }
 
@@ -161,15 +164,15 @@ button:focus-visible {
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--c-text);
-  transition: color 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .nav-link:hover {
-  color: var(--c-blue);
+  opacity: 0.65;
 }
 
 /* ================================================================
-   2. MARCA Y FRASE EDITORIAL
+   2. APERTURA EDITORIAL: MARCA MONUMENTAL Y MENSAJE
    ================================================================ */
 .section-hero {
   position: relative;
@@ -195,46 +198,86 @@ button:focus-visible {
   color: var(--c-text);
   white-space: nowrap;
   line-height: 0.82;
-  /* Tamaño seguro CSS inicial */
   font-size: clamp(2.4rem, 11.4vw, 14.8rem);
   transform: translateY(0);
   opacity: 1;
 }
 
-/* Frase editorial: bajada directa de la marca */
+/* Mensaje editorial en dos líneas */
 .hero-editorial-phrase {
-  margin-top: clamp(14px, 1.4vw, 22px);
-  font-size: clamp(1.25rem, 1.5vw, 1.75rem); /* ~24px en 1440, ~28px en 1920 */
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  margin-top: clamp(32px, 2.8vw, 48px);
+  margin-bottom: clamp(56px, 4.8vw, 72px);
+  font-size: clamp(2.25rem, 3.889vw, 4rem); /* 56px en 1440, 64px en 1920 */
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
   color: var(--c-text);
+  max-width: 66.666%; /* aprox dos tercios de pantalla */
+}
+
+.desk-break {
+  display: inline;
 }
 
 /* ================================================================
-   3. ESCENARIO DE PROYECTOS (RETÍCULA 24 COLUMNAS)
+   3. SECUENCIA DE PROYECTOS (STICKY STACKING)
+   Guido → Julieta → Maurizio
+   Láminas completas (imagen + ficha) que se desplazan unidas
    ================================================================ */
-.stage-grid {
+.section-projects {
+  position: relative;
+  width: 100%;
+  padding: 0 var(--gutter);
+}
+
+.projects-stack {
+  position: relative;
+  width: 100%;
+}
+
+/* Lámina de proyecto */
+.project-sheet {
+  position: relative;
+  width: 100%;
+  background-color: var(--c-bg);
+}
+
+/* Grano estático en cada lámina para cubrir la anterior sin sumar opacidades */
+.project-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: var(--grain-opacity);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-sheet-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: var(--col-gap);
   align-items: stretch;
-  margin-top: clamp(24px, 2.2vw, 32px);
+  padding-top: clamp(12px, 1.5vw, 24px);
+  padding-bottom: clamp(24px, 2.5vw, 40px);
 }
 
-/* Imagen dominante (cols 1 a 19 en pantallas muy anchas, 1 a 18 en estándar) */
-.stage-media-col {
+/* Imagen dominante (cols 1 a 18 en desktop, 1 a 19 en pantallas grandes) */
+.project-media-col {
   grid-column: 1 / span 18;
   position: relative;
 }
 
 @media (min-width: 1600px) {
-  .stage-media-col {
+  .project-media-col {
     grid-column: 1 / span 19;
   }
 }
 
-.stage-media-frame {
+.project-media-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -243,43 +286,35 @@ button:focus-visible {
   border: none;
 }
 
-.stage-active-img {
+.project-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
-  opacity: 1;
-  transition: opacity var(--trans-fade);
 }
 
-.stage-active-img.is-fading {
-  opacity: 0.08;
-}
-
-/* Ficha lateral pura (cols 20 a 24 o 21 a 24) */
-.stage-sidebar-col {
+/* Ficha lateral pura (cols 20 a 24 / 21 a 24) */
+.project-info-col {
   grid-column: 20 / span 5;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
-  padding: 0;
 }
 
 @media (min-width: 1600px) {
-  .stage-sidebar-col {
+  .project-info-col {
     grid-column: 21 / span 4;
   }
 }
 
-/* Contenido superior de la ficha */
-.stage-info-top {
+.project-info-content {
   display: flex;
   flex-direction: column;
 }
 
-.stage-project-name {
+.project-title {
   font-size: clamp(1.375rem, 1.45vw, 1.625rem); /* 22–26px */
   font-weight: 500;
   line-height: 1.15;
@@ -287,27 +322,26 @@ button:focus-visible {
   color: var(--c-text);
 }
 
-.stage-project-rubro {
+.project-rubro {
   margin-top: 6px;
   font-size: clamp(0.9375rem, 1vw, 1rem); /* 15–16px */
   font-weight: 400;
   color: var(--c-text-muted);
 }
 
-.stage-project-desc {
+.project-desc {
   margin-top: 18px;
   font-size: clamp(1rem, 1.05vw, 1.125rem); /* 16–18px */
   line-height: 1.4;
   color: var(--c-text);
   max-width: 320px;
-  min-height: 48px;
 }
 
-.stage-project-link-wrap {
-  margin-top: 20px;
+.project-action {
+  margin-top: 24px;
 }
 
-.stage-visit-link {
+.project-visit-link {
   display: inline-block;
   font-size: 1rem;
   font-weight: 500;
@@ -315,11 +349,11 @@ button:focus-visible {
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
-  transition: color 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
-.stage-visit-link:hover {
-  color: var(--c-blue);
+.project-visit-link:hover {
+  opacity: 0.65;
 }
 
 .arrow-glyph {
@@ -329,313 +363,509 @@ button:focus-visible {
   margin-left: 2px;
 }
 
-/* Selector vertical inferior en la misma columna, alineado a la base de la imagen */
-.stage-selector-wrap {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-bottom: 2px;
-}
+/* ================================================================
+   MECÁNICA STICKY EN ESCRITORIO CON ALTURA SUFICIENTE
+   Se activa únicamente cuando imagen y ficha entran cómodamente
+   ================================================================ */
+@media (min-width: 901px) and (min-height: 700px) {
+  .project-sheet {
+    position: sticky;
+    top: clamp(24px, 3.5vh, 40px);
+    min-height: calc(100vh - 48px);
+    margin-bottom: 8vh;
+  }
 
-.stage-selector-btn {
-  text-align: left;
-  padding: 2px 0;
-  font-size: clamp(0.9375rem, 0.98vw, 1.0625rem);
-  font-weight: 400;
-  color: var(--c-text-muted);
-  cursor: pointer;
-  letter-spacing: -0.01em;
-  background: none;
-  border: none;
-  outline: none;
-  transition: color 0.15s ease, font-weight 0.15s ease;
-  display: inline-flex;
-  align-items: center;
-  line-height: 1.3;
-}
+  .project-sheet:last-child {
+    margin-bottom: clamp(64px, 8vh, 120px);
+  }
 
-.stage-selector-btn:hover {
-  color: var(--c-text);
-}
-
-.stage-selector-btn.is-active {
-  color: var(--c-blue);
-  font-weight: 650;
+  .project-sheet[style*="--sheet-index: 1"] {
+    z-index: 1;
+  }
+  .project-sheet[style*="--sheet-index: 2"] {
+    z-index: 2;
+  }
+  .project-sheet[style*="--sheet-index: 3"] {
+    z-index: 3;
+  }
 }
 
 /* ================================================================
-   4. ENSAYO DE CONTINUIDAD — CASO JULIETA (SECCIÓN INTERIOR)
+   FALLBACK: PANTALLAS BAJAS O REDUCED MOTION
+   Recorrido vertical continuo sin superposición
    ================================================================ */
-.section-continuity {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 0 var(--gutter);
-  margin-top: clamp(80px, 8vw, 112px);
+@media (max-height: 699px), (prefers-reduced-motion: reduce) {
+  .project-sheet {
+    position: static !important;
+    min-height: auto !important;
+    margin-bottom: clamp(48px, 6vh, 80px) !important;
+  }
 }
 
-.continuity-grid {
+/* ================================================================
+   4. MINIWEB EXPLORABLE
+   "Una trayectoria tiene muchas formas de contarse."
+   ================================================================ */
+.section-miniweb {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  padding: 0 var(--gutter);
+  margin-top: clamp(88px, 9vw, 140px);
+}
+
+.miniweb-layout-grid {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: var(--col-gap);
   align-items: start;
 }
 
-/* Nota editorial izquierda (cols 1 a 7) */
-.continuity-note-col {
-  grid-column: 1 / span 7;
-  padding-top: clamp(8px, 1.5vw, 24px);
+/* Introducción lateral izquierda (cols 1 a 6) */
+.miniweb-intro-col {
+  grid-column: 1 / span 6;
+  padding-top: clamp(12px, 1.5vw, 24px);
 }
 
-.continuity-author {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--c-text-muted);
-  letter-spacing: normal;
-  text-transform: none;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.continuity-title {
-  font-size: clamp(1.5rem, 1.8vw, 2rem);
+.miniweb-intro-title {
+  font-size: clamp(1.75rem, 2.2vw, 2.5rem);
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--c-text);
 }
 
-.continuity-desc {
-  margin-top: 18px;
+.miniweb-intro-lead {
+  margin-top: 16px;
   font-size: 1.0625rem;
   line-height: 1.45;
+  color: var(--c-text-muted);
+}
+
+/* Superficie de la Miniweb (cols 8 a 24) */
+.miniweb-surface {
+  grid-column: 8 / span 17;
+  background-color: var(--c-surface-mini);
+  padding: clamp(32px, 3.2vw, 56px);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Encabezado interno de la miniweb */
+.miniweb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--c-border-subtle);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.miniweb-brand-group {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.miniweb-name {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
   color: var(--c-text);
-  max-width: 360px;
 }
 
-.continuity-action {
-  margin-top: 24px;
-}
-
-.continuity-link {
-  display: inline-block;
+.miniweb-subtitle {
   font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--c-text-muted);
+}
+
+.miniweb-tag {
+  font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+/* Navegación por pestañas funcionales */
+.miniweb-nav {
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.miniweb-nav-list {
+  display: flex;
+  gap: clamp(16px, 2.2vw, 32px);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.miniweb-nav-btn {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--c-text-muted);
+  padding: 4px 0 6px 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.miniweb-nav-btn:hover {
+  color: var(--c-text);
+}
+
+.miniweb-nav-btn.is-active {
+  color: var(--c-text);
+  font-weight: 650;
+  border-bottom-color: var(--c-text);
+}
+
+/* Vistas y transiciones */
+.miniweb-content-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.miniweb-view {
+  opacity: 1;
+  transition: opacity var(--trans-fade);
+}
+
+.miniweb-view[hidden] {
+  display: none !important;
+  opacity: 0;
+}
+
+.miniweb-subview {
+  opacity: 1;
+  transition: opacity var(--trans-fade);
+}
+
+.miniweb-subview[hidden] {
+  display: none !important;
+  opacity: 0;
+}
+
+.miniweb-body-lead {
+  margin-bottom: 28px;
+}
+
+.miniweb-lead-p {
+  font-size: clamp(1.125rem, 1.35vw, 1.375rem);
+  line-height: 1.4;
+  font-weight: 450;
+  color: var(--c-text);
+  max-width: 620px;
+}
+
+.miniweb-body-section {
+  margin-bottom: 28px;
+}
+
+.miniweb-subheading {
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+  margin-bottom: 12px;
+}
+
+.miniweb-subheading:focus {
+  outline: none;
+}
+
+.miniweb-detail-title {
+  font-size: clamp(1.375rem, 1.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--c-text);
+  margin-bottom: 14px;
+}
+
+.miniweb-detail-title:focus {
+  outline: none;
+}
+
+.miniweb-detail-tag {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.miniweb-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--c-text);
+  max-width: 580px;
+}
+
+.miniweb-text-muted {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--c-text-muted);
+  max-width: 580px;
+  margin-top: 10px;
+}
+
+/* Enlaces internos de salto */
+.miniweb-internal-links {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.miniweb-text-link {
+  font-size: 0.9375rem;
+  font-weight: 550;
   color: var(--c-text);
   text-decoration: underline;
   text-underline-offset: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.miniweb-text-link:hover {
+  opacity: 0.65;
+}
+
+/* Lista de etapas de trayectoria */
+.miniweb-stages-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.miniweb-stage-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--c-border-subtle);
+}
+
+.miniweb-stage-item:first-child {
+  padding-top: 6px;
+}
+
+.miniweb-stage-year {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+.miniweb-stage-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 6px;
+}
+
+/* Lista interactiva de áreas / proyectos */
+.miniweb-drill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.miniweb-drill-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--c-border-subtle);
+  text-align: left;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--c-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.miniweb-drill-btn:hover {
+  background-color: #FFFFFF;
+  border-color: rgba(23, 23, 23, 0.2);
+}
+
+.miniweb-drill-arrow {
+  margin-left: 12px;
+  font-size: 1.1em;
+}
+
+/* Botón de regreso accesible */
+.miniweb-back-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 4px 0;
   transition: color 0.15s ease;
 }
 
-.continuity-link:hover {
-  color: var(--c-blue);
+.miniweb-back-btn:hover {
+  color: var(--c-text);
 }
 
-/* Imagen interior alineada al borde derecho (cols 9 a 24) */
-.continuity-media-col {
-  grid-column: 9 / span 16;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background-color: transparent;
-  border: none;
+/* Bloques de caso de estudio */
+.miniweb-case-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-.continuity-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: opacity 0.2s ease;
+.miniweb-case-block {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 16px 20px;
+  border-left: 2px solid var(--c-text);
 }
 
-.continuity-media-link:hover .continuity-img {
-  opacity: 0.96;
+.miniweb-case-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--c-text-muted);
+  margin-bottom: 6px;
 }
 
 /* ================================================================
-   5. CIERRE DE CONTACTO (BLOQUE AZUL SÓLIDO #2448FF)
-   Estructura simétrica de ficha lateral:
-   - Gran titular a la izquierda
-   - Texto y futura vía de contacto a la derecha arriba
-   - Información del estudio reemplazando el selector abajo
+   5. NUEVO CIERRE ASIMÉTRICO (SIN BLOQUE AZUL)
+   Fondo claro, granulado y titular monumental a dos columnas
    ================================================================ */
-.section-contact {
+.section-closure {
   position: relative;
-  z-index: 10;
+  z-index: 5;
   width: 100%;
-  margin-top: clamp(88px, 9vw, 140px);
-  background-color: var(--c-blue);
-  color: var(--c-white);
-  padding: clamp(56px, 5vw, 84px) var(--gutter) clamp(28px, 2.5vw, 40px) var(--gutter);
-  min-height: clamp(480px, 48vh, 620px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-top: clamp(120px, 14vh, 200px);
+  padding: 0 var(--gutter) clamp(40px, 5vh, 64px) var(--gutter);
 }
 
-.contact-grid {
+.closure-grid {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: var(--col-gap);
-  align-items: stretch;
-  flex: 1;
+  align-items: start;
 }
 
-.contact-title-col {
-  grid-column: 1 / span 18;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+/* Gran escala a la izquierda (cols 1 a 16) */
+.closure-title-col {
+  grid-column: 1 / span 16;
 }
 
-@media (min-width: 1600px) {
-  .contact-title-col {
-    grid-column: 1 / span 19;
-  }
-}
-
-.contact-heading {
-  font-size: clamp(2.75rem, 6.7vw, 7.5rem);
-  font-weight: 600;
-  line-height: 0.96;
-  letter-spacing: -0.05em;
-  color: var(--c-white);
-}
-
-/* Ficha lateral de contacto (cols 20 a 24) */
-.contact-sidebar-col {
-  grid-column: 20 / span 5;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-@media (min-width: 1600px) {
-  .contact-sidebar-col {
-    grid-column: 21 / span 4;
-  }
-}
-
-.contact-info-top {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-lead {
-  font-size: clamp(1.0625rem, 1.1vw, 1.25rem);
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.contact-cta-block {
-  margin-top: 24px;
-}
-
-/* Escribinos sin subrayado ni apariencia de enlace */
-.contact-cta-label {
-  display: inline-block;
-  font-size: clamp(1.125rem, 1.2vw, 1.25rem);
+.closure-heading {
+  font-size: clamp(2.5rem, 5.833vw, 6.5rem); /* 80–104px en escritorio */
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.92);
-  border: none;
-  text-decoration: none;
-  padding: 0;
-  cursor: default;
-  user-select: none;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--c-text);
 }
 
-/* Información del estudio ocupando la posición del selector */
-.contact-studio-info {
-  margin-top: auto;
+/* Nota editorial a la derecha (cols 18 a 24) */
+.closure-side-col {
+  grid-column: 18 / span 7;
+  padding-top: clamp(12px, 1.5vw, 24px);
+}
+
+.closure-note {
+  font-size: clamp(1.0625rem, 1.2vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--c-text-muted);
+}
+
+/* Pie integrado sin líneas divisorias */
+.site-footer {
+  margin-top: clamp(80px, 10vh, 140px);
+  border-top: none;
+}
+
+.footer-inner {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-bottom: 2px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.studio-item-brand {
-  font-size: 1rem;
+.footer-brand {
+  font-size: 0.9375rem;
   font-weight: 650;
   letter-spacing: -0.02em;
-  color: var(--c-white);
-}
-
-.studio-item {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* Footer integrado sin línea horizontal divisoria */
-.contact-footer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  border-top: none;
-  padding-top: 32px;
-  font-size: 0.9375rem;
-  font-weight: 500;
+  color: var(--c-text);
 }
 
 .footer-back-top {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  transition: color 0.15s ease;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--c-text);
+  transition: opacity 0.15s ease;
 }
 
 .footer-back-top:hover {
-  color: var(--c-white);
+  opacity: 0.65;
 }
 
 /* ================================================================
-   6. RESPONSIVE: TABLET (768PX A 1099PX)
+   6. RESPONSIVE: TABLET (768PX A 900PX)
    ================================================================ */
-@media (min-width: 768px) and (max-width: 1099px) {
-  .stage-grid {
+@media (min-width: 768px) and (max-width: 900px) {
+  .project-sheet-inner {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 12px;
   }
 
-  .stage-media-col {
+  .project-media-col {
     grid-column: 1 / span 8;
   }
 
-  .stage-sidebar-col {
+  .project-info-col {
     grid-column: 9 / span 4;
   }
 
-  .continuity-grid {
+  .miniweb-layout-grid {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 12px;
   }
 
-  .continuity-note-col {
+  .miniweb-intro-col {
     grid-column: 1 / span 4;
   }
 
-  .continuity-media-col {
+  .miniweb-surface {
     grid-column: 5 / span 8;
   }
 
-  .contact-grid {
+  .closure-grid {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 12px;
   }
 
-  .contact-title-col {
+  .closure-title-col {
     grid-column: 1 / span 8;
   }
 
-  .contact-sidebar-col {
+  .closure-side-col {
     grid-column: 9 / span 4;
   }
 }
 
 /* ================================================================
    7. RESPONSIVE: MÓVIL (< 768PX)
+   Secuencia vertical fluida sin apilamiento
    ================================================================ */
 @media (max-width: 767.98px) {
   .site-header {
@@ -655,141 +885,145 @@ button:focus-visible {
   }
 
   .hero-editorial-phrase {
-    margin-top: 14px;
-    font-size: 1.3125rem; /* ~21px */
-    line-height: 1.25;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    font-size: clamp(1.875rem, 8vw, 2.25rem); /* 30–36px */
+    line-height: 1.12;
+    max-width: 100%;
   }
 
-  /* Escenario móvil: imagen en proporción 3:4 consistente, ficha y selector vertical */
-  .stage-grid {
+  .desk-break {
+    display: none;
+  }
+
+  /* Secuencia vertical de proyectos en móvil */
+  .section-projects {
+    padding: 0 var(--gutter);
+  }
+
+  .project-sheet {
+    position: static !important;
+    min-height: auto !important;
+    margin-bottom: 56px !important;
+    background-color: transparent !important;
+  }
+
+  .project-sheet::before {
+    display: none;
+  }
+
+  .project-sheet-inner {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
     gap: 0;
   }
 
-  .stage-media-col {
+  .project-media-col {
     width: calc(100% + 2 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
     margin-right: calc(-1 * var(--gutter));
   }
 
-  .stage-media-frame {
-    aspect-ratio: 390 / 520;
+  .project-media-frame {
+    aspect-ratio: auto;
     width: 100%;
-    border: none;
-    background-color: transparent;
+    overflow: hidden;
   }
 
-  .stage-sidebar-col {
+  .project-img {
     width: 100%;
-    margin-top: 24px;
-    gap: 24px;
+    height: auto;
+    display: block;
   }
 
-  .stage-project-name {
+  .project-info-col {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .project-title {
     font-size: 1.5rem;
   }
 
-  .stage-project-desc {
+  .project-desc {
     max-width: 100%;
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 1.0625rem;
-    min-height: auto;
   }
 
-  .stage-project-link-wrap {
+  .project-action {
     margin-top: 16px;
   }
 
-  .stage-visit-link {
+  .project-visit-link {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
   }
 
-  .stage-selector-wrap {
-    margin-top: 8px;
-    gap: 6px;
+  /* Miniweb en móvil */
+  .section-miniweb {
+    margin-top: 64px;
   }
 
-  .stage-selector-btn {
-    min-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    font-size: 1rem;
-    padding: 0 2px;
-  }
-
-  /* Continuidad móvil */
-  .section-continuity {
-    margin-top: 56px;
-  }
-
-  .continuity-grid {
+  .miniweb-layout-grid {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
 
-  .continuity-note-col {
+  .miniweb-intro-col {
     width: 100%;
     padding-top: 0;
   }
 
-  .continuity-desc {
-    max-width: 100%;
-  }
-
-  .continuity-media-col {
+  .miniweb-surface {
     width: calc(100% + 2 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
     margin-right: calc(-1 * var(--gutter));
-    border: none;
-    background-color: transparent;
-  }
-
-  /* Contacto móvil */
-  .section-contact {
-    margin-top: 64px;
+    padding: 28px 20px;
     min-height: auto;
-    padding: 56px 16px 28px 16px;
   }
 
-  .contact-grid {
+  .miniweb-stage-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .miniweb-drill-btn {
+    max-width: 100%;
+    min-height: 48px;
+  }
+
+  .miniweb-internal-links {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Cierre en móvil */
+  .section-closure {
+    margin-top: 80px;
+    padding-bottom: 32px;
+  }
+
+  .closure-grid {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    margin-bottom: 32px;
+    gap: 24px;
   }
 
-  .contact-heading {
-    font-size: 3rem;
-    line-height: 1.02;
+  .closure-heading {
+    font-size: clamp(2.375rem, 10vw, 2.75rem); /* 38–44px */
+    line-height: 1.08;
   }
 
-  .contact-sidebar-col {
-    gap: 28px;
+  .closure-side-col {
+    padding-top: 0;
   }
 
-  .contact-info-top {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .contact-lead {
-    font-size: 1.125rem;
-  }
-
-  .contact-cta-block {
-    margin-top: 16px;
-  }
-
-  .contact-studio-info {
-    margin-top: 8px;
-  }
-
-  .contact-footer {
-    padding-top: 16px;
+  .site-footer {
+    margin-top: 56px;
   }
 }

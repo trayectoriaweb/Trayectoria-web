@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TRAYECTORIA — Propuesta B</title>
-  <meta name="description" content="Diseñamos sitios para profesionales, creativos y negocios. Una web a la altura de tu trabajo.">
+  <meta name="description" content="Diseñamos webs que expresan tu trayectoria profesional.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="TRAYECTORIA — Propuesta B">
-  <meta property="og:description" content="Una web a la altura de tu trabajo.">
+  <meta property="og:description" content="Diseñamos webs que expresan tu trayectoria profesional.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -19,12 +19,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,400..700;1,100,400..700&display=swap" rel="stylesheet">
 
-  <!-- Estilos de Propuesta B Refinada -->
-  <link rel="stylesheet" href="css/propuesta-b.css?v=2026.b.2">
+  <!-- Estilos de Propuesta B Evolucionada -->
+  <link rel="stylesheet" href="css/propuesta-b.css?v=2026.b.3">
 </head>
 <body id="top">
 
-  <!-- Capa estática de granulado nativo SVG sobre superficies claras -->
+  <!-- Capa estática de granulado nativo SVG -->
   <div class="grain-layer" aria-hidden="true"></div>
 
   <!-- ==================== 1. NAVEGACIÓN DISCRETA (52PX) ==================== -->
@@ -33,7 +33,8 @@
       <span class="header-descriptor">Diseño y desarrollo web</span>
       <nav class="site-nav" aria-label="Navegación principal">
         <ul class="nav-list">
-          <li><a href="#escenario" class="nav-link">Proyectos</a></li>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#ejemplo" class="nav-link">Ejemplo</a></li>
           <li><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </nav>
@@ -54,191 +55,442 @@
 
       <!-- Frase editorial como bajada directa -->
       <h1 id="hero-phrase" class="hero-editorial-phrase">
-        Una web a la altura de tu trabajo.
+        Diseñamos webs que expresan<br class="desk-break">
+        tu trayectoria profesional.
       </h1>
 
-      <!-- Escenario de proyectos a ancho completo -->
-      <div class="stage-grid" id="escenario">
+    </section>
+
+    <!-- ==================== 3. SECUENCIA DE PROYECTOS (STICKY STACKING) ==================== -->
+    <section class="section-projects" id="proyectos" aria-label="Proyectos seleccionados">
+      <div class="projects-stack" id="projects-stack">
         
-        <!-- Imagen dominante (cols 1 a 18/19 en desktop) -->
-        <div class="stage-media-col">
-          <div class="stage-media-frame">
-            <picture id="stage-picture">
-              <source 
-                id="stage-source-mob" 
-                media="(max-width: 767.98px)" 
-                srcset="img/proyectos/guido-castellotti-mob.png"
-              >
-              <img 
-                id="stage-active-image" 
-                src="img/proyectos/guido-castellotti-hero.png" 
-                alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
-                class="stage-active-img"
-                width="1600"
-                height="900"
-                loading="eager"
-              >
-            </picture>
-          </div>
-        </div>
-
-        <!-- Ficha lateral pura (cols 20 a 24 / 21 a 24) -->
-        <aside class="stage-sidebar-col" aria-label="Ficha de proyecto">
-          
-          <!-- Información editorial superior -->
-          <div class="stage-info-top">
-            <h2 id="stage-project-name" class="stage-project-name">
-              Guido Castellotti
-            </h2>
-            <p id="stage-project-rubro" class="stage-project-rubro">
-              Fotografía y diseño
-            </p>
-            <p id="stage-project-desc" class="stage-project-desc">
-              Un sitio donde la fotografía organiza la experiencia y presenta una mirada propia.
-            </p>
-            <div class="stage-project-link-wrap">
-              <a 
-                id="stage-visit-link" 
-                href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="stage-visit-link"
-              >
-                Visitar sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
-              </a>
+        <!-- PROYECTO 1: GUIDO CASTELLOTTI -->
+        <article class="project-sheet" id="proyecto-guido" style="--sheet-index: 1;" aria-labelledby="heading-guido">
+          <div class="project-sheet-inner">
+            
+            <!-- Imagen dominante (cols 1 a 18/19) -->
+            <div class="project-media-col">
+              <div class="project-media-frame">
+                <picture>
+                  <source media="(max-width: 900px)" srcset="img/proyectos/guido-castellotti-mob.png">
+                  <img 
+                    src="img/proyectos/guido-castellotti-hero.png" 
+                    alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
+                    class="project-img" 
+                    width="1600" 
+                    height="900" 
+                    loading="eager"
+                  >
+                </picture>
+              </div>
             </div>
-          </div>
 
-          <!-- Selector vertical en la misma columna, alineado hacia la base -->
-          <div class="stage-selector-wrap" role="group" aria-label="Seleccionar proyecto para visualizar en el escenario">
-            <button 
-              type="button" 
-              class="stage-selector-btn is-active" 
-              data-project="guido" 
-              aria-pressed="true"
-            >
-              Guido Castellotti
-            </button>
-            <button 
-              type="button" 
-              class="stage-selector-btn" 
-              data-project="julieta" 
-              aria-pressed="false"
-            >
-              Julieta Vitale
-            </button>
-            <button 
-              type="button" 
-              class="stage-selector-btn" 
-              data-project="maurizio" 
-              aria-pressed="false"
-            >
-              Maurizio Di Russo
-            </button>
-          </div>
+            <!-- Ficha lateral pura (cols 20 a 24) -->
+            <div class="project-info-col">
+              <div class="project-info-content">
+                <h2 id="heading-guido" class="project-title">Guido Castellotti</h2>
+                <p class="project-rubro">Fotografía y diseño</p>
+                <p class="project-desc">
+                  Un sitio donde la fotografía organiza la experiencia y presenta una mirada propia.
+                </p>
+                <div class="project-action">
+                  <a 
+                    href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="project-visit-link"
+                  >
+                    Visitar sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
 
+          </div>
+        </article>
+
+        <!-- PROYECTO 2: JULIETA VITALE -->
+        <article class="project-sheet" id="proyecto-julieta" style="--sheet-index: 2;" aria-labelledby="heading-julieta">
+          <div class="project-sheet-inner">
+            
+            <!-- Imagen dominante (cols 1 a 18/19) -->
+            <div class="project-media-col">
+              <div class="project-media-frame">
+                <picture>
+                  <source media="(max-width: 900px)" srcset="img/proyectos/julieta-vitale-mob.png">
+                  <img 
+                    src="img/proyectos/julieta-vitale-hero.png" 
+                    alt="Captura real del sitio web de Julieta Vitale — Abogacía penal" 
+                    class="project-img" 
+                    width="1600" 
+                    height="900" 
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            </div>
+
+            <!-- Ficha lateral pura (cols 20 a 24) -->
+            <div class="project-info-col">
+              <div class="project-info-content">
+                <h2 id="heading-julieta" class="project-title">Julieta Vitale</h2>
+                <p class="project-rubro">Abogacía</p>
+                <p class="project-desc">
+                  Una presentación clara de su práctica penal, con información accesible y consulta directa.
+                </p>
+                <div class="project-action">
+                  <a 
+                    href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="project-visit-link"
+                  >
+                    Visitar sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- PROYECTO 3: MAURIZIO DI RUSSO -->
+        <article class="project-sheet" id="proyecto-maurizio" style="--sheet-index: 3;" aria-labelledby="heading-maurizio">
+          <div class="project-sheet-inner">
+            
+            <!-- Imagen dominante (cols 1 a 18/19) -->
+            <div class="project-media-col">
+              <div class="project-media-frame">
+                <picture>
+                  <source media="(max-width: 900px)" srcset="img/proyectos/maurizio-stage-mob.png">
+                  <img 
+                    src="img/proyectos/maurizio-stage-16x9.png" 
+                    alt="Captura real del sitio web de Maurizio Di Russo — Perfil profesional" 
+                    class="project-img" 
+                    width="1600" 
+                    height="900" 
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            </div>
+
+            <!-- Ficha lateral pura (cols 20 a 24) -->
+            <div class="project-info-col">
+              <div class="project-info-content">
+                <h2 id="heading-maurizio" class="project-title">Maurizio Di Russo</h2>
+                <p class="project-rubro">Perfil profesional</p>
+                <p class="project-desc">
+                  Una presentación de su trayectoria, experiencia y trabajo con empresas.
+                </p>
+                <div class="project-action">
+                  <a 
+                    href="https://angelesgoy.github.io/maurizio-di-russo/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="project-visit-link"
+                  >
+                    Visitar sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. MINIWEB EXPLORABLE ==================== -->
+    <section class="section-miniweb" id="ejemplo" aria-labelledby="miniweb-section-title">
+      <div class="miniweb-layout-grid">
+        
+        <!-- Introducción lateral (Cols 1-6) -->
+        <aside class="miniweb-intro-col">
+          <h2 id="miniweb-section-title" class="miniweb-intro-title">
+            Una trayectoria tiene muchas formas de contarse.
+          </h2>
+          <p class="miniweb-intro-lead">
+            Explorá este ejemplo de sitio profesional.
+          </p>
         </aside>
 
-      </div>
-
-    </section>
-
-    <!-- ==================== 3. ENSAYO DE CONTINUIDAD — CASO JULIETA ==================== -->
-    <section class="section-continuity" id="caso-julieta" aria-labelledby="continuity-heading">
-      
-      <div class="continuity-grid">
-        
-        <!-- Nota editorial izquierda explicando la decisión de diseño -->
-        <div class="continuity-note-col">
-          <span class="continuity-author">Julieta Vitale</span>
-          <h2 id="continuity-heading" class="continuity-title">
-            Estructura por áreas de práctica
-          </h2>
-          <p class="continuity-desc">
-            Las áreas de práctica convierten información jurídica compleja en recorridos claros y accesibles.
-          </p>
-          <div class="continuity-action">
-            <a 
-              href="https://angelesgoy.github.io/julieta-vitale-abogada/areas-de-practica/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="continuity-link"
-            >
-              Ver sección en el sitio <span class="arrow-glyph" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Captura real de la sección interior alineada al borde derecho -->
-        <div class="continuity-media-col">
-          <a 
-            href="https://angelesgoy.github.io/julieta-vitale-abogada/areas-de-practica/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="continuity-media-link"
-            aria-label="Ver sección Áreas de práctica en el sitio de Julieta Vitale"
-          >
-            <img 
-              src="img/proyectos/julieta-interior-areas.png" 
-              alt="Captura real de la sección Áreas de práctica del sitio de Julieta Vitale" 
-              class="continuity-img"
-              width="1600"
-              height="900"
-              loading="lazy"
-            >
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ==================== 4. CIERRE DE CONTACTO ==================== -->
-    <section class="section-contact" id="contacto" aria-labelledby="contact-heading">
-      
-      <div class="contact-grid">
-        
-        <!-- Gran titular a la izquierda (cols 1 a 18/19) -->
-        <div class="contact-title-col">
-          <h2 id="contact-heading" class="contact-heading">
-            Hablemos de<br>tu próxima web.
-          </h2>
-        </div>
-
-        <!-- Ficha lateral equivalente (cols 20 a 24 / 21 a 24) -->
-        <div class="contact-sidebar-col">
+        <!-- Superficie de la Miniweb (Cols 8-24) -->
+        <div class="miniweb-surface" id="miniweb-container" role="region" aria-label="Ejemplo interactivo de sitio profesional">
           
-          <!-- Superior: texto y futura vía de contacto -->
-          <div class="contact-info-top">
-            <p class="contact-lead">
-              Contanos qué hacés y qué te gustaría mostrar.
-            </p>
-            <div class="contact-cta-block">
-              <span class="contact-cta-label">Escribinos</span>
+          <!-- Encabezado de la miniweb -->
+          <header class="miniweb-header">
+            <div class="miniweb-brand-group">
+              <span class="miniweb-name">Alex</span>
+              <span class="miniweb-subtitle">Consultoría y formación</span>
             </div>
-          </div>
+            <span class="miniweb-tag" aria-label="Aviso de muestra">Ejemplo interactivo · perfil ficticio</span>
+          </header>
 
-          <!-- Inferior: selector tipográfico reemplazado por la información del estudio -->
-          <div class="contact-studio-info">
-            <span class="studio-item-brand">TRAYECTORIA</span>
-            <span class="studio-item">Diseño y desarrollo web</span>
-            <span class="studio-item">Rosario, Argentina</span>
+          <!-- Barra de navegación de la miniweb -->
+          <nav class="miniweb-nav" aria-label="Navegación del perfil ficticio">
+            <ul class="miniweb-nav-list" role="tablist">
+              <li role="presentation">
+                <button type="button" class="miniweb-nav-btn is-active" data-view="perfil" role="tab" aria-selected="true" aria-controls="view-perfil" id="tab-perfil">
+                  Perfil
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="miniweb-nav-btn" data-view="trayectoria" role="tab" aria-selected="false" aria-controls="view-trayectoria" id="tab-trayectoria">
+                  Trayectoria
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="miniweb-nav-btn" data-view="areas" role="tab" aria-selected="false" aria-controls="view-areas" id="tab-areas">
+                  Áreas de trabajo
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="miniweb-nav-btn" data-view="proyectos" role="tab" aria-selected="false" aria-controls="view-proyectos" id="tab-proyectos">
+                  Proyectos
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Contenedor dinámico de vistas -->
+          <div class="miniweb-content-wrap" id="miniweb-views">
+            
+            <!-- VISTA 1: PERFIL -->
+            <div class="miniweb-view is-active" id="view-perfil" role="tabpanel" aria-labelledby="tab-perfil">
+              <div class="miniweb-body-lead">
+                <p class="miniweb-lead-p">
+                  Trabajo con profesionales y organizaciones para ordenar procesos, definir estrategias claras y estructurar etapas de transición y crecimiento profesional.
+                </p>
+              </div>
+              <div class="miniweb-body-section">
+                <h3 class="miniweb-subheading" tabindex="-1">Enfoque profesional</h3>
+                <p class="miniweb-text">
+                  Un trabajo enfocado en la estructura, la autonomía de las personas y la toma de decisiones basada en criterios claros. Sin fórmulas prefabricadas ni complejidades innecesarias.
+                </p>
+              </div>
+              <div class="miniweb-internal-links">
+                <button type="button" class="miniweb-text-link" data-jump="areas">
+                  Explorar áreas de trabajo <span aria-hidden="true">→</span>
+                </button>
+                <button type="button" class="miniweb-text-link" data-jump="proyectos">
+                  Ver proyectos <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- VISTA 2: TRAYECTORIA -->
+            <div class="miniweb-view" id="view-trayectoria" role="tabpanel" aria-labelledby="tab-trayectoria" hidden>
+              <div class="miniweb-body-section">
+                <h3 class="miniweb-subheading" tabindex="-1">Recorrido profesional</h3>
+                <div class="miniweb-stages-list">
+                  <article class="miniweb-stage-item">
+                    <span class="miniweb-stage-year">2022 — Presente</span>
+                    <div class="miniweb-stage-content">
+                      <h4 class="miniweb-stage-title">Consultoría independiente y facilitación</h4>
+                      <p class="miniweb-text">Acompañamiento a profesionales, estudios y equipos en la clarificación de proyectos y esquemas de trabajo sostenibles.</p>
+                    </div>
+                  </article>
+                  <article class="miniweb-stage-item">
+                    <span class="miniweb-stage-year">2017 — 2021</span>
+                    <div class="miniweb-stage-content">
+                      <h4 class="miniweb-stage-title">Dirección de proyectos en organizaciones</h4>
+                      <p class="miniweb-text">Coordinación de equipos interdisciplinarios, articulación institucional y diseño de metodologías de trabajo.</p>
+                    </div>
+                  </article>
+                  <article class="miniweb-stage-item">
+                    <span class="miniweb-stage-year">2012 — 2016</span>
+                    <div class="miniweb-stage-content">
+                      <h4 class="miniweb-stage-title">Gestión formativa y programas colaborativos</h4>
+                      <p class="miniweb-text">Diseño de talleres y espacios de formación técnica y metodológica para colectivos profesionales.</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- VISTA 3: ÁREAS DE TRABAJO (Índice y sub-vistas) -->
+            <div class="miniweb-view" id="view-areas" role="tabpanel" aria-labelledby="tab-areas" hidden>
+              
+              <!-- Sub-vista índice de áreas -->
+              <div class="miniweb-subview is-active" id="subview-areas-index">
+                <h3 class="miniweb-subheading" tabindex="-1">Áreas de trabajo</h3>
+                <p class="miniweb-text">
+                  Tres modalidades principales de intervención según el momento y la necesidad del proyecto:
+                </p>
+                <div class="miniweb-drill-list">
+                  <button type="button" class="miniweb-drill-btn" data-area="estrategia">
+                    <span class="miniweb-drill-label">Estrategia</span>
+                    <span class="miniweb-drill-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <button type="button" class="miniweb-drill-btn" data-area="acompanamiento">
+                    <span class="miniweb-drill-label">Acompañamiento</span>
+                    <span class="miniweb-drill-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <button type="button" class="miniweb-drill-btn" data-area="formacion">
+                    <span class="miniweb-drill-label">Formación</span>
+                    <span class="miniweb-drill-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Detalle Área 1: Estrategia -->
+              <div class="miniweb-subview" id="subview-area-estrategia" hidden>
+                <button type="button" class="miniweb-back-btn" data-back="areas">
+                  ← Volver a áreas de trabajo
+                </button>
+                <h3 class="miniweb-detail-title" tabindex="-1">Estrategia</h3>
+                <p class="miniweb-text">
+                  Definición de prioridades, ordenamiento de objetivos y diseño de rutas de acción realistas para profesionales y equipos.
+                </p>
+                <p class="miniweb-text-muted">
+                  Orientada a momentos donde se necesita poner orden, descartar caminos accesorios y acordar criterios comunes antes de iniciar una etapa de ejecución.
+                </p>
+              </div>
+
+              <!-- Detalle Área 2: Acompañamiento -->
+              <div class="miniweb-subview" id="subview-area-acompanamiento" hidden>
+                <button type="button" class="miniweb-back-btn" data-back="areas">
+                  ← Volver a áreas de trabajo
+                </button>
+                <h3 class="miniweb-detail-title" tabindex="-1">Acompañamiento</h3>
+                <p class="miniweb-text">
+                  Sesiones regulares para evaluar avances, destrabar bloqueos y sostener el ritmo en momentos de transición o crecimiento.
+                </p>
+                <p class="miniweb-text-muted">
+                  Un espacio de trabajo periódico que funciona como interlocución crítica y soporte metodológico para mantener el foco en las prioridades.
+                </p>
+              </div>
+
+              <!-- Detalle Área 3: Formación -->
+              <div class="miniweb-subview" id="subview-area-formacion" hidden>
+                <button type="button" class="miniweb-back-btn" data-back="areas">
+                  ← Volver a áreas de trabajo
+                </button>
+                <h3 class="miniweb-detail-title" tabindex="-1">Formación</h3>
+                <p class="miniweb-text">
+                  Talleres y espacios de aprendizaje orientados a dotar a los equipos de herramientas metodológicas prácticas y aplicables.
+                </p>
+                <p class="miniweb-text-muted">
+                  Encuentros estructurados en torno a problemas concretos, orientados a que el equipo adquiera autonomía conceptual y práctica.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- VISTA 4: PROYECTOS (Índice y sub-vistas) -->
+            <div class="miniweb-view" id="view-proyectos" role="tabpanel" aria-labelledby="tab-proyectos" hidden>
+              
+              <!-- Sub-vista índice de proyectos -->
+              <div class="miniweb-subview is-active" id="subview-proyectos-index">
+                <h3 class="miniweb-subheading" tabindex="-1">Proyectos seleccionados</h3>
+                <p class="miniweb-text">
+                  Ejemplos explícitamente ficticios que muestran cómo se presentan y documentan casos de trabajo:
+                </p>
+                <div class="miniweb-drill-list">
+                  <button type="button" class="miniweb-drill-btn" data-proyecto="reorganizacion">
+                    <span class="miniweb-drill-label">Reorganización operativa para un estudio profesional</span>
+                    <span class="miniweb-drill-arrow" aria-hidden="true">→</span>
+                  </button>
+                  <button type="button" class="miniweb-drill-btn" data-proyecto="programa-formativo">
+                    <span class="miniweb-drill-label">Programa formativo para equipos en transición</span>
+                    <span class="miniweb-drill-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Detalle Proyecto 1 -->
+              <div class="miniweb-subview" id="subview-proyecto-reorganizacion" hidden>
+                <button type="button" class="miniweb-back-btn" data-back="proyectos">
+                  ← Volver a proyectos
+                </button>
+                <h3 class="miniweb-detail-title" tabindex="-1">Reorganización operativa para un estudio profesional</h3>
+                <span class="miniweb-detail-tag">Caso ficticio de aplicación</span>
+                <div class="miniweb-case-grid">
+                  <div class="miniweb-case-block">
+                    <h4 class="miniweb-case-label">Contexto</h4>
+                    <p class="miniweb-text">Un estudio multidisciplinario que necesitaba ordenar sus flujos de trabajo internos y clarificar responsabilidades entre socios y colaboradores.</p>
+                  </div>
+                  <div class="miniweb-case-block">
+                    <h4 class="miniweb-case-label">Enfoque</h4>
+                    <p class="miniweb-text">Diagnóstico cualitativo de procesos y diseño participativo de un esquema operativo simple y comprensible para todos los integrantes.</p>
+                  </div>
+                  <div class="miniweb-case-block">
+                    <h4 class="miniweb-case-label">Aportación</h4>
+                    <p class="miniweb-text">Estandarización de etapas de entrega, canales de comunicación unificados y reducción de fricciones cotidianas en la gestión.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Detalle Proyecto 2 -->
+              <div class="miniweb-subview" id="subview-proyecto-programa-formativo" hidden>
+                <button type="button" class="miniweb-back-btn" data-back="proyectos">
+                  ← Volver a proyectos
+                </button>
+                <h3 class="miniweb-detail-title" tabindex="-1">Programa formativo para equipos en transición</h3>
+                <span class="miniweb-detail-tag">Caso ficticio de aplicación</span>
+                <div class="miniweb-case-grid">
+                  <div class="miniweb-case-block">
+                    <h4 class="miniweb-case-label">Contexto</h4>
+                    <p class="miniweb-text">Una organización profesional que requería fortalecer habilidades de gestión y facilitación en sus mandos medios.</p>
+                  </div>
+                  <div class="miniweb-case-block">
+                    <h4 class="miniweb-case-label">Enfoque</h4>
+                    <p class="miniweb-text">Ciclo modular de seis encuentros prácticos con ejercicios aplicados a problemáticas reales y cotidianas del equipo.</p>
+                  </div>
+                  <div class="miniweb-case-block">
+                    <h4 class="miniweb-case-label">Aportación</h4>
+                    <p class="miniweb-text">Adopción de pautas comunes para reuniones de trabajo, delegación efectiva y documentación rigurosa de acuerdos.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
 
       </div>
+    </section>
 
-      <!-- Pie integrado sin línea horizontal divisoria -->
-      <footer class="contact-footer" role="contentinfo">
-        <a href="#top" class="footer-back-top">Volver arriba ↑</a>
+    <!-- ==================== 5. NUEVO CIERRE ASIMÉTRICO (SIN BLOQUE AZUL) ==================== -->
+    <section class="section-closure" id="contacto" aria-labelledby="closure-heading">
+      
+      <div class="closure-grid">
+        
+        <!-- Gran titular a la izquierda (Cols 1 a 16) -->
+        <div class="closure-title-col">
+          <h2 id="closure-heading" class="closure-heading">
+            Contame en qué estás.<br>
+            Pensemos cómo mostrarlo.
+          </h2>
+        </div>
+
+        <!-- Nota editorial a la derecha (Cols 18 a 24) -->
+        <div class="closure-side-col">
+          <p class="closure-note">
+            Podemos empezar por tu recorrido, tus proyectos o esa idea que todavía estás ordenando.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Pie de página integrado sin línea divisoria -->
+      <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+          <span class="footer-brand">TRAYECTORIA</span>
+          <a href="#top" class="footer-back-top">Volver arriba ↑</a>
+        </div>
       </footer>
 
     </section>
 
   </main>
 
-  <!-- Controlador interactivo de Propuesta B -->
-  <script src="js/propuesta-b.js?v=2026.b.2"></script>
+  <!-- Controlador interactivo de Propuesta B Evolucionada -->
+  <script src="js/propuesta-b.js?v=2026.b.3"></script>
 </body>
 </html>
