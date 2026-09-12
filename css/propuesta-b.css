@@ -21,6 +21,8 @@
   --c-surface-subtle: #EEEEEA;
   --c-white:          #FFFFFF;
 
+  --grain-opacity:    0.022;
+
   --font-family: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   --gutter: clamp(20px, 1.667vw, 40px);
@@ -49,6 +51,7 @@ html {
 }
 
 body {
+  position: relative;
   background-color: var(--c-bg);
   color: var(--c-text);
   font-family: var(--font-family);
@@ -56,6 +59,22 @@ body {
   line-height: 1.4;
   overflow-x: hidden;
   width: 100%;
+}
+
+/* ================================================================
+   GRANULADO NATIVO SVG (feTurbulence)
+   Estático, sólo sobre superficies claras, bajo el contenido
+   ================================================================ */
+.grain-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 img {
@@ -153,6 +172,8 @@ button:focus-visible {
    2. MARCA Y FRASE EDITORIAL
    ================================================================ */
 .section-hero {
+  position: relative;
+  z-index: 2;
   width: 100%;
   padding: 0 var(--gutter);
   margin-top: clamp(6px, 1vw, 16px);
@@ -218,8 +239,8 @@ button:focus-visible {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--c-surface-subtle);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+  border: none;
 }
 
 .stage-active-img {
@@ -242,7 +263,8 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4px 0;
+  height: 100%;
+  padding: 0;
 }
 
 @media (min-width: 1600px) {
@@ -273,15 +295,16 @@ button:focus-visible {
 }
 
 .stage-project-desc {
-  margin-top: 20px;
+  margin-top: 18px;
   font-size: clamp(1rem, 1.05vw, 1.125rem); /* 16–18px */
   line-height: 1.4;
   color: var(--c-text);
-  max-width: 340px;
+  max-width: 320px;
+  min-height: 48px;
 }
 
 .stage-project-link-wrap {
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .stage-visit-link {
@@ -306,41 +329,47 @@ button:focus-visible {
   margin-left: 2px;
 }
 
-/* Selector vertical inferior en la misma columna */
+/* Selector vertical inferior en la misma columna, alineado a la base de la imagen */
 .stage-selector-wrap {
-  margin-top: 40px;
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
+  padding-bottom: 2px;
 }
 
 .stage-selector-btn {
   text-align: left;
-  padding: 4px 0;
+  padding: 2px 0;
   font-size: clamp(0.9375rem, 0.98vw, 1.0625rem);
   font-weight: 400;
-  color: var(--c-text);
+  color: var(--c-text-muted);
   cursor: pointer;
   letter-spacing: -0.01em;
+  background: none;
+  border: none;
+  outline: none;
   transition: color 0.15s ease, font-weight 0.15s ease;
-  min-height: 32px;
   display: inline-flex;
   align-items: center;
+  line-height: 1.3;
 }
 
 .stage-selector-btn:hover {
-  color: var(--c-blue);
+  color: var(--c-text);
 }
 
 .stage-selector-btn.is-active {
   color: var(--c-blue);
-  font-weight: 600;
+  font-weight: 650;
 }
 
 /* ================================================================
    4. ENSAYO DE CONTINUIDAD — CASO JULIETA (SECCIÓN INTERIOR)
    ================================================================ */
 .section-continuity {
+  position: relative;
+  z-index: 2;
   width: 100%;
   padding: 0 var(--gutter);
   margin-top: clamp(80px, 8vw, 112px);
@@ -359,16 +388,17 @@ button:focus-visible {
   padding-top: clamp(8px, 1.5vw, 24px);
 }
 
-.continuity-tag {
-  font-size: 0.875rem;
+.continuity-author {
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--c-text-muted);
+  letter-spacing: normal;
+  text-transform: none;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .continuity-title {
-  margin-top: 16px;
   font-size: clamp(1.5rem, 1.8vw, 2rem);
   font-weight: 500;
   line-height: 1.15;
@@ -377,10 +407,11 @@ button:focus-visible {
 }
 
 .continuity-desc {
-  margin-top: 20px;
+  margin-top: 18px;
   font-size: 1.0625rem;
   line-height: 1.45;
   color: var(--c-text);
+  max-width: 360px;
 }
 
 .continuity-action {
@@ -407,8 +438,8 @@ button:focus-visible {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--c-surface-subtle);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+  border: none;
 }
 
 .continuity-img {
@@ -425,91 +456,138 @@ button:focus-visible {
 
 /* ================================================================
    5. CIERRE DE CONTACTO (BLOQUE AZUL SÓLIDO #2448FF)
+   Estructura simétrica de ficha lateral:
+   - Gran titular a la izquierda
+   - Texto y futura vía de contacto a la derecha arriba
+   - Información del estudio reemplazando el selector abajo
    ================================================================ */
 .section-contact {
+  position: relative;
+  z-index: 10;
   width: 100%;
   margin-top: clamp(88px, 9vw, 140px);
   background-color: var(--c-blue);
   color: var(--c-white);
-  padding: clamp(48px, 4.5vw, 72px) var(--gutter) clamp(28px, 2.5vw, 40px) var(--gutter);
+  padding: clamp(56px, 5vw, 84px) var(--gutter) clamp(28px, 2.5vw, 40px) var(--gutter);
   min-height: clamp(480px, 48vh, 620px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.contact-layout {
+.contact-grid {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: var(--col-gap);
-  align-items: start;
-  margin-bottom: clamp(48px, 5vw, 80px);
+  align-items: stretch;
+  flex: 1;
 }
 
 .contact-title-col {
-  grid-column: 1 / span 17;
+  grid-column: 1 / span 18;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (min-width: 1600px) {
+  .contact-title-col {
+    grid-column: 1 / span 19;
+  }
 }
 
 .contact-heading {
-  font-size: clamp(2.75rem, 6.7vw, 8rem);
+  font-size: clamp(2.75rem, 6.7vw, 7.5rem);
   font-weight: 600;
-  line-height: 0.98;
+  line-height: 0.96;
   letter-spacing: -0.05em;
   color: var(--c-white);
 }
 
-.contact-info-col {
-  grid-column: 19 / span 6;
-  padding-top: clamp(16px, 3vw, 40px);
+/* Ficha lateral de contacto (cols 20 a 24) */
+.contact-sidebar-col {
+  grid-column: 20 / span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (min-width: 1600px) {
+  .contact-sidebar-col {
+    grid-column: 21 / span 4;
+  }
+}
+
+.contact-info-top {
   display: flex;
   flex-direction: column;
 }
 
 .contact-lead {
-  font-size: clamp(1.125rem, 1.15vw, 1.25rem);
-  line-height: 1.35;
+  font-size: clamp(1.0625rem, 1.1vw, 1.25rem);
+  line-height: 1.4;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .contact-cta-block {
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
+/* Escribinos sin subrayado ni apariencia de enlace */
 .contact-cta-label {
   display: inline-block;
-  font-size: clamp(1.25rem, 1.3vw, 1.375rem);
+  font-size: clamp(1.125rem, 1.2vw, 1.25rem);
   font-weight: 500;
-  color: var(--c-white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-  padding-bottom: 4px;
+  color: rgba(255, 255, 255, 0.92);
+  border: none;
+  text-decoration: none;
+  padding: 0;
   cursor: default;
   user-select: none;
 }
 
-.contact-footer {
+/* Información del estudio ocupando la posición del selector */
+.contact-studio-info {
+  margin-top: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  padding-top: 24px;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 2px;
 }
 
-.footer-brand {
-  letter-spacing: -0.01em;
+.studio-item-brand {
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--c-white);
+}
+
+.studio-item {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Footer integrado sin línea horizontal divisoria */
+.contact-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: none;
+  padding-top: 32px;
+  font-size: 0.9375rem;
+  font-weight: 500;
 }
 
 .footer-back-top {
-  color: var(--c-white);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.18s ease;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 .footer-back-top:hover {
-  opacity: 0.8;
+  color: var(--c-white);
 }
 
 /* ================================================================
@@ -542,7 +620,7 @@ button:focus-visible {
     grid-column: 5 / span 8;
   }
 
-  .contact-layout {
+  .contact-grid {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 12px;
   }
@@ -551,7 +629,7 @@ button:focus-visible {
     grid-column: 1 / span 8;
   }
 
-  .contact-info-col {
+  .contact-sidebar-col {
     grid-column: 9 / span 4;
   }
 }
@@ -582,7 +660,7 @@ button:focus-visible {
     line-height: 1.25;
   }
 
-  /* Escenario móvil: imagen a sangre, ficha y selector vertical */
+  /* Escenario móvil: imagen en proporción 3:4 consistente, ficha y selector vertical */
   .stage-grid {
     display: flex;
     flex-direction: column;
@@ -596,10 +674,17 @@ button:focus-visible {
     margin-right: calc(-1 * var(--gutter));
   }
 
+  .stage-media-frame {
+    aspect-ratio: 390 / 520;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+  }
+
   .stage-sidebar-col {
     width: 100%;
     margin-top: 24px;
-    gap: 28px;
+    gap: 24px;
   }
 
   .stage-project-name {
@@ -608,12 +693,13 @@ button:focus-visible {
 
   .stage-project-desc {
     max-width: 100%;
-    margin-top: 14px;
+    margin-top: 12px;
     font-size: 1.0625rem;
+    min-height: auto;
   }
 
   .stage-project-link-wrap {
-    margin-top: 18px;
+    margin-top: 16px;
   }
 
   .stage-visit-link {
@@ -624,15 +710,15 @@ button:focus-visible {
 
   .stage-selector-wrap {
     margin-top: 8px;
-    gap: 8px;
+    gap: 6px;
   }
 
   .stage-selector-btn {
-    min-height: 44px;
+    min-height: 40px;
     display: inline-flex;
     align-items: center;
     font-size: 1rem;
-    padding: 0 4px;
+    padding: 0 2px;
   }
 
   /* Continuidad móvil */
@@ -651,10 +737,16 @@ button:focus-visible {
     padding-top: 0;
   }
 
+  .continuity-desc {
+    max-width: 100%;
+  }
+
   .continuity-media-col {
     width: calc(100% + 2 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
     margin-right: calc(-1 * var(--gutter));
+    border: none;
+    background-color: transparent;
   }
 
   /* Contacto móvil */
@@ -664,11 +756,11 @@ button:focus-visible {
     padding: 56px 16px 28px 16px;
   }
 
-  .contact-layout {
+  .contact-grid {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .contact-heading {
@@ -676,8 +768,13 @@ button:focus-visible {
     line-height: 1.02;
   }
 
-  .contact-info-col {
-    padding-top: 0;
+  .contact-sidebar-col {
+    gap: 28px;
+  }
+
+  .contact-info-top {
+    display: flex;
+    flex-direction: column;
   }
 
   .contact-lead {
@@ -685,10 +782,14 @@ button:focus-visible {
   }
 
   .contact-cta-block {
-    margin-top: 20px;
+    margin-top: 16px;
+  }
+
+  .contact-studio-info {
+    margin-top: 8px;
   }
 
   .contact-footer {
-    padding-top: 20px;
+    padding-top: 16px;
   }
 }

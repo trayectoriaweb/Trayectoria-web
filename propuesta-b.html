@@ -19,10 +19,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,400..700;1,100,400..700&display=swap" rel="stylesheet">
 
-  <!-- Estilos de Propuesta B -->
-  <link rel="stylesheet" href="css/propuesta-b.css?v=2026.b.1">
+  <!-- Estilos de Propuesta B Refinada -->
+  <link rel="stylesheet" href="css/propuesta-b.css?v=2026.b.2">
 </head>
 <body id="top">
+
+  <!-- Capa estática de granulado nativo SVG sobre superficies claras -->
+  <div class="grain-layer" aria-hidden="true"></div>
 
   <!-- ==================== 1. NAVEGACIÓN DISCRETA (52PX) ==================== -->
   <header class="site-header" role="banner">
@@ -57,18 +60,25 @@
       <!-- Escenario de proyectos a ancho completo -->
       <div class="stage-grid" id="escenario">
         
-        <!-- Imagen dominante (cols 1 a 18/19) -->
+        <!-- Imagen dominante (cols 1 a 18/19 en desktop) -->
         <div class="stage-media-col">
           <div class="stage-media-frame">
-            <img 
-              id="stage-active-image" 
-              src="img/proyectos/guido-castellotti-hero.webp" 
-              alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
-              class="stage-active-img"
-              width="1600"
-              height="900"
-              loading="eager"
-            >
+            <picture id="stage-picture">
+              <source 
+                id="stage-source-mob" 
+                media="(max-width: 767.98px)" 
+                srcset="img/proyectos/guido-castellotti-mob.png"
+              >
+              <img 
+                id="stage-active-image" 
+                src="img/proyectos/guido-castellotti-hero.png" 
+                alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
+                class="stage-active-img"
+                width="1600"
+                height="900"
+                loading="eager"
+              >
+            </picture>
           </div>
         </div>
 
@@ -140,12 +150,12 @@
         
         <!-- Nota editorial izquierda explicando la decisión de diseño -->
         <div class="continuity-note-col">
-          <p class="continuity-tag">Caso en estudio · Julieta Vitale</p>
+          <span class="continuity-author">Julieta Vitale</span>
           <h2 id="continuity-heading" class="continuity-title">
             Estructura por áreas de práctica
           </h2>
           <p class="continuity-desc">
-            Para una práctica penal donde las urgencias conviven con causas complejas, el sitio organiza las especialidades en fichas autónomas y directas. Cada área resume el alcance del servicio y ofrece una vía inmediata de consulta, sin obligar a navegar extensos textos jurídicos.
+            Las áreas de práctica convierten información jurídica compleja en recorridos claros y accesibles.
           </p>
           <div class="continuity-action">
             <a 
@@ -186,31 +196,41 @@
     <!-- ==================== 4. CIERRE DE CONTACTO ==================== -->
     <section class="section-contact" id="contacto" aria-labelledby="contact-heading">
       
-      <div class="contact-layout">
+      <div class="contact-grid">
         
-        <!-- Título monumental a la izquierda -->
+        <!-- Gran titular a la izquierda (cols 1 a 18/19) -->
         <div class="contact-title-col">
           <h2 id="contact-heading" class="contact-heading">
             Hablemos de<br>tu próxima web.
           </h2>
         </div>
 
-        <!-- Columna derecha con invitación clara -->
-        <div class="contact-info-col">
-          <p class="contact-lead">
-            Contanos qué hacés y qué te gustaría mostrar.
-          </p>
+        <!-- Ficha lateral equivalente (cols 20 a 24 / 21 a 24) -->
+        <div class="contact-sidebar-col">
           
-          <div class="contact-cta-block">
-            <span class="contact-cta-label">Escribinos</span>
+          <!-- Superior: texto y futura vía de contacto -->
+          <div class="contact-info-top">
+            <p class="contact-lead">
+              Contanos qué hacés y qué te gustaría mostrar.
+            </p>
+            <div class="contact-cta-block">
+              <span class="contact-cta-label">Escribinos</span>
+            </div>
           </div>
+
+          <!-- Inferior: selector tipográfico reemplazado por la información del estudio -->
+          <div class="contact-studio-info">
+            <span class="studio-item-brand">TRAYECTORIA</span>
+            <span class="studio-item">Diseño y desarrollo web</span>
+            <span class="studio-item">Rosario, Argentina</span>
+          </div>
+
         </div>
 
       </div>
 
-      <!-- Pie integrado -->
+      <!-- Pie integrado sin línea horizontal divisoria -->
       <footer class="contact-footer" role="contentinfo">
-        <span class="footer-brand">TRAYECTORIA</span>
         <a href="#top" class="footer-back-top">Volver arriba ↑</a>
       </footer>
 
@@ -219,6 +239,6 @@
   </main>
 
   <!-- Controlador interactivo de Propuesta B -->
-  <script src="js/propuesta-b.js?v=2026.b.1"></script>
+  <script src="js/propuesta-b.js?v=2026.b.2"></script>
 </body>
 </html>

@@ -5,13 +5,14 @@
 (function () {
   'use strict';
 
-  // Catálogo de proyectos del escenario
+  // Catálogo de proyectos del escenario (versiones escritorio y móvil)
   const projects = {
     guido: {
       name: 'Guido Castellotti',
       rubro: 'Fotografía y diseño',
       desc: 'Un sitio donde la fotografía organiza la experiencia y presenta una mirada propia.',
-      src: 'img/proyectos/guido-castellotti-hero.webp',
+      deskSrc: 'img/proyectos/guido-castellotti-hero.png',
+      mobSrc: 'img/proyectos/guido-castellotti-mob.png',
       alt: 'Captura real del sitio web de Guido Castellotti — Fotografía y diseño',
       url: 'https://trayectoriaweb.github.io/Guido-Castelloti-web/'
     },
@@ -19,7 +20,8 @@
       name: 'Julieta Vitale',
       rubro: 'Abogacía',
       desc: 'Una presentación clara de su práctica penal, con información accesible y consulta directa.',
-      src: 'img/proyectos/julieta-vitale-hero.webp',
+      deskSrc: 'img/proyectos/julieta-vitale-hero.png',
+      mobSrc: 'img/proyectos/julieta-vitale-mob.png',
       alt: 'Captura real del sitio web de Julieta Vitale — Abogacía',
       url: 'https://angelesgoy.github.io/julieta-vitale-abogada/'
     },
@@ -27,16 +29,19 @@
       name: 'Maurizio Di Russo',
       rubro: 'Perfil profesional',
       desc: 'Una presentación de su trayectoria, experiencia y trabajo con empresas.',
-      src: 'img/proyectos/maurizio-stage-16x9.png',
+      deskSrc: 'img/proyectos/maurizio-stage-16x9.png',
+      mobSrc: 'img/proyectos/maurizio-stage-mob.png',
       alt: 'Captura real del sitio web de Maurizio Di Russo — Perfil profesional',
       url: 'https://angelesgoy.github.io/maurizio-di-russo/'
     }
   };
 
-  // Pre-carga inmediata de imágenes en memoria
+  // Pre-carga inmediata de imágenes en memoria (desktop y móvil)
   Object.values(projects).forEach(p => {
-    const img = new Image();
-    img.src = p.src;
+    const imgDesk = new Image();
+    imgDesk.src = p.deskSrc;
+    const imgMob = new Image();
+    imgMob.src = p.mobSrc;
   });
 
   /* ================================================================
@@ -88,6 +93,7 @@
   function initStageSelector() {
     const buttons = document.querySelectorAll('.stage-selector-btn');
     const stageImg = document.getElementById('stage-active-image');
+    const sourceMob = document.getElementById('stage-source-mob');
     const nameEl = document.getElementById('stage-project-name');
     const rubroEl = document.getElementById('stage-project-rubro');
     const descEl = document.getElementById('stage-project-desc');
@@ -98,6 +104,16 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let transitionTimer = null;
     let pendingProjectKey = null;
+
+    function applyProject(project) {
+      if (sourceMob) sourceMob.srcset = project.mobSrc;
+      stageImg.src = project.deskSrc;
+      stageImg.alt = project.alt;
+      if (nameEl) nameEl.textContent = project.name;
+      if (rubroEl) rubroEl.textContent = project.rubro;
+      if (descEl) descEl.textContent = project.desc;
+      if (linkEl) linkEl.href = project.url;
+    }
 
     buttons.forEach(btn => {
       btn.addEventListener('click', function () {
@@ -118,13 +134,7 @@
         pendingProjectKey = key;
 
         if (prefersReducedMotion) {
-          // Cambio instantáneo si el usuario prefiere movimiento reducido
-          stageImg.src = project.src;
-          stageImg.alt = project.alt;
-          if (nameEl) nameEl.textContent = project.name;
-          if (rubroEl) rubroEl.textContent = project.rubro;
-          if (descEl) descEl.textContent = project.desc;
-          if (linkEl) linkEl.href = project.url;
+          applyProject(project);
           return;
         }
 
@@ -137,14 +147,8 @@
         stageImg.classList.add('is-fading');
 
         transitionTimer = setTimeout(() => {
-          // Verificar que este sea el último pedido
           if (pendingProjectKey === key) {
-            stageImg.src = project.src;
-            stageImg.alt = project.alt;
-            if (nameEl) nameEl.textContent = project.name;
-            if (rubroEl) rubroEl.textContent = project.rubro;
-            if (descEl) descEl.textContent = project.desc;
-            if (linkEl) linkEl.href = project.url;
+            applyProject(project);
           }
           stageImg.classList.remove('is-fading');
           transitionTimer = null;
