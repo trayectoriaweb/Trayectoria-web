@@ -3,241 +3,552 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRAYECTORIA — Una web a la altura de tu trabajo</title>
-  <meta name="description" content="Diseñamos sitios para profesionales, creativos y negocios. Cada proyecto empieza por entender qué hacés y cómo querés presentarlo.">
+  <title>Trayectoria — Diseño web para trayectorias profesionales</title>
+  <meta name="description" content="Tu recorrido profesional merece una web de Trayectoria. Diseño webs que conectan tu identidad y lo que hacés en una presencia digital singular.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="TRAYECTORIA — Una web a la altura de tu trabajo">
-  <meta property="og:description" content="Diseñamos sitios para profesionales, creativos y negocios.">
+  <meta property="og:title" content="Trayectoria — Diseño web para trayectorias profesionales">
+  <meta property="og:description" content="Tu recorrido profesional merece una web de Trayectoria. Sasha Goy, fundador y diseñador.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="img/sasha-goy.png">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23171717'/><text y='.74em' x='50%' text-anchor='middle' font-size='65' fill='%23fafaf7' font-family='sans-serif' font-weight='700'>T</text></svg>">
+  <!-- Favicon tipográfico -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23247BA5'/><text x='50' y='72' font-size='68' font-family='serif' font-weight='bold' fill='%23F3EEE5' text-anchor='middle'>T</text></svg>">
 
-  <!-- Tipografía: Archivo Variable (Omnibus-Type) -->
+  <!-- Google Fonts: Fraunces (300..900 variable opsz) + DM Sans (400..700 variable) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,400..700;1,100,400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
 
-  <!-- Estilos v02 -->
-  <link rel="stylesheet" href="css/styles.css?v=2026.v02.2">
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="css/estudio.css?v=2026.expresivo.6">
 </head>
 <body id="top">
 
-  <!-- ==================== NAVEGACIÓN SUPERIOR ==================== -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <span class="header-descriptor">Diseño y desarrollo web</span>
-      <nav class="site-nav" aria-label="Navegación principal">
-        <ul class="nav-list">
-          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Enlace accesible para saltar al contenido principal -->
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <!-- ==================== ENCABEZADO Y HERO (Fondo compartido Denim #247BA5) ==================== -->
+  <div class="hero-denim-wrapper">
+    
+    <!-- Encabezado integrado en la parte superior -->
+    <header class="site-header" role="banner">
+      <div class="site-container">
+        <div class="header-inner">
+          
+          <!-- Marca en Fraunces serif -->
+          <a href="#top" class="brand-link" aria-label="Trayectoria — Volver al inicio">
+            <span class="brand-logo">Trayectoria</span>
+          </a>
+
+          <!-- Navegación principal -->
+          <nav class="header-nav" aria-label="Navegación principal">
+            <ul class="nav-list">
+              <li><a href="#trabajos" class="nav-link">Trabajos</a></li>
+              <li><a href="#servicio" class="nav-link">Servicio</a></li>
+              <li><a href="#proceso" class="nav-link">Proceso</a></li>
+              <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+              <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+          </nav>
+
+          <!-- Botón menú móvil accesible -->
+          <button type="button" class="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Menú móvil desplegable -->
+    <div id="mobile-menu" class="mobile-menu-drawer" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="#trabajos" class="mobile-nav-link">Trabajos</a></li>
+        <li><a href="#servicio" class="mobile-nav-link">Servicio</a></li>
+        <li><a href="#proceso" class="mobile-nav-link">Proceso</a></li>
+        <li><a href="#sobre-mi" class="mobile-nav-link">Sobre mí</a></li>
+        <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Sección Hero tipográfica monumental -->
+    <section class="section-hero" aria-labelledby="hero-title">
+      <div class="site-container hero-container">
+        <div class="hero-content">
+          <p class="hero-pretitle">Tu recorrido profesional merece una web de</p>
+          <h1 id="hero-title" class="hero-giant-title">TRAYECTORIA</h1>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
   <main id="contenido">
 
-    <!-- ==================== APERTURA (HERO) ==================== -->
-    <section class="section-hero" aria-labelledby="hero-title">
+    <!-- ==================== FRANJA ANIMADA CONTINUA (Hueso #F3EEE5) ==================== -->
+    <section class="ticker-banner" aria-label="Frase de identidad" role="region">
+      <div class="ticker-wrap" data-speed="35">
+        <div class="ticker-track">
+          <!-- Bloque de contenido repetido para bucle 100% continuo sin saltos -->
+          <div class="ticker-content" aria-hidden="true">
+            <span class="ticker-text font-fraunces text-carbon">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+            <span class="ticker-text font-sans text-azul">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+            <span class="ticker-text font-fraunces text-carbon">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+            <span class="ticker-text font-sans text-azul">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+          </div>
+          <div class="ticker-content" aria-hidden="true">
+            <span class="ticker-text font-fraunces text-carbon">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+            <span class="ticker-text font-sans text-azul">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+            <span class="ticker-text font-fraunces text-carbon">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+            <span class="ticker-text font-sans text-azul">Tu trayectoria, identidad y servicios en un mismo lugar.</span>
+            <span class="ticker-bullet text-naranja">✦</span>
+          </div>
+        </div>
+      </div>
+      <p class="visually-hidden">Tu trayectoria, identidad y servicios en un mismo lugar.</p>
+    </section>
+
+    <!-- ==================== MANIFIESTO (Fondo carbón #292824 de punta a punta) ==================== -->
+    <section class="section-manifesto section-fullbleed" aria-labelledby="manifesto-tag">
+      <div class="site-container">
+        <div class="manifesto-inner">
+          <span id="manifesto-tag" class="manifesto-tag">Manifiesto</span>
+          <p class="manifesto-statement">
+            Cada profesional necesita un lugar propio en internet. Diseñamos webs donde <span class="manifesto-highlight">trayectoria, identidad y servicios</span> convergen en una presencia digital singular, construida alrededor de quién sos, lo que hacés y <span class="manifesto-highlight">hacia dónde querés ir.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TRABAJOS SELECCIONADOS (Fondo naranja #C96718) ==================== -->
+    <section class="section-works section-fullbleed" id="trabajos" aria-labelledby="works-heading-1">
       
-      <!-- Marca de gran escala de borde a borde -->
-      <div class="brand-strip" aria-label="TRAYECTORIA">
-        <span class="brand-display" id="brand-display" aria-hidden="true">TRAYECTORIA</span>
-        <span class="sr-only">TRAYECTORIA</span>
+      <!-- Cabecera tipográfica monumental -->
+      <div class="works-header-container">
+        <h2 id="works-heading-1" class="works-heading">
+          <span class="works-title-line works-title-line-1">TRABAJOS</span>
+          <span class="works-title-line works-title-line-2">SELECCIONADOS</span>
+        </h2>
       </div>
 
-      <!-- Composición desfasada: Titular/Texto a la izquierda, Medio/Selector a la derecha -->
-      <div class="hero-layout">
-        
-        <!-- Bloque editorial izquierdo -->
-        <div class="hero-statement-col">
-          <h1 id="hero-title" class="hero-statement">
-            Una web a la<br>altura de<br>tu trabajo.
-          </h1>
+      <!-- Barra de accesibilidad: control para pausar/reanudar animaciones -->
+      <div class="works-accessibility-bar">
+        <button type="button" class="btn-motion-toggle" id="toggleMotionBtn" aria-pressed="false">
+          <span class="motion-icon" aria-hidden="true">⏸</span>
+          <span class="motion-label">Pausar animaciones</span>
+        </button>
+      </div>
 
-          <p class="hero-desc">
-            Diseñamos sitios para profesionales, creativos y negocios. Cada proyecto empieza por entender qué hacés y cómo querés presentarlo.
-          </p>
+      <!-- Contenedor interactivo de filas de proyectos estilo henry.codes -->
+      <div class="works-ticker-list">
 
-          <div class="hero-action-wrap">
-            <a href="#contacto" class="hero-cta-link">Hablemos de tu web</a>
-          </div>
-        </div>
-
-        <!-- Bloque multimedia derecho -->
-        <div class="hero-media-col">
-          
-          <!-- Contenedor del medio activo (16:9) -->
-          <div class="hero-media-frame" id="hero-media-frame">
-            <img 
-              id="hero-active-image" 
-              src="img/proyectos/guido-castellotti-hero.webp" 
-              alt="Captura real del sitio web de Guido Castellotti — Fotografía y diseño" 
-              class="hero-active-img"
-              width="1920"
-              height="1080"
-              loading="eager"
-            >
-          </div>
-
-          <!-- Selector de proyectos periférico -->
-          <div class="hero-selector-bar" role="group" aria-label="Selector de proyectos destacados">
-            <div class="hero-selector-buttons">
-              <button 
-                type="button" 
-                class="selector-btn is-active" 
-                data-project="guido" 
-                aria-pressed="true"
-              >
-                Guido Castellotti
-              </button>
-              <button 
-                type="button" 
-                class="selector-btn" 
-                data-project="julieta" 
-                aria-pressed="false"
-              >
-                Julieta Vitale
-              </button>
-              <button 
-                type="button" 
-                class="selector-btn" 
-                data-project="maurizio" 
-                aria-pressed="false"
-              >
-                Maurizio Di Russo
-              </button>
+        <!-- Fila 1: Guido Castellotti (Hacia la izquierda) -->
+        <article class="project-ticker-row" data-project-id="guido" data-dir="left">
+          <a 
+            href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="project-ticker-link"
+            aria-label="Ver proyecto web de Guido Castellotti — Portfolio creativo de fotografía y diseño (abre en nueva pestaña)"
+          >
+            <span class="visually-hidden">Guido Castellotti — Fotografía y diseño</span>
+            
+            <div class="project-track project-track--left" aria-hidden="true">
+              <div class="project-strip">
+                <span class="p-hero">Guido Castellotti.</span>
+                <span class="p-sub">Guido Castellotti</span>
+                <span class="p-hero">Guido Castellotti.</span>
+                <span class="p-sub">Guido Castellotti</span>
+                <span class="p-hero">Guido Castellotti.</span>
+                <span class="p-sub">Guido Castellotti</span>
+              </div>
+              <div class="project-strip">
+                <span class="p-hero">Guido Castellotti.</span>
+                <span class="p-sub">Guido Castellotti</span>
+                <span class="p-hero">Guido Castellotti.</span>
+                <span class="p-sub">Guido Castellotti</span>
+                <span class="p-hero">Guido Castellotti.</span>
+                <span class="p-sub">Guido Castellotti</span>
+              </div>
             </div>
+          </a>
 
-            <div class="hero-project-link-wrap">
-              <a 
-                id="hero-project-link" 
-                href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="hero-project-link"
-              >
-                Ver proyecto <span class="arrow-glyph" aria-hidden="true">↗</span>
-              </a>
+          <!-- Tarjeta accesible para móvil / táctil sin depender de hover -->
+          <div class="project-mobile-preview">
+            <img src="img/proyectos/guido-castellotti-hero.webp" alt="Guido Castellotti web" class="project-mobile-img" loading="lazy">
+            <div class="project-mobile-meta">
+              <span class="mobile-tag">Fotografía y diseño</span>
+              <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener noreferrer" class="mobile-view-link">Ver proyecto ↗</a>
             </div>
           </div>
+        </article>
 
+        <!-- Fila 2: Julieta Vitale (Hacia la derecha) -->
+        <article class="project-ticker-row" data-project-id="julieta" data-dir="right">
+          <a 
+            href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="project-ticker-link"
+            aria-label="Ver proyecto web de Julieta Vitale — Abogada penalista (abre en nueva pestaña)"
+          >
+            <span class="visually-hidden">Julieta Vitale — Abogacía penal</span>
+            
+            <div class="project-track project-track--right" aria-hidden="true">
+              <div class="project-strip">
+                <span class="p-hero">Julieta Vitale.</span>
+                <span class="p-sub">Julieta Vitale</span>
+                <span class="p-hero">Julieta Vitale.</span>
+                <span class="p-sub">Julieta Vitale</span>
+                <span class="p-hero">Julieta Vitale.</span>
+                <span class="p-sub">Julieta Vitale</span>
+              </div>
+              <div class="project-strip">
+                <span class="p-hero">Julieta Vitale.</span>
+                <span class="p-sub">Julieta Vitale</span>
+                <span class="p-hero">Julieta Vitale.</span>
+                <span class="p-sub">Julieta Vitale</span>
+                <span class="p-hero">Julieta Vitale.</span>
+                <span class="p-sub">Julieta Vitale</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="project-mobile-preview">
+            <img src="img/proyectos/julieta-vitale-hero.webp" alt="Julieta Vitale web" class="project-mobile-img" loading="lazy">
+            <div class="project-mobile-meta">
+              <span class="mobile-tag">Abogacía penal</span>
+              <a href="https://angelesgoy.github.io/julieta-vitale-abogada/" target="_blank" rel="noopener noreferrer" class="mobile-view-link">Ver proyecto ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fila 3: Maurizio Di Russo (Hacia la izquierda) -->
+        <article class="project-ticker-row" data-project-id="maurizio" data-dir="left">
+          <a 
+            href="https://angelesgoy.github.io/maurizio-di-russo/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="project-ticker-link"
+            aria-label="Ver proyecto web de Maurizio Di Russo — Liderazgo comercial y movilidad (abre en nueva pestaña)"
+          >
+            <span class="visually-hidden">Maurizio Di Russo — Liderazgo comercial</span>
+            
+            <div class="project-track project-track--left" aria-hidden="true">
+              <div class="project-strip">
+                <span class="p-hero">Maurizio Di Russo.</span>
+                <span class="p-sub">Maurizio Di Russo</span>
+                <span class="p-hero">Maurizio Di Russo.</span>
+                <span class="p-sub">Maurizio Di Russo</span>
+                <span class="p-hero">Maurizio Di Russo.</span>
+                <span class="p-sub">Maurizio Di Russo</span>
+              </div>
+              <div class="project-strip">
+                <span class="p-hero">Maurizio Di Russo.</span>
+                <span class="p-sub">Maurizio Di Russo</span>
+                <span class="p-hero">Maurizio Di Russo.</span>
+                <span class="p-sub">Maurizio Di Russo</span>
+                <span class="p-hero">Maurizio Di Russo.</span>
+                <span class="p-sub">Maurizio Di Russo</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="project-mobile-preview">
+            <img src="img/proyectos/maurizio-stage-16x9.png" alt="Maurizio Di Russo web" class="project-mobile-img" loading="lazy">
+            <div class="project-mobile-meta">
+              <span class="mobile-tag">Liderazgo comercial</span>
+              <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener noreferrer" class="mobile-view-link">Ver proyecto ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fila 4: Jerónimo Bauer (Hacia la derecha) -->
+        <article class="project-ticker-row" data-project-id="jeronimo" data-dir="right">
+          <a 
+            href="#contacto" 
+            class="project-ticker-link"
+            aria-label="Proyecto Jerónimo Bauer — En desarrollo (contactar para más información)"
+          >
+            <span class="visually-hidden">Jerónimo Bauer — En desarrollo</span>
+            
+            <div class="project-track project-track--right" aria-hidden="true">
+              <div class="project-strip">
+                <span class="p-hero">Jerónimo Bauer.</span>
+                <span class="p-sub">Jerónimo Bauer</span>
+                <span class="p-hero">Jerónimo Bauer.</span>
+                <span class="p-sub">Jerónimo Bauer</span>
+                <span class="p-hero">Jerónimo Bauer.</span>
+                <span class="p-sub">Jerónimo Bauer</span>
+              </div>
+              <div class="project-strip">
+                <span class="p-hero">Jerónimo Bauer.</span>
+                <span class="p-sub">Jerónimo Bauer</span>
+                <span class="p-hero">Jerónimo Bauer.</span>
+                <span class="p-sub">Jerónimo Bauer</span>
+                <span class="p-hero">Jerónimo Bauer.</span>
+                <span class="p-sub">Jerónimo Bauer</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="project-mobile-preview">
+            <div class="project-placeholder-box">
+              <span class="placeholder-title">Jerónimo Bauer</span>
+              <span class="placeholder-tag">Proyecto en desarrollo</span>
+            </div>
+            <div class="project-mobile-meta">
+              <span class="mobile-tag">En desarrollo</span>
+              <a href="#contacto" class="mobile-view-link">Consultar ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Lámina flotante de previsualización que acompaña suavemente al cursor -->
+      <div class="project-floating-card" id="projectFloatingCard" aria-hidden="true">
+        <img src="img/proyectos/guido-castellotti-hero.png" alt="" class="floating-img" id="floatingImg">
+        <div class="floating-caption" id="floatingCaption">
+          <span class="floating-title">Guido Castellotti</span>
+          <span class="floating-rubro">Fotografía y diseño</span>
         </div>
-
       </div>
 
     </section>
 
-    <!-- ==================== PROYECTOS SELECCIONADOS ==================== -->
-    <section class="section-projects" id="proyectos" aria-labelledby="projects-label">
-      
-      <p id="projects-label" class="section-label">Trabajos seleccionados</p>
-
-      <!-- CASO JULIETA VITALE: Imagen a sangre y ficha derecha -->
-      <article class="project-editorial project-julieta" aria-labelledby="julieta-title">
+    <!-- ==================== SERVICIO (Fondo azul profundo #174B63) ==================== -->
+    <section class="section-service section-fullbleed" id="servicio" aria-labelledby="service-title">
+      <div class="site-container">
         
-        <div class="julieta-layout">
+        <div class="service-grid">
           
-          <!-- Imagen principal a sangre (cols 1 a 16) -->
-          <div class="julieta-visual">
-            <a 
-              href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="julieta-media-link"
-              aria-label="Ver sitio web de Julieta Vitale en pestaña nueva"
-            >
-              <img 
-                src="img/proyectos/julieta-vitale-web.png" 
-                alt="Captura real del sitio web de Julieta Vitale — Abogacía" 
-                class="julieta-img"
-                width="1440"
-                height="900"
-                loading="lazy"
-              >
-            </a>
-          </div>
-
-          <!-- Ficha lateral tipo nota al margen (cols 19 a 24, desfasada hacia abajo) -->
-          <aside class="julieta-aside">
-            <h2 id="julieta-title" class="julieta-name">Julieta Vitale</h2>
-            <p class="julieta-category">Abogacía</p>
-            <p class="julieta-summary">
-              Una presentación clara de su práctica penal y una forma directa de consultar.
+          <!-- Columna izquierda: Título editorial en Fraunces -->
+          <div class="service-left-col">
+            <span class="service-tag">Servicio</span>
+            <h2 id="service-title" class="service-main-title">
+              Una web pensada para vos.
+            </h2>
+            <p class="service-left-lead">
+              El valor de una buena web radica en el diseño, el orden del contenido, la agilidad de carga y el acompañamiento humano.
             </p>
-            <div class="julieta-action">
-              <a 
-                href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="julieta-explore-link"
-              >
-                Explorar proyecto
-              </a>
+          </div>
+
+          <!-- Columna derecha: 3 filas con líneas finas -->
+          <div class="service-rows">
+            
+            <div class="service-row-item">
+              <h3 class="service-row-title">
+                <span class="service-row-dot" aria-hidden="true"></span>
+                Diseño con identidad
+              </h3>
+              <p class="service-row-desc">
+                Organizamos tu información, definimos qué mostrar y creamos una dirección visual única con tipografía, color y proporciones adaptadas a lo que hacés.
+              </p>
             </div>
-          </aside>
 
-        </div>
+            <div class="service-row-item">
+              <h3 class="service-row-title">
+                <span class="service-row-dot" aria-hidden="true"></span>
+                Desarrollo y publicación
+              </h3>
+              <p class="service-row-desc">
+                Programación limpia y optimizada para celulares y computadoras. Vinculamos tu dominio propio y dejamos el sitio publicado, seguro y listo para compartir.
+              </p>
+            </div>
 
-        <!-- Detalle secundario opcional: captura móvil real anclada -->
-        <div class="julieta-sub-layout">
-          <div class="julieta-mobile-detail">
-            <img 
-              src="img/proyectos/julieta-vitale-mobile.png" 
-              alt="Detalle de vista móvil del sitio de Julieta Vitale" 
-              class="julieta-mobile-img"
-              width="390"
-              height="844"
-              loading="lazy"
-            >
-            <p class="julieta-mobile-caption">Detalle de lectura y consulta directa en móvil.</p>
+            <div class="service-row-item">
+              <h3 class="service-row-title">
+                <span class="service-row-dot" aria-hidden="true"></span>
+                Acompañamiento
+              </h3>
+              <p class="service-row-desc">
+                Conversamos directamente durante todo el proceso. Te ayudo a ordenar las ideas y redactar textos si hace falta, con honestidad técnica de principio a fin.
+              </p>
+            </div>
+
           </div>
-        </div>
 
-      </article>
-
-    </section>
-
-    <!-- ==================== CIERRE DE CONTACTO ==================== -->
-    <section class="section-contact" id="contacto" aria-labelledby="contact-heading">
-      
-      <div class="contact-layout">
-        
-        <!-- Título masivo a la izquierda (cols 1 a 17) -->
-        <div class="contact-title-col">
-          <h2 id="contact-heading" class="contact-heading">
-            Hablemos de<br>tu próxima web.
-          </h2>
-        </div>
-
-        <!-- Columna derecha de contacto (cols 19 a 24) -->
-        <div class="contact-info-col">
-          <p class="contact-lead">
-            Contanos qué hacés y qué te gustaría mostrar.
-          </p>
-          
-          <div class="contact-cta-block">
-            <!-- Llamada limpia y no engañosa, sin correo inventado ni enlace roto -->
-            <span class="contact-cta-label">Escribinos</span>
-          </div>
         </div>
 
       </div>
+    </section>
 
-      <!-- Pie de página integrado -->
-      <footer class="contact-footer" role="contentinfo">
-        <span class="footer-brand">TRAYECTORIA</span>
-        <a href="#top" class="footer-back-top">Volver arriba ↑</a>
-      </footer>
+    <!-- ==================== PROCESO (Fondo hueso #F3EEE5) ==================== -->
+    <section class="section-process section-fullbleed" id="proceso" aria-labelledby="process-title">
+      <div class="site-container">
+        
+        <header class="process-header">
+          <span class="section-tag">Metodología</span>
+          <h2 id="process-title" class="process-main-title">
+            Un proceso claro y simple.
+          </h2>
+          <p class="process-lead">
+            Sin burocracia ni etapas interminables. Trabajamos con pasos definidos y decisiones compartidas.
+          </p>
+        </header>
 
+        <div class="process-grid-layout">
+          
+          <div class="process-step-col">
+            <span class="process-number">01</span>
+            <h3 class="process-step-title">Conversamos</h3>
+            <p class="process-step-desc">
+              Conocemos el proyecto, sus contenidos y necesidades. Charlamos sobre a quién te dirigís y ordenamos el material disponible.
+            </p>
+          </div>
+
+          <div class="process-step-col">
+            <span class="process-number">02</span>
+            <h3 class="process-step-title">Diseñamos</h3>
+            <p class="process-step-desc">
+              Definimos la propuesta visual y revisamos juntos. Ajustamos tipografía, colores y jerarquías hasta que el sitio te represente.
+            </p>
+          </div>
+
+          <div class="process-step-col">
+            <span class="process-number">03</span>
+            <h3 class="process-step-title">Publicamos</h3>
+            <p class="process-step-desc">
+              Desarrollamos, probamos en múltiples pantallas y dejamos el sitio online, rápido y listo para recibir consultas.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SOBRE MÍ (Fondo hueso #F3EEE5 con retrato real) ==================== -->
+    <section class="section-about section-fullbleed" id="sobre-mi" aria-labelledby="about-title">
+      <div class="site-container">
+        <div class="about-grid">
+          
+          <!-- Izquierda: Fotografía original de Sasha Goy -->
+          <div class="about-photo-col">
+            <div class="about-photo-wrapper">
+              <img 
+                src="img/sasha-goy.png" 
+                alt="Fotografía de Sasha Goy, fundador y diseñador de Trayectoria" 
+                class="about-portrait"
+                width="605"
+                height="835"
+              >
+              <p class="about-caption">Sasha Goy · Trayectoria</p>
+            </div>
+          </div>
+
+          <!-- Derecha: Bio editorial -->
+          <div class="about-content-col">
+            <h2 id="about-title" class="about-title">Soy Sasha Goy.</h2>
+            <span class="about-role-tag">Fundador y diseñador de Trayectoria</span>
+
+            <div class="about-bio-paragraphs">
+              <p>
+                Trabajo personalmente en el diseño y desarrollo de cada sitio. Me interesa entender qué hacés y encontrar una forma clara y propia de mostrarlo.
+              </p>
+              <p>
+                Veo a diario a profesionales muy valiosos —abogados, fotógrafos, consultores, médicos, personas con oficio— cuyo trabajo se presenta a través de un PDF desactualizado o una plantilla genérica que no les hace justicia.
+              </p>
+              <p>
+                Creo que una web debe sentirse como un taller cuidado: con criterio tipográfico, espacios generosos y respeto por quien la visita. Cuando encarás un proyecto en Trayectoria, pensás y tomás decisiones directamente conmigo.
+              </p>
+            </div>
+
+            <div class="about-actions">
+              <a href="#contacto" class="btn-secondary">
+                Hablemos de tu web
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACTO (Cierre pleno carbón #292824 con acento naranja) ==================== -->
+    <section class="section-contact section-fullbleed" id="contacto" aria-labelledby="contact-title">
+      <div class="site-container">
+        
+        <div class="contact-grid">
+          
+          <!-- Título a la izquierda -->
+          <div>
+            <span class="contact-subtag">Contacto directo</span>
+            <h2 id="contact-title" class="contact-title">
+              Hablemos de tu próxima web.
+            </h2>
+            <p class="contact-lead">
+              ¿Tenés una idea en marcha o necesitás ordenar cómo presentarte? Escribime por WhatsApp y lo vemos juntos, sin vueltas ni intermediarios.
+            </p>
+          </div>
+
+          <!-- Botón de acción hacia WhatsApp -->
+          <div class="contact-action-wrapper">
+            <a 
+              href="https://wa.me/5491123456789?text=Hola%20Sasha,%20estuve%20viendo%20Trayectoria%20Web%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20mi%20sitio." 
+              class="btn-primary"
+              data-whatsapp="true"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.84-3.05-.2-.31a8.164 8.164 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.4 3.61 2.4 5.8 0 4.52-3.68 8.2-8.14 8.2zm4.49-6.13c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.73 2.64 4.2 3.7.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.13-.22-.2-.47-.32z"/>
+              </svg>
+              <span>Escribime por WhatsApp</span>
+            </a>
+
+            <span class="contact-motto">Sasha Goy — Fundador y diseñador</span>
+          </div>
+
+        </div>
+
+      </div>
     </section>
 
   </main>
 
-  <!-- Script interactivo v02 -->
-  <script src="js/app.js?v=2026.v02.2"></script>
+  <!-- ==================== PIE DE PÁGINA (Fondo hueso #F3EEE5) ==================== -->
+  <footer class="site-footer section-fullbleed" role="contentinfo">
+    <div class="site-container">
+      <div class="footer-row">
+        
+        <!-- Marca en Fraunces -->
+        <a href="#top" class="footer-brand" aria-label="Trayectoria — Volver al inicio">
+          Trayectoria
+        </a>
+
+        <!-- Enlaces -->
+        <ul class="footer-nav">
+          <li><a href="#trabajos" class="footer-link">Trabajos</a></li>
+          <li><a href="#servicio" class="footer-link">Servicio</a></li>
+          <li><a href="#proceso" class="footer-link">Proceso</a></li>
+          <li><a href="#sobre-mi" class="footer-link">Sobre mí</a></li>
+          <li><a href="#contacto" class="footer-link">Contacto</a></li>
+          <li><a href="#top" class="footer-link footer-top-link">Volver arriba ↑</a></li>
+        </ul>
+
+        <div class="footer-copy">
+          © 2026 Trayectoria · Diseño web con sentido.
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script interactivo: tickers, cursor follower, accesibilidad -->
+  <script src="js/estudio.js?v=2026.expresivo.1"></script>
 </body>
 </html>
