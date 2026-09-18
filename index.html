@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
 
   <!-- Hoja de estilos principal -->
-  <link rel="stylesheet" href="css/estudio.css?v=2026.expresivo.8">
+  <link rel="stylesheet" href="css/estudio.css?v=2026.editorial.1">
 </head>
 <body id="top">
 
@@ -133,202 +133,155 @@
       </div>
     </section>
 
-    <!-- ==================== TRAYECTORIAS PROFESIONALES (Fondo naranja #C96718) ==================== -->
-    <section class="section-works section-fullbleed" id="trayectorias" aria-labelledby="works-heading-1">
+    <!-- ==================== TRABAJOS SELECCIONADOS (Fondo negro #111111) ==================== -->
+    <section class="section-works section-fullbleed" id="trayectorias" aria-labelledby="works-heading">
       <a id="trabajos" class="anchor-alias" aria-hidden="true"></a>
       
-      <!-- Cabecera tipográfica monumental -->
-      <div class="works-header-container">
-        <h2 id="works-heading-1" class="works-heading">
-          <span class="works-title-line works-title-line-1">TRAYECTORIAS</span>
-          <span class="works-title-line works-title-line-2">PROFESIONALES</span>
-        </h2>
-      </div>
+      <div class="works-container">
+        
+        <!-- Encabezado editorial alineado a la izquierda -->
+        <header class="works-header">
+          <h2 id="works-heading" class="works-title">Trabajos seleccionados</h2>
+        </header>
 
-      <!-- Barra de accesibilidad: control para pausar/reanudar animaciones -->
-      <div class="works-accessibility-bar">
-        <button type="button" class="btn-motion-toggle" id="toggleMotionBtn" aria-pressed="false">
-          <span class="motion-icon" aria-hidden="true">⏸</span>
-          <span class="motion-label">Pausar animaciones</span>
-        </button>
-      </div>
+        <!-- Grilla editorial de proyectos -->
+        <div class="works-grid">
 
-      <!-- Contenedor interactivo de filas de proyectos estilo henry.codes -->
-      <div class="works-ticker-list">
-
-        <!-- Fila 1: Guido Castelloti (Hacia la izquierda) -->
-        <article class="project-ticker-row" data-project-id="guido" data-dir="left">
-          <a 
-            href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="project-ticker-link"
-            aria-label="Ver proyecto web de Guido Castelloti — Portfolio de fotografía y diseño (abre en nueva pestaña)"
-          >
-            <span class="visually-hidden">Guido Castelloti — Fotografía y diseño</span>
+          <!-- 1. Guido Castelloti (Fila completa panorámica ~16:9) -->
+          <article class="work-item work-item--featured">
+            <a 
+              href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="work-media-link"
+              aria-label="Ver sitio web de Guido Castelloti — Fotografía y diseño (abre en nueva pestaña)"
+            >
+              <div class="work-media-frame work-media-frame--featured">
+                <picture>
+                  <source srcset="img/proyectos/guido-castellotti-hero.webp" type="image/webp">
+                  <img 
+                    src="img/proyectos/guido-castellotti-hero.png" 
+                    alt="Captura del sitio web de Guido Castelloti" 
+                    class="work-img" 
+                    loading="lazy" 
+                    width="1600" 
+                    height="900"
+                  >
+                </picture>
+              </div>
+            </a>
             
-            <div class="project-track project-track--left" aria-hidden="true">
-              <div class="project-strip">
-                <span class="p-hero">Guido Castelloti.</span>
-                <span class="p-sub">Guido Castelloti</span>
-                <span class="p-hero">Guido Castelloti.</span>
-                <span class="p-sub">Guido Castelloti</span>
-                <span class="p-hero">Guido Castelloti.</span>
-                <span class="p-sub">Guido Castelloti</span>
+            <div class="work-info work-info--featured">
+              <div class="work-info-main">
+                <h3 class="work-name">Guido Castelloti</h3>
+                <p class="work-activity">Fotografía y diseño</p>
               </div>
-              <div class="project-strip">
-                <span class="p-hero">Guido Castelloti.</span>
-                <span class="p-sub">Guido Castelloti</span>
-                <span class="p-hero">Guido Castelloti.</span>
-                <span class="p-sub">Guido Castelloti</span>
-                <span class="p-hero">Guido Castelloti.</span>
-                <span class="p-sub">Guido Castelloti</span>
+              <div class="work-info-action">
+                <a 
+                  href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="work-link"
+                >
+                  Ver sitio <span class="work-link-arrow" aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
-          </a>
+          </article>
 
-          <!-- Tarjeta accesible para móvil / táctil sin depender de hover -->
-          <div class="project-mobile-preview">
-            <img src="img/proyectos/guido-castellotti-hero.webp" alt="Guido Castelloti web" class="project-mobile-img" loading="lazy">
-            <div class="project-mobile-meta">
-              <span class="mobile-tag">Fotografía y diseño</span>
-              <a href="https://trayectoriaweb.github.io/Guido-Castelloti-web/" target="_blank" rel="noopener noreferrer" class="mobile-view-link">Ver proyecto ↗</a>
-            </div>
+          <!-- Fila de 2 columnas para Julieta Vitale y Maurizio Di Russo -->
+          <div class="works-row-columns">
+
+            <!-- 2. Julieta Vitale -->
+            <article class="work-item">
+              <a 
+                href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="work-media-link"
+                aria-label="Ver sitio web de Julieta Vitale — Abogacía penal (abre en nueva pestaña)"
+              >
+                <div class="work-media-frame">
+                  <picture>
+                    <source srcset="img/proyectos/julieta-vitale-hero.webp" type="image/webp">
+                    <img 
+                      src="img/proyectos/julieta-vitale-hero.png" 
+                      alt="Captura del sitio web de Julieta Vitale" 
+                      class="work-img" 
+                      loading="lazy" 
+                      width="1600" 
+                      height="900"
+                    >
+                  </picture>
+                </div>
+              </a>
+              
+              <div class="work-info">
+                <h3 class="work-name">Julieta Vitale</h3>
+                <p class="work-activity">Abogacía penal</p>
+                <div class="work-info-action">
+                  <a 
+                    href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="work-link"
+                  >
+                    Ver sitio <span class="work-link-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 3. Maurizio Di Russo -->
+            <article class="work-item">
+              <a 
+                href="https://angelesgoy.github.io/maurizio-di-russo/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="work-media-link"
+                aria-label="Ver sitio web de Maurizio Di Russo — Liderazgo comercial (abre en nueva pestaña)"
+              >
+                <div class="work-media-frame">
+                  <picture>
+                    <source srcset="img/proyectos/maurizio-stage-16x9.png" type="image/png">
+                    <img 
+                      src="img/proyectos/maurizio-stage-16x9.png" 
+                      alt="Captura del sitio web de Maurizio Di Russo" 
+                      class="work-img" 
+                      loading="lazy" 
+                      width="1600" 
+                      height="900"
+                    >
+                  </picture>
+                </div>
+              </a>
+              
+              <div class="work-info">
+                <h3 class="work-name">Maurizio Di Russo</h3>
+                <p class="work-activity">Liderazgo comercial</p>
+                <div class="work-info-action">
+                  <a 
+                    href="https://angelesgoy.github.io/maurizio-di-russo/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="work-link"
+                  >
+                    Ver sitio <span class="work-link-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
           </div>
-        </article>
 
-        <!-- Fila 2: Julieta Vitale (Hacia la derecha) -->
-        <article class="project-ticker-row" data-project-id="julieta" data-dir="right">
-          <a 
-            href="https://angelesgoy.github.io/julieta-vitale-abogada/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="project-ticker-link"
-            aria-label="Ver proyecto web de Julieta Vitale — Abogada penalista (abre en nueva pestaña)"
-          >
-            <span class="visually-hidden">Julieta Vitale — Abogacía penal</span>
-            
-            <div class="project-track project-track--right" aria-hidden="true">
-              <div class="project-strip">
-                <span class="p-hero">Julieta Vitale.</span>
-                <span class="p-sub">Julieta Vitale</span>
-                <span class="p-hero">Julieta Vitale.</span>
-                <span class="p-sub">Julieta Vitale</span>
-                <span class="p-hero">Julieta Vitale.</span>
-                <span class="p-sub">Julieta Vitale</span>
-              </div>
-              <div class="project-strip">
-                <span class="p-hero">Julieta Vitale.</span>
-                <span class="p-sub">Julieta Vitale</span>
-                <span class="p-hero">Julieta Vitale.</span>
-                <span class="p-sub">Julieta Vitale</span>
-                <span class="p-hero">Julieta Vitale.</span>
-                <span class="p-sub">Julieta Vitale</span>
-              </div>
-            </div>
-          </a>
-
-          <div class="project-mobile-preview">
-            <img src="img/proyectos/julieta-vitale-hero.webp" alt="Julieta Vitale web" class="project-mobile-img" loading="lazy">
-            <div class="project-mobile-meta">
-              <span class="mobile-tag">Abogacía penal</span>
-              <a href="https://angelesgoy.github.io/julieta-vitale-abogada/" target="_blank" rel="noopener noreferrer" class="mobile-view-link">Ver proyecto ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Fila 3: Maurizio Di Russo (Hacia la izquierda) -->
-        <article class="project-ticker-row" data-project-id="maurizio" data-dir="left">
-          <a 
-            href="https://angelesgoy.github.io/maurizio-di-russo/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="project-ticker-link"
-            aria-label="Ver proyecto web de Maurizio Di Russo — Liderazgo comercial y movilidad (abre en nueva pestaña)"
-          >
-            <span class="visually-hidden">Maurizio Di Russo — Liderazgo comercial</span>
-            
-            <div class="project-track project-track--left" aria-hidden="true">
-              <div class="project-strip">
-                <span class="p-hero">Maurizio Di Russo.</span>
-                <span class="p-sub">Maurizio Di Russo</span>
-                <span class="p-hero">Maurizio Di Russo.</span>
-                <span class="p-sub">Maurizio Di Russo</span>
-                <span class="p-hero">Maurizio Di Russo.</span>
-                <span class="p-sub">Maurizio Di Russo</span>
-              </div>
-              <div class="project-strip">
-                <span class="p-hero">Maurizio Di Russo.</span>
-                <span class="p-sub">Maurizio Di Russo</span>
-                <span class="p-hero">Maurizio Di Russo.</span>
-                <span class="p-sub">Maurizio Di Russo</span>
-                <span class="p-hero">Maurizio Di Russo.</span>
-                <span class="p-sub">Maurizio Di Russo</span>
-              </div>
-            </div>
-          </a>
-
-          <div class="project-mobile-preview">
-            <img src="img/proyectos/maurizio-stage-16x9.png" alt="Maurizio Di Russo web" class="project-mobile-img" loading="lazy">
-            <div class="project-mobile-meta">
-              <span class="mobile-tag">Liderazgo comercial</span>
-              <a href="https://angelesgoy.github.io/maurizio-di-russo/" target="_blank" rel="noopener noreferrer" class="mobile-view-link">Ver proyecto ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Fila 4: Jerónimo Bauer (Hacia la derecha) -->
-        <article class="project-ticker-row" data-project-id="jeronimo" data-dir="right">
-          <a 
-            href="#contacto" 
-            class="project-ticker-link"
-            aria-label="Proyecto Jerónimo Bauer — En desarrollo (contactar para más información)"
-          >
-            <span class="visually-hidden">Jerónimo Bauer — En desarrollo</span>
-            
-            <div class="project-track project-track--right" aria-hidden="true">
-              <div class="project-strip">
-                <span class="p-hero">Jerónimo Bauer.</span>
-                <span class="p-sub">Jerónimo Bauer</span>
-                <span class="p-hero">Jerónimo Bauer.</span>
-                <span class="p-sub">Jerónimo Bauer</span>
-                <span class="p-hero">Jerónimo Bauer.</span>
-                <span class="p-sub">Jerónimo Bauer</span>
-              </div>
-              <div class="project-strip">
-                <span class="p-hero">Jerónimo Bauer.</span>
-                <span class="p-sub">Jerónimo Bauer</span>
-                <span class="p-hero">Jerónimo Bauer.</span>
-                <span class="p-sub">Jerónimo Bauer</span>
-                <span class="p-hero">Jerónimo Bauer.</span>
-                <span class="p-sub">Jerónimo Bauer</span>
-              </div>
-            </div>
-          </a>
-
-          <div class="project-mobile-preview">
-            <div class="project-placeholder-box">
-              <span class="placeholder-title">Jerónimo Bauer</span>
-              <span class="placeholder-tag">Proyecto en desarrollo</span>
-            </div>
-            <div class="project-mobile-meta">
-              <span class="mobile-tag">En desarrollo</span>
-              <a href="#contacto" class="mobile-view-link">Consultar ↗</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Lámina flotante de previsualización que acompaña suavemente al cursor -->
-      <div class="project-floating-card" id="projectFloatingCard" aria-hidden="true">
-        <img src="img/proyectos/guido-castellotti-hero.png" alt="" class="floating-img" id="floatingImg">
-        <div class="floating-caption" id="floatingCaption">
-          <span class="floating-title">Guido Castelloti</span>
-          <span class="floating-rubro">Fotografía y diseño</span>
         </div>
-      </div>
 
+        <!-- Línea discreta al final para Jerónimo Bauer -->
+        <div class="works-dev-note">
+          <p class="works-dev-text">Jerónimo Bauer — Proyecto en desarrollo</p>
+        </div>
+
+      </div>
     </section>
 
     <!-- ==================== METODOLOGÍA (Fondo hueso #F3EEE5, estilo anterior de proceso claro y simple) ==================== -->
@@ -495,7 +448,7 @@
     </div>
   </footer>
 
-  <!-- Script interactivo: tickers, cursor follower, accesibilidad -->
-  <script src="js/estudio.js?v=2026.expresivo.1"></script>
+  <!-- Script interactivo principal -->
+  <script src="js/estudio.js?v=2026.editorial.1"></script>
 </body>
 </html>

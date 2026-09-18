@@ -416,345 +416,237 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
-   6. TRAYECTORIAS PROFESIONALES (Fondo naranja #C96718, estilo henry.codes)
+   6. TRABAJOS SELECCIONADOS (Fondo negro #111111, composición editorial)
    ========================================================================== */
 .section-works {
-  background-color: var(--color-naranja);
-  color: var(--color-hueso);
-  padding-top: clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+  background-color: #111111;
+  color: #F3EEE5;
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-bottom: clamp(4rem, 6vw, 6.5rem);
   position: relative;
-  overflow: hidden;
 }
 
-.anchor-alias {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Cabecera monumental tipográfica (sin barras, naciendo desde el lateral) */
-.works-header-container {
+.works-container {
   width: 100%;
-  max-width: 100%;
-  margin: 0 0 clamp(1.5rem, 3vw, 2.75rem) 0;
-  padding-left: clamp(1.5rem, 4vw, 4.5rem);
-  padding-right: clamp(1.5rem, 4vw, 4.5rem);
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
-.works-heading {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(0.15rem, 0.4vw, 0.5rem);
-}
-
-.works-title-line {
-  display: block;
-  font-family: var(--font-serif);
-  font-weight: 900;
-  color: var(--color-hueso);
-  text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 0.88;
-  letter-spacing: -0.03em;
-}
-
-.works-title-line-1 {
-  font-size: clamp(2.35rem, 11vw, 14.5rem);
-}
-
-.works-title-line-2 {
-  font-size: clamp(2.15rem, 10.4vw, 13.6rem);
-}
-
-@media (max-width: 640px) {
-  .works-title-line-1 {
-    font-size: clamp(2rem, 10vw, 3.5rem);
-  }
-  .works-title-line-2 {
-    font-size: clamp(1.8rem, 9.2vw, 3.2rem);
+@media (max-width: 767px) {
+  .works-container {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
-/* Botón accesible de control de movimiento */
-.works-accessibility-bar {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 0 clamp(1.5rem, 2.5vw, 2.5rem) 0;
-  padding-left: clamp(1.5rem, 4vw, 4.5rem);
-  padding-right: clamp(1.5rem, 4vw, 4.5rem);
-  display: flex;
-  justify-content: flex-end;
+/* Encabezado: Fraunces, ~64px desktop / ~38px mobile, 32px al primer proyecto */
+.works-header {
+  margin-bottom: 32px;
 }
 
-.btn-motion-toggle {
-  background-color: rgba(41, 40, 36, 0.25);
-  border: 1px solid rgba(243, 238, 229, 0.4);
-  color: var(--color-hueso);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all var(--trans-fast);
-}
-
-.btn-motion-toggle:hover {
-  background-color: var(--color-carbon);
-  color: var(--color-hueso);
-}
-
-/* Lista de filas de proyectos */
-.works-ticker-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-ticker-row {
-  width: 100%;
-  position: relative;
-  border-top: 1px solid rgba(41, 40, 36, 0.18);
-  overflow: hidden;
-}
-
-.project-ticker-row:last-child {
-  border-bottom: 1px solid rgba(41, 40, 36, 0.18);
-}
-
-.project-ticker-link {
-  display: block;
-  width: 100%;
-  padding: clamp(1rem, 2vw, 1.75rem) 0;
-  overflow: hidden;
-  text-decoration: none;
-  position: relative;
-  cursor: pointer;
-}
-
-.project-track {
-  display: inline-flex;
-  width: max-content;
-  will-change: transform;
-}
-
-/* Direcciones alternadas de animación continua (~20-30 px/s) */
-.project-track--left {
-  animation: projectMarqueeLeft 38s linear infinite;
-}
-
-.project-track--right {
-  animation: projectMarqueeRight 36s linear infinite;
-}
-
-/* Desfase asimétrico de inicio */
-.project-ticker-row:nth-child(1) .project-track {
-  animation-duration: 40s;
-  animation-delay: -3s;
-}
-
-.project-ticker-row:nth-child(2) .project-track {
-  animation-duration: 35s;
-  animation-delay: -11s;
-}
-
-.project-ticker-row:nth-child(3) .project-track {
-  animation-duration: 38s;
-  animation-delay: -7s;
-}
-
-.project-ticker-row:nth-child(4) .project-track {
-  animation-duration: 33s;
-  animation-delay: -15s;
-}
-
-@keyframes projectMarqueeLeft {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-@keyframes projectMarqueeRight {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
-}
-
-/* Pausa individual al pasar el cursor o recibir foco por teclado */
-.project-ticker-row:hover .project-track,
-.project-ticker-row:focus-within .project-track {
-  animation-play-state: paused !important;
-}
-
-/* Pausa global cuando se activa el botón o preferencia reducida */
-body.motion-paused .ticker-track,
-body.motion-paused .project-track {
-  animation-play-state: paused !important;
-}
-
-.project-strip {
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(2rem, 4vw, 4.5rem);
-  padding-right: clamp(2rem, 4vw, 4.5rem);
-}
-
-.p-hero {
+.works-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-size: 64px;
   font-weight: 800;
-  color: var(--color-carbon);
-  letter-spacing: -0.025em;
-  white-space: nowrap;
-  transition: transform var(--trans-fast), color var(--trans-fast);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #F3EEE5;
+  margin: 0;
+  text-align: left;
 }
 
-.project-ticker-row:hover .p-hero {
-  color: #151513;
-}
-
-.p-sub {
-  font-family: var(--font-sans);
-  font-size: clamp(1.75rem, 3.8vw, 3.25rem);
-  font-weight: 500;
-  color: rgba(41, 40, 36, 0.45);
-  letter-spacing: -0.015em;
-  white-space: nowrap;
-}
-
-/* Previsualización móvil táctil (oculta en escritorio) */
-.project-mobile-preview {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .project-mobile-preview {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem var(--page-padding) 1.25rem;
-  }
-
-  .project-mobile-img {
-    width: 100px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-
-  .project-placeholder-box {
-    width: 100px;
-    height: 64px;
-    background-color: var(--color-carbon);
-    color: var(--color-hueso);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.25rem;
-    text-align: center;
-    border-radius: 4px;
-  }
-
-  .placeholder-title {
-    font-family: var(--font-serif);
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-
-  .placeholder-tag {
-    font-size: 0.625rem;
-    opacity: 0.8;
-  }
-
-  .project-mobile-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-  }
-
-  .mobile-tag {
-    font-size: 0.875rem;
-    color: rgba(41, 40, 36, 0.8);
-    font-weight: 500;
-  }
-
-  .mobile-view-link {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--color-carbon);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+@media (max-width: 767px) {
+  .works-title {
+    font-size: 38px;
+    line-height: 1.15;
   }
 }
 
-/* Lámina flotante interactiva que acompaña suavemente al cursor */
-.project-floating-card {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: clamp(300px, 25vw, 390px);
-  aspect-ratio: 16 / 10;
-  background-color: var(--color-carbon);
-  border: 2px solid var(--color-hueso);
-  border-radius: 4px;
+/* Grilla de proyectos: editorial, limpia y sin tarjetas con fondos propios ni sombras */
+.works-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+@media (max-width: 767px) {
+  .works-grid {
+    gap: 40px;
+  }
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Marco de captura */
+.work-media-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.32);
-  pointer-events: none;
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate3d(-9999px, -9999px, 0);
-  transition: opacity 0.2s var(--ease-editorial), visibility 0.2s var(--ease-editorial);
-  will-change: transform, opacity;
 }
 
-.project-floating-card.is-visible {
-  opacity: 1;
-  visibility: visible;
+.work-media-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #1a1a18;
 }
 
-.floating-img {
+/* Guido: primera fila completa en 16:9 en escritorio */
+.work-media-frame--featured {
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 767px) {
+  .work-media-frame--featured {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.work-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   display: block;
+  transition: opacity 0.2s ease;
 }
 
-.floating-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.5rem 0.85rem;
-  background: linear-gradient(to top, rgba(20, 20, 18, 0.92) 0%, transparent 100%);
+.work-media-link:hover .work-img {
+  opacity: 0.94;
+}
+
+/* Información del proyecto debajo de la imagen (16px separación) */
+.work-info {
+  margin-top: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  color: var(--color-hueso);
-  font-size: 0.875rem;
+  flex-direction: column;
+  text-align: left;
 }
 
-.floating-title {
+.work-info-main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nombre: Fraunces, ~30px */
+.work-name {
   font-family: var(--font-serif);
+  font-size: 30px;
   font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  color: #F3EEE5;
+  margin: 0;
+  white-space: normal;
+  word-break: normal;
 }
 
-.floating-rubro {
+.work-item--featured .work-name {
+  font-size: 34px;
+}
+
+@media (max-width: 767px) {
+  .work-name,
+  .work-item--featured .work-name {
+    font-size: 30px;
+  }
+}
+
+/* Actividad: DM Sans, 16px, gris claro #C5C2BC, 6-8px de margen */
+.work-activity {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  opacity: 0.85;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #C5C2BC;
+  margin: 7px 0 0 0;
+}
+
+/* Enlace "Ver sitio ↗": DM Sans, 16px, 6-8px de margen */
+.work-info-action {
+  margin-top: 7px;
+}
+
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #F3EEE5;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.work-link-arrow {
+  display: inline-block;
+  color: #C96718;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-link:hover {
+  color: #FFFFFF;
+}
+
+.work-link:hover .work-link-arrow,
+.work-item:hover .work-link-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* En escritorio: Guido tiene nombre/actividad a la izquierda y enlace a la derecha */
+@media (min-width: 768px) {
+  .work-info--featured {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .work-info--featured .work-info-action {
+    margin-top: 4px;
+  }
+
+  /* Dos columnas iguales separadas por 32px para Julieta y Maurizio */
+  .works-row-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .works-row-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+/* Jerónimo Bauer — Proyecto en desarrollo (línea discreta final) */
+.works-dev-note {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: 24px;
+  border-top: 1px solid rgba(243, 238, 229, 0.12);
+  text-align: left;
+}
+
+.works-dev-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #C5C2BC;
+  margin: 0;
+  letter-spacing: 0.01em;
 }
 
 /* ==========================================================================
