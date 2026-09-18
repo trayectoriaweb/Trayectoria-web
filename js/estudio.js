@@ -11,7 +11,7 @@
   // Configuración de proyectos reales del estudio
   const PROJECTS_DATA = {
     guido: {
-      title: 'Guido Castellotti',
+      title: 'Guido Castelloti',
       rubro: 'Fotografía y diseño',
       img: 'img/proyectos/guido-castellotti-hero.webp',
       fallbackImg: 'img/proyectos/guido-castellotti-hero.png',
@@ -41,7 +41,7 @@
   };
 
   const WHATSAPP_PHONE = '5491123456789';
-  const WHATSAPP_MSG = 'Hola Sasha, estuve viendo Trayectoria Web y me gustaría conversar sobre mi sitio.';
+  const WHATSAPP_MSG = 'Hola Sasha, estuve viendo Trayectoria y me gustaría conversar sobre mi sitio.';
 
   // 1. Control del cursor follower para previsualizaciones flotantes
   function setupProjectHover() {
